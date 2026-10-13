@@ -1,0 +1,30 @@
+# Environment
+.env
+.venv
+venv/
+env/
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django
+staticfiles/
+media/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Distribution
+*.egg-info/
+dist/
+build/

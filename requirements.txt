@@ -1,0 +1,8 @@
+Django==5.1.2
+psycopg[binary]==3.2.3
+gunicorn==23.0.0
+redis==5.2.0
+celery==5.4.0
+django-environ==0.11.2
+ruff==0.7.0
+pre-commit==4.0.1
