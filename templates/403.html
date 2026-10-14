@@ -1,0 +1,27 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}403 — Access Forbidden | RocketBank{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="max-width: 600px; padding: var(--space-3xl) 0;">
+  <span style="font-size: 4rem;" aria-hidden="true">🔒</span>
+  <h1 class="mt-md mb-sm">403 — Access Forbidden</h1>
+  <p class="text-secondary mb-xl">
+    You do not have administrative or ownership permissions to view or perform operations on this resource.
+  </p>
+  <div class="d-flex justify-center gap-md">
+    <a href="{% url 'home' %}" class="btn btn--secondary">
+      Homepage
+    </a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'accounts:dashboard' %}" class="btn btn--primary">
+        Go to Dashboard
+      </a>
+    {% else %}
+      <a href="{% url 'users:login' %}" class="btn btn--primary">
+        Log In
+      </a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

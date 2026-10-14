@@ -1,0 +1,30 @@
+{% load bank_tags %}
+<div class="card card--elevated mb-lg" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-subtle) 100%);">
+  <div class="card__header">
+    <div class="d-flex items-center gap-xs">
+      <span aria-hidden="true">💳</span>
+      <h3 class="card__title" style="font-size: var(--font-size-base);">Quick Portfolio Balance</h3>
+    </div>
+    <a href="{% url 'accounts:list' %}" class="btn btn--outline btn--sm">All Accounts &rarr;</a>
+  </div>
+  <div class="card__body">
+    <div class="d-flex flex-wrap justify-between items-end gap-md">
+      <div>
+        <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Total Available Assets</span>
+        <div class="font-bold font-mono" style="font-size: var(--font-size-3xl); color: var(--color-primary);">
+          {{ summary.total_balance|currency_format:"KZT" }}
+        </div>
+      </div>
+      <div class="d-flex gap-lg">
+        <div>
+          <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Checking</span>
+          <span class="font-bold font-mono">{{ summary.checking_balance|currency_format:"KZT" }}</span>
+        </div>
+        <div>
+          <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Savings</span>
+          <span class="font-bold font-mono">{{ summary.savings_balance|currency_format:"KZT" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

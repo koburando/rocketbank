@@ -1,0 +1,14 @@
+<div class="empty-state">
+  <div class="empty-state__icon" aria-hidden="true">
+    {{ icon|default:"📭" }}
+  </div>
+  <h3 class="empty-state__title">{{ title|default:"No items found" }}</h3>
+  <p class="empty-state__description">
+    {{ message|default:"There is currently no information available for this view." }}
+  </p>
+  {% if action_url and action_label %}
+    <a href="{{ action_url }}" class="btn btn--primary btn--sm">
+      {{ action_label }}
+    </a>
+  {% endif %}
+</div>

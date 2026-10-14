@@ -1,0 +1,16 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}400 — Bad Request | RocketBank{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="max-width: 600px; padding: var(--space-3xl) 0;">
+  <span style="font-size: 4rem;" aria-hidden="true">⚠️</span>
+  <h1 class="mt-md mb-sm">400 — Bad Request</h1>
+  <p class="text-secondary mb-xl">
+    The server could not understand the request due to invalid syntax or parameters.
+  </p>
+  <a href="{% url 'home' %}" class="btn btn--primary">
+    Return to Homepage
+  </a>
+</div>
+{% endblock %}

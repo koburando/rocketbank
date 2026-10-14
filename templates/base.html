@@ -1,0 +1,104 @@
+{% load static %}<!DOCTYPE html>
+<!--
+  RocketBank Server-Side Frontend Architecture
+  Adapted from a clean open-source FinTech HTML5 template architecture.
+  Strict HTML5 semantics, WCAG AA Accessibility, and Modern CSS Design System.
+-->
+<html lang="en" data-theme="{{ user_theme_preference|default:'SYSTEM'|lower }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {% block meta_description %}
+  <meta name="description" content="RocketBank is a cutting-edge next-generation digital financial platform providing instant transfers, premium cards, and smart credit solutions.">
+  {% endblock %}
+
+  <!-- Canonical link -->
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- Open Graph Protocol -->
+  <meta property="og:site_name" content="RocketBank">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% block title %}RocketBank — Modern Digital Banking{% endblock %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Experience effortless banking with high-yield deposits, zero-fee multi-currency transfers, and modern security.{% endblock %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% block og_image %}{% static 'images/og-rocketbank.png' %}{% endblock %}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+  <!-- Modular Design System Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+  <link rel="stylesheet" href="{% static 'css/print.css' %}">
+
+  {% block extra_css %}{% endblock %}
+
+  <!-- Schema.org Structured Data -->
+  {% block schema_json_ld %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BankOrCreditUnion",
+    "name": "RocketBank",
+    "url": "https://rocketbank.company",
+    "logo": "https://rocketbank.company/static/images/logo.png",
+    "description": "Next-generation digital financial platform providing consumer credit, deposit accounts, and smart cards.",
+    "telephone": "+7-727-244-0000",
+    "currenciesAccepted": "KZT, USD, EUR, RUB",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Al-Farabi Avenue 77/7",
+      "addressLocality": "Almaty",
+      "postalCode": "050040",
+      "addressCountry": "KZ"
+    }
+  }
+  </script>
+  {% endblock %}
+</head>
+<body>
+  <!-- Accessible Skip-Link (WCAG 2.4.1 Bypass Blocks) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Global Alert / Toast Notifications -->
+  {% include "includes/alert_toast.html" %}
+
+  <!-- Layout Container -->
+  {% block layout %}{% endblock %}
+
+  <!-- Accessible Modal Container Template -->
+  {% block modal_container %}{% endblock %}
+
+  <!-- Core Accessibility and Theme Switcher Script -->
+  <script>
+    (function() {
+      // Synchronize theme with local preference if present
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+
+      // Close modal helpers
+      window.openDialog = function(id) {
+        const dialog = document.getElementById(id);
+        if (dialog && typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        }
+      };
+      window.closeDialog = function(id) {
+        const dialog = document.getElementById(id);
+        if (dialog && typeof dialog.close === 'function') {
+          dialog.close();
+        }
+      };
+    })();
+  </script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

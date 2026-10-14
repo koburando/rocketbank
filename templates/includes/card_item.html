@@ -1,0 +1,67 @@
+{% load bank_tags %}
+<article class="card card--interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+  <div>
+    <!-- Card Visual Layout with Aspect Ratio -->
+    <div class="card-bank-visual {% if card.product.tier == 'GOLD' %}card-bank-visual--gold{% elif card.product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif card.product.tier == 'BLACK' %}card-bank-visual--black{% endif %} mb-md">
+      <div class="d-flex justify-between items-center">
+        <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-xs);">
+          RocketBank
+        </span>
+        <span class="badge {{ card.status|status_badge_class }}">
+          {{ card.get_status_display }}
+        </span>
+      </div>
+
+      <div class="my-md">
+        <div style="font-size: 1.4rem; letter-spacing: 0.15em; font-family: var(--font-family-mono);">
+          {{ card.card_number_masked }}
+        </div>
+      </div>
+
+      <div class="d-flex justify-between items-end" style="font-size: var(--font-size-xs);">
+        <div>
+          <span style="opacity: 0.7; display: block; font-size: 0.65rem;">EXPIRES</span>
+          <span class="font-mono">{{ card.expiry_date|date:"m/y" }}</span>
+        </div>
+        <div>
+          <span class="font-bold text-uppercase">{{ card.product.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-between items-center mb-sm">
+      <h3 class="card__title" style="font-size: var(--font-size-base);">
+        {{ card.product.title }} ({{ card.get_status_display }})
+      </h3>
+      <span class="text-muted font-mono" style="font-size: var(--font-size-xs);">
+        Daily Limit: {{ card.daily_limit|currency_format:card.account.currency.code }}
+      </span>
+    </div>
+
+    <p class="text-muted" style="font-size: var(--font-size-xs); margin-bottom: var(--space-md);">
+      Linked Account: <strong class="font-mono">{{ card.account.iban|mask_iban }}</strong>
+    </p>
+  </div>
+
+  <div class="d-flex items-center justify-between pt-sm" style="border-top: 1px solid var(--border-color-subtle);">
+    <!-- Quick Card Freeze Toggle (FBV with @require_POST and @login_required) -->
+    <form method="post" action="{% url 'cards:toggle-freeze' card.id %}" style="margin: 0;">
+      {% csrf_token %}
+      {% if card.status == 'ACTIVE' %}
+        <button type="submit" class="btn btn--outline btn--sm" aria-label="Freeze card {{ card.card_number_masked }}">
+          ❄️ Freeze Card
+        </button>
+      {% elif card.status == 'BLOCKED' %}
+        <button type="submit" class="btn btn--primary btn--sm" aria-label="Unfreeze card {{ card.card_number_masked }}">
+          ⚡ Unfreeze Card
+        </button>
+      {% else %}
+        <span class="text-muted" style="font-size: var(--font-size-xs);">Inactive</span>
+      {% endif %}
+    </form>
+
+    <a href="{% url 'accounts:detail' card.account.id %}" class="btn btn--secondary btn--sm">
+      View Account &rarr;
+    </a>
+  </div>
+</article>

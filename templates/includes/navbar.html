@@ -1,0 +1,44 @@
+<div class="container d-flex items-center justify-between h-100">
+  <div class="d-flex items-center gap-xl">
+    <a href="{% url 'home' %}" class="navbar-brand" aria-label="RocketBank Homepage">
+      <span aria-hidden="true">🚀</span> RocketBank
+    </a>
+
+    <nav class="d-none d-lg-flex" aria-label="Main navigation">
+      <ul class="navbar-nav">
+        <li><a href="{% url 'cards:catalog' %}" class="nav-link">Cards</a></li>
+        <li><a href="{% url 'credits:catalog' %}" class="nav-link">Loans</a></li>
+        <li><a href="{% url 'deposits:catalog' %}" class="nav-link">Deposits</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
+        <li><a href="{% url 'support:faq' %}" class="nav-link">FAQ</a></li>
+        <li><a href="{% url 'contacts' %}" class="nav-link">Contacts</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="d-flex items-center gap-sm">
+    <!-- Quick Theme Switcher -->
+    <button type="button" class="btn btn--secondary btn--sm" aria-label="Toggle dark/light theme" onclick="(function(){
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.cookie = 'theme=' + next + ';path=/;max-age=31536000';
+    })()">
+      <span aria-hidden="true">🌓</span>
+    </button>
+
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'accounts:dashboard' %}" class="btn btn--primary btn--sm">
+        Dashboard
+      </a>
+      <form method="post" action="{% url 'users:logout' %}" style="display:inline; margin:0;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn--outline btn--sm">Log Out</button>
+      </form>
+    {% else %}
+      <a href="{% url 'users:login' %}" class="btn btn--outline btn--sm">Log In</a>
+      <a href="{% url 'users:register' %}" class="btn btn--primary btn--sm">Open Account</a>
+    {% endif %}
+  </div>
+</div>

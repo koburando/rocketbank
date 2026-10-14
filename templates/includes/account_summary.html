@@ -1,0 +1,41 @@
+{% load bank_tags %}
+<article class="card card--interactive mb-md">
+  <div class="d-flex flex-wrap justify-between items-center gap-md">
+    <div class="d-flex items-center gap-md">
+      <div style="width: 3rem; height: 3rem; border-radius: var(--radius-md); background-color: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">
+        {{ account.currency.symbol }}
+      </div>
+      <div>
+        <div class="d-flex items-center gap-sm">
+          <h3 class="card__title" style="font-size: var(--font-size-base);">
+            {{ account.get_account_type_display }} Account
+          </h3>
+          <span class="badge {{ account.status|status_badge_class }}">
+            {{ account.get_status_display }}
+          </span>
+        </div>
+        <p class="m-0 text-muted font-mono" style="font-size: var(--font-size-xs);">
+          {{ account.iban|mask_iban }}
+        </p>
+      </div>
+    </div>
+
+    <div class="d-flex items-center gap-lg">
+      <div class="text-right">
+        <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Available Balance</span>
+        <span class="font-bold font-mono" style="font-size: var(--font-size-xl); color: var(--text-primary);">
+          {{ account.balance|currency_format:account.currency.code }}
+        </span>
+      </div>
+
+      <div class="d-flex gap-xs">
+        <a href="{% url 'accounts:detail' account.id %}" class="btn btn--secondary btn--sm" aria-label="View account details">
+          Details
+        </a>
+        <a href="{% url 'transactions:transfer' %}?from_account={{ account.id }}" class="btn btn--primary btn--sm" aria-label="Transfer from this account">
+          Send
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

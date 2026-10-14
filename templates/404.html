@@ -1,0 +1,21 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}404 — Page Not Found | RocketBank{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="max-width: 600px; padding: var(--space-3xl) 0;">
+  <span style="font-size: 4rem;" aria-hidden="true">🔍</span>
+  <h1 class="mt-md mb-sm">404 — Page Not Found</h1>
+  <p class="text-secondary mb-xl">
+    We couldn't find the page or banking record you were looking for. It may have been moved, closed, or never existed.
+  </p>
+  <div class="d-flex justify-center gap-md">
+    <a href="{% url 'home' %}" class="btn btn--secondary">
+      Return Home
+    </a>
+    <a href="{% url 'support:faq' %}" class="btn btn--outline">
+      Help Center
+    </a>
+  </div>
+</div>
+{% endblock %}

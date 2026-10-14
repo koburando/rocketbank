@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block layout %}
+<div class="public-layout">
+  <header class="public-header" role="banner">
+    {% include "includes/navbar.html" with is_public=True only %}
+  </header>
+
+  <main id="main-content" class="public-main" role="main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    {% include "includes/footer.html" with current_year=current_year site_name=site_name only %}
+  </footer>
+</div>
+{% endblock %}

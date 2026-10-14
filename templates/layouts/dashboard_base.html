@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block layout %}
+<div class="dashboard-layout">
+  <!-- Sidebar Navigation -->
+  <aside class="dashboard-sidebar" role="navigation" aria-label="Dashboard navigation">
+    {% include "includes/sidebar.html" with user=request.user unread_notifications_count=unread_notifications_count current_path=request.path only %}
+  </aside>
+
+  <!-- Topbar Header -->
+  <header class="dashboard-topbar" role="banner">
+    <div class="d-flex items-center gap-md">
+      <a href="{% url 'home' %}" class="navbar-brand d-lg-none" aria-label="RocketBank Home">
+        <span aria-hidden="true">🚀</span> RocketBank
+      </a>
+      <span class="text-muted d-none d-lg-block font-semibold">Client Portal</span>
+    </div>
+
+    <div class="d-flex items-center gap-md">
+      <!-- Quick Theme Switcher -->
+      <button type="button" class="btn btn--secondary btn--sm" id="theme-toggle-btn" aria-label="Toggle dark/light theme" onclick="(function(){
+        const cur = document.documentElement.getAttribute('data-theme');
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        document.cookie = 'theme=' + next + ';path=/;max-age=31536000';
+      })()">
+        <span aria-hidden="true">🌓</span>
+      </button>
+
+      <!-- Notifications Bell -->
+      <a href="{% url 'notifications:list' %}" class="btn btn--secondary btn--sm d-flex items-center gap-xs" aria-label="View notifications">
+        <span aria-hidden="true">🔔</span>
+        {% if unread_notifications_count > 0 %}
+          <span class="badge badge--danger" aria-label="{{ unread_notifications_count }} unread notifications">{{ unread_notifications_count }}</span>
+        {% endif %}
+      </a>
+
+      <!-- User Dropdown Profile Link -->
+      <a href="{% url 'users:profile' %}" class="btn btn--secondary btn--sm d-flex items-center gap-xs">
+        <span aria-hidden="true">👤</span>
+        <span class="d-none d-md-inline">{{ request.user.email|truncatechars:18 }}</span>
+      </a>
+
+      <!-- Logout Form (Strict POST compliance) -->
+      <form method="post" action="{% url 'users:logout' %}" style="margin: 0; display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn--outline btn--sm" aria-label="Sign out">
+          Sign out
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="dashboard-main" role="main" tabindex="-1">
+    {% block breadcrumbs_block %}
+      {% block breadcrumbs %}{% endblock %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Dashboard Footer -->
+  <footer class="dashboard-footer" role="contentinfo">
+    <p class="m-0 text-muted">
+      &copy; {{ current_year }} RocketBank JSC. Licensed by the Agency for Regulation and Development of the Financial Market. All rights reserved.
+    </p>
+  </footer>
+</div>
+{% endblock %}

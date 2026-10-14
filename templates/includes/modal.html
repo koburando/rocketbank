@@ -1,0 +1,21 @@
+<dialog id="{{ modal_id }}" class="modal" aria-labelledby="{{ modal_id }}_title" aria-modal="true">
+  <div class="card__header">
+    <h3 id="{{ modal_id }}_title" class="card__title">{{ title }}</h3>
+    <button type="button" class="btn btn--secondary btn--sm btn--icon" onclick="closeDialog('{{ modal_id }}')" aria-label="Close modal">
+      ✕
+    </button>
+  </div>
+  <div class="card__body my-md">
+    {{ content|safe }}
+  </div>
+  {% if action_url %}
+  <div class="card__footer">
+    <button type="button" class="btn btn--secondary btn--sm" onclick="closeDialog('{{ modal_id }}')">
+      Cancel
+    </button>
+    <a href="{{ action_url }}" class="btn btn--primary btn--sm">
+      {{ action_label|default:"Confirm" }}
+    </a>
+  </div>
+  {% endif %}
+</dialog>

@@ -1,0 +1,45 @@
+{% load bank_tags %}
+{% if is_paginated and page_obj.has_other_pages %}
+<nav class="pagination-container" aria-label="Pagination navigation">
+  <ul class="pagination">
+    <!-- Previous Page -->
+    {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?{% query_transform page=page_obj.previous_page_number %}" aria-label="Previous page">
+          &laquo;
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item is-disabled">
+        <span class="page-link" aria-disabled="true">&laquo;</span>
+      </li>
+    {% endif %}
+
+    <!-- Page Number Loop -->
+    {% for num in paginator.page_range %}
+      {% if page_obj.number == num %}
+        <li class="page-item is-active" aria-current="page">
+          <span class="page-link">{{ num }}</span>
+        </li>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <li class="page-item">
+          <a class="page-link" href="?{% query_transform page=num %}">{{ num }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Next Page -->
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?{% query_transform page=page_obj.next_page_number %}" aria-label="Next page">
+          &raquo;
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item is-disabled">
+        <span class="page-link" aria-disabled="true">&raquo;</span>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}

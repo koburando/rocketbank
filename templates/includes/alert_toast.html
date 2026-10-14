@@ -1,0 +1,23 @@
+{% if messages %}
+<div class="toast-container" aria-live="polite" aria-atomic="true">
+  {% for message in messages %}
+    <div class="alert alert--{{ message.tags|default:'info' }} d-flex justify-between items-center" role="alert">
+      <div>
+        {% if message.tags == 'success' %}
+          <span aria-hidden="true">✅</span>
+        {% elif message.tags == 'error' or message.tags == 'danger' %}
+          <span aria-hidden="true">⚠️</span>
+        {% elif message.tags == 'warning' %}
+          <span aria-hidden="true">⚡</span>
+        {% else %}
+          <span aria-hidden="true">ℹ️</span>
+        {% endif %}
+        <span>{{ message }}</span>
+      </div>
+      <button type="button" class="btn btn--secondary btn--sm btn--icon" onclick="this.closest('.alert').remove()" aria-label="Dismiss alert" style="margin-left: var(--space-sm);">
+        ✕
+      </button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

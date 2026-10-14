@@ -1,0 +1,215 @@
+{% extends "layouts/public_base.html" %}
+{% load bank_tags %}
+
+{% block title %}RocketBank — The Next-Generation Digital Banking Platform{% endblock %}
+{% block meta_description %}<meta name="description" content="RocketBank offers lightning-fast zero-fee money transfers, up to 10% cashback debit cards, high-yield deposits, and online consumer loans.">{% endblock %}
+
+{% block content %}
+<!-- 1. Hero Section -->
+<section class="hero-section" aria-labelledby="hero_heading">
+  <div class="container">
+    <div style="display: inline-flex; align-items: center; gap: var(--space-xs); padding: 0.35rem 0.85rem; background-color: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full); font-weight: 600; font-size: var(--font-size-xs); margin-bottom: var(--space-md);">
+      <span>🚀 RocketBank 3.0 Platform Live</span>
+    </div>
+
+    <h1 id="hero_heading" class="hero-title">
+      Banking Engineered for the <span style="color: var(--color-primary);">Speed of Light</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Zero-fee multi-currency transfers, intelligent cashback cards, and state-guaranteed deposits. Everything you need to master your personal finance.
+    </p>
+
+    <div class="hero-cta">
+      {% if user.is_authenticated %}
+        <a href="{% url 'accounts:dashboard' %}" class="btn btn--primary btn--lg">
+          Open Client Dashboard &rarr;
+        </a>
+      {% else %}
+        <a href="{% url 'users:register' %}" class="btn btn--primary btn--lg">
+          Open Free Account in 3 Minutes
+        </a>
+        <a href="{% url 'cards:catalog' %}" class="btn btn--secondary btn--lg">
+          Explore Payment Cards
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="d-flex justify-center items-center gap-xl flex-wrap text-muted" style="font-size: var(--font-size-xs);">
+      <div class="d-flex items-center gap-xs">
+        <span aria-hidden="true">🛡️</span>
+        <span>KDIF Insured up to 20,000,000 ₸</span>
+      </div>
+      <div class="d-flex items-center gap-xs">
+        <span aria-hidden="true">🔒</span>
+        <span>256-Bit Financial Encryption</span>
+      </div>
+      <div class="d-flex items-center gap-xs">
+        <span aria-hidden="true">⚡</span>
+        <span>Sub-second Atomic Transfers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Live Currency Exchange Rates -->
+{% if currencies %}
+<section class="container mb-2xl" aria-labelledby="rates_heading">
+  <div class="card p-md" style="background-color: var(--bg-surface);">
+    <div class="d-flex justify-between items-center mb-sm">
+      <h2 id="rates_heading" style="font-size: var(--font-size-base); margin: 0;">
+        📈 Official RocketBank Exchange Rates to KZT
+      </h2>
+      <span class="text-muted font-mono" style="font-size: var(--font-size-xs);">Updated Hourly</span>
+    </div>
+
+    <div class="d-flex gap-lg flex-wrap">
+      {% for curr in currencies %}
+        <div class="d-flex items-center gap-xs p-xs font-mono" style="background-color: var(--bg-subtle); border-radius: var(--radius-sm); font-size: var(--font-size-sm);">
+          <strong class="text-primary">{{ curr.code }}</strong>
+          <span class="text-muted">/ KZT:</span>
+          <strong>{{ curr.exchange_rate_to_kzt|currency_format:"₸" }}</strong>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- 3. Key Pillars Feature Grid -->
+<section class="container mb-3xl" aria-labelledby="features_heading">
+  <div class="text-center mb-xl">
+    <span class="badge badge--info mb-xs">Why RocketBank</span>
+    <h2 id="features_heading" style="font-size: var(--font-size-3xl);">Built for Modern Digital Life</h2>
+  </div>
+
+  <div class="grid-3">
+    <article class="card card--interactive text-center p-xl">
+      <div class="feature-icon-box" style="margin: 0 auto var(--space-md);">💳</div>
+      <h3 style="font-size: var(--font-size-lg);">Smart Payment Cards</h3>
+      <p class="text-secondary" style="font-size: var(--font-size-sm);">
+        Earn up to 10% monthly cashback on restaurants, travel, and retail. Freeze and unfreeze instantly from any device.
+      </p>
+      <a href="{% url 'cards:catalog' %}" class="btn btn--outline btn--sm mt-sm">Browse Cards &rarr;</a>
+    </article>
+
+    <article class="card card--interactive text-center p-xl">
+      <div class="feature-icon-box" style="margin: 0 auto var(--space-md);">💸</div>
+      <h3 style="font-size: var(--font-size-lg);">Instant Transfers</h3>
+      <p class="text-secondary" style="font-size: var(--font-size-sm);">
+        Send money instantly by IBAN across domestic and international banking rails with zero hidden commissions.
+      </p>
+      {% if user.is_authenticated %}
+        <a href="{% url 'transactions:transfer' %}" class="btn btn--outline btn--sm mt-sm">Make Transfer &rarr;</a>
+      {% else %}
+        <a href="{% url 'users:register' %}" class="btn btn--outline btn--sm mt-sm">Get Started &rarr;</a>
+      {% endif %}
+    </article>
+
+    <article class="card card--interactive text-center p-xl">
+      <div class="feature-icon-box" style="margin: 0 auto var(--space-md);">💰</div>
+      <h3 style="font-size: var(--font-size-lg);">High-Yield Deposits</h3>
+      <p class="text-secondary" style="font-size: var(--font-size-sm);">
+        Guaranteed growth with compound daily interest capitalization. Full KDIF state deposit guarantee up to 20,000,000 KZT.
+      </p>
+      <a href="{% url 'deposits:catalog' %}" class="btn btn--outline btn--sm mt-sm">View Rates &rarr;</a>
+    </article>
+  </div>
+</section>
+
+<!-- 4. Featured Cards Carousel/Grid -->
+{% if featured_cards %}
+<section class="container mb-3xl" aria-labelledby="featured_cards_heading">
+  <div class="d-flex justify-between items-end mb-lg">
+    <div>
+      <span class="badge badge--info mb-xs">Featured Cards</span>
+      <h2 id="featured_cards_heading" style="font-size: var(--font-size-2xl); margin: 0;">Payment Cards for Every Lifestyle</h2>
+    </div>
+    <a href="{% url 'cards:catalog' %}" class="btn btn--secondary btn--sm">View All Cards &rarr;</a>
+  </div>
+
+  <div class="product-grid">
+    {% for card in featured_cards %}
+      <article class="card card--interactive d-flex flex-col justify-between">
+        <div>
+          <div class="card-bank-visual {% if card.tier == 'GOLD' %}card-bank-visual--gold{% elif card.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif card.tier == 'BLACK' %}card-bank-visual--black{% endif %} mb-md">
+            <div class="d-flex justify-between items-center">
+              <span class="font-bold text-uppercase" style="font-size: var(--font-size-xs);">RocketBank</span>
+              <span class="badge badge--muted">{{ card.get_tier_display }}</span>
+            </div>
+            <div style="font-size: 1.4rem; font-family: var(--font-family-mono); letter-spacing: 0.15em; margin: var(--space-md) 0;">
+              •••• •••• •••• 8888
+            </div>
+            <span class="font-bold text-uppercase" style="font-size: var(--font-size-xs);">{{ card.title }}</span>
+          </div>
+          <h3 class="card__title" style="font-size: var(--font-size-lg);">{{ card.title }}</h3>
+          <p class="text-muted" style="font-size: var(--font-size-xs);">{{ card.description|truncatewords:15 }}</p>
+          <div class="d-flex justify-between items-center my-sm p-xs" style="background-color: var(--bg-subtle); border-radius: var(--radius-sm); font-size: var(--font-size-xs);">
+            <span>Cashback: <strong class="text-success">{{ card.cashback_percent }}%</strong></span>
+            <span>Fee: <strong>{% if card.annual_fee == 0 %}Free{% else %}{{ card.annual_fee|currency_format:"KZT" }}{% endif %}</strong></span>
+          </div>
+        </div>
+        <div class="d-flex gap-xs mt-sm pt-xs" style="border-top: 1px solid var(--border-color-subtle);">
+          <a href="{% url 'cards:detail' card.slug %}" class="btn btn--secondary btn--sm flex-1">Details</a>
+          <a href="{% url 'cards:apply' %}?product={{ card.slug }}" class="btn btn--primary btn--sm flex-1">Apply</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- 5. Interactive Loan Calculator Banner -->
+<section class="container mb-3xl">
+  <div class="card card--elevated p-2xl" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--color-primary-light) 100%);">
+    <div class="grid-2 items-center">
+      <div>
+        <span class="badge badge--success mb-xs">Fast Financing</span>
+        <h2 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
+          Need Extra Funds for Your Dreams?
+        </h2>
+        <p class="text-secondary" style="font-size: var(--font-size-base); margin-bottom: var(--space-lg);">
+          Calculate and apply for consumer loans with terms up to 84 months and flexible repayment schedules. Instant online pre-approval.
+        </p>
+        <div class="d-flex gap-md">
+          <a href="{% url 'credits:calculator' %}" class="btn btn--primary btn--lg">
+            🧮 Launch Loan Calculator
+          </a>
+          <a href="{% url 'credits:catalog' %}" class="btn btn--secondary btn--lg">
+            View Loan Programs
+          </a>
+        </div>
+      </div>
+      <div class="text-center d-none d-md-block">
+        <div style="font-size: 6rem;" aria-hidden="true">📊</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Client Statistics Counter -->
+<section class="container mb-3xl" aria-labelledby="stats_heading">
+  <div class="card p-xl">
+    <h2 id="stats_heading" class="sr-only">Platform Statistics</h2>
+    <div class="grid-4 text-center">
+      <div>
+        <div class="font-bold text-brand font-mono" style="font-size: var(--font-size-4xl);">1.2M+</div>
+        <span class="text-muted" style="font-size: var(--font-size-sm);">Active Clients</span>
+      </div>
+      <div>
+        <div class="font-bold text-brand font-mono" style="font-size: var(--font-size-4xl);">₸450B</div>
+        <span class="text-muted" style="font-size: var(--font-size-sm);">Total Assets Managed</span>
+      </div>
+      <div>
+        <div class="font-bold text-brand font-mono" style="font-size: var(--font-size-4xl);">99.99%</div>
+        <span class="text-muted" style="font-size: var(--font-size-sm);">System Uptime</span>
+      </div>
+      <div>
+        <div class="font-bold text-brand font-mono" style="font-size: var(--font-size-4xl);">0.00₸</div>
+        <span class="text-muted" style="font-size: var(--font-size-sm);">Transfer Fees</span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

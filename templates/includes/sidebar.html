@@ -1,0 +1,83 @@
+<div class="d-flex flex-col h-100">
+  <!-- Brand Header -->
+  <div class="mb-xl">
+    <a href="{% url 'accounts:dashboard' %}" class="navbar-brand" aria-label="RocketBank Dashboard">
+      <span aria-hidden="true">🚀</span> RocketBank
+    </a>
+    <span class="text-muted" style="font-size: var(--font-size-xs); display: block; margin-top: var(--space-2xs);">
+      Enterprise Digital Banking
+    </span>
+  </div>
+
+  <!-- Main Navigation Links -->
+  <nav class="sidebar-nav" aria-label="Dashboard sections">
+    <a href="{% url 'accounts:dashboard' %}" class="sidebar-link {% if current_path == '/accounts/dashboard/' %}is-active{% endif %}">
+      <span aria-hidden="true">📊</span> Dashboard
+    </a>
+    <a href="{% url 'accounts:list' %}" class="sidebar-link {% if current_path == '/accounts/' %}is-active{% endif %}">
+      <span aria-hidden="true">🏦</span> Accounts
+    </a>
+    <a href="{% url 'transactions:transfer' %}" class="sidebar-link {% if '/transactions/transfer/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">💸</span> Transfer Money
+    </a>
+    <a href="{% url 'transactions:list' %}" class="sidebar-link {% if current_path == '/transactions/' %}is-active{% endif %}">
+      <span aria-hidden="true">📜</span> Transactions
+    </a>
+    <a href="{% url 'cards:list' %}" class="sidebar-link {% if current_path == '/cards/' %}is-active{% endif %}">
+      <span aria-hidden="true">💳</span> My Cards
+    </a>
+    <a href="{% url 'cards:apply' %}" class="sidebar-link {% if '/cards/apply/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">✨</span> Order Card (Wizard)
+    </a>
+    <a href="{% url 'credits:list' %}" class="sidebar-link {% if current_path == '/credits/' %}is-active{% endif %}">
+      <span aria-hidden="true">📑</span> Loans & Credit
+    </a>
+    <a href="{% url 'credits:calculator' %}" class="sidebar-link {% if '/credits/calculator/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">🧮</span> Loan Calculator
+    </a>
+    <a href="{% url 'deposits:list' %}" class="sidebar-link {% if current_path == '/deposits/' %}is-active{% endif %}">
+      <span aria-hidden="true">💰</span> Deposits
+    </a>
+    <a href="{% url 'deposits:open' %}" class="sidebar-link {% if '/deposits/open/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">📥</span> Open Deposit
+    </a>
+    <a href="{% url 'analytics:dashboard' %}" class="sidebar-link {% if '/analytics/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">📈</span> Analytics & Goals
+    </a>
+    <a href="{% url 'accounts:beneficiaries' %}" class="sidebar-link {% if '/accounts/beneficiaries/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">👥</span> Beneficiaries (Formset)
+    </a>
+    <a href="{% url 'notifications:list' %}" class="sidebar-link d-flex items-center justify-between {% if '/notifications/' in current_path %}is-active{% endif %}">
+      <span class="d-flex items-center gap-sm">
+        <span aria-hidden="true">🔔</span> Notifications
+      </span>
+      {% if unread_notifications_count > 0 %}
+        <span class="badge badge--danger">{{ unread_notifications_count }}</span>
+      {% endif %}
+    </a>
+    <a href="{% url 'support:list' %}" class="sidebar-link {% if '/support/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">🎧</span> Support Tickets
+    </a>
+    <a href="{% url 'users:profile' %}" class="sidebar-link {% if '/users/profile/' in current_path %}is-active{% endif %}">
+      <span aria-hidden="true">👤</span> Profile & Settings
+    </a>
+  </nav>
+
+  <!-- User Profile Widget at Bottom -->
+  <div style="border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: auto;">
+    <div class="d-flex items-center justify-between">
+      <div style="overflow: hidden;">
+        <p class="m-0 font-semibold" style="font-size: var(--font-size-xs); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+          {{ user.get_full_name|default:user.username }}
+        </p>
+        <span class="text-muted" style="font-size: 0.7rem;">{{ user.email }}</span>
+      </div>
+      <form method="post" action="{% url 'users:logout' %}" style="margin: 0;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn--secondary btn--sm btn--icon" title="Sign out" aria-label="Sign out">
+          🚪
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

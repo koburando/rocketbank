@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="grid-4 mb-xl">
+    <div>
+      <a href="{% url 'home' %}" class="navbar-brand mb-sm d-inline-flex" aria-label="RocketBank">
+        <span aria-hidden="true">🚀</span> RocketBank
+      </a>
+      <p class="text-muted" style="font-size: var(--font-size-sm);">
+        Next-generation digital banking platform empowering millions of clients worldwide with lightning-fast payments, multi-currency accounts, and intelligent financial insights.
+      </p>
+    </div>
+
+    <div>
+      <h3 style="font-size: var(--font-size-base); margin-bottom: var(--space-md);">Products</h3>
+      <ul style="display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--font-size-sm);">
+        <li><a href="{% url 'cards:catalog' %}" class="text-secondary">Debit & Credit Cards</a></li>
+        <li><a href="{% url 'credits:catalog' %}" class="text-secondary">Consumer & Auto Loans</a></li>
+        <li><a href="{% url 'deposits:catalog' %}" class="text-secondary">Fixed-Term Deposits</a></li>
+        <li><a href="{% url 'credits:calculator' %}" class="text-secondary">Loan Calculator</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 style="font-size: var(--font-size-base); margin-bottom: var(--space-md);">Company</h3>
+      <ul style="display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--font-size-sm);">
+        <li><a href="{% url 'about' %}" class="text-secondary">About RocketBank</a></li>
+        <li><a href="{% url 'support:faq' %}" class="text-secondary">Help Center & FAQ</a></li>
+        <li><a href="{% url 'contacts' %}" class="text-secondary">Contact Us & Branches</a></li>
+        <li><a href="{% url 'health-check' %}" class="text-secondary">System Status</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 style="font-size: var(--font-size-base); margin-bottom: var(--space-md);">Regulatory & Security</h3>
+      <p class="text-muted" style="font-size: var(--font-size-xs);">
+        Deposits are insured up to 20,000,000 KZT by the Kazakhstan Deposit Insurance Fund (KDIF).
+      </p>
+      <p class="text-muted" style="font-size: var(--font-size-xs);">
+        License #1.2.345/678 issued by the National Bank of the Republic of Kazakhstan.
+      </p>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap items-center justify-between" style="border-top: 1px solid var(--border-color); padding-top: var(--space-lg); font-size: var(--font-size-xs); color: var(--text-muted);">
+    <p class="m-0">&copy; {{ current_year }} RocketBank JSC. All rights reserved.</p>
+    <div class="d-flex gap-md">
+      <a href="{% url 'about' %}" class="text-muted">Security</a>
+      <a href="{% url 'about' %}" class="text-muted">Privacy Policy</a>
+      <a href="{% url 'about' %}" class="text-muted">Terms of Service</a>
+    </div>
+  </div>
+</div>
