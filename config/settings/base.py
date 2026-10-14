@@ -76,11 +76,13 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
 ]
 
 THIRD_PARTY_APPS = []
 
 LOCAL_APPS = [
+    "apps.core",
     "apps.users",
     "apps.accounts",
     "apps.cards",
@@ -99,6 +101,9 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # Auth
 # ──────────────────────────────────────────────
 AUTH_USER_MODEL = "users.User"
+LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = "accounts:dashboard"
+LOGOUT_REDIRECT_URL = "home"
 
 # ──────────────────────────────────────────────
 # Middleware
@@ -111,6 +116,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "apps.core.middleware.RequestTimingAndLastVisitMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -126,6 +132,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "apps.core.context_processors.global_context",
             ],
         },
     },
@@ -181,6 +188,7 @@ USE_TZ = True
 # ──────────────────────────────────────────────
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
