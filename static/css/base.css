@@ -1,0 +1,197 @@
+/**
+ * RocketBank Design System - Base Styles & CSS Layers
+ * Declares @layer, resets, fluid typography, animations & accessibility
+ */
+
+@layer reset, base, layout, components, utilities, pages;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    background-color: var(--bg-body);
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+}
+
+@layer base {
+  /* Typography Scale */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: var(--space-sm);
+  }
+
+  h1 { font-size: var(--font-size-4xl); letter-spacing: -0.025em; }
+  h2 { font-size: var(--font-size-3xl); letter-spacing: -0.02em; }
+  h3 { font-size: var(--font-size-2xl); letter-spacing: -0.015em; }
+  h4 { font-size: var(--font-size-xl); }
+  h5 { font-size: var(--font-size-lg); }
+  h6 { font-size: var(--font-size-base); }
+
+  p {
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+  }
+
+  small {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+  }
+
+  /* Accessibility: Accessible Skip-Link */
+  .skip-link {
+    position: absolute;
+    top: -9999px;
+    left: var(--space-md);
+    background-color: var(--color-primary);
+    color: #ffffff !important;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    z-index: var(--z-toast);
+    text-decoration: none !important;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .skip-link:focus {
+    top: var(--space-md);
+    outline: 3px solid #ffffff;
+  }
+
+  /* Focus Visibility */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* 5 Custom Keyframes Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 98, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 98, 255, 0);
+  }
+}
+
+@keyframes skeletonWave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

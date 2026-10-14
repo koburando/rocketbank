@@ -1,0 +1,295 @@
+/**
+ * RocketBank Design System - Pages CSS
+ * Hero sections, wizard progress, catalog cards, receipt styles & goal meters
+ */
+
+@layer pages {
+  /* ── 1. Landing Home Page ────────────────────────── */
+  .hero-section {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, var(--color-primary-light) 0%, transparent 70%);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    max-width: 800px;
+    margin: 0 auto var(--space-md);
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .feature-icon-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  /* ── 2. Multi-Step Wizard Progress ───────────────── */
+  .wizard-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2xl);
+    position: relative;
+  }
+
+  .wizard-progress::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--border-color);
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  .wizard-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    background-color: var(--bg-body);
+    padding: 0 var(--space-sm);
+  }
+
+  .wizard-step__indicator {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    transition: all var(--transition-base);
+  }
+
+  .wizard-step.is-active .wizard-step__indicator {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .wizard-step.is-complete .wizard-step__indicator {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: #ffffff;
+  }
+
+  .wizard-step__label {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .wizard-step.is-active .wizard-step__label {
+    color: var(--color-primary);
+  }
+
+  /* ── 3. Product Catalog & Marketplace ────────────── */
+  .catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .catalog-search-form {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* ── 4. Transaction Receipt Page ─────────────────── */
+  .receipt-container {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .receipt-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .receipt-header {
+    text-align: center;
+    padding-bottom: var(--space-lg);
+    border-bottom: 2px dashed var(--border-color);
+    margin-bottom: var(--space-lg);
+  }
+
+  .receipt-amount {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: var(--space-sm) 0;
+  }
+
+  .receipt-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs) 0;
+  }
+
+  .receipt-label {
+    color: var(--text-muted);
+  }
+
+  .receipt-val {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* ── 5. Analytics & Saving Goals ─────────────────── */
+  .stat-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .stat-card__number {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .goal-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  /* ── 6. Profile & KYC Upload Image Preview ───────── */
+  .avatar-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .avatar-preview-box {
+    width: 6rem;
+    height: 6rem;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 3px solid var(--color-primary-light);
+    background-color: var(--bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .avatar-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .file-dropzone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    background-color: var(--bg-surface);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .file-dropzone:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-light);
+  }
+
+  /* ── 7. Team & About Grid ────────────────────────── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .team-card {
+    text-align: center;
+  }
+
+  .team-card figure {
+    margin-bottom: var(--space-md);
+  }
+
+  .team-card img {
+    border-radius: var(--radius-xl);
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .team-card figcaption {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-xs);
+  }
+}

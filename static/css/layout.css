@@ -1,0 +1,218 @@
+/**
+ * RocketBank Design System - Layout & Grid System
+ * Mobile-first responsive design, sticky headers, grid-template-areas
+ */
+
+@layer layout {
+  /* Container system */
+  .container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .container--fluid {
+    max-width: 100%;
+  }
+
+  .container--narrow {
+    max-width: 768px;
+  }
+
+  /* Public Site Layout */
+  .public-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .public-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    height: var(--header-height);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    transition: background-color var(--transition-base), border-color var(--transition-base);
+  }
+
+  .public-main {
+    flex: 1 0 auto;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .public-footer {
+    flex-shrink: 0;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-2xl) 0 var(--space-xl);
+  }
+
+  /* Dashboard Application Layout (CSS Grid with grid-template-areas) */
+  .dashboard-layout {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "topbar"
+      "main"
+      "footer";
+  }
+
+  .dashboard-sidebar {
+    display: none;
+    grid-area: sidebar;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: var(--space-lg) var(--space-md);
+    z-index: var(--z-sticky);
+  }
+
+  .dashboard-topbar {
+    grid-area: topbar;
+    position: sticky;
+    top: 0;
+    height: var(--header-height);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: var(--z-sticky);
+  }
+
+  .dashboard-main {
+    grid-area: main;
+    padding: var(--space-xl) var(--space-lg);
+    background-color: var(--bg-body);
+    overflow-x: hidden;
+  }
+
+  .dashboard-footer {
+    grid-area: footer;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+  }
+
+  /* Dashboard View Areas Grid */
+  .dashboard-grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "overview"
+      "metrics"
+      "accounts"
+      "transactions"
+      "quickactions";
+  }
+
+  .area-overview { grid-area: overview; }
+  .area-metrics { grid-area: metrics; }
+  .area-accounts { grid-area: accounts; }
+  .area-transactions { grid-area: transactions; }
+  .area-quickactions { grid-area: quickactions; }
+
+  /* Responsive Grid Breakpoints */
+
+  /* >= 480px (Mobile landscape & large phones) */
+  @media (min-width: 480px) {
+    .grid-cols-2-xs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* >= 768px (Tablets) */
+  @media (min-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "overview overview"
+        "metrics metrics"
+        "accounts quickactions"
+        "transactions transactions";
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+  }
+
+  /* >= 1024px (Desktops) */
+  @media (min-width: 1024px) {
+    .dashboard-layout {
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-rows: var(--header-height) 1fr auto;
+      grid-template-areas:
+        "sidebar topbar"
+        "sidebar main"
+        "sidebar footer";
+    }
+
+    .dashboard-sidebar {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-grid {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+        "overview overview"
+        "metrics metrics"
+        "accounts quickactions"
+        "transactions quickactions";
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* >= 1440px (Wide screens) */
+  @media (min-width: 1440px) {
+    :root {
+      --container-max-width: 1400px;
+      --sidebar-width: 19rem;
+    }
+
+    .dashboard-grid {
+      grid-template-columns: 2.2fr 1fr;
+      gap: var(--space-xl);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// RocketBank Design System - SCSS Variables & Tokens
+// BEM Methodology & CSS Custom Properties mapping
+
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$color-secondary: var(--color-secondary);
+$color-accent: var(--color-accent);
+
+$bg-body: var(--bg-body);
+$bg-surface: var(--bg-surface);
+$bg-card: var(--bg-card);
+$border-color: var(--border-color);
+
+$text-primary: var(--text-primary);
+$text-secondary: var(--text-secondary);
+$text-muted: var(--text-muted);
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;

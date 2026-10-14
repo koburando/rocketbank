@@ -1,0 +1,12 @@
+// RocketBank Design System - SCSS Layout
+@use "variables" as *;
+@use "mixins" as *;
+
+.dashboard-layout {
+  display: grid;
+  min-height: 100vh;
+
+  @include respond-to("lg") {
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+}

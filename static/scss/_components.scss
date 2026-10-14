@@ -1,0 +1,27 @@
+// RocketBank Design System - SCSS Components (BEM)
+@use "variables" as *;
+@use "mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-md);
+
+  &--primary {
+    background-color: $color-primary;
+    color: #ffffff;
+  }
+
+  &--secondary {
+    background-color: var(--bg-subtle);
+  }
+}
+
+.card {
+  background-color: $bg-card;
+  border-radius: var(--radius-lg);
+
+  &__header {
+    border-bottom: 1px solid $border-color;
+  }
+}
