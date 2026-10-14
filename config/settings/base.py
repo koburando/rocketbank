@@ -3,10 +3,46 @@ Base settings for RocketBank project.
 Shared across all environments.
 """
 
+import logging
 import os
+import re
 from pathlib import Path
 
 import environ
+
+
+class SensitiveDataFilter(logging.Filter):
+    """Filter that masks sensitive information in log records."""
+
+    SENSITIVE_PATTERNS = [
+        re.compile(
+            r"(password['\"]?\s*[:=]\s*['\"])[^'\"]+(['\"])",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"(token['\"]?\s*[:=]\s*['\"])[^'\"]+(['\"])",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"(secret['\"]?\s*[:=]\s*['\"])[^'\"]+(['\"])",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"(cvv['\"]?\s*[:=]\s*['\"])[^'\"]+(['\"])",
+            re.IGNORECASE,
+        ),
+        re.compile(r"\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b"),
+    ]
+
+    def filter(self, record):
+        if isinstance(record.msg, str):
+            for pattern in self.SENSITIVE_PATTERNS:
+                if pattern.groups == 2:
+                    record.msg = pattern.sub(r"\1****\2", record.msg)
+                else:
+                    record.msg = pattern.sub("****-****-****-****", record.msg)
+        return True
+
 
 # ──────────────────────────────────────────────
 # Paths
@@ -152,3 +188,91 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
 # ──────────────────────────────────────────────
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ──────────────────────────────────────────────
+# Logging
+# ──────────────────────────────────────────────
+LOG_DIR = BASE_DIR / "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+        "mask_sensitive": {
+            "()": SensitiveDataFilter,
+        },
+    },
+    "formatters": {
+        "verbose": {
+            "format": ("[{asctime}] {levelname} {name} {module}.{funcName}:{lineno} — {message}"),
+            "style": "{",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+        "simple": {
+            "format": "[{asctime}] {levelname} {message}",
+            "style": "{",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "filters": ["mask_sensitive"],
+        },
+        "file": {
+            "level": "INFO",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "rocketbank.log"),
+            "maxBytes": 5 * 1024 * 1024,  # 5 MB
+            "backupCount": 5,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+            "filters": ["mask_sensitive"],
+        },
+        "error_file": {
+            "level": "ERROR",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "rocketbank_error.log"),
+            "maxBytes": 5 * 1024 * 1024,
+            "backupCount": 5,
+            "formatter": "verbose",
+            "encoding": "utf-8",
+            "filters": ["mask_sensitive"],
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["file", "error_file"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "django.security": {
+            "handlers": ["file", "error_file"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "apps": {
+            "handlers": ["console", "file", "error_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+    "root": {
+        "handlers": ["console", "file"],
+        "level": "INFO",
+    },
+}

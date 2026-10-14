@@ -24,7 +24,10 @@ media/
 .DS_Store
 Thumbs.db
 
-# Distribution
-*.egg-info/
-dist/
-build/
+# Logs
+logs/*.log
+*.log
+
+# Tooling
+.ruff_cache/
+
