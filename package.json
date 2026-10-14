@@ -1,0 +1,17 @@
+{
+  "name": "rocketbank-frontend",
+  "version": "1.0.0",
+  "description": "RocketBank Next-Generation Digital Banking Vanilla ES6+ Frontend Architecture",
+  "type": "module",
+  "scripts": {
+    "test": "node --test static/js/__tests__/utils.test.js",
+    "lint": "eslint static/js/",
+    "format": "prettier --write 'static/js/**/*.js'"
+  },
+  "author": "RocketBank Core Team",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  }
+}

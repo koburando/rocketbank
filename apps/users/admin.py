@@ -5,7 +5,7 @@ Django admin configuration for the Users app.
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from apps.users.models import LoginAudit, Profile, User
+from apps.users.models import LoginAudit, Profile, User, UserFavorite
 
 
 class ProfileInline(admin.StackedInline):
@@ -179,3 +179,13 @@ class LoginAuditAdmin(admin.ModelAdmin):
         "location",
         "created_at",
     )
+
+
+@admin.register(UserFavorite)
+class UserFavoriteAdmin(admin.ModelAdmin):
+    """Admin for user favorites."""
+
+    list_display = ("user", "item_type", "item_id", "created_at")
+    list_filter = ("item_type", "created_at")
+    search_fields = ("user__email", "item_id")
+    readonly_fields = ("created_at", "updated_at")

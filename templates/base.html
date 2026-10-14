@@ -25,8 +25,9 @@
   <meta property="og:url" content="{{ request.build_absolute_uri }}">
   <meta property="og:image" content="{% block og_image %}{% static 'images/og-rocketbank.png' %}{% endblock %}">
 
-  <!-- Favicon -->
+  <!-- Favicon & PWA Manifest -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
 
   <!-- Modular Design System Stylesheets -->
   <link rel="stylesheet" href="{% static 'css/variables.css' %}">
@@ -99,6 +100,7 @@
       };
     })();
   </script>
+  <script type="module" src="{% static 'js/main.js' %}"></script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

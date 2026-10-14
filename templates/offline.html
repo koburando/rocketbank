@@ -1,0 +1,31 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}Offline | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="You are currently offline. Check your internet connection to continue banking.">{% endblock %}
+
+{% block content %}
+<div class="container text-center py-4xl">
+  <div class="card p-3xl mx-auto" style="max-width: 540px;">
+    <div style="font-size: 4rem; line-height: 1; margin-bottom: var(--space-md);" aria-hidden="true">
+      📡
+    </div>
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-sm);">You're Currently Offline</h1>
+    <p class="text-secondary mb-xl">
+      It looks like your internet connection is unavailable. RocketBank requires an active internet connection to securely process transactions and display live balances.
+    </p>
+
+    <div class="d-flex justify-center gap-md">
+      <button type="button" class="btn btn--primary" onclick="window.location.reload();">
+        <span aria-hidden="true">🔄</span> Try Again
+      </button>
+      <a href="/" class="btn btn--secondary">
+        Return Home
+      </a>
+    </div>
+
+    <div class="mt-2xl text-muted font-mono" style="font-size: var(--font-size-xs);">
+      RocketBank PWA Cache v1.0.0 &bull; Licensed by ARDFM
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ Django admin configuration for the Support app.
 
 from django.contrib import admin
 
-from apps.support.models import FAQ, SupportTicket, TicketReview
+from apps.support.models import FAQ, ProductReview, SupportTicket, TicketReview
 
 
 @admin.register(FAQ)
@@ -63,3 +63,21 @@ class TicketReviewAdmin(admin.ModelAdmin):
     search_fields = ("user__email", "comment")
     readonly_fields = ("created_at", "updated_at")
     autocomplete_fields = ("user", "ticket")
+
+
+@admin.register(ProductReview)
+class ProductReviewAdmin(admin.ModelAdmin):
+    """Admin for product reviews/ratings."""
+
+    list_display = (
+        "user",
+        "product_type",
+        "product_id",
+        "rating",
+        "is_helpful_count",
+        "created_at",
+    )
+    list_filter = ("product_type", "rating", "created_at")
+    search_fields = ("user__email", "product_id", "comment")
+    readonly_fields = ("created_at", "updated_at")
+    autocomplete_fields = ("user",)

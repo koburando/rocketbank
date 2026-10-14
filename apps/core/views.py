@@ -63,3 +63,11 @@ class RobotsTxtView(View):
             f"Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml\n"
         )
         return HttpResponse(content, content_type="text/plain")
+
+
+class OfflineView(TemplateView):
+    """
+    PWA Offline Fallback Page (Section 10 & 15).
+    """
+
+    template_name = "offline.html"

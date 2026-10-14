@@ -41,10 +41,9 @@ class AjaxResponseMixin:
     """
 
     def is_ajax(self):
-        return (
-            self.request.headers.get("x-requested-with") == "XMLHttpRequest"
-            or "application/json" in self.request.headers.get("accept", "")
-        )
+        return self.request.headers.get(
+            "x-requested-with"
+        ) == "XMLHttpRequest" or "application/json" in self.request.headers.get("accept", "")
 
     def render_to_json_response(self, context, **response_kwargs):
         return JsonResponse(context, **response_kwargs)

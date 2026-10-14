@@ -41,9 +41,7 @@ class SavingGoalForm(forms.ModelForm):
                     "step": "1000",
                 }
             ),
-            "deadline": forms.DateInput(
-                attrs={"class": "form-input", "type": "date"}
-            ),
+            "deadline": forms.DateInput(attrs={"class": "form-input", "type": "date"}),
             "category": forms.TextInput(
                 attrs={"class": "form-input", "placeholder": "e.g. vacation, car, house"}
             ),

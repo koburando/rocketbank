@@ -77,9 +77,9 @@ class CardProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.object
-        context["related_products"] = CardProduct.objects.filter(
-            is_active=True
-        ).exclude(id=product.id)[:3]
+        context["related_products"] = CardProduct.objects.filter(is_active=True).exclude(
+            id=product.id
+        )[:3]
         context["faqs"] = FAQ.objects.filter(
             is_published=True,
             category__icontains="card",
@@ -97,10 +97,14 @@ class CardListView(LoginRequiredMixin, ListView):
     context_object_name = "cards"
 
     def get_queryset(self):
-        return BankCard.objects.filter(
-            account__owner=self.request.user,
-            account__is_deleted=False,
-        ).select_related("account__currency", "product").order_by("-issued_at")
+        return (
+            BankCard.objects.filter(
+                account__owner=self.request.user,
+                account__is_deleted=False,
+            )
+            .select_related("account__currency", "product")
+            .order_by("-issued_at")
+        )
 
 
 class CardApplyWizardView(LoginRequiredMixin, View):

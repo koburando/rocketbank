@@ -138,3 +138,57 @@ class TicketReview(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("admin:support_ticketreview_change", args=[self.pk])
+
+
+class ProductReview(TimeStampedModel):
+    """Customer review and 1-5 rating for financial products (cards, loans, deposits)."""
+
+    user = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="product_reviews",
+        verbose_name="user",
+    )
+    product_type = models.CharField(
+        "product type",
+        max_length=50,
+        default="card",
+        help_text="e.g. card, loan, deposit",
+    )
+    product_id = models.CharField(
+        "product identifier",
+        max_length=100,
+        help_text="slug or ID of the reviewed product",
+    )
+    product_title = models.CharField(
+        "product title",
+        max_length=200,
+        blank=True,
+    )
+    rating = models.PositiveSmallIntegerField(
+        "rating",
+        validators=[validate_rating],
+        help_text="Rating from 1 to 5",
+    )
+    comment = models.TextField("comment")
+    is_helpful_count = models.PositiveIntegerField(
+        "helpful votes",
+        default=0,
+    )
+
+    class Meta:
+        verbose_name = "product review"
+        verbose_name_plural = "product reviews"
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["product_type", "product_id"], name="idx_product_review_prod"),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(rating__gte=1, rating__lte=5),
+                name="product_review_rating_range",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.product_type}:{self.product_id} — {self.rating}★ by {self.user.email}"

@@ -55,9 +55,9 @@ class CreditProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.object
-        context["related_products"] = (
-            LoanProduct.objects.filter(is_active=True).exclude(id=product.id)[:3]
-        )
+        context["related_products"] = LoanProduct.objects.filter(is_active=True).exclude(
+            id=product.id
+        )[:3]
         return context
 
 

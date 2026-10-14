@@ -248,9 +248,7 @@ class AuthenticatedViewsTestCase(TestCase):
         self.assertEqual(list_res.status_code, 200)
         self.assertTemplateUsed(list_res, "accounts/account_list.html")
 
-        detail_res = self.client.get(
-            reverse("accounts:detail", kwargs={"pk": self.account.pk})
-        )
+        detail_res = self.client.get(reverse("accounts:detail", kwargs={"pk": self.account.pk}))
         self.assertEqual(detail_res.status_code, 200)
         self.assertTemplateUsed(detail_res, "accounts/account_detail.html")
 
@@ -339,9 +337,7 @@ class AuthenticatedViewsTestCase(TestCase):
         self.assertEqual(create_res.status_code, 200)
         self.assertTemplateUsed(create_res, "support/ticket_create.html")
 
-        detail_res = self.client.get(
-            reverse("support:detail", kwargs={"pk": self.ticket.pk})
-        )
+        detail_res = self.client.get(reverse("support:detail", kwargs={"pk": self.ticket.pk}))
         self.assertEqual(detail_res.status_code, 200)
         self.assertTemplateUsed(detail_res, "support/ticket_detail.html")
 
@@ -367,16 +363,12 @@ class AuthenticatedViewsTestCase(TestCase):
         self.client.force_login(other_user)
 
         # Trying to access self.account belonging to astana_client
-        res = self.client.get(
-            reverse("accounts:detail", kwargs={"pk": self.account.pk})
-        )
+        res = self.client.get(reverse("accounts:detail", kwargs={"pk": self.account.pk}))
         self.assertEqual(res.status_code, 403)
         self.assertTemplateUsed(res, "403.html")
 
         # Trying to access self.ticket belonging to astana_client
-        res_ticket = self.client.get(
-            reverse("support:detail", kwargs={"pk": self.ticket.pk})
-        )
+        res_ticket = self.client.get(reverse("support:detail", kwargs={"pk": self.ticket.pk}))
         self.assertEqual(res_ticket.status_code, 403)
         self.assertTemplateUsed(res_ticket, "403.html")
 

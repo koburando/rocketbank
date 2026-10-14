@@ -8,10 +8,21 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.http import JsonResponse
 from django.urls import include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 from apps.core.converters import register_custom_converters
 from apps.core.sitemaps import sitemaps
-from apps.core.views import AboutView, ContactsView, LandingHomeView, RobotsTxtView
+from apps.core.views import (
+    AboutView,
+    ContactsView,
+    LandingHomeView,
+    OfflineView,
+    RobotsTxtView,
+)
 
 # Ensure custom converters are registered
 register_custom_converters()
@@ -26,7 +37,6 @@ urlpatterns = [
     # ── Admin & Monitoring ──────────────────────────
     path("admin/", admin.site.urls),
     path("health/", health_check, name="health-check"),
-
     # ── SEO & Robots ────────────────────────────────
     path("robots.txt", RobotsTxtView.as_view(), name="robots-txt"),
     path(
@@ -35,12 +45,16 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
-
     # ── Public Pages ────────────────────────────────
     path("", LandingHomeView.as_view(), name="home"),
     path("about/", AboutView.as_view(), name="about"),
     path("contacts/", ContactsView.as_view(), name="contacts"),
-
+    path("offline/", OfflineView.as_view(), name="offline"),
+    # ── REST API & OpenAPI Documentation ────────────
+    path("api/v1/", include("apps.api.urls", namespace="api_v1")),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     # ── Domain App URL Namespaces ───────────────────
     path("users/", include("apps.users.urls", namespace="users")),
     path("accounts/", include("apps.accounts.urls", namespace="accounts")),

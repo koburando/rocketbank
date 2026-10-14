@@ -88,9 +88,9 @@ class TransactionListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         user = self.request.user
-        user_account_ids = BankAccount.all_objects.filter(
-            owner=user, is_deleted=False
-        ).values_list("id", flat=True)
+        user_account_ids = BankAccount.all_objects.filter(owner=user, is_deleted=False).values_list(
+            "id", flat=True
+        )
 
         qs = (
             Transaction.objects.filter(

@@ -45,11 +45,13 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
         user_account_ids = [a.id for a in context["accounts"]]
         context["recent_transactions"] = (
-            Transaction.objects.filter(sender_account_id__in=user_account_ids)
-            | Transaction.objects.filter(receiver_account_id__in=user_account_ids)
-        ).select_related(
-            "currency", "category", "sender_account", "receiver_account"
-        ).order_by("-created_at")[:8]
+            (
+                Transaction.objects.filter(sender_account_id__in=user_account_ids)
+                | Transaction.objects.filter(receiver_account_id__in=user_account_ids)
+            )
+            .select_related("currency", "category", "sender_account", "receiver_account")
+            .order_by("-created_at")[:8]
+        )
 
         # Active saving goals
         from apps.analytics.models import SavingGoal

@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse
 
 from apps.core.models import TimeStampedModel
+from apps.core.validators import validate_image_file
 
 
 class User(AbstractUser):
@@ -67,6 +68,7 @@ class Profile(TimeStampedModel):
         "avatar",
         upload_to="avatars/",
         blank=True,
+        validators=[validate_image_file],
     )
     birth_date = models.DateField(
         "birth date",
@@ -105,6 +107,41 @@ class Profile(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("admin:users_profile_change", args=[self.pk])
+
+
+class UserFavorite(TimeStampedModel):
+    """Favorite financial products (cards, loans, deposits) saved by authenticated user."""
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="favorites",
+        verbose_name="user",
+    )
+    item_type = models.CharField(
+        "item type",
+        max_length=50,
+        help_text="e.g. card, loan, deposit",
+    )
+    item_id = models.CharField(
+        "item identifier",
+        max_length=100,
+        help_text="slug or ID of the product",
+    )
+
+    class Meta:
+        verbose_name = "user favorite"
+        verbose_name_plural = "user favorites"
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "item_type", "item_id"],
+                name="unique_user_favorite_item",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.user.email} ★ {self.item_type}:{self.item_id}"
 
 
 class LoginAudit(TimeStampedModel):
