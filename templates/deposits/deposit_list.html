@@ -1,0 +1,67 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}My Term Deposits | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">My Deposits & Savings</h1>
+      <p class="text-secondary m-0">View active fixed-term deposits, maturity dates, and daily accrued interest</p>
+    </div>
+    <a href="{% url 'deposits:open' %}" class="btn btn--primary">
+      📥 Open New Deposit
+    </a>
+  </div>
+
+  <div class="grid-2 mb-2xl">
+    {% for dep in deposits %}
+      <article class="card card--elevated">
+        <div class="card__header">
+          <div class="d-flex items-center gap-sm">
+            <h2 class="card__title" style="font-size: var(--font-size-lg);">
+              {{ dep.product.title }}
+            </h2>
+            <span class="badge {{ dep.status|status_badge_class }}">
+              {{ dep.get_status_display }}
+            </span>
+          </div>
+          <span class="badge badge--success">{{ dep.product.interest_rate }}% APR</span>
+        </div>
+
+        <div class="grid-2 mb-md">
+          <div class="stat-card">
+            <span class="text-muted" style="font-size: var(--font-size-xs);">Principal Deposit</span>
+            <div class="stat-card__number font-mono font-bold" style="font-size: var(--font-size-xl);">
+              {{ dep.amount|currency_format:dep.account.currency.code }}
+            </div>
+            <span class="text-muted" style="font-size: var(--font-size-xs);">Started: {{ dep.start_date|date:"Y-m-d" }}</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="text-muted" style="font-size: var(--font-size-xs);">Accrued Interest</span>
+            <div class="stat-card__number font-mono text-success" style="font-size: var(--font-size-xl);">
+              +{{ dep.accrued_interest|currency_format:dep.account.currency.code }}
+            </div>
+            <span class="text-muted" style="font-size: var(--font-size-xs);">Maturity: {{ dep.end_date|date:"Y-m-d" }}</span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-between items-center pt-sm" style="border-top: 1px solid var(--border-color-subtle); font-size: var(--font-size-xs);">
+          <span class="text-muted">Linked Account: <strong class="font-mono">{{ dep.account.iban|mask_iban }}</strong></span>
+          <span class="text-muted">Early Withdrawal: <strong>{% if dep.product.is_early_withdrawal_allowed %}Yes{% else %}No{% endif %}</strong></span>
+        </div>
+      </article>
+    {% empty %}
+      <div style="grid-column: 1 / -1;">
+        {% include "includes/empty_state.html" with icon="💰" title="No active deposits" message="Start earning passive income with guaranteed interest rates." action_url="/deposits/open/" action_label="Open Term Deposit" only %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

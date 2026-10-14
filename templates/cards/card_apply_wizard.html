@@ -1,0 +1,142 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Order a Payment Card — Step {{ step }} of 3 | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="text-center mb-xl">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Card Application Wizard</h1>
+    <p class="text-secondary m-0">Issue a brand-new card to your account in 3 simple steps</p>
+  </div>
+
+  <!-- Multi-Step Progress Bar -->
+  <nav class="wizard-progress" aria-label="Card application steps">
+    <div class="wizard-step {% if step == 1 %}is-active{% elif step > 1 %}is-complete{% endif %}">
+      <div class="wizard-step__indicator" aria-hidden="true">
+        {% if step > 1 %}✓{% else %}1{% endif %}
+      </div>
+      <span class="wizard-step__label">1. Card Tier</span>
+    </div>
+
+    <div class="wizard-step {% if step == 2 %}is-active{% elif step > 2 %}is-complete{% endif %}">
+      <div class="wizard-step__indicator" aria-hidden="true">
+        {% if step > 2 %}✓{% else %}2{% endif %}
+      </div>
+      <span class="wizard-step__label">2. Link Account</span>
+    </div>
+
+    <div class="wizard-step {% if step == 3 %}is-active{% endif %}">
+      <div class="wizard-step__indicator" aria-hidden="true">3</div>
+      <span class="wizard-step__label">3. Confirm & Issue</span>
+    </div>
+  </nav>
+
+  <!-- Step Content Card -->
+  <div class="card card--elevated">
+    <form method="post" action="{% url 'cards:apply' %}?step={{ step }}" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Step 1: Select Card Tier -->
+      {% if step == 1 %}
+        <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-md);">Step 1: Choose Your Card Product Tier</h2>
+        <div class="form-group mb-lg">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            {% for radio in form.product %}
+              <label class="card p-md d-flex items-center gap-md" style="cursor: pointer; border: 2px solid var(--border-color);">
+                {{ radio.tag }}
+                <div style="flex: 1;">
+                  <span class="font-bold font-lg text-primary">{{ radio.choice_label }}</span>
+                </div>
+              </label>
+            {% endfor %}
+          </div>
+          {% if form.product.errors %}
+            <small class="form-error">{{ form.product.errors.0 }}</small>
+          {% endif %}
+        </div>
+
+        <div class="d-flex justify-between items-center pt-md" style="border-top: 1px solid var(--border-color);">
+          <a href="{% url 'cards:list' %}" class="btn btn--secondary">Cancel</a>
+          <button type="submit" class="btn btn--primary btn--lg">
+            Continue to Account Setup &rarr;
+          </button>
+        </div>
+
+      <!-- Step 2: Linked Bank Account & Daily Limit -->
+      {% elif step == 2 %}
+        <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-md);">Step 2: Link Bank Account & Set Spending Limit</h2>
+
+        {% if selected_product %}
+          <div class="p-md mb-lg" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
+            <span class="text-muted" style="font-size: var(--font-size-xs);">Selected Tier:</span>
+            <strong class="text-primary d-block font-mono">{{ selected_product.title }} ({{ selected_product.get_tier_display }})</strong>
+          </div>
+        {% endif %}
+
+        {% include "includes/form_field.html" with field=form.account %}
+        {% include "includes/form_field.html" with field=form.daily_limit %}
+
+        <div class="d-flex justify-between items-center pt-md mt-xl" style="border-top: 1px solid var(--border-color);">
+          <a href="{% url 'cards:apply' %}?step=1" class="btn btn--secondary">&larr; Back to Tier Selection</a>
+          <button type="submit" class="btn btn--primary btn--lg">
+            Continue to Embossing &rarr;
+          </button>
+        </div>
+
+      <!-- Step 3: Cardholder Name, Delivery Address & Final Issuance -->
+      {% elif step == 3 %}
+        <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-md);">Step 3: Cardholder Details & Delivery</h2>
+
+        <!-- Summary Review Banner -->
+        <div class="card p-md mb-lg" style="background-color: var(--bg-subtle);">
+          <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
+            <span class="text-muted">Product Tier:</span>
+            <strong>{{ selected_product.title }} ({{ selected_product.cashback_percent }}% Cashback)</strong>
+          </div>
+          <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
+            <span class="text-muted">Linked Account:</span>
+            <strong class="font-mono">{{ selected_account.iban|mask_iban }}</strong>
+          </div>
+          <div class="d-flex justify-between items-center" style="font-size: var(--font-size-xs);">
+            <span class="text-muted">Daily Limit:</span>
+            <strong class="font-mono">{{ wizard_data.daily_limit|currency_format:"KZT" }}</strong>
+          </div>
+        </div>
+
+        {% include "includes/form_field.html" with field=form.cardholder_name %}
+        {% include "includes/form_field.html" with field=form.delivery_address %}
+
+        <div class="mb-lg mt-md">
+          <label class="form-check" style="font-size: var(--font-size-xs); align-items: flex-start;">
+            {{ form.accept_terms }}
+            <span>{{ form.accept_terms.label }}</span>
+          </label>
+          {% if form.accept_terms.errors %}
+            <small class="form-error">{{ form.accept_terms.errors.0 }}</small>
+          {% endif %}
+        </div>
+
+        <div class="d-flex justify-between items-center pt-md mt-xl" style="border-top: 1px solid var(--border-color);">
+          <a href="{% url 'cards:apply' %}?step=2" class="btn btn--secondary">&larr; Back to Account</a>
+          <button type="submit" class="btn btn--primary btn--lg">
+            🎉 Submit & Issue Card
+          </button>
+        </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

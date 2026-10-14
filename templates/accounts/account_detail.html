@@ -1,0 +1,132 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Account {{ account.iban|mask_iban }} | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <!-- Account Hero Card -->
+  <section class="card card--elevated mb-xl" aria-labelledby="acc_hero_title">
+    <div class="d-flex flex-wrap justify-between items-center gap-md">
+      <div>
+        <span class="badge badge--info mb-xs">{{ account.get_account_type_display }} Account</span>
+        <h1 id="acc_hero_title" class="font-mono font-bold" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-xs);">
+          {{ account.iban }}
+        </h1>
+        <p class="text-muted m-0" style="font-size: var(--font-size-xs);">
+          Opened on {{ account.opened_at|date:"F d, Y" }} &bull; Currency: <strong>{{ account.currency.name }} ({{ account.currency.code }})</strong>
+        </p>
+      </div>
+
+      <div class="text-right">
+        <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Available Balance</span>
+        <div class="font-bold font-mono" style="font-size: var(--font-size-3xl); color: var(--color-primary);">
+          {{ account.balance|currency_format:account.currency.code }}
+        </div>
+        <span class="badge {{ account.status|status_badge_class }} mt-xs">
+          {{ account.get_status_display }}
+        </span>
+      </div>
+    </div>
+
+    <div class="d-flex gap-sm mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+      <a href="{% url 'transactions:transfer' %}?from_account={{ account.id }}" class="btn btn--primary">
+        Transfer Money from Account
+      </a>
+      <a href="{% url 'cards:apply' %}?account_id={{ account.id }}" class="btn btn--secondary">
+        Order Linked Card
+      </a>
+    </div>
+  </section>
+
+  <!-- Linked Cards Section -->
+  <section class="mb-xl" aria-labelledby="linked_cards_heading">
+    <div class="d-flex justify-between items-center mb-md">
+      <h2 id="linked_cards_heading" style="font-size: var(--font-size-xl);">Linked Payment Cards</h2>
+      <a href="{% url 'cards:apply' %}?account_id={{ account.id }}" class="btn btn--outline btn--sm">+ New Card</a>
+    </div>
+
+    <div class="grid-3">
+      {% for card in cards %}
+        {% include "includes/card_item.html" with card=card only %}
+      {% empty %}
+        <div style="grid-column: 1 / -1;">
+          {% include "includes/empty_state.html" with icon="💳" title="No payment cards linked" message="There are currently no payment cards issued for this bank account." action_url="/cards/apply/" action_label="Order a Card" only %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Account Transactions History with Strict Semantic Table -->
+  <section aria-labelledby="acc_txns_heading">
+    <div class="card">
+      <div class="card__header">
+        <h2 id="acc_txns_heading" class="card__title" style="font-size: var(--font-size-lg);">Account Transaction Activity</h2>
+        <a href="{% url 'transactions:transfer' %}?from_account={{ account.id }}" class="btn btn--primary btn--sm">New Transfer</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table--striped table--hover">
+          <caption>All recent incoming and outgoing transactions for account {{ account.iban }}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date & Time</th>
+              <th scope="col">Reference</th>
+              <th scope="col">Direction / Details</th>
+              <th scope="col">Category</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="text-right">Amount</th>
+              <th scope="col" class="text-right">Receipt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for txn in transactions %}
+              <tr>
+                <td style="white-space: nowrap;">{{ txn.created_at|date:"Y-m-d H:i" }}</td>
+                <td class="font-mono text-muted" style="font-size: var(--font-size-xs);">{{ txn.reference_number }}</td>
+                <td>
+                  <strong>{{ txn.description|default:"Bank Transfer" }}</strong>
+                  <br>
+                  {% if txn.sender_account == account %}
+                    <small class="text-muted">To: {{ txn.receiver_account.iban|mask_iban|default:"External" }}</small>
+                  {% else %}
+                    <small class="text-muted">From: {{ txn.sender_account.iban|mask_iban|default:"External" }}</small>
+                  {% endif %}
+                </td>
+                <td>
+                  <span class="badge badge--info">{{ txn.category.name|default:"General" }}</span>
+                </td>
+                <td>
+                  <span class="badge {{ txn.status|status_badge_class }}">{{ txn.get_status_display }}</span>
+                </td>
+                <td class="text-right font-mono font-bold">
+                  {% if txn.sender_account == account %}
+                    <span class="text-danger">-{{ txn.amount|currency_format:txn.currency.code }}</span>
+                  {% else %}
+                    <span class="text-success">+{{ txn.amount|currency_format:txn.currency.code }}</span>
+                  {% endif %}
+                </td>
+                <td class="text-right">
+                  <a href="{% url 'transactions:receipt' txn.reference_number %}" class="btn btn--outline btn--sm" aria-label="Receipt for transaction {{ txn.reference_number }}">
+                    Receipt
+                  </a>
+                </td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="7" class="text-center p-xl">
+                  {% include "includes/empty_state.html" with icon="📜" title="No transaction records" message="This account has not processed any transactions yet." only %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

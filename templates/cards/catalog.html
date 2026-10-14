@@ -1,0 +1,106 @@
+{% extends "layouts/public_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Cards Marketplace — Debit & Credit Cards | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing.">{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Marketplace Hero Section -->
+  <section class="text-center mb-2xl">
+    <span class="badge badge--info mb-sm">Payment Products</span>
+    <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
+      RocketBank Payment Cards Catalog
+    </h1>
+    <p class="text-secondary" style="max-width: 650px; margin: 0 auto;">
+      Choose the perfect card for everyday spending, luxury travel, or maximum cashback rewards. Issued instantly in your digital wallet.
+    </p>
+  </section>
+
+  <!-- Filter & Sort Toolbar -->
+  <div class="catalog-toolbar">
+    <form method="get" class="catalog-search-form" role="search">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search cards by name..." class="form-input" style="flex: 1;" aria-label="Search cards">
+      <select name="tier" class="form-select" style="width: auto;" aria-label="Filter by tier">
+        <option value="">All Tiers</option>
+        {% for code, label in tiers %}
+          <option value="{{ code }}" {% if request.GET.tier == code %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <select name="sort" class="form-select" style="width: auto;" aria-label="Sort cards">
+        <option value="">Default Order</option>
+        <option value="cashback" {% if request.GET.sort == 'cashback' %}selected{% endif %}>Highest Cashback</option>
+        <option value="fee" {% if request.GET.sort == 'fee' %}selected{% endif %}>Lowest Annual Fee</option>
+      </select>
+      <button type="submit" class="btn btn--secondary btn--sm">Search</button>
+      {% if request.GET.q or request.GET.tier or request.GET.sort %}
+        <a href="{% url 'cards:catalog' %}" class="btn btn--outline btn--sm">Reset</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Cards Marketplace Grid -->
+  <div class="product-grid mb-2xl">
+    {% for product in products %}
+      <article class="card card--interactive d-flex flex-col justify-between">
+        <div>
+          <!-- Card visual -->
+          <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif product.tier == 'BLACK' %}card-bank-visual--black{% endif %} mb-md">
+            <div class="d-flex justify-between items-center">
+              <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-xs);">RocketBank</span>
+              <span class="badge badge--muted">{{ product.get_tier_display }}</span>
+            </div>
+            <div style="font-size: 1.4rem; font-family: var(--font-family-mono); letter-spacing: 0.15em; margin: var(--space-md) 0;">
+              •••• •••• •••• 8888
+            </div>
+            <div class="d-flex justify-between items-end" style="font-size: var(--font-size-xs);">
+              <span>EXPIRES 12/28</span>
+              <span class="font-bold text-uppercase">{{ product.title }}</span>
+            </div>
+          </div>
+
+          <h2 class="card__title" style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">
+            {{ product.title }}
+          </h2>
+          <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+            {{ product.description|truncatewords:20 }}
+          </p>
+
+          <div class="p-sm mb-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
+            <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
+              <span class="text-muted">Cashback Bonus:</span>
+              <strong class="text-success" style="font-size: var(--font-size-base);">{{ product.cashback_percent }}%</strong>
+            </div>
+            <div class="d-flex justify-between items-center" style="font-size: var(--font-size-xs);">
+              <span class="text-muted">Annual Maintenance:</span>
+              <strong class="font-mono">
+                {% if product.annual_fee == 0 %}
+                  0.00 KZT (Free)
+                {% else %}
+                  {{ product.annual_fee|currency_format:"KZT" }}
+                {% endif %}
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-sm pt-md" style="border-top: 1px solid var(--border-color-subtle);">
+          <a href="{% url 'cards:detail' product.slug %}" class="btn btn--secondary flex-1">
+            Details
+          </a>
+          <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn btn--primary flex-1">
+            Apply Now
+          </a>
+        </div>
+      </article>
+    {% empty %}
+      <div style="grid-column: 1 / -1;">
+        {% include "includes/empty_state.html" with icon="💳" title="No card products found" message="Try relaxing your search terms or clearing tier filters." action_url="/cards/catalog/" action_label="View All Cards" only %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination Component -->
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

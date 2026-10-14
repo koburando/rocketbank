@@ -1,0 +1,46 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}Open a New Bank Account | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-lg">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Open a New Bank Account</h1>
+    <p class="text-secondary m-0">Create an instant IBAN account in your chosen currency</p>
+  </div>
+
+  <div class="card card--elevated">
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=form.currency %}
+      {% include "includes/form_field.html" with field=form.account_type %}
+
+      <div class="p-md my-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md); font-size: var(--font-size-xs);">
+        <p class="m-0 text-muted">
+          ℹ️ Your new IBAN will be automatically generated and activated instantly. You can immediately link payment cards or deposit funds.
+        </p>
+      </div>
+
+      <div class="d-flex justify-between items-center mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+        <a href="{% url 'accounts:list' %}" class="btn btn--secondary">Cancel</a>
+        <button type="submit" class="btn btn--primary btn--lg">
+          Open Account Now
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

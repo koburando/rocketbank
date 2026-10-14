@@ -1,0 +1,139 @@
+{% extends "layouts/public_base.html" %}
+{% load bank_tags %}
+
+{% block title %}{{ product.title }} — Card Details | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="{{ product.description|truncatewords:25 }}">{% endblock %}
+
+{% block schema_json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "{{ product.title }}",
+  "description": "{{ product.description|escapejs }}",
+  "provider": {
+    "@type": "BankOrCreditUnion",
+    "name": "RocketBank",
+    "url": "https://rocketbank.company"
+  },
+  "annualPercentageRate": "{{ product.cashback_percent }}",
+  "feesAndCommissionsSpecification": "{{ product.annual_fee }} KZT/year",
+  "category": "PaymentCard"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Breadcrumbs -->
+  <nav aria-label="Breadcrumbs" class="mb-md">
+    <ol class="breadcrumbs">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'cards:catalog' %}">Cards Catalog</a></li>
+      <li class="breadcrumb-item is-active" aria-current="page">{{ product.title }}</li>
+    </ol>
+  </nav>
+
+  <!-- Product Hero Grid -->
+  <div class="grid-2 mb-2xl items-center">
+    <div>
+      <!-- Card Visual with 3D effect -->
+      <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif product.tier == 'BLACK' %}card-bank-visual--black{% endif %}" style="max-width: 440px; margin: 0 auto; box-shadow: var(--shadow-xl);">
+        <div class="d-flex justify-between items-center">
+          <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-sm);">RocketBank</span>
+          <span class="badge badge--muted">{{ product.get_tier_display }}</span>
+        </div>
+        <div style="font-size: 1.7rem; font-family: var(--font-family-mono); letter-spacing: 0.15em; margin: var(--space-xl) 0;">
+          •••• •••• •••• 8888
+        </div>
+        <div class="d-flex justify-between items-end" style="font-size: var(--font-size-sm);">
+          <div>
+            <span style="opacity: 0.7; display: block; font-size: 0.65rem;">EXPIRES</span>
+            <span class="font-mono">12/28</span>
+          </div>
+          <span class="font-bold text-uppercase">{{ product.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <span class="badge badge--info mb-xs">{{ product.get_tier_display }} Tier</span>
+      <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">{{ product.title }}</h1>
+      <p class="text-secondary" style="font-size: var(--font-size-lg); margin-bottom: var(--space-lg);">
+        {{ product.description }}
+      </p>
+
+      <div class="grid-2 mb-xl">
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Cashback on all purchases</span>
+          <div class="stat-card__number text-success">{{ product.cashback_percent }}%</div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Paid automatically on the 1st</span>
+        </div>
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Annual Service Fee</span>
+          <div class="stat-card__number font-mono" style="font-size: var(--font-size-2xl);">
+            {% if product.annual_fee == 0 %}Free{% else %}{{ product.annual_fee|currency_format:"KZT" }}{% endif %}
+          </div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">No hidden maintenance costs</span>
+        </div>
+      </div>
+
+      <div class="d-flex gap-md">
+        <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn btn--primary btn--lg">
+          Apply for this Card Now &rarr;
+        </a>
+        <a href="{% url 'cards:catalog' %}" class="btn btn--secondary btn--lg">
+          Compare Other Tiers
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products Section -->
+  {% if related_products %}
+  <section class="mb-2xl" aria-labelledby="related_cards_heading">
+    <h2 id="related_cards_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-lg);">
+      Other Available Card Tiers
+    </h2>
+    <div class="product-grid">
+      {% for rel in related_products %}
+        <article class="card card--interactive d-flex flex-col justify-between">
+          <div>
+            <h3 class="card__title">{{ rel.title }}</h3>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">{{ rel.description|truncatewords:15 }}</p>
+            <div class="d-flex justify-between items-center my-sm">
+              <span class="badge badge--success">{{ rel.cashback_percent }}% Cashback</span>
+              <span class="font-mono font-bold" style="font-size: var(--font-size-xs);">
+                {% if rel.annual_fee == 0 %}0 KZT{% else %}{{ rel.annual_fee|currency_format:"KZT" }}{% endif %}
+              </span>
+            </div>
+          </div>
+          <a href="{% url 'cards:detail' rel.slug %}" class="btn btn--secondary btn--sm w-100 mt-sm">
+            View {{ rel.title }} &rarr;
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- FAQs with Native HTML5 <details> and <summary> -->
+  {% if faqs %}
+  <section class="mb-2xl" aria-labelledby="faq_heading">
+    <h2 id="faq_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-lg);">
+      Frequently Asked Questions
+    </h2>
+    <div>
+      {% for faq in faqs %}
+        <details class="accordion-item">
+          <summary class="accordion-trigger">{{ faq.question }}</summary>
+          <div class="accordion-content">
+            <p class="m-0">{{ faq.answer }}</p>
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

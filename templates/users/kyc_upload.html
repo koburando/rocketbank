@@ -1,0 +1,114 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}Upload KYC Verification Documents | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-lg">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Identity Verification (KYC)</h1>
+    <p class="text-secondary m-0">In compliance with banking regulations, please upload a valid government-issued ID</p>
+  </div>
+
+  <div class="card card--elevated">
+    <form method="post" enctype="multipart/form-data" novalidate id="kyc_form">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=form.document_type %}
+      {% include "includes/form_field.html" with field=form.document_number %}
+
+      <!-- File Upload Dropzone with Live HTML5 <output> Preview -->
+      <div class="form-group">
+        <label for="kyc_file_input" class="form-label">
+          {{ form.document_file.label }} <span class="text-danger">*</span>
+        </label>
+
+        <div class="file-dropzone mb-md" id="dropzone_container" onclick="document.getElementById('kyc_file_input').click()">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: var(--space-xs);" aria-hidden="true">📄</span>
+          <p class="m-0 font-semibold text-primary">Click or drag & drop identification document here</p>
+          <small class="text-muted">{{ form.document_file.help_text }}</small>
+        </div>
+
+        {{ form.document_file }}
+
+        {% if form.document_file.errors %}
+          <small class="form-error">{{ form.document_file.errors.0 }}</small>
+        {% endif %}
+
+        <!-- Native HTML5 <output> element for displaying file information and image preview -->
+        <output name="file_preview_output" id="file_preview_output" for="kyc_file_input" class="d-block mt-sm">
+          <div id="preview_card" class="card" style="display: none; padding: var(--space-md); border-style: dashed;">
+            <div class="d-flex items-center gap-md">
+              <img id="kyc_image_preview" src="" alt="Selected document preview" style="width: 80px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); display: none;">
+              <div>
+                <strong id="preview_filename" class="font-mono" style="font-size: var(--font-size-sm); display: block;"></strong>
+                <span id="preview_filesize" class="text-muted" style="font-size: var(--font-size-xs);"></span>
+              </div>
+            </div>
+          </div>
+        </output>
+      </div>
+
+      <div class="mb-lg mt-md">
+        <label class="form-check" style="font-size: var(--font-size-xs); align-items: flex-start;">
+          {{ form.consent_given }}
+          <span>{{ form.consent_given.label }}</span>
+        </label>
+        {% if form.consent_given.errors %}
+          <small class="form-error">{{ form.consent_given.errors.0 }}</small>
+        {% endif %}
+      </div>
+
+      <div class="d-flex justify-between items-center pt-md" style="border-top: 1px solid var(--border-color);">
+        <a href="{% url 'users:profile' %}" class="btn btn--secondary">Cancel</a>
+        <button type="submit" class="btn btn--primary btn--lg">
+          Submit Documents for Review
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('kyc_file_input');
+    const previewCard = document.getElementById('preview_card');
+    const imgPreview = document.getElementById('kyc_image_preview');
+    const filenameSpan = document.getElementById('preview_filename');
+    const filesizeSpan = document.getElementById('preview_filesize');
+
+    if (fileInput) {
+      fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          previewCard.style.display = 'block';
+          filenameSpan.textContent = file.name;
+          filesizeSpan.textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+              imgPreview.src = evt.target.result;
+              imgPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+          } else {
+            imgPreview.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Ticket #{{ ticket.id }}: {{ ticket.subject }} | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-md">
+    <a href="{% url 'support:list' %}" class="btn btn--secondary btn--sm mb-md">&larr; Back to Tickets</a>
+  </div>
+
+  <article class="card card--elevated mb-xl">
+    <header class="card__header">
+      <div>
+        <div class="d-flex items-center gap-xs mb-xs">
+          <span class="badge {{ ticket.status|status_badge_class }}">{{ ticket.get_status_display }}</span>
+          <span class="badge {{ ticket.priority|status_badge_class }}">{{ ticket.get_priority_display }} Priority</span>
+        </div>
+        <h1 style="font-size: var(--font-size-xl); margin: 0;">Ticket #{{ ticket.id }}: {{ ticket.subject }}</h1>
+      </div>
+      <span class="text-muted font-mono" style="font-size: var(--font-size-xs);">
+        {{ ticket.created_at|date:"Y-m-d H:i" }}
+      </span>
+    </header>
+
+    <div class="card__body">
+      <div class="p-md mb-lg" style="background-color: var(--bg-subtle); border-radius: var(--radius-md); white-space: pre-wrap; font-size: var(--font-size-sm); line-height: 1.6;">
+        {{ ticket.description }}
+      </div>
+
+      {% if ticket.assigned_to %}
+        <p class="text-muted" style="font-size: var(--font-size-xs);">
+          Assigned specialist: <strong>{{ ticket.assigned_to.get_full_name|default:ticket.assigned_to.username }}</strong>
+        </p>
+      {% endif %}
+    </div>
+  </article>
+
+  <!-- Ticket Customer Satisfaction Review -->
+  <section class="card" aria-labelledby="review_heading">
+    <div class="card__header">
+      <h2 id="review_heading" class="card__title" style="font-size: var(--font-size-lg);">
+        Service Feedback & Rating
+      </h2>
+    </div>
+
+    <!-- Existing reviews list -->
+    {% if existing_reviews %}
+      <div class="mb-lg" style="display: flex; flex-direction: column; gap: var(--space-sm);">
+        {% for r in existing_reviews %}
+          <div class="p-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
+            <div class="d-flex justify-between items-center mb-xs">
+              <strong>⭐ Rating: {{ r.rating }}/5</strong>
+              <small class="text-muted">{{ r.created_at|date:"Y-m-d" }}</small>
+            </div>
+            {% if r.comment %}
+              <p class="m-0 text-secondary" style="font-size: var(--font-size-sm);">{{ r.comment }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Review Form -->
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {% include "includes/form_field.html" with field=review_form.rating %}
+      {% include "includes/form_field.html" with field=review_form.comment %}
+
+      <div class="text-right mt-md">
+        <button type="submit" class="btn btn--primary btn--sm">
+          Submit Rating
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+{% endblock %}

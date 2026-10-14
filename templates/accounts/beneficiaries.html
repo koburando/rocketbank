@@ -1,0 +1,146 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Saved Beneficiaries | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Saved Beneficiaries & Contacts</h1>
+      <p class="text-secondary m-0">Manage multiple trusted recipient accounts at once for quick transfers</p>
+    </div>
+    <a href="{% url 'transactions:transfer' %}" class="btn btn--primary">
+      💸 New Transfer
+    </a>
+  </div>
+
+  <div class="grid-2">
+    <!-- Existing Saved Contacts List -->
+    <section class="card" aria-labelledby="existing_contacts_heading">
+      <div class="card__header">
+        <h2 id="existing_contacts_heading" class="card__title" style="font-size: var(--font-size-lg);">
+          Your Saved Contacts ({{ existing_beneficiaries|length }})
+        </h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table--striped table--hover">
+          <caption class="sr-only">List of your saved beneficiary contacts</caption>
+          <thead>
+            <tr>
+              <th scope="col">Favorite</th>
+              <th scope="col">Nickname</th>
+              <th scope="col">IBAN</th>
+              <th scope="col" class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ben in existing_beneficiaries %}
+              <tr>
+                <td>
+                  {% if ben.is_favorite %}
+                    <span title="Favorite contact" aria-label="Favorite contact">⭐</span>
+                  {% else %}
+                    <span class="text-muted" title="Regular contact" aria-label="Regular contact">☆</span>
+                  {% endif %}
+                </td>
+                <td class="font-bold">{{ ben.nickname }}</td>
+                <td class="font-mono text-muted" style="font-size: var(--font-size-xs);">
+                  {{ ben.beneficiary.account.iban|mask_iban }}
+                </td>
+                <td class="text-right">
+                  <div class="d-inline-flex gap-xs">
+                    <a href="{% url 'transactions:transfer' %}?to_iban={{ ben.beneficiary.account.iban }}" class="btn btn--primary btn--sm" aria-label="Send money to {{ ben.nickname }}">
+                      Send
+                    </a>
+                    <form method="post" action="{% url 'accounts:beneficiary-delete' ben.id %}" style="margin: 0; display: inline;">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn--outline btn--sm text-danger" onclick="return confirm('Remove {{ ben.nickname }} from saved contacts?')" aria-label="Delete {{ ben.nickname }}">
+                        ✕
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center p-xl">
+                  {% include "includes/empty_state.html" with icon="👥" title="No beneficiaries saved" message="Save frequent recipients below to transfer funds with one click." only %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Multi-Beneficiary Formset Editor -->
+    <section class="card card--elevated" aria-labelledby="formset_heading">
+      <div class="card__header">
+        <h2 id="formset_heading" class="card__title" style="font-size: var(--font-size-lg);">
+          Manage Beneficiaries (Formset)
+        </h2>
+        <span class="badge badge--info">Batch Editing</span>
+      </div>
+
+      <form method="post" novalidate id="beneficiary_formset">
+        {% csrf_token %}
+        {{ form.management_form }}
+
+        {% if form.non_form_errors %}
+          <div class="alert alert--danger" role="alert">
+            {% for error in form.non_form_errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          {% for f in form %}
+            <div class="card p-md" style="background-color: var(--bg-subtle);">
+              <div class="d-flex justify-between items-center mb-xs">
+                <strong style="font-size: var(--font-size-xs); color: var(--text-muted);">
+                  Contact Entry #{{ forloop.counter }}
+                </strong>
+                {% if f.can_delete %}
+                  <label class="form-check text-danger" style="font-size: var(--font-size-xs);">
+                    {{ f.DELETE }} <span>Delete</span>
+                  </label>
+                {% endif %}
+              </div>
+
+              {% if f.non_field_errors %}
+                <div class="alert alert--danger py-xs" role="alert">
+                  {{ f.non_field_errors.0 }}
+                </div>
+              {% endif %}
+
+              <div class="grid-2">
+                {% include "includes/form_field.html" with field=f.nickname %}
+                {% include "includes/form_field.html" with field=f.iban %}
+              </div>
+
+              <div class="mt-xs">
+                <label class="form-check" style="font-size: var(--font-size-xs);">
+                  {{ f.is_favorite }} <span>Mark as Favorite Contact</span>
+                </label>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="d-flex justify-end mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+          <button type="submit" class="btn btn--primary btn--lg">
+            Save All Beneficiary Changes
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Transfer Money | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-lg">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Transfer Money</h1>
+    <p class="text-secondary m-0">Send instant, zero-commission payments to any RocketBank account</p>
+  </div>
+
+  <div class="card card--elevated">
+    <form method="post" novalidate id="money_transfer_form">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Sender Account Selector -->
+      {% include "includes/form_field.html" with field=form.sender_account %}
+
+      <!-- Recipient IBAN with HTML5 Datalist -->
+      <div class="form-group">
+        <label for="{{ form.receiver_iban.id_for_label }}" class="form-label">
+          {{ form.receiver_iban.label }} <span class="text-danger">*</span>
+        </label>
+        {{ form.receiver_iban }}
+        <small class="form-help">{{ form.receiver_iban.help_text }}</small>
+        {% if form.receiver_iban.errors %}
+          <small class="form-error">{{ form.receiver_iban.errors.0 }}</small>
+        {% endif %}
+
+        <!-- Native HTML5 Datalist for autocomplete saved contacts -->
+        <datalist id="saved_beneficiaries_list">
+          {% for b in saved_beneficiaries %}
+            <option value="{{ b.beneficiary.account.iban }}">{{ b.nickname }} ({{ b.beneficiary.account.iban|mask_iban }})</option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <!-- Amount -->
+      {% include "includes/form_field.html" with field=form.amount %}
+
+      <div class="grid-2">
+        {% include "includes/form_field.html" with field=form.category %}
+        {% include "includes/form_field.html" with field=form.description %}
+      </div>
+
+      <!-- Transfer Summary Note -->
+      <div class="p-md my-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md); font-size: var(--font-size-xs);">
+        <div class="d-flex justify-between items-center mb-xs">
+          <span class="text-muted">Transaction Commission:</span>
+          <strong class="text-success">0.00 KZT (Free)</strong>
+        </div>
+        <div class="d-flex justify-between items-center">
+          <span class="text-muted">Processing Time:</span>
+          <strong>Instant (Atomic execution)</strong>
+        </div>
+      </div>
+
+      <div class="d-flex justify-between items-center mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+        <a href="{% url 'accounts:dashboard' %}" class="btn btn--secondary">Cancel</a>
+        <button type="submit" class="btn btn--primary btn--lg">
+          Confirm & Send Transfer &rarr;
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

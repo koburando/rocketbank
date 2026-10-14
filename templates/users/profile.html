@@ -1,0 +1,128 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}User Profile | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="d-flex justify-between items-center mb-lg">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Personal Profile</h1>
+      <p class="text-secondary m-0">Manage your identity details, avatar, and regional preferences</p>
+    </div>
+    <div>
+      <span class="badge {{ user.profile.kyc_status|status_badge_class }}">
+        KYC: {{ user.profile.get_kyc_status_display }}
+      </span>
+    </div>
+  </div>
+
+  <div class="card mb-xl">
+    <form method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Avatar Preview & Upload Area -->
+      <div class="avatar-upload-wrapper mb-xl p-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-lg);">
+        <div class="avatar-preview-box" id="avatar_preview_container">
+          {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="{{ user.get_full_name|default:user.username }}'s Avatar" id="avatar_img_preview">
+          {% else %}
+            <span style="font-size: 2.5rem;" id="avatar_placeholder" aria-hidden="true">👤</span>
+            <img src="" alt="Avatar preview" id="avatar_img_preview" style="display: none;">
+          {% endif %}
+        </div>
+
+        <div style="flex: 1;">
+          <h2 style="font-size: var(--font-size-base); margin-bottom: var(--space-2xs);">Profile Photo</h2>
+          <p class="text-muted" style="font-size: var(--font-size-xs); margin-bottom: var(--space-sm);">
+            PNG, JPG, or WebP. Automatically resized to 400x400 px. Max size 5MB.
+          </p>
+          {{ form.avatar }}
+          {% if form.avatar.errors %}
+            <small class="form-error">{{ form.avatar.errors.0 }}</small>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="grid-2">
+        {% include "includes/form_field.html" with field=form.first_name %}
+        {% include "includes/form_field.html" with field=form.last_name %}
+      </div>
+
+      <div class="grid-2">
+        {% include "includes/form_field.html" with field=form.phone_number %}
+        {% include "includes/form_field.html" with field=form.birth_date %}
+      </div>
+
+      {% include "includes/form_field.html" with field=form.address %}
+
+      <div class="grid-2">
+        {% include "includes/form_field.html" with field=form.preferred_theme %}
+        {% include "includes/form_field.html" with field=form.preferred_language %}
+      </div>
+
+      <div class="d-flex justify-between items-center mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+        <a href="{% url 'users:security' %}" class="btn btn--outline btn--sm">
+          Security & Password &rarr;
+        </a>
+        <button type="submit" class="btn btn--primary">
+          Save Profile Changes
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- KYC Verification Banner -->
+  <aside class="card" style="border-left: 4px solid var(--color-primary);" aria-labelledby="kyc_heading">
+    <div class="d-flex justify-between items-center flex-wrap gap-md">
+      <div>
+        <h2 id="kyc_heading" style="font-size: var(--font-size-base); margin-bottom: var(--space-2xs);">
+          Identity Verification (KYC)
+        </h2>
+        <p class="text-secondary m-0" style="font-size: var(--font-size-xs);">
+          Current status: <strong>{{ user.profile.get_kyc_status_display }}</strong>. Complete verification to increase transfer limits.
+        </p>
+      </div>
+      <a href="{% url 'users:kyc-upload' %}" class="btn btn--secondary btn--sm">
+        Upload Identification Documents
+      </a>
+    </div>
+  </aside>
+</div>
+
+<!-- Image preview script for Avatar -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const avatarInput = document.querySelector('input[name="avatar"]');
+    const previewImg = document.getElementById('avatar_img_preview');
+    const placeholder = document.getElementById('avatar_placeholder');
+
+    if (avatarInput && previewImg) {
+      avatarInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            previewImg.src = evt.target.result;
+            previewImg.style.display = 'block';
+            if (placeholder) placeholder.style.display = 'none';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

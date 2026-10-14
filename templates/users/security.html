@@ -1,0 +1,86 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}Security & Authentication | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-lg">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Security Settings</h1>
+    <p class="text-secondary m-0">Protect your digital bank account with strong credentials and activity monitoring</p>
+  </div>
+
+  <!-- Change Password Section -->
+  <section class="card mb-xl" aria-labelledby="pwd_heading">
+    <div class="card__header">
+      <h2 id="pwd_heading" class="card__title" style="font-size: var(--font-size-lg);">Change Password</h2>
+    </div>
+
+    <form method="post" action="{% url 'users:password-change' %}" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=password_form.old_password %}
+      {% include "includes/form_field.html" with field=password_form.new_password1 %}
+      {% include "includes/form_field.html" with field=password_form.new_password2 %}
+
+      <div class="text-right mt-lg">
+        <button type="submit" class="btn btn--primary">
+          Update Password
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Login Audits Section -->
+  <section class="card" aria-labelledby="audit_heading">
+    <div class="card__header">
+      <h2 id="audit_heading" class="card__title" style="font-size: var(--font-size-lg);">Recent Sign-In Activity</h2>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table--striped table--hover">
+        <caption class="sr-only">Recent login attempts and access locations</caption>
+        <thead>
+          <tr>
+            <th scope="col">Timestamp</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Location</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for audit in login_audits %}
+            <tr>
+              <td>{{ audit.created_at|date:"Y-m-d H:i:s" }}</td>
+              <td class="font-mono">{{ audit.ip_address }}</td>
+              <td>{{ audit.location|default:"Almaty, KZ" }}</td>
+              <td>
+                {% if audit.login_successful %}
+                  <span class="badge badge--success">Success</span>
+                {% else %}
+                  <span class="badge badge--danger">Failed</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4" class="text-center text-muted p-md">No recent login records recorded.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

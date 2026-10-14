@@ -1,0 +1,190 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Dashboard | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="RocketBank client dashboard. View financial balances, multi-currency accounts, and recent transactions.">{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <!-- Header Bar -->
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">
+        Welcome, {{ user.first_name|default:user.username }}!
+      </h1>
+      <p class="text-secondary m-0">Here is your financial portfolio overview for today</p>
+    </div>
+    <div class="d-flex gap-sm mt-sm">
+      <a href="{% url 'transactions:transfer' %}" class="btn btn--primary">
+        <span aria-hidden="true">💸</span> Send Money
+      </a>
+      <a href="{% url 'accounts:open' %}" class="btn btn--secondary">
+        <span aria-hidden="true">+</span> Open Account
+      </a>
+    </div>
+  </div>
+
+  <!-- Dashboard CSS Grid with grid-template-areas -->
+  <div class="dashboard-grid">
+    <!-- Overview Area: Quick Balance Widget Tag -->
+    <div class="area-overview">
+      {% quick_balance_widget %}
+    </div>
+
+    <!-- Metrics Stats Area -->
+    <div class="area-metrics">
+      <div class="grid-3">
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Active Accounts</span>
+          <div class="stat-card__number">{{ summary.account_count }}</div>
+          <span class="text-success font-semibold" style="font-size: var(--font-size-xs);">Multi-currency enabled</span>
+        </div>
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Checking Balance</span>
+          <div class="stat-card__number">{{ summary.checking_balance|currency_format:"KZT" }}</div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Available for debit & payments</span>
+        </div>
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Savings Balance</span>
+          <div class="stat-card__number">{{ summary.savings_balance|currency_format:"KZT" }}</div>
+          <span class="text-brand font-semibold" style="font-size: var(--font-size-xs);">Interest accruing daily</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accounts Area -->
+    <div class="area-accounts">
+      <div class="card">
+        <div class="card__header">
+          <h2 class="card__title" style="font-size: var(--font-size-lg);">Your Accounts</h2>
+          <a href="{% url 'accounts:list' %}" class="btn btn--secondary btn--sm">View All &rarr;</a>
+        </div>
+        <div class="card__body">
+          {% for account in accounts %}
+            {% include "includes/account_summary.html" with account=account only %}
+          {% empty %}
+            {% include "includes/empty_state.html" with icon="🏦" title="No accounts yet" message="You don't have any open accounts yet. Open a checking or savings account in seconds." action_url="/accounts/open/" action_label="Open Account" only %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions Sidebar Area -->
+    <div class="area-quickactions">
+      <div class="card mb-lg">
+        <div class="card__header">
+          <h2 class="card__title" style="font-size: var(--font-size-base);">Quick Services</h2>
+        </div>
+        <div class="card__body" style="display: flex; flex-direction: column; gap: var(--space-xs);">
+          <a href="{% url 'transactions:transfer' %}" class="sidebar-link">
+            <span aria-hidden="true">💸</span> Instant Money Transfer
+          </a>
+          <a href="{% url 'cards:apply' %}" class="sidebar-link">
+            <span aria-hidden="true">✨</span> Order Card (Wizard)
+          </a>
+          <a href="{% url 'credits:calculator' %}" class="sidebar-link">
+            <span aria-hidden="true">🧮</span> Calculate Loan Rate
+          </a>
+          <a href="{% url 'deposits:open' %}" class="sidebar-link">
+            <span aria-hidden="true">📥</span> Open Term Deposit
+          </a>
+          <a href="{% url 'accounts:beneficiaries' %}" class="sidebar-link">
+            <span aria-hidden="true">👥</span> Saved Beneficiaries
+          </a>
+          <a href="{% url 'analytics:dashboard' %}" class="sidebar-link">
+            <span aria-hidden="true">🎯</span> Saving Goals Tracker
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Saving Goals Progress Widget -->
+      {% if saving_goals %}
+      <div class="card">
+        <div class="card__header">
+          <h2 class="card__title" style="font-size: var(--font-size-base);">Saving Goals</h2>
+          <a href="{% url 'analytics:dashboard' %}" class="text-brand font-semibold" style="font-size: var(--font-size-xs);">Details</a>
+        </div>
+        <div class="card__body" style="display: flex; flex-direction: column; gap: var(--space-md);">
+          {% for goal in saving_goals %}
+            <div>
+              <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
+                <strong class="text-primary">{{ goal.title }}</strong>
+                <span class="text-muted">{{ goal.current_amount|currency_format }} / {{ goal.target_amount|currency_format }}</span>
+              </div>
+              <progress value="{{ goal.current_amount }}" max="{{ goal.target_amount }}" aria-label="{{ goal.title }} progress">
+                {{ goal.progress_percent }}%
+              </progress>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Recent Transactions Area -->
+    <div class="area-transactions">
+      <div class="card">
+        <div class="card__header">
+          <h2 class="card__title" style="font-size: var(--font-size-lg);">Recent Transactions</h2>
+          <a href="{% url 'transactions:list' %}" class="btn btn--secondary btn--sm">Full History &rarr;</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table--striped table--hover">
+            <caption class="sr-only">Recent financial transactions across your accounts</caption>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-right">Amount</th>
+                <th scope="col" class="text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for txn in recent_transactions %}
+                <tr>
+                  <td style="white-space: nowrap;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                  <td class="font-mono text-muted" style="font-size: var(--font-size-xs);">{{ txn.reference_number }}</td>
+                  <td>
+                    <strong>{{ txn.description|default:"Account Transfer" }}</strong>
+                    {% if txn.category %}
+                      <br><small class="text-muted">{{ txn.category.name }}</small>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <span class="badge badge--info">{{ txn.get_transaction_type_display }}</span>
+                  </td>
+                  <td>
+                    <span class="badge {{ txn.status|status_badge_class }}">{{ txn.get_status_display }}</span>
+                  </td>
+                  <td class="text-right font-mono font-bold">
+                    {% if txn.sender_account and txn.sender_account.owner == user %}
+                      <span class="text-danger">-{{ txn.amount|currency_format:txn.currency.code }}</span>
+                    {% else %}
+                      <span class="text-success">+{{ txn.amount|currency_format:txn.currency.code }}</span>
+                    {% endif %}
+                  </td>
+                  <td class="text-right">
+                    <a href="{% url 'transactions:receipt' txn.reference_number %}" class="btn btn--outline btn--sm" aria-label="View receipt for {{ txn.reference_number }}">
+                      Receipt
+                    </a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="7" class="text-center p-xl">
+                    {% include "includes/empty_state.html" with icon="📜" title="No transactions yet" message="When you send or receive money, your activity will appear here." only %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}Open an Account | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="Register for RocketBank and gain access to multi-currency IBAN accounts, cashback debit cards, and instant transfers.">{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="card card--elevated" style="margin: var(--space-xl) auto; padding: var(--space-2xl);">
+    <div class="text-center mb-xl">
+      <div style="font-size: 2.5rem; margin-bottom: var(--space-xs);" aria-hidden="true">💳</div>
+      <h1 style="font-size: var(--font-size-2xl);">Open Your RocketBank Account</h1>
+      <p class="text-secondary">Join next-generation banking with zero monthly maintenance fee</p>
+    </div>
+
+    <form method="post" action="{% url 'users:register' %}" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=form.email %}
+      {% include "includes/form_field.html" with field=form.username %}
+      {% include "includes/form_field.html" with field=form.phone_number %}
+      {% include "includes/form_field.html" with field=form.password %}
+      {% include "includes/form_field.html" with field=form.password_confirm %}
+
+      <div class="mb-lg">
+        <label class="form-check" style="font-size: var(--font-size-xs); align-items: flex-start;">
+          {{ form.accept_terms }}
+          <span>
+            I agree to the <a href="{% url 'about' %}" target="_blank">Terms of Service</a> and confirm that I am at least 18 years of age.
+          </span>
+        </label>
+        {% if form.accept_terms.errors %}
+          <small class="form-error">{{ form.accept_terms.errors.0 }}</small>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="btn btn--primary w-100 btn--lg">
+        Create My Account
+      </button>
+    </form>
+
+    <div class="text-center mt-xl pt-md" style="border-top: 1px solid var(--border-color); font-size: var(--font-size-sm);">
+      <span class="text-muted">Already registered?</span>
+      <a href="{% url 'users:login' %}" class="font-semibold" style="margin-left: var(--space-xs);">Sign in here</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

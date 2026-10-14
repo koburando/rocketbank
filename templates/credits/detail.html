@@ -1,0 +1,128 @@
+{% extends "layouts/public_base.html" %}
+{% load bank_tags %}
+
+{% block title %}{{ product.title }} — Loan Details | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="{{ product.description|truncatewords:25 }}">{% endblock %}
+
+{% block schema_json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "{{ product.title }}",
+  "description": "{{ product.description|escapejs }}",
+  "provider": {
+    "@type": "BankOrCreditUnion",
+    "name": "RocketBank",
+    "url": "https://rocketbank.company"
+  },
+  "annualPercentageRate": "{{ product.interest_rate }}",
+  "amount": {
+    "@type": "MonetaryAmount",
+    "currency": "KZT",
+    "minValue": "{{ product.min_amount }}",
+    "maxValue": "{{ product.max_amount }}"
+  },
+  "category": "LoanOrCredit"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <nav aria-label="Breadcrumbs" class="mb-md">
+    <ol class="breadcrumbs">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'credits:catalog' %}">Loans Catalog</a></li>
+      <li class="breadcrumb-item is-active" aria-current="page">{{ product.title }}</li>
+    </ol>
+  </nav>
+
+  <div class="grid-2 mb-2xl items-center">
+    <div>
+      <span class="badge badge--success mb-xs">Fast Approval</span>
+      <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">{{ product.title }}</h1>
+      <p class="text-secondary" style="font-size: var(--font-size-lg); margin-bottom: var(--space-lg);">
+        {{ product.description }}
+      </p>
+
+      <div class="grid-2 mb-xl">
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Annual Interest Rate</span>
+          <div class="stat-card__number text-success">{{ product.interest_rate }}%</div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Fixed rate throughout term</span>
+        </div>
+        <div class="stat-card">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Repayment Term</span>
+          <div class="stat-card__number font-mono" style="font-size: var(--font-size-2xl);">
+            {{ product.min_term_months }}–{{ product.max_term_months }} mo
+          </div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">Flexible monthly installments</span>
+        </div>
+      </div>
+
+      <div class="d-flex gap-md">
+        <a href="{% url 'credits:apply' %}?product={{ product.slug }}" class="btn btn--primary btn--lg">
+          Apply for this Loan &rarr;
+        </a>
+        <a href="{% url 'credits:calculator' %}?product={{ product.slug }}" class="btn btn--secondary btn--lg">
+          Calculate Monthly Payment
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="card card--elevated p-xl" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-subtle) 100%);">
+        <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-md);">Loan Parameters Summary</h2>
+        <div style="display: flex; flex-direction: column; gap: var(--space-sm); font-size: var(--font-size-sm);">
+          <div class="d-flex justify-between items-center py-xs" style="border-bottom: 1px solid var(--border-color-subtle);">
+            <span class="text-muted">Minimum Loan Amount:</span>
+            <strong class="font-mono">{{ product.min_amount|currency_format:"KZT" }}</strong>
+          </div>
+          <div class="d-flex justify-between items-center py-xs" style="border-bottom: 1px solid var(--border-color-subtle);">
+            <span class="text-muted">Maximum Loan Amount:</span>
+            <strong class="font-mono">{{ product.max_amount|currency_format:"KZT" }}</strong>
+          </div>
+          <div class="d-flex justify-between items-center py-xs" style="border-bottom: 1px solid var(--border-color-subtle);">
+            <span class="text-muted">Origination Fee:</span>
+            <strong class="text-success">0 KZT (Free)</strong>
+          </div>
+          <div class="d-flex justify-between items-center py-xs" style="border-bottom: 1px solid var(--border-color-subtle);">
+            <span class="text-muted">Early Repayment Penalty:</span>
+            <strong class="text-success">None</strong>
+          </div>
+          <div class="d-flex justify-between items-center py-xs">
+            <span class="text-muted">Disbursement Method:</span>
+            <strong>Direct to RocketBank Account</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if related_products %}
+  <section class="mb-2xl" aria-labelledby="other_loans_heading">
+    <h2 id="other_loans_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-lg);">
+      Other Loan Programs
+    </h2>
+    <div class="product-grid">
+      {% for rel in related_products %}
+        <article class="card card--interactive d-flex flex-col justify-between">
+          <div>
+            <h3 class="card__title">{{ rel.title }}</h3>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">{{ rel.description|truncatewords:15 }}</p>
+            <div class="d-flex justify-between items-center my-sm">
+              <span class="badge badge--success">{{ rel.interest_rate }}% APR</span>
+              <span class="font-mono" style="font-size: var(--font-size-xs);">up to {{ rel.max_amount|currency_format:"KZT" }}</span>
+            </div>
+          </div>
+          <a href="{% url 'credits:detail' rel.slug %}" class="btn btn--secondary btn--sm w-100 mt-sm">
+            View {{ rel.title }} &rarr;
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

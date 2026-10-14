@@ -1,0 +1,89 @@
+{% extends "layouts/public_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Fixed-Term Deposits Marketplace | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="High-yield savings and term deposits with up to 18% annual return, daily capitalization, and state insurance protection up to 20M KZT.">{% endblock %}
+
+{% block content %}
+<div class="container">
+  <section class="text-center mb-2xl">
+    <span class="badge badge--success mb-sm">Savings & Investment</span>
+    <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
+      RocketBank High-Yield Term Deposits
+    </h1>
+    <p class="text-secondary" style="max-width: 650px; margin: 0 auto;">
+      Maximize your savings with compound daily interest, flexible top-up options, and 100% state deposit guarantee by KDIF.
+    </p>
+  </section>
+
+  <!-- Filter Toolbar -->
+  <div class="catalog-toolbar">
+    <form method="get" class="catalog-search-form" role="search">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search deposit programs..." class="form-input" style="flex: 1;" aria-label="Search deposits">
+      <select name="sort" class="form-select" style="width: auto;" aria-label="Sort deposits">
+        <option value="">Default Order</option>
+        <option value="rate" {% if request.GET.sort == 'rate' %}selected{% endif %}>Highest Interest Rate</option>
+        <option value="term" {% if request.GET.sort == 'term' %}selected{% endif %}>Shortest Term</option>
+      </select>
+      <button type="submit" class="btn btn--secondary btn--sm">Search</button>
+      {% if request.GET.q or request.GET.sort %}
+        <a href="{% url 'deposits:catalog' %}" class="btn btn--outline btn--sm">Reset</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Deposit Grid -->
+  <div class="product-grid mb-2xl">
+    {% for product in products %}
+      <article class="card card--interactive d-flex flex-col justify-between">
+        <div>
+          <div class="d-flex justify-between items-start mb-sm">
+            <span class="badge badge--success" style="font-size: var(--font-size-sm); padding: 0.35rem 0.75rem;">
+              {{ product.interest_rate }}% Annual
+            </span>
+            <span class="text-muted font-mono" style="font-size: var(--font-size-xs);">
+              {{ product.term_months }} Months
+            </span>
+          </div>
+
+          <h2 class="card__title" style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">
+            {{ product.title }}
+          </h2>
+          <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+            {{ product.description|truncatewords:20 }}
+          </p>
+
+          <div class="p-sm mb-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
+            <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
+              <span class="text-muted">Minimum Initial Deposit:</span>
+              <strong class="font-mono">{{ product.min_amount|currency_format:"KZT" }}</strong>
+            </div>
+            <div class="d-flex justify-between items-center" style="font-size: var(--font-size-xs);">
+              <span class="text-muted">Early Partial Withdrawal:</span>
+              <strong>
+                {% if product.is_early_withdrawal_allowed %}
+                  <span class="text-success">Allowed</span>
+                {% else %}
+                  <span class="text-muted">Not permitted</span>
+                {% endif %}
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-sm pt-md" style="border-top: 1px solid var(--border-color-subtle);">
+          <a href="{% url 'deposits:open' %}?product={{ product.slug }}" class="btn btn--primary w-100">
+            Open This Deposit &rarr;
+          </a>
+        </div>
+      </article>
+    {% empty %}
+      <div style="grid-column: 1 / -1;">
+        {% include "includes/empty_state.html" with icon="💰" title="No deposit programs found" message="No fixed-term deposit products currently match your search criteria." action_url="/deposits/catalog/" action_label="View All Programs" only %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

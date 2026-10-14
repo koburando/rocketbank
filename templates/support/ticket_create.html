@@ -1,0 +1,41 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}Open Support Ticket | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="mb-lg">
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Create Support Ticket</h1>
+    <p class="text-secondary m-0">Our dedicated support representatives respond within 2 hours on business days</p>
+  </div>
+
+  <div class="card card--elevated">
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=form.subject %}
+      {% include "includes/form_field.html" with field=form.priority %}
+      {% include "includes/form_field.html" with field=form.description %}
+
+      <div class="d-flex justify-between items-center mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
+        <a href="{% url 'support:list' %}" class="btn btn--secondary">Cancel</a>
+        <button type="submit" class="btn btn--primary btn--lg">
+          Submit Ticket
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}My Loans & Credit Applications | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">My Loans & Applications</h1>
+      <p class="text-secondary m-0">Track active loans, pending applications, and upcoming payment schedules</p>
+    </div>
+    <div class="d-flex gap-sm">
+      <a href="{% url 'credits:calculator' %}" class="btn btn--secondary">
+        🧮 Loan Calculator
+      </a>
+      <a href="{% url 'credits:apply' %}" class="btn btn--primary">
+        + Apply for Loan
+      </a>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: var(--space-lg);" class="mb-2xl">
+    {% for loan in loans %}
+      <article class="card card--elevated">
+        <div class="card__header">
+          <div class="d-flex items-center gap-sm">
+            <h2 class="card__title" style="font-size: var(--font-size-lg);">
+              {{ loan.product.title }} &bull; Application #{{ loan.id }}
+            </h2>
+            <span class="badge {{ loan.status|status_badge_class }}">{{ loan.get_status_display }}</span>
+          </div>
+          <span class="text-muted" style="font-size: var(--font-size-xs);">
+            Submitted: {{ loan.created_at|date:"Y-m-d H:i" }}
+          </span>
+        </div>
+
+        <div class="grid-4 mb-md">
+          <div>
+            <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Requested Amount</span>
+            <strong class="font-mono font-bold" style="font-size: var(--font-size-xl);">
+              {{ loan.requested_amount|currency_format:"KZT" }}
+            </strong>
+          </div>
+          <div>
+            <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Term</span>
+            <strong class="font-bold">{{ loan.term_months }} Months</strong>
+          </div>
+          <div>
+            <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Interest Rate</span>
+            <strong class="text-success font-bold">{{ loan.product.interest_rate }}% APR</strong>
+          </div>
+          <div>
+            <span class="text-muted" style="font-size: var(--font-size-xs); display: block;">Declared Net Income</span>
+            <strong class="font-mono">{{ loan.monthly_income|currency_format:"KZT"|default:"—" }}</strong>
+          </div>
+        </div>
+
+        <!-- Schedule Entries Preview using native details/summary -->
+        {% if loan.schedule_entries.all %}
+          <details class="accordion-item" style="margin-bottom: 0;">
+            <summary class="accordion-trigger" style="padding: var(--space-sm) var(--space-md);">
+              View Tentative Amortization Schedule ({{ loan.schedule_entries.count }} Installments)
+            </summary>
+            <div class="accordion-content">
+              <div class="table-responsive">
+                <table class="table table--striped table--hover">
+                  <caption class="sr-only">Loan amortization payment schedule</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Due Date</th>
+                      <th scope="col" class="text-right">Principal</th>
+                      <th scope="col" class="text-right">Interest</th>
+                      <th scope="col" class="text-right">Total Installment</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for entry in loan.schedule_entries.all|slice:":6" %}
+                      <tr>
+                        <td>{{ entry.installment_number }}</td>
+                        <td>{{ entry.due_date|date:"Y-m-d" }}</td>
+                        <td class="text-right font-mono">{{ entry.principal_amount|currency_format:"KZT" }}</td>
+                        <td class="text-right font-mono">{{ entry.interest_amount|currency_format:"KZT" }}</td>
+                        <td class="text-right font-mono font-bold">{{ entry.total_amount|currency_format:"KZT" }}</td>
+                        <td>
+                          {% if entry.is_paid %}
+                            <span class="badge badge--success">Paid</span>
+                          {% else %}
+                            <span class="badge badge--warning">Upcoming</span>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        {% endif %}
+      </article>
+    {% empty %}
+      {% include "includes/empty_state.html" with icon="📑" title="No loan applications found" message="You have no active loans or pending applications." action_url="/credits/catalog/" action_label="Explore Loan Programs" only %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

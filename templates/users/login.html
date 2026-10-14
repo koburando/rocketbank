@@ -1,0 +1,48 @@
+{% extends "layouts/public_base.html" %}
+
+{% block title %}Sign In | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="Sign in securely to your RocketBank account to manage cards, accounts, and payments.">{% endblock %}
+
+{% block content %}
+<div class="container container--narrow">
+  <div class="card card--elevated" style="margin: var(--space-xl) auto; padding: var(--space-2xl);">
+    <div class="text-center mb-xl">
+      <div style="font-size: 2.5rem; margin-bottom: var(--space-xs);" aria-hidden="true">🚀</div>
+      <h1 style="font-size: var(--font-size-2xl);">Sign in to RocketBank</h1>
+      <p class="text-secondary">Enter your email or username and security password</p>
+    </div>
+
+    <form method="post" action="{% url 'users:login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert--danger" role="alert">
+          {% for error in form.non_field_errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include "includes/form_field.html" with field=form.username_or_email %}
+      {% include "includes/form_field.html" with field=form.password %}
+
+      <div class="d-flex items-center justify-between mb-lg" style="font-size: var(--font-size-xs);">
+        <label class="form-check">
+          {{ form.remember_me }}
+          <span>Remember this device</span>
+        </label>
+        <a href="{% url 'users:password-reset' %}">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn--primary w-100 btn--lg">
+        Sign In to Portal
+      </button>
+    </form>
+
+    <div class="text-center mt-xl pt-md" style="border-top: 1px solid var(--border-color); font-size: var(--font-size-sm);">
+      <span class="text-muted">Don't have a RocketBank account?</span>
+      <a href="{% url 'users:register' %}" class="font-semibold" style="margin-left: var(--space-xs);">Open an account in 3 minutes</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

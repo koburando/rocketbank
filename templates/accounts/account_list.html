@@ -1,0 +1,107 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}My Bank Accounts | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Bank Accounts</h1>
+      <p class="text-secondary m-0">Manage all your checking, savings, business, and deposit IBAN accounts</p>
+    </div>
+    <a href="{% url 'accounts:open' %}" class="btn btn--primary">
+      <span aria-hidden="true">+</span> Open New Account
+    </a>
+  </div>
+
+  <!-- Filter & Search Toolbar -->
+  <div class="catalog-toolbar">
+    <form method="get" class="catalog-search-form" role="search">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search by IBAN..." class="form-input" style="flex: 1;" aria-label="Search accounts by IBAN">
+      <select name="type" class="form-select" style="width: auto;" aria-label="Filter by account type">
+        <option value="">All Account Types</option>
+        <option value="CHECKING" {% if request.GET.type == 'CHECKING' %}selected{% endif %}>Checking</option>
+        <option value="SAVINGS" {% if request.GET.type == 'SAVINGS' %}selected{% endif %}>Savings</option>
+        <option value="BUSINESS" {% if request.GET.type == 'BUSINESS' %}selected{% endif %}>Business</option>
+        <option value="DEPOSIT" {% if request.GET.type == 'DEPOSIT' %}selected{% endif %}>Deposit</option>
+      </select>
+      <button type="submit" class="btn btn--secondary btn--sm">Filter</button>
+      {% if request.GET.q or request.GET.type %}
+        <a href="{% url 'accounts:list' %}" class="btn btn--outline btn--sm">Reset</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Accounts Table with Strict HTML5 Semantics -->
+  <div class="table-responsive">
+    <table class="table table--striped table--hover">
+      <caption>List of client accounts registered under your name in RocketBank</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">IBAN</th>
+          <th scope="col">Type</th>
+          <th scope="col">Currency</th>
+          <th scope="col">Status</th>
+          <th scope="col" class="text-right">Balance</th>
+          <th scope="col" class="text-right">Opened Date</th>
+          <th scope="col" class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for acc in accounts %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td class="font-mono font-bold">
+              <a href="{% url 'accounts:detail' acc.id %}" aria-label="Account {{ acc.iban }}">
+                {{ acc.iban|mask_iban }}
+              </a>
+            </td>
+            <td>
+              <span class="badge badge--info">{{ acc.get_account_type_display }}</span>
+            </td>
+            <td>
+              <strong>{{ acc.currency.code }}</strong> ({{ acc.currency.symbol }})
+            </td>
+            <td>
+              <span class="badge {{ acc.status|status_badge_class }}">
+                {{ acc.get_status_display }}
+              </span>
+            </td>
+            <td class="text-right font-mono font-bold" style="font-size: var(--font-size-base);">
+              {{ acc.balance|currency_format:acc.currency.code }}
+            </td>
+            <td class="text-right text-muted" style="white-space: nowrap;">
+              {{ acc.opened_at|date:"Y-m-d" }}
+            </td>
+            <td class="text-right">
+              <div class="d-inline-flex gap-xs">
+                <a href="{% url 'accounts:detail' acc.id %}" class="btn btn--secondary btn--sm">
+                  View
+                </a>
+                <a href="{% url 'transactions:transfer' %}?from_account={{ acc.id }}" class="btn btn--primary btn--sm">
+                  Transfer
+                </a>
+              </div>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="8" class="text-center p-xl">
+              {% include "includes/empty_state.html" with icon="🏦" title="No accounts found" message="No matching accounts were found for your search criteria." action_url="/accounts/open/" action_label="Open Account" only %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination Component -->
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

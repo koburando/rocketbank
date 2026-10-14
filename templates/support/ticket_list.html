@@ -1,0 +1,76 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Support Tickets | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Customer Support Tickets</h1>
+      <p class="text-secondary m-0">Direct communication with RocketBank technical and compliance specialists</p>
+    </div>
+    <a href="{% url 'support:create' %}" class="btn btn--primary">
+      + New Support Ticket
+    </a>
+  </div>
+
+  <div class="card mb-2xl">
+    <div class="table-responsive">
+      <table class="table table--striped table--hover">
+        <caption>List of submitted customer support inquiries and their resolution status</caption>
+        <thead>
+          <tr>
+            <th scope="col">Ticket #</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Status</th>
+            <th scope="col">Submitted</th>
+            <th scope="col" class="text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ticket in tickets %}
+            <tr>
+              <td class="font-mono font-bold">#{{ ticket.id }}</td>
+              <td>
+                <a href="{% url 'support:detail' ticket.id %}" class="font-semibold">
+                  {{ ticket.subject }}
+                </a>
+              </td>
+              <td>
+                <span class="badge {{ ticket.priority|status_badge_class }}">
+                  {{ ticket.get_priority_display }}
+                </span>
+              </td>
+              <td>
+                <span class="badge {{ ticket.status|status_badge_class }}">
+                  {{ ticket.get_status_display }}
+                </span>
+              </td>
+              <td class="text-muted" style="white-space: nowrap;">{{ ticket.created_at|date:"Y-m-d H:i" }}</td>
+              <td class="text-right">
+                <a href="{% url 'support:detail' ticket.id %}" class="btn btn--secondary btn--sm">
+                  View &rarr;
+                </a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="6" class="text-center p-xl">
+                {% include "includes/empty_state.html" with icon="🎧" title="No support tickets" message="You have no open or past support requests." action_url="/support/create/" action_label="Open Support Ticket" only %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

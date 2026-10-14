@@ -1,0 +1,105 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}Notifications Center | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Notifications Center</h1>
+      <p class="text-secondary m-0">Stay informed on transaction events, security logins, and banking updates</p>
+    </div>
+
+    {% if unread_total > 0 %}
+      <form method="post" action="{% url 'notifications:read-all' %}" style="margin: 0;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn--outline btn--sm">
+          ✓ Mark All as Read ({{ unread_total }})
+        </button>
+      </form>
+    {% endif %}
+  </div>
+
+  <!-- Filter Toolbar -->
+  <div class="catalog-toolbar">
+    <div class="d-flex items-center gap-xs flex-wrap">
+      <a href="{% url 'notifications:list' %}" class="btn btn--sm {% if not request.GET.type and not request.GET.unread %}btn--primary{% else %}btn--secondary{% endif %}">
+        All
+      </a>
+      <a href="{% url 'notifications:list' %}?unread=1" class="btn btn--sm {% if request.GET.unread == '1' %}btn--primary{% else %}btn--secondary{% endif %}">
+        Unread Only
+      </a>
+      <a href="{% url 'notifications:list' %}?type=TRANSACTION" class="btn btn--sm {% if request.GET.type == 'TRANSACTION' %}btn--primary{% else %}btn--secondary{% endif %}">
+        Transactions
+      </a>
+      <a href="{% url 'notifications:list' %}?type=SECURITY" class="btn btn--sm {% if request.GET.type == 'SECURITY' %}btn--primary{% else %}btn--secondary{% endif %}">
+        Security
+      </a>
+      <a href="{% url 'notifications:list' %}?type=WARNING" class="btn btn--sm {% if request.GET.type == 'WARNING' %}btn--primary{% else %}btn--secondary{% endif %}">
+        Warnings
+      </a>
+    </div>
+  </div>
+
+  <!-- Notifications List -->
+  <div style="display: flex; flex-direction: column; gap: var(--space-sm);" class="mb-2xl">
+    {% for notif in notifications %}
+      <article class="card p-md d-flex justify-between items-start gap-md {% if not notif.is_read %}card--elevated{% endif %}" style="{% if not notif.is_read %}border-left: 4px solid var(--color-primary); background-color: var(--bg-surface);{% else %}opacity: 0.85; background-color: var(--bg-subtle);{% endif %}">
+        <div class="d-flex items-start gap-md">
+          <div style="font-size: 1.5rem; line-height: 1;" aria-hidden="true">
+            {% if notif.notification_type == 'TRANSACTION' %}
+              💳
+            {% elif notif.notification_type == 'SECURITY' %}
+              🛡️
+            {% elif notif.notification_type == 'SUCCESS' %}
+              ✅
+            {% elif notif.notification_type == 'WARNING' %}
+              ⚠️
+            {% elif notif.notification_type == 'ERROR' %}
+              ❌
+            {% else %}
+              ℹ️
+            {% endif %}
+          </div>
+          <div>
+            <div class="d-flex items-center gap-xs mb-xs">
+              <strong style="font-size: var(--font-size-base); color: var(--text-primary);">{{ notif.title }}</strong>
+              <span class="badge {{ notif.notification_type|status_badge_class }}">
+                {{ notif.get_notification_type_display }}
+              </span>
+              {% if not notif.is_read %}
+                <span class="badge badge--danger">New</span>
+              {% endif %}
+            </div>
+            <p class="m-0 text-secondary" style="font-size: var(--font-size-sm); line-height: 1.5;">
+              {{ notif.message }}
+            </p>
+            <span class="text-muted" style="font-size: var(--font-size-xs); display: block; margin-top: var(--space-xs);">
+              {{ notif.created_at|date:"M d, Y H:i" }}
+            </span>
+          </div>
+        </div>
+
+        {% if not notif.is_read %}
+          <!-- FBV POST to mark this notification as read -->
+          <form method="post" action="{% url 'notifications:mark-read' notif.id %}" style="margin: 0; flex-shrink: 0;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn--secondary btn--sm" aria-label="Mark '{{ notif.title }}' as read">
+              Mark as read
+            </button>
+          </form>
+        {% endif %}
+      </article>
+    {% empty %}
+      {% include "includes/empty_state.html" with icon="🔔" title="No notifications" message="You have no notifications in this view." only %}
+    {% endfor %}
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

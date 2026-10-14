@@ -1,0 +1,47 @@
+{% extends "layouts/dashboard_base.html" %}
+{% load bank_tags %}
+
+{% block title %}My Payment Cards | RocketBank{% endblock %}
+
+{% block breadcrumbs %}
+  {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="container container--fluid">
+  <div class="d-flex flex-wrap justify-between items-center mb-xl">
+    <div>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">My Payment Cards</h1>
+      <p class="text-secondary m-0">Manage card limits, freeze status, and link cards to bank accounts</p>
+    </div>
+    <a href="{% url 'cards:apply' %}" class="btn btn--primary">
+      ✨ Order New Card (Wizard)
+    </a>
+  </div>
+
+  <div class="grid-3 mb-2xl">
+    {% for card in cards %}
+      {% include "includes/card_item.html" with card=card only %}
+    {% empty %}
+      <div style="grid-column: 1 / -1;">
+        {% include "includes/empty_state.html" with icon="💳" title="No payment cards issued yet" message="Order a modern debit or credit card with instant issuance." action_url="/cards/apply/" action_label="Launch Card Wizard" only %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Security Information Box -->
+  <aside class="card" style="background-color: var(--bg-subtle);" aria-labelledby="card_sec_heading">
+    <div class="d-flex items-center gap-md">
+      <span style="font-size: 2.5rem;" aria-hidden="true">🛡️</span>
+      <div>
+        <h2 id="card_sec_heading" style="font-size: var(--font-size-base); margin-bottom: var(--space-2xs);">
+          Card Security & Fraud Protection
+        </h2>
+        <p class="text-muted m-0" style="font-size: var(--font-size-xs);">
+          If you notice unauthorized transactions or misplace your physical card, you can instantly freeze it above using the one-click toggle. For emergency 24/7 hotline support, call <strong>+7 (727) 244-0000</strong>.
+        </p>
+      </div>
+    </div>
+  </aside>
+</div>
+{% endblock %}
