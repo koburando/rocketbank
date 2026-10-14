@@ -2,6 +2,9 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
+
+from apps.core.models import TimeStampedModel
 
 
 class User(AbstractUser):
@@ -36,3 +39,109 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    def get_absolute_url(self):
+        return reverse("admin:users_user_change", args=[self.pk])
+
+
+class Profile(TimeStampedModel):
+    """Extended user profile with KYC, preferences, and personal info."""
+
+    class KYCStatus(models.TextChoices):
+        PENDING = "PENDING", "Pending"
+        VERIFIED = "VERIFIED", "Verified"
+        REJECTED = "REJECTED", "Rejected"
+
+    class ThemeChoice(models.TextChoices):
+        LIGHT = "LIGHT", "Light"
+        DARK = "DARK", "Dark"
+        SYSTEM = "SYSTEM", "System"
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="profile",
+        verbose_name="user",
+    )
+    avatar = models.ImageField(
+        "avatar",
+        upload_to="avatars/",
+        blank=True,
+    )
+    birth_date = models.DateField(
+        "birth date",
+        null=True,
+        blank=True,
+    )
+    address = models.TextField(
+        "address",
+        blank=True,
+    )
+    kyc_status = models.CharField(
+        "KYC status",
+        max_length=10,
+        choices=KYCStatus.choices,
+        default=KYCStatus.PENDING,
+    )
+    preferred_theme = models.CharField(
+        "preferred theme",
+        max_length=10,
+        choices=ThemeChoice.choices,
+        default=ThemeChoice.SYSTEM,
+    )
+    preferred_language = models.CharField(
+        "preferred language",
+        max_length=10,
+        default="en",
+    )
+
+    class Meta:
+        verbose_name = "profile"
+        verbose_name_plural = "profiles"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"Profile of {self.user.email}"
+
+    def get_absolute_url(self):
+        return reverse("admin:users_profile_change", args=[self.pk])
+
+
+class LoginAudit(TimeStampedModel):
+    """Tracks user login history with IP and user agent info."""
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="login_audits",
+        verbose_name="user",
+    )
+    ip_address = models.GenericIPAddressField("IP address")
+    user_agent = models.TextField("user agent", blank=True)
+    login_successful = models.BooleanField(
+        "login successful",
+        default=True,
+    )
+    location = models.CharField(
+        "location",
+        max_length=255,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = "login audit"
+        verbose_name_plural = "login audits"
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(
+                fields=["user", "-created_at"],
+                name="idx_login_audit_user_date",
+            ),
+        ]
+
+    def __str__(self):
+        status = "Success" if self.login_successful else "Failed"
+        return f"{self.user.email} — {status} @ {self.ip_address}"
+
+    def get_absolute_url(self):
+        return reverse("admin:users_loginaudit_change", args=[self.pk])
