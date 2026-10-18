@@ -1,8 +1,12 @@
 """
-General public views: Landing Home, About RocketBank, Contacts, and SEO endpoints.
+General public views: Landing Home, About RocketBank, Contacts,
+Language Switcher, and SEO endpoints.
 """
 
-from django.http import HttpResponse
+from django.conf import settings
+from django.http import HttpResponse, HttpResponseRedirect
+from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils.translation import activate
 from django.views.generic import TemplateView, View
 
 from apps.accounts.models import Currency
@@ -44,6 +48,51 @@ class ContactsView(TemplateView):
     """
 
     template_name = "contacts.html"
+
+
+def switch_language(request, lang_code):
+    """
+    Switches active language cleanly via GET or POST, persists it in session & cookie,
+    and safely redirects to HTTP_REFERER or '/'.
+    """
+    lang_code = (lang_code or "").lower().strip()
+    if lang_code not in ("ru", "kk", "en"):
+        lang_code = "ru"
+
+    activate(lang_code)
+
+    referer = request.META.get("HTTP_REFERER") or "/"
+    if not url_has_allowed_host_and_scheme(url=referer, allowed_hosts={request.get_host()}):
+        referer = "/"
+
+    response = HttpResponseRedirect(referer)
+
+    cookie_name = getattr(settings, "LANGUAGE_COOKIE_NAME", "django_language")
+
+    # Persist in session
+    if hasattr(request, "session"):
+        request.session[cookie_name] = lang_code
+        request.session["django_language"] = lang_code
+
+    # Persist in user profile if authenticated
+    if hasattr(request, "user") and request.user.is_authenticated:
+        profile = getattr(request.user, "profile", None)
+        if profile and hasattr(profile, "preferred_language"):
+            try:
+                profile.preferred_language = lang_code.upper()
+                profile.save(update_fields=["preferred_language"])
+            except Exception:
+                pass
+
+    # Persist in cookie (1 year)
+    response.set_cookie(
+        cookie_name,
+        lang_code,
+        max_age=31536000,
+        path="/",
+        samesite="Lax",
+    )
+    return response
 
 
 class RobotsTxtView(View):

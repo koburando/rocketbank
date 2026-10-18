@@ -16,4 +16,6 @@ known-first-party = ["apps", "config"]
 
 [tool.ruff.lint.per-file-ignores]
 "**/migrations/*" = ["E501"]
+"apps/core/translations.py" = ["E501"]
+"scripts/*" = ["E501", "C901"]
 

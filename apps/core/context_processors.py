@@ -3,12 +3,15 @@ Global context processors for RocketBank templates.
 """
 
 from django.utils import timezone
+from django.utils.translation import get_language
+
+from apps.core.translations import TranslationProxy, t
 
 
 def global_context(request):
     """
-    Provides unread notifications count, active currencies,
-    and user's theme preference to all templates.
+    Provides unread notifications count, active currencies, user's theme preference,
+    active language, and trilingual translation dictionary to all templates.
     """
     unread_count = 0
     theme_preference = "SYSTEM"
@@ -38,6 +41,8 @@ def global_context(request):
     except Exception:
         active_currencies = []
 
+    current_lang = getattr(request, "LANGUAGE_CODE", None) or get_language() or "ru"
+
     return {
         "unread_notifications_count": unread_count,
         "active_currencies": active_currencies,
@@ -45,4 +50,7 @@ def global_context(request):
         "current_year": timezone.now().year,
         "site_name": "RocketBank",
         "site_domain": "rocketbank.company",
+        "LANGUAGE_CODE": current_lang,
+        "tr": TranslationProxy(),
+        "t": t,
     }

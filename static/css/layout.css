@@ -30,22 +30,17 @@
   }
 
   .public-header {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-sticky);
-    height: var(--header-height);
-    background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-color);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    transition: background-color var(--transition-base), border-color var(--transition-base);
+    position: relative;
+    z-index: 100;
+    height: 0;
+    background: transparent;
+    border: none;
   }
 
   .public-main {
     flex: 1 0 auto;
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-3xl);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .public-footer {

@@ -22,6 +22,7 @@ from apps.core.views import (
     LandingHomeView,
     OfflineView,
     RobotsTxtView,
+    switch_language,
 )
 
 # Ensure custom converters are registered
@@ -47,6 +48,7 @@ urlpatterns = [
     ),
     # ── Internationalization ────────────────────────
     path("i18n/", include("django.conf.urls.i18n")),
+    path("lang/<str:lang_code>/", switch_language, name="switch_language"),
     # ── Public Pages ────────────────────────────────
     path("", LandingHomeView.as_view(), name="home"),
     path("about/", AboutView.as_view(), name="about"),

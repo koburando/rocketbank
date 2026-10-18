@@ -47,14 +47,20 @@ body{
 
 /* TICKER */
 .ticker{
-  background:var(--bg2);
-  border-bottom:1px solid var(--border);
-  height:36px;
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  z-index:101 !important;
+  height:36px !important;
+  background:var(--bg2) !important;
+  border-bottom:1px solid var(--border) !important;
   overflow:hidden;
   display:flex;
   align-items:center;
   width:100%;
   max-width:100%;
+  box-sizing:border-box;
 }
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-track{
@@ -91,22 +97,32 @@ body{
 .silk-reveal-right.visible{animation:silk-in-right .9s var(--silk) forwards}
 
 /* NAV */
+nav#mainNav,
 nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:100;
-  height:var(--nav-h);
+  position:fixed !important;
+  top:36px !important;
+  left:0 !important;
+  right:0 !important;
+  z-index:100 !important;
+  height:68px !important;
+  background:rgba(15, 19, 25, 0.92) !important;
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+  border-bottom:1px solid var(--border) !important;
+  transform:none !important;
   display:flex;
   align-items:center;
-  padding:0 max(48px, calc((100vw - var(--max-w)) / 2));
-  border-bottom:1px solid transparent;
-  transform:translateY(36px);
-  transition:background .6s var(--silk),border-color .6s var(--silk),transform .5s var(--silk);
+  padding:0 max(48px, calc((100vw - var(--max-w)) / 2)) !important;
+  box-sizing:border-box;
+  transition:background .3s var(--silk),border-color .3s var(--silk);
 }
 nav > *{position:relative}
-nav.scrolled{background:rgba(15,19,25,.95);backdrop-filter:blur(20px);border-color:var(--border);transform:translateY(0)}
+nav#mainNav.scrolled,
+nav.scrolled{
+  background:rgba(15, 19, 25, 0.96) !important;
+  border-color:var(--border) !important;
+  transform:none !important;
+}
 .nav-logo{
   font-family:'Outfit',sans-serif;
   font-size:22px;
@@ -1188,3 +1204,105 @@ footer{
   .hero h1{font-size:36px}
   .pricing-grid{gap:12px}
 }
+
+/* ==========================================================================
+   SLEEK SEGMENTED PILL GROUP LANGUAGE SWITCHER (BUG 2 FIX)
+   ========================================================================== */
+.lang-switcher,
+.lang-switcher-form {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--border2, var(--border)) !important;
+  border-radius: 8px !important;
+  padding: 3px !important;
+  margin: 0 4px !important;
+  box-sizing: border-box !important;
+}
+
+.lang-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  color: var(--text2) !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
+}
+
+.lang-btn:hover {
+  color: var(--text) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.lang-btn.active {
+  background: var(--sky) !important;
+  color: #0A1A2C !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   INTERNAL PAGES LAYOUT & CONTAINER ARCHITECTURE (BUG 1 FIX)
+   ========================================================================== */
+
+/* Non-landing pages padding under fixed header (36px ticker + 68px nav = 104px) */
+.public-main:not(.landing-main),
+main:not(.landing-main):not(.dashboard-main) {
+  padding-top: 130px !important;
+  padding-bottom: 80px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Container constraints & centering for all pages */
+main,
+.page-container,
+.container,
+.content-wrapper,
+.public-main:not(.landing-main) > .container,
+.public-main:not(.landing-main) section,
+.dashboard-main .container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+  box-sizing: border-box !important;
+}
+
+.container--narrow {
+  max-width: 860px !important;
+}
+
+.container--fluid {
+  max-width: 100% !important;
+}
+
+@media (max-width: 900px) {
+  main,
+  .page-container,
+  .container,
+  .content-wrapper,
+  .public-main:not(.landing-main) > .container,
+  .public-main:not(.landing-main) section,
+  .dashboard-main .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  nav#mainNav,
+  nav {
+    padding: 0 24px !important;
+  }
+}
+

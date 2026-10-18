@@ -37,13 +37,11 @@
 
   <div class="nav-cta">
     <!-- Compact Language Switcher (RU | KK | EN) -->
-    <form action="{% url 'set_language' %}" method="post" class="lang-switcher-form" style="display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:2px; margin:0 4px;">
-      {% csrf_token %}
-      <input name="next" type="hidden" value="{{ request.get_full_path }}">
-      <button type="submit" name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" title="Русский">RU</button>
-      <button type="submit" name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}" title="Қазақша">KK</button>
-      <button type="submit" name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}" title="English">EN</button>
-    </form>
+    <div class="lang-switcher">
+      <a href="{% url 'switch_language' 'ru' %}" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" title="Русский">RU</a>
+      <a href="{% url 'switch_language' 'kk' %}" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}" title="Қазақша">KK</a>
+      <a href="{% url 'switch_language' 'en' %}" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}" title="English">EN</a>
+    </div>
 
     <!-- Theme Switcher -->
     <button type="button" class="btn-ghost" aria-label="{% trans 'Toggle theme' %}" style="padding: 7px 11px; font-size: 13px;" onclick="(function(){
@@ -88,13 +86,11 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center;">
-    <form action="{% url 'set_language' %}" method="post" class="lang-switcher-form" style="display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:2px;">
-      {% csrf_token %}
-      <input name="next" type="hidden" value="{{ request.get_full_path }}">
-      <button type="submit" name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</button>
-      <button type="submit" name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}">KK</button>
-      <button type="submit" name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
-    </form>
+    <div class="lang-switcher">
+      <a href="{% url 'switch_language' 'ru' %}" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</a>
+      <a href="{% url 'switch_language' 'kk' %}" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}">KK</a>
+      <a href="{% url 'switch_language' 'en' %}" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</a>
+    </div>
     <button type="button" class="btn-ghost" aria-label="{% trans 'Toggle theme' %}" style="padding: 6px 12px; font-size: 13px;" onclick="(function(){
       const cur = document.documentElement.getAttribute('data-theme');
       const next = cur === 'dark' ? 'light' : 'dark';

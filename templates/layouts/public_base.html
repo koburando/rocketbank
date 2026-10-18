@@ -6,7 +6,7 @@
     {% include "includes/navbar.html" with is_public=True only %}
   </header>
 
-  <main id="main-content" class="public-main" role="main" tabindex="-1">
+  <main id="main-content" class="public-main {% block main_class %}{% endblock %}" role="main" tabindex="-1">
     {% block content %}{% endblock %}
   </main>
 

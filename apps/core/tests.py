@@ -381,3 +381,38 @@ class AuthenticatedViewsTestCase(TestCase):
         post_res = self.client.post(reverse("users:logout"))
         self.assertEqual(post_res.status_code, 302)
         self.assertFalse(self.client.session.get("_auth_user_id"))
+
+
+class LanguageSwitchTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_switch_language_ru(self):
+        response = self.client.get(reverse("switch_language", kwargs={"lang_code": "ru"}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.client.cookies.get("django_language").value, "ru")
+        page = self.client.get(reverse("about"))
+        self.assertEqual(page.status_code, 200)
+        self.assertIn("О банке", page.content.decode("utf-8"))
+
+    def test_switch_language_kk(self):
+        response = self.client.get(reverse("switch_language", kwargs={"lang_code": "kk"}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.client.cookies.get("django_language").value, "kk")
+        page = self.client.get(reverse("about"))
+        self.assertEqual(page.status_code, 200)
+        self.assertIn("Банк туралы", page.content.decode("utf-8"))
+
+    def test_switch_language_en(self):
+        response = self.client.get(reverse("switch_language", kwargs={"lang_code": "en"}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.client.cookies.get("django_language").value, "en")
+        page = self.client.get(reverse("about"))
+        self.assertEqual(page.status_code, 200)
+        self.assertIn("About RocketBank", page.content.decode("utf-8"))
+
+    def test_switch_language_invalid_fallback(self):
+        response = self.client.get(reverse("switch_language", kwargs={"lang_code": "fr"}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.client.cookies.get("django_language").value, "ru")
+

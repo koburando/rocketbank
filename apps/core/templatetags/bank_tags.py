@@ -142,3 +142,23 @@ def quick_balance_widget(context):
         "accounts": accounts,
         "user": user,
     }
+
+
+@register.simple_tag(takes_context=True, name="tr")
+def tr_tag(context, text: str) -> str:
+    """
+    Template tag to translate string using active request language:
+    {% tr "Cards" %} -> "Карты" (if ru) or "Карталар" (if kk) or "Cards" (if en).
+    """
+    from apps.core.translations import t
+
+    request = context.get("request")
+    lang = getattr(request, "LANGUAGE_CODE", None) if request else None
+    return t(text, lang=lang)
+
+
+@register.simple_tag(takes_context=True, name="t")
+def t_tag(context, text: str) -> str:
+    """Shortcut alias for {% tr %}."""
+    return tr_tag(context, text)
+

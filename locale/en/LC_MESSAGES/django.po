@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 16:12+0000\n"
+"POT-Creation-Date: 2026-10-18 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,6 +138,10 @@ msgstr "Governance"
 #: templates/about.html:90
 msgid "Leadership & Architecture"
 msgstr "Leadership & Architecture"
+
+#: templates/about.html:98
+msgid "Ayan"
+msgstr "Ayan"
 
 #: templates/about.html:101
 msgid "Founder & CEO • Chief System Architect"
@@ -270,7 +274,7 @@ msgstr "Currency"
 msgid "Status"
 msgstr "Status"
 
-#: templates/accounts/account_list.html:56 templates/home.html:75
+#: templates/accounts/account_list.html:56 templates/home.html:76
 msgid "Balance"
 msgstr "Balance"
 
@@ -694,7 +698,7 @@ msgstr "Home"
 msgid "Cards Catalog"
 msgstr "Cards Catalog"
 
-#: templates/cards/detail.html:79 templates/home.html:537
+#: templates/cards/detail.html:79 templates/home.html:538
 msgid "Cashback on all purchases"
 msgstr "Cashback on all purchases"
 
@@ -964,7 +968,7 @@ msgstr "Highest Interest Rate"
 msgid "Shortest Term"
 msgstr "Shortest Term"
 
-#: templates/deposits/catalog.html:42 templates/home.html:524
+#: templates/deposits/catalog.html:42 templates/home.html:525
 msgid "Annual"
 msgstr "Annual"
 
@@ -1011,633 +1015,633 @@ msgid ""
 "commission multi-currency accounts."
 msgstr "RocketBank is the modern financial platform engineered for speed. Real-time payments, intelligent analytics, enterprise-grade security, and zero-commission multi-currency accounts."
 
-#: templates/home.html:13
+#: templates/home.html:14
 msgid "Now with AI-powered financial insights"
 msgstr "Now with AI-powered financial insights"
 
-#: templates/home.html:16
+#: templates/home.html:17
 msgid "Finance that"
 msgstr "Finance that"
 
-#: templates/home.html:16
+#: templates/home.html:17
 msgid "moves at"
 msgstr "moves at"
 
-#: templates/home.html:16
+#: templates/home.html:17
 msgid "your speed"
 msgstr "your speed"
 
-#: templates/home.html:19
+#: templates/home.html:20
 msgid ""
 "RocketBank is the modern financial platform built for businesses and "
 "individuals who refuse to wait. Real-time payments, intelligent analytics, "
 "and enterprise-grade security — all in one dashboard."
 msgstr "RocketBank is the modern financial platform built for businesses and individuals who refuse to wait. Real-time payments, intelligent analytics, and enterprise-grade security — all in one dashboard."
 
-#: templates/home.html:24
+#: templates/home.html:25
 msgid "Open Client Dashboard"
 msgstr "Open Client Dashboard"
 
-#: templates/home.html:29
+#: templates/home.html:30
 msgid "Start for free"
 msgstr "Start for free"
 
-#: templates/home.html:33
+#: templates/home.html:34
 msgid "See it in action"
 msgstr "See it in action"
 
-#: templates/home.html:39
+#: templates/home.html:40
 msgid "businesses and clients trust RocketBank"
 msgstr "businesses and clients trust RocketBank"
 
-#: templates/home.html:50
+#: templates/home.html:51
 msgid "Revenue growth"
 msgstr "Revenue growth"
 
-#: templates/home.html:59
+#: templates/home.html:60
 msgid "Settlement time"
 msgstr "Settlement time"
 
-#: templates/home.html:70 templates/includes/navbar.html:10
+#: templates/home.html:71 templates/includes/navbar.html:10
 msgid "Live"
 msgstr "Live"
 
-#: templates/home.html:77
+#: templates/home.html:78
 msgid "today"
 msgstr "today"
 
-#: templates/home.html:80
+#: templates/home.html:81
 msgid "Sent"
 msgstr "Sent"
 
-#: templates/home.html:82
+#: templates/home.html:83
 msgid "This month"
 msgstr "This month"
 
-#: templates/home.html:85
+#: templates/home.html:86
 msgid "Received"
 msgstr "Received"
 
-#: templates/home.html:92
+#: templates/home.html:93
 msgid "Volume — 7 days"
 msgstr "Volume — 7 days"
 
-#: templates/home.html:105 templates/home.html:460
+#: templates/home.html:106 templates/home.html:461
 msgid "Mon"
 msgstr "Mon"
 
-#: templates/home.html:106 templates/home.html:461
+#: templates/home.html:107 templates/home.html:462
 msgid "Tue"
 msgstr "Tue"
 
-#: templates/home.html:107 templates/home.html:462
+#: templates/home.html:108 templates/home.html:463
 msgid "Wed"
 msgstr "Wed"
 
-#: templates/home.html:108 templates/home.html:463
+#: templates/home.html:109 templates/home.html:464
 msgid "Thu"
 msgstr "Thu"
 
-#: templates/home.html:109 templates/home.html:464
+#: templates/home.html:110 templates/home.html:465
 msgid "Fri"
 msgstr "Fri"
 
-#: templates/home.html:110 templates/home.html:465
+#: templates/home.html:111 templates/home.html:466
 msgid "Sat"
 msgstr "Sat"
 
-#: templates/home.html:111 templates/home.html:119 templates/home.html:466
+#: templates/home.html:112 templates/home.html:120 templates/home.html:467
 msgid "Today"
 msgstr "Today"
 
-#: templates/home.html:118
+#: templates/home.html:119
 msgid "Global Clearing Payout"
 msgstr "Global Clearing Payout"
 
-#: templates/home.html:126
+#: templates/home.html:127
 msgid "Interbank Multi-Currency Swap"
 msgstr "Interbank Multi-Currency Swap"
 
-#: templates/home.html:127
+#: templates/home.html:128
 msgid "Yesterday"
 msgstr "Yesterday"
 
-#: templates/home.html:139
+#: templates/home.html:140
 msgid "Trusted by modern teams & financial institutions"
 msgstr "Trusted by modern teams & financial institutions"
 
-#: templates/home.html:152
+#: templates/home.html:153
 msgid "Total volume processed"
 msgstr "Total volume processed"
 
-#: templates/home.html:156
+#: templates/home.html:157
 msgid "year over year"
 msgstr "year over year"
 
-#: templates/home.html:164
+#: templates/home.html:165
 msgid "Active clients & accounts"
 msgstr "Active clients & accounts"
 
-#: templates/home.html:168
+#: templates/home.html:169
 msgid "this month"
 msgstr "this month"
 
-#: templates/home.html:176
+#: templates/home.html:177
 msgid "Uptime guarantee"
 msgstr "Uptime guarantee"
 
-#: templates/home.html:180
+#: templates/home.html:181
 msgid "Zero downtime recorded"
 msgstr "Zero downtime recorded"
 
-#: templates/home.html:188
+#: templates/home.html:189
 msgid "Domestic transfer fees"
 msgstr "Domestic transfer fees"
 
-#: templates/home.html:192
+#: templates/home.html:193
 #, python-format
 msgid "100%% free peer-to-peer"
 msgstr "100%% free peer-to-peer"
 
-#: templates/home.html:200
+#: templates/home.html:201
 msgid "Platform features"
 msgstr "Platform features"
 
-#: templates/home.html:201
+#: templates/home.html:202
 msgid "Everything your finances need"
 msgstr "Everything your finances need"
 
-#: templates/home.html:202
+#: templates/home.html:203
 msgid ""
 "One platform to send, receive, track, and multiply your capital. No "
 "switching between disjointed tools."
 msgstr "One platform to send, receive, track, and multiply your capital. No switching between disjointed tools."
 
-#: templates/home.html:210
+#: templates/home.html:211
 msgid "Instant transfers"
 msgstr "Instant transfers"
 
-#: templates/home.html:211
+#: templates/home.html:212
 msgid ""
 "Move money in real-time across domestic and international banking rails with "
 "sub-second atomic settlement and zero hidden commissions."
 msgstr "Move money in real-time across domestic and international banking rails with sub-second atomic settlement and zero hidden commissions."
 
-#: templates/home.html:213
+#: templates/home.html:214
 msgid "Sub-second"
 msgstr "Sub-second"
 
-#: templates/home.html:214
+#: templates/home.html:215
 msgid "countries"
 msgstr "countries"
 
-#: templates/home.html:215
+#: templates/home.html:216
 msgid "Zero fees"
 msgstr "Zero fees"
 
-#: templates/home.html:223
+#: templates/home.html:224
 msgid "Smart analytics"
 msgstr "Smart analytics"
 
-#: templates/home.html:224
+#: templates/home.html:225
 msgid ""
 "AI-powered dashboards that surface what matters. Cashflow forecasting, "
 "automated anomaly detection, and real-time expense classification."
 msgstr "AI-powered dashboards that surface what matters. Cashflow forecasting, automated anomaly detection, and real-time expense classification."
 
-#: templates/home.html:226
+#: templates/home.html:227
 msgid "AI forecasting"
 msgstr "AI forecasting"
 
-#: templates/home.html:227
+#: templates/home.html:228
 msgid "Anomaly alerts"
 msgstr "Anomaly alerts"
 
-#: templates/home.html:228
+#: templates/home.html:229
 msgid "Custom reports"
 msgstr "Custom reports"
 
-#: templates/home.html:236
+#: templates/home.html:237
 msgid "Multi-currency accounts"
 msgstr "Multi-currency accounts"
 
-#: templates/home.html:237
+#: templates/home.html:238
 msgid ""
 "Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at "
 "interbank rates. Lock live rates and eliminate foreign exchange loss."
 msgstr "Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at interbank rates. Lock live rates and eliminate foreign exchange loss."
 
-#: templates/home.html:239
+#: templates/home.html:240
 msgid "currencies"
 msgstr "currencies"
 
-#: templates/home.html:240 templates/home.html:359
+#: templates/home.html:241 templates/home.html:360
 msgid "Interbank rates"
 msgstr "Interbank rates"
 
-#: templates/home.html:241
+#: templates/home.html:242
 msgid "Live FX swap"
 msgstr "Live FX swap"
 
-#: templates/home.html:249
+#: templates/home.html:250
 msgid "Enterprise security"
 msgstr "Enterprise security"
 
-#: templates/home.html:250
+#: templates/home.html:251
 msgid ""
 "Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to "
 "20,000,000 KZT, and instant 1-click card freeze."
 msgstr "Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to 20,000,000 KZT, and instant 1-click card freeze."
 
-#: templates/home.html:252
+#: templates/home.html:253
 msgid "KDIF Insured"
 msgstr "KDIF Insured"
 
-#: templates/home.html:253
+#: templates/home.html:254
 msgid "AI fraud detection"
 msgstr "AI fraud detection"
 
-#: templates/home.html:274
+#: templates/home.html:275
 msgid "Sent today"
 msgstr "Sent today"
 
-#: templates/home.html:276
+#: templates/home.html:277
 msgid "transfers"
 msgstr "transfers"
 
-#: templates/home.html:279
+#: templates/home.html:280
 msgid "Avg. speed"
 msgstr "Avg. speed"
 
-#: templates/home.html:281
+#: templates/home.html:282
 msgid "Atomic lock"
 msgstr "Atomic lock"
 
-#: templates/home.html:289 templates/home.html:297 templates/home.html:305
+#: templates/home.html:290 templates/home.html:298 templates/home.html:306
 #: templates/transactions/transaction_list.html:34
 msgid "Completed"
 msgstr "Completed"
 
-#: templates/home.html:316
+#: templates/home.html:317
 msgid "Forecasted balance"
 msgstr "Forecasted balance"
 
-#: templates/home.html:318
+#: templates/home.html:319
 msgid "Next 30 days"
 msgstr "Next 30 days"
 
-#: templates/home.html:321
+#: templates/home.html:322
 msgid "Anomalies"
 msgstr "Anomalies"
 
-#: templates/home.html:323
+#: templates/home.html:324
 msgid "All clean"
 msgstr "All clean"
 
-#: templates/home.html:327
+#: templates/home.html:328
 msgid "Volume trend — 8 weeks"
 msgstr "Volume trend — 8 weeks"
 
-#: templates/home.html:333
+#: templates/home.html:334
 msgid "Operations"
 msgstr "Operations"
 
-#: templates/home.html:340
+#: templates/home.html:341
 msgid "Cross-border"
 msgstr "Cross-border"
 
-#: templates/home.html:352
+#: templates/home.html:353
 msgid "Active Currencies"
 msgstr "Active Currencies"
 
-#: templates/home.html:354
+#: templates/home.html:355
 msgid "Multi-IBAN active"
 msgstr "Multi-IBAN active"
 
-#: templates/home.html:357
+#: templates/home.html:358
 msgid "FX Saved"
 msgstr "FX Saved"
 
-#: templates/home.html:367
+#: templates/home.html:368
 msgid "Primary"
 msgstr "Primary"
 
-#: templates/home.html:425
+#: templates/home.html:426
 msgid "Live platform"
 msgstr "Live platform"
 
-#: templates/home.html:426
+#: templates/home.html:427
 msgid "Your financial command center"
 msgstr "Your financial command center"
 
-#: templates/home.html:427
+#: templates/home.html:428
 msgid ""
 "Real-time liquidity, multi-currency balances, and full control over cards "
 "and transfers."
 msgstr "Real-time liquidity, multi-currency balances, and full control over cards and transfers."
 
-#: templates/home.html:431
+#: templates/home.html:432
 msgid "Portfolio overview"
 msgstr "Portfolio overview"
 
-#: templates/home.html:433
+#: templates/home.html:434
 msgid "Live data"
 msgstr "Live data"
 
-#: templates/home.html:471
+#: templates/home.html:472
 msgid "Cash flow"
 msgstr "Cash flow"
 
-#: templates/home.html:473
+#: templates/home.html:474
 msgid "Net positive this month"
 msgstr "Net positive this month"
 
-#: templates/home.html:477
+#: templates/home.html:478
 msgid "Inbound"
 msgstr "Inbound"
 
-#: templates/home.html:483
+#: templates/home.html:484
 msgid "Outbound"
 msgstr "Outbound"
 
-#: templates/home.html:490
+#: templates/home.html:491
 msgid "Monthly Transactions"
 msgstr "Monthly Transactions"
 
-#: templates/home.html:492
+#: templates/home.html:493
 msgid "Sub-second execution"
 msgstr "Sub-second execution"
 
-#: templates/home.html:496
+#: templates/home.html:497
 msgid "Successful"
 msgstr "Successful"
 
-#: templates/home.html:501 templates/transactions/transaction_list.html:36
+#: templates/home.html:502 templates/transactions/transaction_list.html:36
 msgid "Failed"
 msgstr "Failed"
 
-#: templates/home.html:515
+#: templates/home.html:516
 msgid "Bank Card Tiers"
 msgstr "Bank Card Tiers"
 
-#: templates/home.html:516
+#: templates/home.html:517
 msgid "Tailored for every ambition"
 msgstr "Tailored for every ambition"
 
-#: templates/home.html:517
+#: templates/home.html:518
 msgid ""
 "Start with zero maintenance, unlock high-yield privileges and priority "
 "concierge."
 msgstr "Start with zero maintenance, unlock high-yield privileges and priority concierge."
 
-#: templates/home.html:520
+#: templates/home.html:521
 msgid "Monthly"
 msgstr "Monthly"
 
-#: templates/home.html:525
+#: templates/home.html:526
 #, python-format
 msgid "Save 35%%"
 msgstr "Save 35%%"
 
-#: templates/home.html:530
+#: templates/home.html:531
 msgid "Gold Card"
 msgstr "Gold Card"
 
-#: templates/home.html:532
+#: templates/home.html:533
 msgid "per month"
 msgstr "per month"
 
-#: templates/home.html:532
+#: templates/home.html:533
 msgid "free forever"
 msgstr "free forever"
 
-#: templates/home.html:534
+#: templates/home.html:535
 msgid "Zero annual maintenance fees"
 msgstr "Zero annual maintenance fees"
 
-#: templates/home.html:538
+#: templates/home.html:539
 msgid "Instant digital & physical issuance"
 msgstr "Instant digital & physical issuance"
 
-#: templates/home.html:539
+#: templates/home.html:540
 msgid "Zero fee KZT transfers by IBAN"
 msgstr "Zero fee KZT transfers by IBAN"
 
-#: templates/home.html:540
+#: templates/home.html:541
 msgid "Up to 5 multi-currency accounts"
 msgstr "Up to 5 multi-currency accounts"
 
-#: templates/home.html:541
+#: templates/home.html:542
 msgid "Standard 24/7 chat support"
 msgstr "Standard 24/7 chat support"
 
-#: templates/home.html:544
+#: templates/home.html:545
 msgid "Order Gold Card"
 msgstr "Order Gold Card"
 
-#: templates/home.html:550
+#: templates/home.html:551
 msgid "Most popular"
 msgstr "Most popular"
 
-#: templates/home.html:551
+#: templates/home.html:552
 msgid "Platinum Card"
 msgstr "Platinum Card"
 
-#: templates/home.html:553
+#: templates/home.html:554
 msgid "per month, billed"
 msgstr "per month, billed"
 
-#: templates/home.html:553
+#: templates/home.html:554
 msgid "monthly"
 msgstr "monthly"
 
-#: templates/home.html:555
+#: templates/home.html:556
 msgid "billed annually"
 msgstr "billed annually"
 
-#: templates/home.html:556
+#: templates/home.html:557
 msgid "billed"
 msgstr "billed"
 
-#: templates/home.html:556
+#: templates/home.html:557
 msgid "annually"
 msgstr "annually"
 
-#: templates/home.html:559
+#: templates/home.html:560
 msgid "Cashback on dining & travel"
 msgstr "Cashback on dining & travel"
 
-#: templates/home.html:560
+#: templates/home.html:561
 msgid "Titanium metallic physical card"
 msgstr "Titanium metallic physical card"
 
-#: templates/home.html:561
+#: templates/home.html:562
 msgid "Airport lounge access (LoungeKey)"
 msgstr "Airport lounge access (LoungeKey)"
 
-#: templates/home.html:562
+#: templates/home.html:563
 msgid "Priority 24/7 dedicated banker"
 msgstr "Priority 24/7 dedicated banker"
 
-#: templates/home.html:563
+#: templates/home.html:564
 msgid "15 foreign currencies with zero FX fee"
 msgstr "15 foreign currencies with zero FX fee"
 
-#: templates/home.html:564
+#: templates/home.html:565
 msgid "Extended daily withdrawal limits"
 msgstr "Extended daily withdrawal limits"
 
-#: templates/home.html:567
+#: templates/home.html:568
 msgid "Order Platinum Card"
 msgstr "Order Platinum Card"
 
-#: templates/home.html:573
+#: templates/home.html:574
 msgid "Black Card"
 msgstr "Black Card"
 
-#: templates/home.html:574
+#: templates/home.html:575
 msgid "Elite"
 msgstr "Elite"
 
-#: templates/home.html:575
+#: templates/home.html:576
 msgid "tailored for high net worth"
 msgstr "tailored for high net worth"
 
-#: templates/home.html:578
+#: templates/home.html:579
 msgid "Unlimited premium cashback"
 msgstr "Unlimited premium cashback"
 
-#: templates/home.html:579
+#: templates/home.html:580
 msgid "PVD-coated obsidian steel card"
 msgstr "PVD-coated obsidian steel card"
 
-#: templates/home.html:580
+#: templates/home.html:581
 msgid "Personal executive wealth manager"
 msgstr "Personal executive wealth manager"
 
-#: templates/home.html:581
+#: templates/home.html:582
 msgid "Unlimited international SWIFT transfers"
 msgstr "Unlimited international SWIFT transfers"
 
-#: templates/home.html:582
+#: templates/home.html:583
 msgid "All 35+ global currencies included"
 msgstr "All 35+ global currencies included"
 
-#: templates/home.html:583
+#: templates/home.html:584
 msgid "Custom credit limits up to ₸50,000,000"
 msgstr "Custom credit limits up to ₸50,000,000"
 
-#: templates/home.html:586
+#: templates/home.html:587
 msgid "Request Black Card"
 msgstr "Request Black Card"
 
-#: templates/home.html:596
+#: templates/home.html:597
 msgid "Bank-grade protection"
 msgstr "Bank-grade protection"
 
-#: templates/home.html:597
+#: templates/home.html:598
 msgid "Security is not a feature — it's the foundation"
 msgstr "Security is not a feature — it's the foundation"
 
-#: templates/home.html:598
+#: templates/home.html:599
 msgid ""
 "Every transaction is shielded by multiple layers of enterprise-grade "
 "cryptographic security. We are audited, regulated, and monitored around the "
 "clock."
 msgstr "Every transaction is shielded by multiple layers of enterprise-grade cryptographic security. We are audited, regulated, and monitored around the clock."
 
-#: templates/home.html:599
+#: templates/home.html:600
 msgid "Read architecture report"
 msgstr "Read architecture report"
 
-#: templates/home.html:605
+#: templates/home.html:606
 msgid "Insured up to 20,000,000 KZT per depositor"
 msgstr "Insured up to 20,000,000 KZT per depositor"
 
-#: templates/home.html:606
+#: templates/home.html:607
 msgid "Guaranteed"
 msgstr "Guaranteed"
 
-#: templates/home.html:611
+#: templates/home.html:612
 msgid "Highest tier of international payment card security"
 msgstr "Highest tier of international payment card security"
 
-#: templates/home.html:612
+#: templates/home.html:613
 msgid "Compliant"
 msgstr "Compliant"
 
-#: templates/home.html:617
+#: templates/home.html:618
 msgid "Global standard for information security management"
 msgstr "Global standard for information security management"
 
-#: templates/home.html:618
+#: templates/home.html:619
 msgid "Certified"
 msgstr "Certified"
 
-#: templates/home.html:623
+#: templates/home.html:624
 #, python-format
 msgid "Blocks 99.98%% of fraudulent attempts in sub-seconds"
 msgstr "Blocks 99.98%% of fraudulent attempts in sub-seconds"
 
-#: templates/home.html:624
+#: templates/home.html:625
 msgid "Always on"
 msgstr "Always on"
 
-#: templates/home.html:633
+#: templates/home.html:634
 msgid "Client experiences"
 msgstr "Client experiences"
 
-#: templates/home.html:634
+#: templates/home.html:635
 msgid "Trusted by leaders across industries"
 msgstr "Trusted by leaders across industries"
 
-#: templates/home.html:640
+#: templates/home.html:641
 msgid "Pause testimonials"
 msgstr "Pause testimonials"
 
-#: templates/home.html:642
+#: templates/home.html:643
 msgid "Pause"
 msgstr "Pause"
 
-#: templates/home.html:651
+#: templates/home.html:652
 msgid "Mobile app"
 msgstr "Mobile app"
 
-#: templates/home.html:652
+#: templates/home.html:653
 msgid "Your bank, in your pocket"
 msgstr "Your bank, in your pocket"
 
-#: templates/home.html:653
+#: templates/home.html:654
 msgid ""
 "Full dashboard access, biometric approval for high-value transfers, and "
 "instant transaction push notifications — anywhere in the world."
 msgstr "Full dashboard access, biometric approval for high-value transfers, and instant transaction push notifications — anywhere in the world."
 
-#: templates/home.html:658
+#: templates/home.html:659
 msgid "Download on the"
 msgstr "Download on the"
 
-#: templates/home.html:665
+#: templates/home.html:666
 msgid "Get it on"
 msgstr "Get it on"
 
-#: templates/home.html:684
+#: templates/home.html:685
 msgid "Or scan our"
 msgstr "Or scan our"
 
-#: templates/home.html:697
+#: templates/home.html:698
 msgid "Available for iOS & Android"
 msgstr "Available for iOS & Android"
 
-#: templates/home.html:710
+#: templates/home.html:711
 msgid "Got questions?"
 msgstr "Got questions?"
 
-#: templates/home.html:711
+#: templates/home.html:712
 msgid "Frequently asked"
 msgstr "Frequently asked"
 
-#: templates/home.html:715
+#: templates/home.html:716
 msgid "Expand all"
 msgstr "Expand all"
 
@@ -1761,66 +1765,66 @@ msgstr "Terms"
 msgid "Security"
 msgstr "Security"
 
-#: templates/includes/navbar.html:30 templates/includes/navbar.html:109
+#: templates/includes/navbar.html:30 templates/includes/navbar.html:105
 msgid "Cards"
 msgstr "Cards"
 
-#: templates/includes/navbar.html:31 templates/includes/navbar.html:110
+#: templates/includes/navbar.html:31 templates/includes/navbar.html:106
 msgid "Loans"
 msgstr "Loans"
 
-#: templates/includes/navbar.html:32 templates/includes/navbar.html:111
+#: templates/includes/navbar.html:32 templates/includes/navbar.html:107
 #: templates/includes/sidebar.html:46
 msgid "Deposits"
 msgstr "Deposits"
 
-#: templates/includes/navbar.html:33 templates/includes/navbar.html:112
+#: templates/includes/navbar.html:33 templates/includes/navbar.html:108
 msgid "About"
 msgstr "About"
 
-#: templates/includes/navbar.html:34 templates/includes/navbar.html:113
+#: templates/includes/navbar.html:34 templates/includes/navbar.html:109
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/includes/navbar.html:35 templates/includes/navbar.html:114
+#: templates/includes/navbar.html:35 templates/includes/navbar.html:110
 msgid "Contacts"
 msgstr "Contacts"
 
-#: templates/includes/navbar.html:49 templates/includes/navbar.html:98
+#: templates/includes/navbar.html:47 templates/includes/navbar.html:94
 msgid "Toggle theme"
 msgstr "Toggle theme"
 
-#: templates/includes/navbar.html:61 templates/includes/navbar.html:121
+#: templates/includes/navbar.html:59 templates/includes/navbar.html:117
 #: templates/includes/sidebar.html:59
 msgid "Notifications"
 msgstr "Notifications"
 
-#: templates/includes/navbar.html:67 templates/includes/navbar.html:119
+#: templates/includes/navbar.html:65 templates/includes/navbar.html:115
 msgid "Profile"
 msgstr "Profile"
 
-#: templates/includes/navbar.html:71 templates/includes/navbar.html:118
+#: templates/includes/navbar.html:69 templates/includes/navbar.html:114
 #: templates/includes/sidebar.html:22
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: templates/includes/navbar.html:74 templates/includes/navbar.html:125
+#: templates/includes/navbar.html:72 templates/includes/navbar.html:121
 msgid "Log out"
 msgstr "Log out"
 
-#: templates/includes/navbar.html:78 templates/includes/navbar.html:128
+#: templates/includes/navbar.html:76 templates/includes/navbar.html:124
 msgid "Sign in"
 msgstr "Sign in"
 
-#: templates/includes/navbar.html:79
+#: templates/includes/navbar.html:77
 msgid "Get started"
 msgstr "Get started"
 
-#: templates/includes/navbar.html:83
+#: templates/includes/navbar.html:81
 msgid "Open menu"
 msgstr "Open menu"
 
-#: templates/includes/navbar.html:129
+#: templates/includes/navbar.html:125
 msgid "Get started free"
 msgstr "Get started free"
 
@@ -1873,8 +1877,8 @@ msgstr "Support Tickets"
 msgid "Profile & Settings"
 msgstr "Profile & Settings"
 
-#: templates/includes/sidebar.html:84 templates/layouts/dashboard_base.html:68
-#: templates/layouts/dashboard_base.html:69
+#: templates/includes/sidebar.html:84 templates/layouts/dashboard_base.html:66
+#: templates/layouts/dashboard_base.html:67
 msgid "Sign out"
 msgstr "Sign out"
 
@@ -1886,19 +1890,19 @@ msgstr "Dashboard navigation"
 msgid "Client Portal"
 msgstr "Client Portal"
 
-#: templates/layouts/dashboard_base.html:39
+#: templates/layouts/dashboard_base.html:37
 msgid "Toggle dark/light theme"
 msgstr "Toggle dark/light theme"
 
-#: templates/layouts/dashboard_base.html:50
+#: templates/layouts/dashboard_base.html:48
 msgid "View notifications"
 msgstr "View notifications"
 
-#: templates/layouts/dashboard_base.html:53
+#: templates/layouts/dashboard_base.html:51
 msgid "unread notifications"
 msgstr "unread notifications"
 
-#: templates/layouts/dashboard_base.html:87
+#: templates/layouts/dashboard_base.html:85
 msgid ""
 "Licensed by the Agency for Regulation and Development of the Financial "
 "Market. All rights reserved."
