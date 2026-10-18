@@ -26,7 +26,7 @@ msgstr ""
 #: apps/core/validators.py:34
 #, python-format
 msgid "Rating must be between 1 and 5. Got %(value)s."
-msgstr ""
+msgstr "Бағалау 1 мен 5 аралығында болуы керек. Берілгені: %(value)s."
 
 #: apps/core/validators.py:49
 #, python-format
@@ -36,7 +36,7 @@ msgstr ""
 #: apps/core/validators.py:72
 #, python-format
 msgid "Image file size cannot exceed %(max)s MB. Got %(actual).1f MB."
-msgstr ""
+msgstr "Сурет файлының өлшемі %(max)s МБ-тан аспауы керек. Қазіргі өлшемі: %(actual).1f МБ."
 
 #: apps/core/validators.py:81
 msgid ", "
@@ -195,7 +195,7 @@ msgstr "Операциялық орталық, әзірлеу зертханал
 
 #: templates/accounts/account_list.html:4
 msgid "My Bank Accounts | RocketBank"
-msgstr ""
+msgstr "Менің банктік шоттарым | RocketBank"
 
 #: templates/accounts/account_list.html:15
 msgid "Bank Accounts"
@@ -253,16 +253,16 @@ msgstr "Қалпына келтіру"
 
 #: templates/accounts/account_list.html:48
 msgid "List of client accounts registered under your name in RocketBank"
-msgstr ""
+msgstr "RocketBank-те сіздің атыңызға ашылған шоттар тізімі"
 
 #: templates/accounts/account_list.html:52
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #: templates/accounts/account_list.html:53
 #: templates/accounts/dashboard.html:164
 msgid "Type"
-msgstr ""
+msgstr "Түрі"
 
 #: templates/accounts/account_list.html:54
 msgid "Currency"
@@ -276,11 +276,11 @@ msgstr "Күйі"
 
 #: templates/accounts/account_list.html:56 templates/home.html:76
 msgid "Balance"
-msgstr ""
+msgstr "Теңгерім"
 
 #: templates/accounts/account_list.html:57
 msgid "Opened Date"
-msgstr ""
+msgstr "Ашылған күні"
 
 #: templates/accounts/account_list.html:58
 msgid "Actions"
@@ -297,17 +297,17 @@ msgstr "Аударым"
 
 #: templates/accounts/dashboard.html:4
 msgid "Dashboard | RocketBank"
-msgstr ""
+msgstr "Кабинет | RocketBank"
 
 #: templates/accounts/dashboard.html:5
 msgid ""
 "RocketBank client dashboard. View financial balances, multi-currency "
 "accounts, and recent transactions."
-msgstr ""
+msgstr "RocketBank клиенттік кабинеті. Қаржылық теңгерімді, мультивалюталық шоттарды және соңғы операцияларды қараңыз."
 
 #: templates/accounts/dashboard.html:13
 msgid "Welcome"
-msgstr ""
+msgstr "Қош келдіңіз"
 
 #: templates/accounts/dashboard.html:16
 msgid "Here is your real-time financial portfolio overview for today"
@@ -327,11 +327,11 @@ msgstr "Белсенді шоттар"
 
 #: templates/accounts/dashboard.html:44
 msgid "Multi-currency enabled"
-msgstr ""
+msgstr "Мультивалюта қосылған"
 
 #: templates/accounts/dashboard.html:48
 msgid "Checking Balance"
-msgstr ""
+msgstr "Ағымдағы шот теңгерімі"
 
 #: templates/accounts/dashboard.html:51
 msgid "Available for instant payments"
@@ -339,11 +339,11 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:55
 msgid "Savings Balance"
-msgstr ""
+msgstr "Жинақ шотының теңгерімі"
 
 #: templates/accounts/dashboard.html:59
 msgid "Daily capitalization active"
-msgstr ""
+msgstr "Күнделікті капитализация белсенді"
 
 #: templates/accounts/dashboard.html:74
 msgid "BANK ACCOUNTS"
@@ -351,15 +351,15 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:76
 msgid "View All"
-msgstr ""
+msgstr "Барлығын көру"
 
 #: templates/accounts/dashboard.html:93
 msgid "QUICK SERVICES"
-msgstr ""
+msgstr "ЖЫЛДАМ ҚЫЗМЕТТЕР"
 
 #: templates/accounts/dashboard.html:97
 msgid "Instant Money Transfer"
-msgstr ""
+msgstr "Лездік ақша аударымы"
 
 #: templates/accounts/dashboard.html:100 templates/includes/sidebar.html:37
 msgid "Order Card (Wizard)"
@@ -371,31 +371,31 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:106
 msgid "Open Term Deposit"
-msgstr ""
+msgstr "Мерзімді депозит ашу"
 
 #: templates/accounts/dashboard.html:109
 msgid "Saved Beneficiaries"
-msgstr ""
+msgstr "Сақталған алушылар"
 
 #: templates/accounts/dashboard.html:112
 msgid "Saving Goals Tracker"
-msgstr ""
+msgstr "Жинақ мақсаттары трекері"
 
 #: templates/accounts/dashboard.html:121
 msgid "SAVING GOALS"
-msgstr ""
+msgstr "ЖИНАҚ МАҚСАТТАРЫ"
 
 #: templates/accounts/dashboard.html:122 templates/cards/catalog.html:101
 msgid "Details"
-msgstr ""
+msgstr "Толық мәлімет"
 
 #: templates/accounts/dashboard.html:150
 msgid "RECENT TRANSACTIONS"
-msgstr ""
+msgstr "СОҢҒЫ ТРАНЗАКЦИЯЛАР"
 
 #: templates/accounts/dashboard.html:152
 msgid "Full History"
-msgstr ""
+msgstr "Толық тарих"
 
 #: templates/accounts/dashboard.html:158
 msgid "Recent financial transactions across your accounts"
@@ -403,7 +403,7 @@ msgstr "Шоттарыңыз бойынша соңғы операциялар"
 
 #: templates/accounts/dashboard.html:161
 msgid "Date"
-msgstr ""
+msgstr "Күні"
 
 #: templates/accounts/dashboard.html:162
 #: templates/transactions/transaction_list.html:65
@@ -437,7 +437,7 @@ msgstr "Қаржылық талдау және жинақтау мақсатта
 
 #: templates/analytics/dashboard.html:14
 msgid "Financial Analytics & Goals"
-msgstr ""
+msgstr "Қаржылық талдау және мақсаттар"
 
 #: templates/analytics/dashboard.html:15
 msgid ""
@@ -472,12 +472,12 @@ msgstr "Бюджет лимиті"
 
 #: templates/analytics/dashboard.html:39
 msgid "Monthly budget expenditure meter"
-msgstr ""
+msgstr "Айлық бюджет шығыстарының өлшегіші"
 
 #: templates/analytics/dashboard.html:44
 #, python-format
 msgid "Optimal (<60%%)"
-msgstr ""
+msgstr "Оңтайлы (<60%)"
 
 #: templates/analytics/dashboard.html:45
 #, python-format
@@ -487,7 +487,7 @@ msgstr ""
 #: templates/analytics/dashboard.html:46
 #, python-format
 msgid "Critical (>85%%)"
-msgstr ""
+msgstr "Қауіпті (>85%)"
 
 #: templates/analytics/dashboard.html:52
 msgid "Total Goals Target"
@@ -561,13 +561,13 @@ msgstr ""
 
 #: templates/base.html:23
 msgid "Modern Digital Banking"
-msgstr ""
+msgstr "Заманауи цифрлық банкинг"
 
 #: templates/base.html:24
 msgid ""
 "Experience effortless banking with high-yield deposits, zero-fee multi-"
 "currency transfers, and modern security."
-msgstr ""
+msgstr "Жоғары кірісті депозиттер, комиссиясыз мультивалюталық аударымдар және сенімді қорғаныспен банктік қызметтің жеңілдігін сезініңіз."
 
 #: templates/base.html:74
 msgid "Skip to main content"
@@ -575,11 +575,11 @@ msgstr "Негізгі мазмұнға өту"
 
 #: templates/cards/card_list.html:4
 msgid "My Payment Cards | RocketBank"
-msgstr ""
+msgstr "Менің төлем карталарым | RocketBank"
 
 #: templates/cards/card_list.html:15
 msgid "My Payment Cards"
-msgstr ""
+msgstr "Менің төлем карталарым"
 
 #: templates/cards/card_list.html:18
 msgid "Manage card limits, freeze status, and link cards to bank accounts"
@@ -588,7 +588,7 @@ msgstr ""
 
 #: templates/cards/card_list.html:22
 msgid "Order New Card (Wizard)"
-msgstr ""
+msgstr "Жаңа картаға тапсырыс беру (Шебер)"
 
 #: templates/cards/card_list.html:42
 msgid "Card Security & Instant Fraud Protection"
@@ -612,15 +612,15 @@ msgstr "Карталар витринасы — Дебеттік және нес
 msgid ""
 "Explore RocketBank's premium debit and credit cards with up to 10%% "
 "cashback, zero maintenance fee, and instant digital issuing."
-msgstr ""
+msgstr "RocketBank-тің 10%-ға дейін кэшбэгі, тегін қызмет көрсетуі және лездік цифрлық шығарылымы бар премиум дебеттік және несиелік карталары."
 
 #: templates/cards/catalog.html:11
 msgid "Payment Products"
-msgstr ""
+msgstr "Төлем өнімдері"
 
 #: templates/cards/catalog.html:13
 msgid "RocketBank Payment Cards"
-msgstr ""
+msgstr "RocketBank төлем карталары"
 
 #: templates/cards/catalog.html:16
 msgid ""
@@ -632,15 +632,15 @@ msgstr ""
 
 #: templates/cards/catalog.html:23
 msgid "Search cards by name..."
-msgstr ""
+msgstr "Карталарды атауы бойынша іздеу..."
 
 #: templates/cards/catalog.html:23
 msgid "Search cards"
-msgstr ""
+msgstr "Карталарды іздеу"
 
 #: templates/cards/catalog.html:24
 msgid "Filter by tier"
-msgstr ""
+msgstr "Деңгей бойынша сүзу"
 
 #: templates/cards/catalog.html:25
 msgid "All Tiers"
@@ -648,7 +648,7 @@ msgstr ""
 
 #: templates/cards/catalog.html:30
 msgid "Sort cards"
-msgstr ""
+msgstr "Карталарды сұрыптау"
 
 #: templates/cards/catalog.html:31 templates/credits/catalog.html:24
 #: templates/deposits/catalog.html:24
@@ -657,11 +657,11 @@ msgstr "Әдепкі ретпен"
 
 #: templates/cards/catalog.html:32
 msgid "Highest Cashback"
-msgstr ""
+msgstr "Ең жоғары кэшбэк"
 
 #: templates/cards/catalog.html:33
 msgid "Lowest Annual Fee"
-msgstr ""
+msgstr "Ең төменгі жылдық төлем"
 
 #: templates/cards/catalog.html:35 templates/deposits/catalog.html:28
 #: templates/support/faq.html:22
@@ -708,11 +708,11 @@ msgstr ""
 
 #: templates/cards/detail.html:79 templates/home.html:538
 msgid "Cashback on all purchases"
-msgstr ""
+msgstr "Барлық сатып алуларға кэшбэк"
 
 #: templates/cards/detail.html:81
 msgid "Paid automatically on the 1st"
-msgstr ""
+msgstr "Әр айдың 1-жұлдызында төленеді"
 
 #: templates/cards/detail.html:84
 msgid "Annual Service Fee"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: templates/cards/detail.html:88
 msgid "No hidden maintenance costs"
-msgstr ""
+msgstr "Жасырын қызмет ақысыз"
 
 #: templates/cards/detail.html:94
 msgid "Apply for this Card Now"
@@ -728,11 +728,11 @@ msgstr ""
 
 #: templates/cards/detail.html:98
 msgid "Compare Other Tiers"
-msgstr ""
+msgstr "Басқа карталарды салыстыру"
 
 #: templates/cards/detail.html:108
 msgid "Other Available Card Tiers"
-msgstr ""
+msgstr "Басқа қолжетімді карталар"
 
 #: templates/cards/detail.html:117
 msgid "Cashback"
@@ -756,7 +756,7 @@ msgstr ""
 
 #: templates/contacts.html:10
 msgid "24/7 Client Relations"
-msgstr "24/7 клиенттерге қызмет көрсету"
+msgstr "Клиенттерге тәулік бойы қызмет көрсету"
 
 #: templates/contacts.html:12
 msgid "We're Here to Help You"
@@ -780,7 +780,7 @@ msgstr "Қазақстан бойынша ұялы және қалалық те�
 
 #: templates/contacts.html:33
 msgid "24/7 Priority Emergency Line"
-msgstr "24/7 шұғыл желі"
+msgstr "Тәулік бойы шұғыл байланыс желісі"
 
 #: templates/contacts.html:42
 msgid "Email Departments"
@@ -949,7 +949,7 @@ msgstr "Мерзімді депозиттер витринасы"
 msgid ""
 "High-yield savings and term deposits with up to 18%% annual return, daily "
 "capitalization, and state insurance protection up to 20M KZT."
-msgstr ""
+msgstr "Жылдық 18%-ға дейінгі мөлшерлемесі, күнделікті капитализациясы және 20 млн теңгеге дейін ҚДКҚ мемлекеттік кепілдігі бар жинақ және мерзімді депозиттер."
 
 #: templates/deposits/catalog.html:10
 msgid "Savings & Investment"
@@ -964,7 +964,7 @@ msgstr "RocketBank жоғары кірісті депозиттері"
 msgid ""
 "Maximize your savings with compound daily interest, flexible top-up options, "
 "and 100%% state deposit guarantee by KDIF."
-msgstr ""
+msgstr "Күнделікті күрделі пайызбен, икемді толықтырумен және ҚДКҚ-ның 100% мемлекеттік кепілдігімен жинақтарыңызды көбейтіңіз."
 
 #: templates/deposits/catalog.html:22
 msgid "Search deposit programs..."
@@ -988,7 +988,7 @@ msgstr "Ең қысқа мерзім"
 
 #: templates/deposits/catalog.html:42 templates/home.html:525
 msgid "Annual"
-msgstr "жылдық"
+msgstr "Жылдық"
 
 #: templates/deposits/catalog.html:45
 msgid "Months"
@@ -1058,7 +1058,7 @@ msgstr "RocketBank — уақытын бағалайтын бизнес пен �
 
 #: templates/home.html:25
 msgid "Open Client Dashboard"
-msgstr "Кабинетке өту"
+msgstr "Жеке кабинетті ашу"
 
 #: templates/home.html:30
 msgid "Start for free"
@@ -1066,19 +1066,19 @@ msgstr "Тегін бастау"
 
 #: templates/home.html:34
 msgid "See it in action"
-msgstr ""
+msgstr "Жұмыс барысы"
 
 #: templates/home.html:40
 msgid "businesses and clients trust RocketBank"
-msgstr ""
+msgstr "клиент пен бизнес RocketBank-ке сенеді"
 
 #: templates/home.html:51
 msgid "Revenue growth"
-msgstr ""
+msgstr "Кіріс өсімі"
 
 #: templates/home.html:60
 msgid "Settlement time"
-msgstr ""
+msgstr "Есеп айырысу уақыты"
 
 #: templates/home.html:71 templates/includes/navbar.html:10
 msgid "Live"
@@ -1086,63 +1086,63 @@ msgstr "Тікелей"
 
 #: templates/home.html:78
 msgid "today"
-msgstr ""
+msgstr "бүгін"
 
 #: templates/home.html:81
 msgid "Sent"
-msgstr ""
+msgstr "Жіберілді"
 
 #: templates/home.html:83
 msgid "This month"
-msgstr ""
+msgstr "Осы айда"
 
 #: templates/home.html:86
 msgid "Received"
-msgstr ""
+msgstr "Алынды"
 
 #: templates/home.html:93
 msgid "Volume — 7 days"
-msgstr ""
+msgstr "Көлемі — 7 күн"
 
 #: templates/home.html:106 templates/home.html:461
 msgid "Mon"
-msgstr ""
+msgstr "Дс"
 
 #: templates/home.html:107 templates/home.html:462
 msgid "Tue"
-msgstr ""
+msgstr "Сс"
 
 #: templates/home.html:108 templates/home.html:463
 msgid "Wed"
-msgstr ""
+msgstr "Ср"
 
 #: templates/home.html:109 templates/home.html:464
 msgid "Thu"
-msgstr ""
+msgstr "Бс"
 
 #: templates/home.html:110 templates/home.html:465
 msgid "Fri"
-msgstr ""
+msgstr "Жм"
 
 #: templates/home.html:111 templates/home.html:466
 msgid "Sat"
-msgstr ""
+msgstr "Сн"
 
 #: templates/home.html:112 templates/home.html:120 templates/home.html:467
 msgid "Today"
-msgstr ""
+msgstr "Бүгін"
 
 #: templates/home.html:119
 msgid "Global Clearing Payout"
-msgstr ""
+msgstr "Халықаралық клиринг төлемі"
 
 #: templates/home.html:127
 msgid "Interbank Multi-Currency Swap"
-msgstr ""
+msgstr "Банкаралық мультивалюталық своп"
 
 #: templates/home.html:128
 msgid "Yesterday"
-msgstr ""
+msgstr "Кеше"
 
 #: templates/home.html:140
 msgid "Trusted by modern teams & financial institutions"
@@ -1150,31 +1150,31 @@ msgstr "Бізге заманауи компаниялар мен қаржы и�
 
 #: templates/home.html:153
 msgid "Total volume processed"
-msgstr ""
+msgstr "Өңделген жалпы көлем"
 
 #: templates/home.html:157
 msgid "year over year"
-msgstr ""
+msgstr "өткен жылмен салыстырғанда"
 
 #: templates/home.html:165
 msgid "Active clients & accounts"
-msgstr ""
+msgstr "Белсенді клиенттер мен шоттар"
 
 #: templates/home.html:169
 msgid "this month"
-msgstr ""
+msgstr "осы айда"
 
 #: templates/home.html:177
 msgid "Uptime guarantee"
-msgstr ""
+msgstr "Үздіксіз жұмыс кепілдігі"
 
 #: templates/home.html:181
 msgid "Zero downtime recorded"
-msgstr ""
+msgstr "Үзіліссіз тұрақты жұмыс"
 
 #: templates/home.html:189
 msgid "Domestic transfer fees"
-msgstr ""
+msgstr "Ішкі аударымдар комиссиясы"
 
 #: templates/home.html:193
 #, python-format
@@ -1183,420 +1183,418 @@ msgstr ""
 
 #: templates/home.html:201
 msgid "Platform features"
-msgstr ""
+msgstr "Платформа мүмкіндіктері"
 
 #: templates/home.html:202
 msgid "Everything your finances need"
-msgstr ""
+msgstr "Сіздің қаржыңызға қажеттінің барлығы"
 
 #: templates/home.html:203
 msgid ""
 "One platform to send, receive, track, and multiply your capital. No "
 "switching between disjointed tools."
-msgstr ""
-"Капиталыңызды жіберу, алу, бақылау және көбейтуге арналған бірыңғай "
-"платформа. Бірнеше сервистер арасында ауысудың қажеті жоқ."
+msgstr "Қаражатты аударуға, бақылауға және көбейтуге арналған бірыңғай платформа. Бөлек құралдар арасында ауысудың қажеті жоқ."
 
 #: templates/home.html:211
 msgid "Instant transfers"
-msgstr ""
+msgstr "Лездік аударымдар"
 
 #: templates/home.html:212
 msgid ""
 "Move money in real-time across domestic and international banking rails with "
 "sub-second atomic settlement and zero hidden commissions."
-msgstr "Ішкі және халықаралық банктік бағыттар бойынша қаражатты жасырын комиссиясыз, секундына жетпейтін атомарлық есеп айырысумен аударыңыз."
+msgstr "Ақшаны ішкі және халықаралық банктік желілер арқылы жасырын комиссиясыз, секундтың үлесінде қауіпсіз аударыңыз."
 
 #: templates/home.html:214
 msgid "Sub-second"
-msgstr ""
+msgstr "Лездік"
 
 #: templates/home.html:215
 msgid "countries"
-msgstr ""
+msgstr "ел"
 
 #: templates/home.html:216
 msgid "Zero fees"
-msgstr ""
+msgstr "0% комиссия"
 
 #: templates/home.html:224
 msgid "Smart analytics"
-msgstr ""
+msgstr "Ақылды талдау"
 
 #: templates/home.html:225
 msgid ""
 "AI-powered dashboards that surface what matters. Cashflow forecasting, "
 "automated anomaly detection, and real-time expense classification."
-msgstr "Маңыздыны көрсететін интеллектуалды панельдер: ақша ағындарын болжау, аномалияларды автоматты анықтау және шығыстарды жіктеу."
+msgstr "Жасанды интеллект негізіндегі талдау: ақша ағынын болжау, аномалияларды автоматты анықтау және шығындарды нақты уақытта жіктеу."
 
 #: templates/home.html:227
 msgid "AI forecasting"
-msgstr ""
+msgstr "ЖИ болжамы"
 
 #: templates/home.html:228
 msgid "Anomaly alerts"
-msgstr ""
+msgstr "Аномалия ескертулері"
 
 #: templates/home.html:229
 msgid "Custom reports"
-msgstr ""
+msgstr "Арнайы есептер"
 
 #: templates/home.html:237
 msgid "Multi-currency accounts"
-msgstr ""
+msgstr "Мультивалюталық шоттар"
 
 #: templates/home.html:238
 msgid ""
 "Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at "
 "interbank rates. Lock live rates and eliminate foreign exchange loss."
-msgstr "KZT, USD, EUR, GBP және 30-дан астам валютада банкаралық бағам бойынша сақтаңыз, айырбастаңыз және төлеңіз."
+msgstr "KZT, USD, EUR, GBP және 30+ валютада банкаралық бағам бойынша сақтаңыз, айырбастаңыз және төлем жасаңыз."
 
 #: templates/home.html:240
 msgid "currencies"
-msgstr ""
+msgstr "валюта"
 
 #: templates/home.html:241 templates/home.html:360
 msgid "Interbank rates"
-msgstr ""
+msgstr "Банкаралық бағам"
 
 #: templates/home.html:242
 msgid "Live FX swap"
-msgstr ""
+msgstr "Лездік FX своп"
 
 #: templates/home.html:250
 msgid "Enterprise security"
-msgstr ""
+msgstr "Корпоративтік қауіпсіздік"
 
 #: templates/home.html:251
 msgid ""
 "Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to "
 "20,000,000 KZT, and instant 1-click card freeze."
-msgstr "Банктік шифрлау, SOC 2 сәйкестігі, ҚДКБҚ 20 000 000 теңгеге дейінгі мемлекеттік кепілдігі және картаны 1 басумен лезде бұғаттау."
+msgstr "Банктік шифрлау, SOC 2 стандарты, ҚДКҚ-ның 20 000 000 теңгеге дейінгі мемлекеттік кепілдігі және картаны 1 басумен лезде бұғаттау."
 
 #: templates/home.html:253
 msgid "KDIF Insured"
-msgstr "ҚДКБҚ кепілдігі"
+msgstr "ҚДКҚ сақтандырған"
 
 #: templates/home.html:254
 msgid "AI fraud detection"
-msgstr ""
+msgstr "Алаяқтықтан ЖИ қорғау"
 
 #: templates/home.html:275
 msgid "Sent today"
-msgstr ""
+msgstr "Бүгін жіберілген"
 
 #: templates/home.html:277
 msgid "transfers"
-msgstr ""
+msgstr "аударым"
 
 #: templates/home.html:280
 msgid "Avg. speed"
-msgstr ""
+msgstr "Орташа жылдамдық"
 
 #: templates/home.html:282
 msgid "Atomic lock"
-msgstr ""
+msgstr "Атомдық қорғау"
 
 #: templates/home.html:290 templates/home.html:298 templates/home.html:306
 #: templates/transactions/transaction_list.html:34
 msgid "Completed"
-msgstr "Орындалғандар"
+msgstr "Орындалды"
 
 #: templates/home.html:317
 msgid "Forecasted balance"
-msgstr ""
+msgstr "Болжамды теңгерім"
 
 #: templates/home.html:319
 msgid "Next 30 days"
-msgstr ""
+msgstr "Алдағы 30 күн"
 
 #: templates/home.html:322
 msgid "Anomalies"
-msgstr ""
+msgstr "Аномалиялар"
 
 #: templates/home.html:324
 msgid "All clean"
-msgstr ""
+msgstr "Барлығы дұрыс"
 
 #: templates/home.html:328
 msgid "Volume trend — 8 weeks"
-msgstr ""
+msgstr "Көлем тренді — 8 апта"
 
 #: templates/home.html:334
 msgid "Operations"
-msgstr ""
+msgstr "Операциялар"
 
 #: templates/home.html:341
 msgid "Cross-border"
-msgstr ""
+msgstr "Халықаралық"
 
 #: templates/home.html:353
 msgid "Active Currencies"
-msgstr ""
+msgstr "Белсенді валюталар"
 
 #: templates/home.html:355
 msgid "Multi-IBAN active"
-msgstr ""
+msgstr "Мульти-IBAN белсенді"
 
 #: templates/home.html:358
 msgid "FX Saved"
-msgstr ""
+msgstr "FX бойынша үнемделген"
 
 #: templates/home.html:368
 msgid "Primary"
-msgstr ""
+msgstr "Негізгі"
 
 #: templates/home.html:426
 msgid "Live platform"
-msgstr ""
+msgstr "Интерактивті платформа"
 
 #: templates/home.html:427
 msgid "Your financial command center"
-msgstr ""
+msgstr "Сіздің қаржылық басқару орталығыңыз"
 
 #: templates/home.html:428
 msgid ""
 "Real-time liquidity, multi-currency balances, and full control over cards "
 "and transfers."
-msgstr "Лездік өтімділік, көпвалюталық теңгерімдер және карталар мен аударымдарды толық бақылау."
+msgstr "Нақты уақыттағы өтімділік, мультивалюталық теңгерімдер және карталар мен аударымдарды толық басқару."
 
 #: templates/home.html:432
 msgid "Portfolio overview"
-msgstr ""
+msgstr "Портфельге шолу"
 
 #: templates/home.html:434
 msgid "Live data"
-msgstr ""
+msgstr "Нақты уақыттағы деректер"
 
 #: templates/home.html:472
 msgid "Cash flow"
-msgstr ""
+msgstr "Ақша ағыны"
 
 #: templates/home.html:474
 msgid "Net positive this month"
-msgstr ""
+msgstr "Осы айдағы оң динамика"
 
 #: templates/home.html:478
 msgid "Inbound"
-msgstr ""
+msgstr "Түсімдер"
 
 #: templates/home.html:484
 msgid "Outbound"
-msgstr ""
+msgstr "Шығыстар"
 
 #: templates/home.html:491
 msgid "Monthly Transactions"
-msgstr ""
+msgstr "Айлық транзакциялар"
 
 #: templates/home.html:493
 msgid "Sub-second execution"
-msgstr ""
+msgstr "Лездік орындалу"
 
 #: templates/home.html:497
 msgid "Successful"
-msgstr ""
+msgstr "Сәтті"
 
 #: templates/home.html:502 templates/transactions/transaction_list.html:36
 msgid "Failed"
-msgstr "Қабылданбағандар"
+msgstr "Қабылданбаған"
 
 #: templates/home.html:516
 msgid "Bank Card Tiers"
-msgstr ""
+msgstr "Банк карталарының деңгейлері"
 
 #: templates/home.html:517
 msgid "Tailored for every ambition"
-msgstr ""
+msgstr "Әрбір мақсат үшін жасалған"
 
 #: templates/home.html:518
 msgid ""
 "Start with zero maintenance, unlock high-yield privileges and priority "
 "concierge."
-msgstr "Тегін қызмет көрсетуден бастаңыз, артықшылықтар мен жеке консьерж-сервисті пайдаланыңыз."
+msgstr "Тегін қызмет көрсетуден бастап, жоғары кірісті артықшылықтар мен басым консьерж қызметін ашыңыз."
 
 #: templates/home.html:521
 msgid "Monthly"
-msgstr ""
+msgstr "Ай сайын"
 
 #: templates/home.html:526
 #, python-format
 msgid "Save 35%%"
-msgstr ""
+msgstr "35% үнемдеу"
 
 #: templates/home.html:531
 msgid "Gold Card"
-msgstr ""
+msgstr "Gold Card"
 
 #: templates/home.html:533
 msgid "per month"
-msgstr ""
+msgstr "айына"
 
 #: templates/home.html:533
 msgid "free forever"
-msgstr ""
+msgstr "мәңгілікке тегін"
 
 #: templates/home.html:535
 msgid "Zero annual maintenance fees"
-msgstr ""
+msgstr "Жылдық қызмет көрсету 0 ₸"
 
 #: templates/home.html:539
 msgid "Instant digital & physical issuance"
-msgstr ""
+msgstr "Цифрлық және пластикалық картаны лездік шығару"
 
 #: templates/home.html:540
 msgid "Zero fee KZT transfers by IBAN"
-msgstr ""
+msgstr "IBAN арқылы теңгемен комиссиясыз аударымдар"
 
 #: templates/home.html:541
 msgid "Up to 5 multi-currency accounts"
-msgstr ""
+msgstr "5-ке дейін мультивалюталық шот"
 
 #: templates/home.html:542
 msgid "Standard 24/7 chat support"
-msgstr ""
+msgstr "Чатта тәулік бойы стандартты қолдау"
 
 #: templates/home.html:545
 msgid "Order Gold Card"
-msgstr ""
+msgstr "Gold картасын ашу"
 
 #: templates/home.html:551
 msgid "Most popular"
-msgstr ""
+msgstr "Ең танымал"
 
 #: templates/home.html:552
 msgid "Platinum Card"
-msgstr ""
+msgstr "Platinum Card"
 
 #: templates/home.html:554
 msgid "per month, billed"
-msgstr ""
+msgstr "айына, төлем түрі"
 
 #: templates/home.html:554
 msgid "monthly"
-msgstr ""
+msgstr "ай сайын"
 
 #: templates/home.html:556
 msgid "billed annually"
-msgstr ""
+msgstr "жылдық төлем кезінде"
 
 #: templates/home.html:557
 msgid "billed"
-msgstr ""
+msgstr "төлем"
 
 #: templates/home.html:557
 msgid "annually"
-msgstr ""
+msgstr "жылдық"
 
 #: templates/home.html:560
 msgid "Cashback on dining & travel"
-msgstr ""
+msgstr "Мейрамханалар мен саяхаттардағы кэшбэк"
 
 #: templates/home.html:561
 msgid "Titanium metallic physical card"
-msgstr ""
+msgstr "Титаннан жасалған металл карта"
 
 #: templates/home.html:562
 msgid "Airport lounge access (LoungeKey)"
-msgstr ""
+msgstr "Әуежайлардың бизнес-залдарына қолжетімділік (LoungeKey)"
 
 #: templates/home.html:563
 msgid "Priority 24/7 dedicated banker"
-msgstr ""
+msgstr "Жеке банкир 24/7"
 
 #: templates/home.html:564
 msgid "15 foreign currencies with zero FX fee"
-msgstr ""
+msgstr "Айырбастау комиссиясынсыз 15 шетелдік валюта"
 
 #: templates/home.html:565
 msgid "Extended daily withdrawal limits"
-msgstr ""
+msgstr "Қолма-қол ақша алуға ұлғайтылған тәуліктік лимиттер"
 
 #: templates/home.html:568
 msgid "Order Platinum Card"
-msgstr ""
+msgstr "Platinum картасын ашу"
 
 #: templates/home.html:574
 msgid "Black Card"
-msgstr ""
+msgstr "Black Card"
 
 #: templates/home.html:575
 msgid "Elite"
-msgstr ""
+msgstr "Арнайы"
 
 #: templates/home.html:576
 msgid "tailored for high net worth"
-msgstr ""
+msgstr "ірі капитал иелеріне арналған"
 
 #: templates/home.html:579
 msgid "Unlimited premium cashback"
-msgstr ""
+msgstr "Шектеусіз премиум кэшбэк"
 
 #: templates/home.html:580
 msgid "PVD-coated obsidian steel card"
-msgstr ""
+msgstr "PVD жабындысы бар обсидиан болат картасы"
 
 #: templates/home.html:581
 msgid "Personal executive wealth manager"
-msgstr ""
+msgstr "Жеке капиталды басқарушы менеджер"
 
 #: templates/home.html:582
 msgid "Unlimited international SWIFT transfers"
-msgstr ""
+msgstr "Шектеусіз халықаралық SWIFT аударымдары"
 
 #: templates/home.html:583
 msgid "All 35+ global currencies included"
-msgstr ""
+msgstr "Барлық 35+ әлемдік валюта қамтылған"
 
 #: templates/home.html:584
 msgid "Custom credit limits up to ₸50,000,000"
-msgstr ""
+msgstr "₸50 000 000-ға дейінгі жеке несиелік лимит"
 
 #: templates/home.html:587
 msgid "Request Black Card"
-msgstr ""
+msgstr "Black картасына өтінім беру"
 
 #: templates/home.html:597
 msgid "Bank-grade protection"
-msgstr ""
+msgstr "Банктік деңгейдегі қорғаныс"
 
 #: templates/home.html:598
 msgid "Security is not a feature — it's the foundation"
-msgstr "Қауіпсіздік — бұл басты негіз"
+msgstr "Қауіпсіздік — бұл жай ғана функция емес, бұл негіз"
 
 #: templates/home.html:599
 msgid ""
 "Every transaction is shielded by multiple layers of enterprise-grade "
 "cryptographic security. We are audited, regulated, and monitored around the "
 "clock."
-msgstr "Әрбір операция көпдеңгейлі криптографиялық қорғаныспен қорғалған. Жүйе тәулік бойы реттеушілердің қадағалауында."
+msgstr "Әрбір транзакция корпоративтік деңгейдегі криптографиялық шифрлаудың бірнеше деңгейімен қорғалған. Біз аудиттелген, реттелген және тәулік бойы бақылаудамыз."
 
 #: templates/home.html:600
 msgid "Read architecture report"
-msgstr ""
+msgstr "Архитектуралық есеп"
 
 #: templates/home.html:606
 msgid "Insured up to 20,000,000 KZT per depositor"
-msgstr "Әр салымшыға 20 000 000 теңгеге дейін кепілдендірілген"
+msgstr "Әрбір салымшы үшін 20 000 000 ₸ дейін сақтандырылған"
 
 #: templates/home.html:607
 msgid "Guaranteed"
-msgstr ""
+msgstr "Кепілдендірілген"
 
 #: templates/home.html:612
 msgid "Highest tier of international payment card security"
-msgstr "Төлем карталарын қорғаудың халықаралық жоғары стандарты"
+msgstr "Төлем карталары қауіпсіздігінің ең жоғары халықаралық деңгейі"
 
 #: templates/home.html:613
 msgid "Compliant"
-msgstr ""
+msgstr "Сәйкес келеді"
 
 #: templates/home.html:618
 msgid "Global standard for information security management"
-msgstr "Ақпараттық қауіпсіздікті басқарудың жаһандық стандарты"
+msgstr "Ақпараттық қауіпсіздікті басқарудың ғаламдық стандарты"
 
 #: templates/home.html:619
 msgid "Certified"
-msgstr ""
+msgstr "Сертификатталған"
 
 #: templates/home.html:624
 #, python-format
@@ -1605,49 +1603,49 @@ msgstr ""
 
 #: templates/home.html:625
 msgid "Always on"
-msgstr ""
+msgstr "Әрдайым қосулы"
 
 #: templates/home.html:634
 msgid "Client experiences"
-msgstr ""
+msgstr "Клиенттердің пікірлері"
 
 #: templates/home.html:635
 msgid "Trusted by leaders across industries"
-msgstr ""
+msgstr "Бізге түрлі сала көшбасшылары сенеді"
 
 #: templates/home.html:641
 msgid "Pause testimonials"
-msgstr ""
+msgstr "Пікірлерді кідірту"
 
 #: templates/home.html:643
 msgid "Pause"
-msgstr ""
+msgstr "Кідірту"
 
 #: templates/home.html:652
 msgid "Mobile app"
-msgstr ""
+msgstr "Мобильді қосымша"
 
 #: templates/home.html:653
 msgid "Your bank, in your pocket"
-msgstr ""
+msgstr "Сіздің банкіңіз әрқашан қалтаңызда"
 
 #: templates/home.html:654
 msgid ""
 "Full dashboard access, biometric approval for high-value transfers, and "
 "instant transaction push notifications — anywhere in the world."
-msgstr "Шоттарға толық қолжетімділік, ірі аударымдарды биометриялық растау және әлемнің кез келген жерінде лездік хабарламалар."
+msgstr "Шоттарға толық қолжетімділік, ірі аударымдарды биометриялық растау және лездік push-хабарламалар — әлемнің кез келген нүктесінде."
 
 #: templates/home.html:659
 msgid "Download on the"
-msgstr ""
+msgstr "Жүктеп алыңыз:"
 
 #: templates/home.html:666
 msgid "Get it on"
-msgstr ""
+msgstr "Қолжетімді:"
 
 #: templates/home.html:685
 msgid "Or scan our"
-msgstr ""
+msgstr "Немесе сканерлеңіз:"
 
 #: templates/home.html:698
 msgid "Available for iOS & Android"
@@ -1655,15 +1653,15 @@ msgstr "iOS және Android үшін қолжетімді"
 
 #: templates/home.html:711
 msgid "Got questions?"
-msgstr ""
+msgstr "Сұрақтарыңыз бар ма?"
 
 #: templates/home.html:712
 msgid "Frequently asked"
-msgstr ""
+msgstr "Жиі қойылатын сұрақтар"
 
 #: templates/home.html:716
 msgid "Expand all"
-msgstr ""
+msgstr "Барлығын ашу"
 
 #: templates/includes/card_item.html:38
 msgid "CARDHOLDER"
@@ -1679,7 +1677,7 @@ msgstr "Байланыстырылған шот"
 
 #: templates/includes/card_item.html:75
 msgid "Freeze card"
-msgstr ""
+msgstr "Картаны бұғаттау"
 
 #: templates/includes/card_item.html:76
 msgid "Freeze Card"
@@ -1687,7 +1685,7 @@ msgstr "Картаны бұғаттау"
 
 #: templates/includes/card_item.html:79
 msgid "Unfreeze card"
-msgstr ""
+msgstr "Картаны бұғаттан шығару"
 
 #: templates/includes/card_item.html:80
 msgid "Unfreeze Card"
@@ -1752,7 +1750,7 @@ msgstr "Жүйенің жұмыс күйі"
 
 #: templates/includes/footer.html:52
 msgid "Security & Guarantee"
-msgstr ""
+msgstr "Қауіпсіздік және кепілдіктер"
 
 #: templates/includes/footer.html:55
 msgid ""
@@ -1771,19 +1769,19 @@ msgstr ""
 
 #: templates/includes/footer.html:68
 msgid "Adapted from"
-msgstr ""
+msgstr "Негізінде бейімделген"
 
 #: templates/includes/footer.html:73
 msgid "Privacy"
-msgstr ""
+msgstr "Құпиялылық"
 
 #: templates/includes/footer.html:74
 msgid "Terms"
-msgstr ""
+msgstr "Шарттар"
 
 #: templates/includes/footer.html:75
 msgid "Security"
-msgstr ""
+msgstr "Қауіпсіздік"
 
 #: templates/includes/navbar.html:30 templates/includes/navbar.html:105
 msgid "Cards"
@@ -1891,11 +1889,11 @@ msgstr ""
 
 #: templates/includes/sidebar.html:66
 msgid "Support Tickets"
-msgstr ""
+msgstr "Қолдау қызметіне өтініштер"
 
 #: templates/includes/sidebar.html:69
 msgid "Profile & Settings"
-msgstr ""
+msgstr "Профиль және баптаулар"
 
 #: templates/includes/sidebar.html:84 templates/layouts/dashboard_base.html:66
 #: templates/layouts/dashboard_base.html:67
@@ -2010,7 +2008,7 @@ msgstr "Күйі бойынша сүзу"
 
 #: templates/transactions/transaction_list.html:33
 msgid "All Statuses"
-msgstr "Барлық күйлер"
+msgstr "Барлық мәртебелер"
 
 #: templates/transactions/transaction_list.html:35
 msgid "Pending"
@@ -2082,13 +2080,13 @@ msgstr "Растау және аудару"
 
 #: templates/users/login.html:4
 msgid "Sign In | RocketBank"
-msgstr ""
+msgstr "Кіру | RocketBank"
 
 #: templates/users/login.html:5
 msgid ""
 "Sign in securely to your RocketBank account to manage cards, accounts, and "
 "payments."
-msgstr ""
+msgstr "Карталарды, шоттарды және төлемдерді басқару үшін RocketBank аккаунтына қауіпсіз кіріңіз."
 
 #: templates/users/login.html:16
 msgid "Sign in to RocketBank"
@@ -2100,15 +2098,15 @@ msgstr "Жеке кабинетке кіру үшін деректеріңізд
 
 #: templates/users/login.html:37
 msgid "Email or Username"
-msgstr ""
+msgstr "Email немесе логин"
 
 #: templates/users/login.html:45
 msgid "name@company.com or username"
-msgstr ""
+msgstr "name@company.com немесе логин"
 
 #: templates/users/login.html:56
 msgid "Security Password"
-msgstr ""
+msgstr "Қауіпсіздік құпиясөзі"
 
 #: templates/users/login.html:59
 msgid "Forgot password?"
@@ -2120,23 +2118,23 @@ msgstr ""
 
 #: templates/users/login.html:84
 msgid "Sign In to Portal"
-msgstr ""
+msgstr "Порталға кіру"
 
 #: templates/users/login.html:90
 msgid "Don't have a RocketBank account?"
-msgstr ""
+msgstr "RocketBank-те әлі шотыңыз жоқ па?"
 
 #: templates/users/login.html:92
 msgid "Open account in 3 minutes"
-msgstr ""
+msgstr "Шотты 3 минутта ашу"
 
 #: templates/users/password_reset.html:4
 msgid "Reset Password | RocketBank"
-msgstr ""
+msgstr "Құпиясөзді қалпына келтіру | RocketBank"
 
 #: templates/users/password_reset.html:14
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Құпиясөзді ұмыттыңыз ба?"
 
 #: templates/users/password_reset.html:17
 msgid ""
@@ -2146,7 +2144,7 @@ msgstr ""
 
 #: templates/users/password_reset.html:42 templates/users/register.html:45
 msgid "name@example.com"
-msgstr ""
+msgstr "name@example.com"
 
 #: templates/users/password_reset.html:50
 msgid "Send Password Reset Link"
@@ -2158,11 +2156,11 @@ msgstr "Кіруге оралу"
 
 #: templates/users/password_reset_complete.html:4
 msgid "Password Changed | RocketBank"
-msgstr ""
+msgstr "Құпиясөз өзгертілді | RocketBank"
 
 #: templates/users/password_reset_complete.html:11
 msgid "Password Changed Successfully!"
-msgstr ""
+msgstr "Құпиясөз сәтті өзгертілді!"
 
 #: templates/users/password_reset_complete.html:14
 msgid ""
@@ -2174,7 +2172,7 @@ msgstr ""
 
 #: templates/users/password_reset_complete.html:17
 msgid "Sign In Now"
-msgstr ""
+msgstr "Қазір кіру"
 
 #: templates/users/password_reset_confirm.html:4
 msgid "Set New Password | RocketBank"
@@ -2190,19 +2188,19 @@ msgstr "Төменде жаңа құпиясөзіңізді енгізіңіз"
 
 #: templates/users/password_reset_confirm.html:23
 msgid "New Password"
-msgstr ""
+msgstr "Жаңа құпиясөз"
 
 #: templates/users/password_reset_confirm.html:33
 msgid "Confirm New Password"
-msgstr ""
+msgstr "Жаңа құпиясөзді растаңыз"
 
 #: templates/users/password_reset_confirm.html:42
 msgid "Change Password"
-msgstr ""
+msgstr "Құпиясөзді өзгерту"
 
 #: templates/users/password_reset_confirm.html:49
 msgid "Password Reset Link Expired"
-msgstr ""
+msgstr "Сілтеменің мерзімі аяқталды"
 
 #: templates/users/password_reset_confirm.html:52
 msgid "The password reset link was either invalid or has expired."
@@ -2211,11 +2209,11 @@ msgstr ""
 
 #: templates/users/password_reset_confirm.html:55
 msgid "Request a New Link"
-msgstr ""
+msgstr "Жаңа сілтеме сұрау"
 
 #: templates/users/password_reset_done.html:4
 msgid "Reset Link Sent | RocketBank"
-msgstr ""
+msgstr "Сілтеме жіберілді | RocketBank"
 
 #: templates/users/password_reset_done.html:11
 msgid "Password Reset Email Sent"
@@ -2231,7 +2229,7 @@ msgstr ""
 
 #: templates/users/password_reset_done.html:17
 msgid "Return to Sign In"
-msgstr ""
+msgstr "Кіруге оралу"
 
 #: templates/users/profile.html:4
 msgid "User Profile"
@@ -2282,17 +2280,17 @@ msgstr "Құжаттарды жүктеу"
 
 #: templates/users/register.html:4
 msgid "Open an Account | RocketBank"
-msgstr ""
+msgstr "Шот ашу | RocketBank"
 
 #: templates/users/register.html:5
 msgid ""
 "Register for RocketBank and gain access to multi-currency IBAN accounts, "
 "cashback debit cards, and instant transfers."
-msgstr ""
+msgstr "RocketBank-ке тіркеліп, мультивалюталық IBAN шоттарына, кэшбэгі бар дебеттік карталарға және лездік аударымдарға қол жеткізіңіз."
 
 #: templates/users/register.html:16
 msgid "Open RocketBank Account"
-msgstr ""
+msgstr "RocketBank шотын ашу"
 
 #: templates/users/register.html:19
 msgid "Join next-generation banking with zero monthly maintenance fee"
@@ -2300,15 +2298,15 @@ msgstr "Тегін қызмет көрсететін жаңа буын банк�
 
 #: templates/users/register.html:55
 msgid "Username"
-msgstr ""
+msgstr "Пайдаланушы аты"
 
 #: templates/users/register.html:63
 msgid "username"
-msgstr ""
+msgstr "логин"
 
 #: templates/users/register.html:73
 msgid "Phone Number"
-msgstr ""
+msgstr "Телефон нөмірі"
 
 #: templates/users/register.html:92
 msgid "Password"
@@ -2332,7 +2330,7 @@ msgstr "және жасым 18-ге толғанын растаймын."
 
 #: templates/users/register.html:138
 msgid "Create My Account"
-msgstr ""
+msgstr "Аккаунт ашу"
 
 #: templates/users/register.html:144
 msgid "Already registered?"
@@ -2340,4 +2338,361 @@ msgstr ""
 
 #: templates/users/register.html:146
 msgid "Sign in here"
-msgstr ""
+msgstr "Осында кіріңіз"
+
+msgid "Close menu"
+msgstr "Мәзірді жабу"
+
+msgid "Term Deposits"
+msgstr "Мерзімді депозиттер"
+
+msgid "Support & Tickets"
+msgstr "Қолдау қызметі"
+
+msgid "Security Settings"
+msgstr "Қауіпсіздік баптаулары"
+
+msgid "Current Session"
+msgstr "Ағымдағы сессия"
+
+msgid "User profile avatar"
+msgstr "Профиль аватары"
+
+msgid "Legal & Security"
+msgstr "Құқықтық ақпарат және қауіпсіздік"
+
+msgid "Privacy Policy"
+msgstr "Құпиялылық саясаты"
+
+msgid "Security Standards"
+msgstr "Қауіпсіздік стандарттары"
+
+msgid "Regulatory Disclosures"
+msgstr "Ақпаратты ашу"
+
+msgid "Explore Products"
+msgstr "Өнімдерді көру"
+
+msgid "Daily Transaction Volume"
+msgstr "Күндік транзакция көлемі"
+
+msgid "Financial License Protection"
+msgstr "Мемлекеттік лицензиямен қорғалған"
+
+msgid "Real-Time Ledger Latency"
+msgstr "Қаржылық тізілім кідірісі"
+
+msgid "Continuous System Uptime"
+msgstr "Үздіксіз қолжетімділік"
+
+msgid "Everything You Need"
+msgstr "Қаржыға қажеттінің барлығы"
+
+msgid "A Complete Suite for Personal & Business Capital"
+msgstr "Жеке және корпоративтік капиталға арналған толық шешімдер кешені"
+
+msgid "Instant Settlement Rails"
+msgstr "Лездік қаржылық есеп айырысу"
+
+msgid "Predictive Intelligence"
+msgstr "Болжамдық аналитика"
+
+msgid "Multi-Currency Treasury"
+msgstr "Көпвалюталық қазынашылық"
+
+msgid "Zero-Trust Architecture"
+msgstr "Zero-Trust қауіпсіздік архитектурасы"
+
+msgid "Real-Time Overview"
+msgstr "Нақты уақыттағы шолу"
+
+msgid "Built for Speed, Control & Clarity"
+msgstr "Жылдамдық, бақылау және ашықтық үшін жасалған"
+
+msgid "Open Free Account"
+msgstr "Тегін шот ашу"
+
+msgid "View Analytics"
+msgstr "Аналитиканы қарау"
+
+msgid "Transparent Pricing"
+msgstr "Ашық тарифтер"
+
+msgid "Card Tiers Engineered for You"
+msgstr "Сіздің мақсаттарыңызға арналған карталар"
+
+msgid "Monthly billing"
+msgstr "Ай сайын"
+
+msgid "Annual billing"
+msgstr "Жыл сайын"
+
+msgid "Save 20%"
+msgstr "20% жеңілдік"
+
+msgid "Institutional Security"
+msgstr "Институционалдық қауіпсіздік"
+
+msgid "PCI DSS Level 1"
+msgstr "PCI DSS 1-деңгейі"
+
+msgid "ISO 27001"
+msgstr "ISO 27001"
+
+msgid "AI Fraud Shield"
+msgstr "ЖИ антифрод жүйесі"
+
+msgid "Blocks 99.98% of fraudulent attempts in sub-seconds"
+msgstr "Алаяқтық әрекеттердің 99.98%-ын секундтың үлесінде бұғаттайды"
+
+msgid "RocketBank Mobile Experience"
+msgstr "RocketBank мобильді қосымшасы"
+
+msgid "Common Questions"
+msgstr "Жиі қойылатын сұрақтар"
+
+msgid "Everything You Need to Know"
+msgstr "Банк туралы білуіңіз керек барлық ақпарат"
+
+msgid "Financial Portfolio"
+msgstr "Қаржылық портфель"
+
+msgid "Total Net Liquidity"
+msgstr "Жалпы таза өтімділік"
+
+msgid "Estimated across all accounts"
+msgstr "Барлық шоттар бойынша бағалау"
+
+msgid "Active Accounts Total"
+msgstr "Белсенді шоттар саны"
+
+msgid "Checking & Savings"
+msgstr "Ағымдағы және жинақ"
+
+msgid "Active Plastic & Virtual"
+msgstr "Белсенді пластикалық және виртуалды"
+
+msgid "Active Loans Balance"
+msgstr "Несиелер бойынша қалдық"
+
+msgid "Pending repayment"
+msgstr "Өтеуге жатады"
+
+msgid "Quick Banking Services"
+msgstr "Жылдам банктік қызметтер"
+
+msgid "Instant IBAN & P2P"
+msgstr "IBAN және P2P бойынша лезде"
+
+msgid "Order Card"
+msgstr "Картаға тапсырыс беру"
+
+msgid "Take a Loan"
+msgstr "Несие алу"
+
+msgid "Recent Transactions"
+msgstr "Соңғы транзакциялар"
+
+msgid "View Full History"
+msgstr "Толық тарих"
+
+msgid "My Bank Accounts"
+msgstr "Менің банктік шоттарым"
+
+msgid "Sign In to RocketBank"
+msgstr "RocketBank-ке кіру"
+
+msgid "Remember this device for 30 days"
+msgstr "Бұл құрылғыны 30 күнге сақтау"
+
+msgid "Don't have an account?"
+msgstr "Әлі тіркелмедіңіз бе?"
+
+msgid "Create Free Account"
+msgstr "Тегін тіркелу"
+
+msgid "Create Your RocketBank Account"
+msgstr "RocketBank-те тіркелу"
+
+msgid "Already have an account?"
+msgstr "Бұрыннан тіркелгенсіз бе?"
+
+msgid "Reset Your Password"
+msgstr "Құпиясөзді қалпына келтіру"
+
+msgid "12,000+ businesses and clients trust RocketBank"
+msgstr "12 000+ клиент пен бизнес RocketBank-ке сенеді"
+
+msgid "12,000+ clients trust RocketBank"
+msgstr "12 000+ клиент RocketBank-ке сенеді"
+
+msgid "ROCKETBANK COMMAND CENTER"
+msgstr "ROCKETBANK БАСҚАРУ ОРТАЛЫҒЫ"
+
+msgid "Kaspi / Stripe Payout"
+msgstr "Kaspi / Stripe төлемі"
+
+msgid "Subscription renewal"
+msgstr "Жазылымды жаңарту"
+
+msgid "100% free peer-to-peer"
+msgstr "Клиенттер арасында 100% тегін"
+
+msgid "190+ countries"
+msgstr "190+ ел"
+
+msgid "35+ currencies"
+msgstr "35+ валюта"
+
+msgid "256-bit AES"
+msgstr "256-биттік AES"
+
+msgid "Transfers"
+msgstr "Аударымдар"
+
+msgid "Analytics"
+msgstr "Талдау"
+
+msgid "Multi-currency"
+msgstr "Мультивалюта"
+
+msgid "KDIF Deposit Guarantee"
+msgstr "ҚДКҚ депозиттік кепілдігі"
+
+msgid "24/7 SOC"
+msgstr "Тәулік бойы SOC"
+
+msgid "AI Anomaly Guard"
+msgstr "ЖИ аномалия күзеті"
+
+msgid "Protecting"
+msgstr "Қорғалуда"
+
+msgid "Online"
+msgstr "Желіде"
+
+msgid "Active"
+msgstr "Белсенді"
+
+msgid "Save 35%"
+msgstr "35% үнемдеу"
+
+msgid "RocketBank Gold"
+msgstr "RocketBank Gold"
+
+msgid "RocketBank Platinum"
+msgstr "RocketBank Platinum"
+
+msgid "RocketBank Black"
+msgstr "RocketBank Black"
+
+msgid "Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing."
+msgstr "RocketBank-тің 10%-ға дейін кэшбэгі, тегін қызмет көрсетуі және лездік цифрлық шығарылымы бар премиум дебеттік және несиелік карталары."
+
+msgid "Play"
+msgstr "Ойнату"
+
+msgid "CFO at Hive Commerce"
+msgstr "Hive Commerce қаржы директоры"
+
+msgid "RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed."
+msgstr "RocketBank халықаралық төлемдеріміздің мерзімін 3 күннен 2 секундқа дейін қысқартты. Бұл біздің қаржылық айналым жылдамдығымызды түбегейлі өзгертті."
+
+msgid "Finance Director, Nomad Labs"
+msgstr "Nomad Labs қаржы директоры"
+
+msgid "The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled."
+msgstr "Мультивалюталық IBAN шоттары биыл бізге валюта айырбастаудан ₸18 млн астам қаржы үнемдеді. Бағамдардың ашықтығы тамаша."
+
+msgid "Head of Ops, Stackflow"
+msgstr "Stackflow операциялық директоры"
+
+msgid "Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses."
+msgstr "Ақырында IT-компаниялар мен заманауи бизнеске арналған, өте жылдам жұмыс істейтін цифрлық банк пайда болды."
+
+msgid "CTO at Vaulted"
+msgstr "Vaulted техникалық директоры"
+
+msgid "Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional."
+msgstr "Барлық бизнес-шоттарымызды бір күнде көшірдік. REST API құжаттамасы мен лездік вебхуктер өте керемет жасалған."
+
+msgid "Founder, CloudMint"
+msgstr "CloudMint негізін қалаушы"
+
+msgid "The automated fraud detection and instant card freeze give our executive team complete peace of mind."
+msgstr "Алаяқтықты автоматты түрде анықтау және картаны бірден бұғаттау біздің басшылыққа толық сенімділік береді."
+
+msgid "Controller, Drift Studio"
+msgstr "Drift Studio қаржы бақылаушысы"
+
+msgid "Automated payroll and batch payments save our accounting team over 25 hours every month."
+msgstr "Жалақыны автоматты төлеу және жаппай аударымдар біздің есепшілерге ай сайын 25 сағаттан астам уақытты үнемдейді."
+
+msgid "Collapse all"
+msgstr "Барлығын жинау"
+
+msgid "How quickly can I open an account and start sending payments?"
+msgstr "Шотты қаншалықты жылдам ашып, төлемдерді бастауға болады?"
+
+msgid "You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork."
+msgstr "Сіз 3 минуттан аз уақыт ішінде бастай аласыз. Онлайн тіркеліп, жылдам биометриялық тексеруден өтіңіз және құжаттарсыз төлемдерді жасаңыз."
+
+msgid "What are the transaction fees for domestic and global transfers?"
+msgstr "Ішкі және халықаралық аударымдар үшін комиссия қандай?"
+
+msgid "All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups."
+msgstr "RocketBank ішіндегі барлық стандартты ішкі және клиент арасындағы аударымдар 0,00 ₸ комиссиямен 100% тегін. Халықаралық аударымдар жасырын үстемеақысыз тікелей банкаралық бағамдар бойынша жүргізіледі."
+
+msgid "Are deposits insured by the Kazakhstan Deposit Insurance Fund?"
+msgstr "Депозиттер Қазақстанның депозиттерге кепілдік беру қорымен сақтандырылған ба?"
+
+msgid "Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan."
+msgstr "Иә. RocketBank-тегі барлық жинақ депозиттеріне Қазақстан Республикасының заңнамасына сәйкес ҚДКҚ тарапынан әрбір салымшыға 20 000 000 ₸ дейін толық мемлекеттік кепілдік беріледі."
+
+msgid "How does RocketBank protect client funds and cards from fraud?"
+msgstr "RocketBank клиенттердің қаражаты мен карталарын алаяқтықтан қалай қорғайды?"
+
+msgid "We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly."
+msgstr "Біз банктік деңгейдегі 256-биттік AES шифрлауын, қатар деңгейіндегі ACID транзакциялық құлыптарын, SOC 2 стандартын және алаяқтықты лезде бұғаттау үшін ЖИ мониторингін қолданамыз."
+
+msgid "Can I integrate RocketBank with accounting tools and REST APIs?"
+msgstr "RocketBank-ті бухгалтерлік бағдарламалармен және REST API-мен біріктіруге бола ма?"
+
+msgid "Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms."
+msgstr "Иә! RocketBank қаржылық және ERP жүйелері үшін JWT аутентификациясы, вебхук хабарламалары және автоматты экспорт құралдары бар толық OpenAPI 3.0 / Swagger REST API ұсынады."
+
+msgid "How can I freeze my bank card if it is lost or compromised?"
+msgstr "Карта жоғалған немесе деректері бұзылған жағдайда оны қалай бұғаттауға болады?"
+
+msgid "You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately."
+msgstr "Сіз кез келген дебеттік немесе несиелік картаны клиенттік кабинеттен немесе мобильді қосымшадан бір басумен лезде бұғаттай немесе бұғаттан шығара аласыз."
+
+msgid "Critical (>85%)"
+msgstr "Қауіпті (>85%)"
+
+msgid "Optimal (<60%)"
+msgstr "Оңтайлы (<60%)"
+
+msgid "High-yield savings and term deposits with up to 18% annual return, daily capitalization, and state insurance protection up to 20M KZT."
+msgstr "Жылдық 18%-ға дейінгі мөлшерлемесі, күнделікті капитализациясы және 20 млн теңгеге дейін ҚДКҚ мемлекеттік кепілдігі бар жинақ және мерзімді депозиттер."
+
+msgid "Maximize your savings with compound daily interest, flexible top-up options, and 100% state deposit guarantee by KDIF."
+msgstr "Күнделікті күрделі пайызбен, икемді толықтырумен және ҚДКҚ-ның 100% мемлекеттік кепілдігімен жинақтарыңызды көбейтіңіз."
+
+msgid "Sarah Kim"
+msgstr "Сара Ким"
+
+msgid "James Adler"
+msgstr "Джеймс Адлер"
+
+msgid "Priya Mehta"
+msgstr "Прия Мехта"
+
+msgid "Tom Brennan"
+msgstr "Том Бреннан"
+
+msgid "Liu Wei"
+msgstr "Лю Вэй"
+
+msgid "Amara Osei"
+msgstr "Амара Осей"

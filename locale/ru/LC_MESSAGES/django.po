@@ -28,7 +28,7 @@ msgstr ""
 #: apps/core/validators.py:34
 #, python-format
 msgid "Rating must be between 1 and 5. Got %(value)s."
-msgstr ""
+msgstr "Оценка должна быть от 1 до 5. Получено: %(value)s."
 
 #: apps/core/validators.py:49
 #, python-format
@@ -38,7 +38,7 @@ msgstr ""
 #: apps/core/validators.py:72
 #, python-format
 msgid "Image file size cannot exceed %(max)s MB. Got %(actual).1f MB."
-msgstr ""
+msgstr "Размер изображения не должен превышать %(max)s МБ. Текущий размер: %(actual).1f МБ."
 
 #: apps/core/validators.py:81
 msgid ", "
@@ -197,7 +197,7 @@ msgstr "Операционный центр, лаборатории разраб
 
 #: templates/accounts/account_list.html:4
 msgid "My Bank Accounts | RocketBank"
-msgstr ""
+msgstr "Мои банковские счета | RocketBank"
 
 #: templates/accounts/account_list.html:15
 msgid "Bank Accounts"
@@ -255,16 +255,16 @@ msgstr "Сбросить"
 
 #: templates/accounts/account_list.html:48
 msgid "List of client accounts registered under your name in RocketBank"
-msgstr ""
+msgstr "Список счетов, открытых на ваше имя в RocketBank"
 
 #: templates/accounts/account_list.html:52
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #: templates/accounts/account_list.html:53
 #: templates/accounts/dashboard.html:164
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: templates/accounts/account_list.html:54
 msgid "Currency"
@@ -278,11 +278,11 @@ msgstr "Статус"
 
 #: templates/accounts/account_list.html:56 templates/home.html:76
 msgid "Balance"
-msgstr ""
+msgstr "Баланс"
 
 #: templates/accounts/account_list.html:57
 msgid "Opened Date"
-msgstr ""
+msgstr "Дата открытия"
 
 #: templates/accounts/account_list.html:58
 msgid "Actions"
@@ -299,17 +299,17 @@ msgstr "Перевод"
 
 #: templates/accounts/dashboard.html:4
 msgid "Dashboard | RocketBank"
-msgstr ""
+msgstr "Кабинет | RocketBank"
 
 #: templates/accounts/dashboard.html:5
 msgid ""
 "RocketBank client dashboard. View financial balances, multi-currency "
 "accounts, and recent transactions."
-msgstr ""
+msgstr "Личный кабинет RocketBank. Просматривайте финансовые балансы, мультивалютные счета и историю операций."
 
 #: templates/accounts/dashboard.html:13
 msgid "Welcome"
-msgstr ""
+msgstr "Добро пожаловать"
 
 #: templates/accounts/dashboard.html:16
 msgid "Here is your real-time financial portfolio overview for today"
@@ -329,11 +329,11 @@ msgstr "Активные счета"
 
 #: templates/accounts/dashboard.html:44
 msgid "Multi-currency enabled"
-msgstr ""
+msgstr "Мультивалюта включена"
 
 #: templates/accounts/dashboard.html:48
 msgid "Checking Balance"
-msgstr ""
+msgstr "Баланс текущего счета"
 
 #: templates/accounts/dashboard.html:51
 msgid "Available for instant payments"
@@ -341,11 +341,11 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:55
 msgid "Savings Balance"
-msgstr ""
+msgstr "Баланс сберегательного счета"
 
 #: templates/accounts/dashboard.html:59
 msgid "Daily capitalization active"
-msgstr ""
+msgstr "Ежедневная капитализация активна"
 
 #: templates/accounts/dashboard.html:74
 msgid "BANK ACCOUNTS"
@@ -353,15 +353,15 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:76
 msgid "View All"
-msgstr ""
+msgstr "Посмотреть все"
 
 #: templates/accounts/dashboard.html:93
 msgid "QUICK SERVICES"
-msgstr ""
+msgstr "БЫСТРЫЕ ОПЕРАЦИИ"
 
 #: templates/accounts/dashboard.html:97
 msgid "Instant Money Transfer"
-msgstr ""
+msgstr "Мгновенный перевод денег"
 
 #: templates/accounts/dashboard.html:100 templates/includes/sidebar.html:37
 msgid "Order Card (Wizard)"
@@ -373,31 +373,31 @@ msgstr ""
 
 #: templates/accounts/dashboard.html:106
 msgid "Open Term Deposit"
-msgstr ""
+msgstr "Открыть срочный депозит"
 
 #: templates/accounts/dashboard.html:109
 msgid "Saved Beneficiaries"
-msgstr ""
+msgstr "Сохраненные получатели"
 
 #: templates/accounts/dashboard.html:112
 msgid "Saving Goals Tracker"
-msgstr ""
+msgstr "Трекер целей накоплений"
 
 #: templates/accounts/dashboard.html:121
 msgid "SAVING GOALS"
-msgstr ""
+msgstr "ЦЕЛИ НАКОПЛЕНИЙ"
 
 #: templates/accounts/dashboard.html:122 templates/cards/catalog.html:101
 msgid "Details"
-msgstr ""
+msgstr "Детали"
 
 #: templates/accounts/dashboard.html:150
 msgid "RECENT TRANSACTIONS"
-msgstr ""
+msgstr "ПОСЛЕДНИЕ ТРАНЗАКЦИИ"
 
 #: templates/accounts/dashboard.html:152
 msgid "Full History"
-msgstr ""
+msgstr "Вся история"
 
 #: templates/accounts/dashboard.html:158
 msgid "Recent financial transactions across your accounts"
@@ -405,7 +405,7 @@ msgstr "История операций по вашим счетам"
 
 #: templates/accounts/dashboard.html:161
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: templates/accounts/dashboard.html:162
 #: templates/transactions/transaction_list.html:65
@@ -439,7 +439,7 @@ msgstr "Финансовая аналитика и цели накоплений
 
 #: templates/analytics/dashboard.html:14
 msgid "Financial Analytics & Goals"
-msgstr ""
+msgstr "Финансовая аналитика и цели"
 
 #: templates/analytics/dashboard.html:15
 msgid ""
@@ -475,12 +475,12 @@ msgstr "Лимит бюджета"
 
 #: templates/analytics/dashboard.html:39
 msgid "Monthly budget expenditure meter"
-msgstr ""
+msgstr "Индикатор расходов ежемесячного бюджета"
 
 #: templates/analytics/dashboard.html:44
 #, python-format
 msgid "Optimal (<60%%)"
-msgstr ""
+msgstr "Оптимальный (<60%)"
 
 #: templates/analytics/dashboard.html:45
 #, python-format
@@ -490,7 +490,7 @@ msgstr ""
 #: templates/analytics/dashboard.html:46
 #, python-format
 msgid "Critical (>85%%)"
-msgstr ""
+msgstr "Критический (>85%)"
 
 #: templates/analytics/dashboard.html:52
 msgid "Total Goals Target"
@@ -502,7 +502,7 @@ msgstr "Уже накоплено"
 
 #: templates/analytics/dashboard.html:73
 msgid "Active Saving Goals"
-msgstr "Активные финансовые цели"
+msgstr "Активные цели накоплений"
 
 #: templates/analytics/dashboard.html:87
 msgid "Target"
@@ -564,13 +564,13 @@ msgstr ""
 
 #: templates/base.html:23
 msgid "Modern Digital Banking"
-msgstr ""
+msgstr "Современный цифровой банкинг"
 
 #: templates/base.html:24
 msgid ""
 "Experience effortless banking with high-yield deposits, zero-fee multi-"
 "currency transfers, and modern security."
-msgstr ""
+msgstr "Ощутите легкость банкинга с высокодоходными депозитами, бесплатными мультивалютными переводами и современной защитой."
 
 #: templates/base.html:74
 msgid "Skip to main content"
@@ -578,11 +578,11 @@ msgstr "Перейти к основному содержимому"
 
 #: templates/cards/card_list.html:4
 msgid "My Payment Cards | RocketBank"
-msgstr ""
+msgstr "Мои банковские карты | RocketBank"
 
 #: templates/cards/card_list.html:15
 msgid "My Payment Cards"
-msgstr ""
+msgstr "Мои банковские карты"
 
 #: templates/cards/card_list.html:18
 msgid "Manage card limits, freeze status, and link cards to bank accounts"
@@ -590,7 +590,7 @@ msgstr "Управляйте лимитами, заморозкой и прив�
 
 #: templates/cards/card_list.html:22
 msgid "Order New Card (Wizard)"
-msgstr ""
+msgstr "Заказать новую карту (Мастер)"
 
 #: templates/cards/card_list.html:42
 msgid "Card Security & Instant Fraud Protection"
@@ -614,15 +614,15 @@ msgstr "Витрина карт — Дебетовые и кредитные к�
 msgid ""
 "Explore RocketBank's premium debit and credit cards with up to 10%% "
 "cashback, zero maintenance fee, and instant digital issuing."
-msgstr ""
+msgstr "Премиальные дебетовые и кредитные карты RocketBank с кэшбэком до 10%, бесплатным обслуживанием и мгновенным цифровым выпуском."
 
 #: templates/cards/catalog.html:11
 msgid "Payment Products"
-msgstr ""
+msgstr "Платежные продукты"
 
 #: templates/cards/catalog.html:13
 msgid "RocketBank Payment Cards"
-msgstr ""
+msgstr "Банковские карты RocketBank"
 
 #: templates/cards/catalog.html:16
 msgid ""
@@ -634,15 +634,15 @@ msgstr ""
 
 #: templates/cards/catalog.html:23
 msgid "Search cards by name..."
-msgstr ""
+msgstr "Поиск карт по названию..."
 
 #: templates/cards/catalog.html:23
 msgid "Search cards"
-msgstr ""
+msgstr "Поиск карт"
 
 #: templates/cards/catalog.html:24
 msgid "Filter by tier"
-msgstr ""
+msgstr "Фильтр по уровню"
 
 #: templates/cards/catalog.html:25
 msgid "All Tiers"
@@ -650,7 +650,7 @@ msgstr ""
 
 #: templates/cards/catalog.html:30
 msgid "Sort cards"
-msgstr ""
+msgstr "Сортировка карт"
 
 #: templates/cards/catalog.html:31 templates/credits/catalog.html:24
 #: templates/deposits/catalog.html:24
@@ -659,11 +659,11 @@ msgstr "По умолчанию"
 
 #: templates/cards/catalog.html:32
 msgid "Highest Cashback"
-msgstr ""
+msgstr "Максимальный кэшбэк"
 
 #: templates/cards/catalog.html:33
 msgid "Lowest Annual Fee"
-msgstr ""
+msgstr "Минимальная годовая плата"
 
 #: templates/cards/catalog.html:35 templates/deposits/catalog.html:28
 #: templates/support/faq.html:22
@@ -710,11 +710,11 @@ msgstr ""
 
 #: templates/cards/detail.html:79 templates/home.html:538
 msgid "Cashback on all purchases"
-msgstr ""
+msgstr "Кэшбэк на все покупки"
 
 #: templates/cards/detail.html:81
 msgid "Paid automatically on the 1st"
-msgstr ""
+msgstr "Выплачивается 1-го числа каждого месяца"
 
 #: templates/cards/detail.html:84
 msgid "Annual Service Fee"
@@ -722,7 +722,7 @@ msgstr ""
 
 #: templates/cards/detail.html:88
 msgid "No hidden maintenance costs"
-msgstr ""
+msgstr "Без скрытых комиссий за обслуживание"
 
 #: templates/cards/detail.html:94
 msgid "Apply for this Card Now"
@@ -730,11 +730,11 @@ msgstr ""
 
 #: templates/cards/detail.html:98
 msgid "Compare Other Tiers"
-msgstr ""
+msgstr "Сравнить другие карты"
 
 #: templates/cards/detail.html:108
 msgid "Other Available Card Tiers"
-msgstr ""
+msgstr "Другие доступные карты"
 
 #: templates/cards/detail.html:117
 msgid "Cashback"
@@ -758,7 +758,7 @@ msgstr ""
 
 #: templates/contacts.html:10
 msgid "24/7 Client Relations"
-msgstr "Клиентская поддержка 24/7"
+msgstr "Клиентский сервис 24/7"
 
 #: templates/contacts.html:12
 msgid "We're Here to Help You"
@@ -782,7 +782,7 @@ msgstr "Бесплатно по Казахстану с мобильных и г
 
 #: templates/contacts.html:33
 msgid "24/7 Priority Emergency Line"
-msgstr "Круглосуточная экстренная линия 24/7"
+msgstr "Приоритетная линия экстренной связи 24/7"
 
 #: templates/contacts.html:42
 msgid "Email Departments"
@@ -951,7 +951,7 @@ msgstr "Витрина срочных депозитов"
 msgid ""
 "High-yield savings and term deposits with up to 18%% annual return, daily "
 "capitalization, and state insurance protection up to 20M KZT."
-msgstr ""
+msgstr "Высокодоходные сберегательные и срочные депозиты со ставкой до 18% годовых, ежедневной капитализацией и госгарантией КФГД до 20 млн тенге."
 
 #: templates/deposits/catalog.html:10
 msgid "Savings & Investment"
@@ -966,7 +966,7 @@ msgstr "Высокодоходные депозиты RocketBank"
 msgid ""
 "Maximize your savings with compound daily interest, flexible top-up options, "
 "and 100%% state deposit guarantee by KDIF."
-msgstr ""
+msgstr "Умножайте сбережения с ежедневным сложным процентом, гибким пополнением и 100% государственной гарантией КФГД."
 
 #: templates/deposits/catalog.html:22
 msgid "Search deposit programs..."
@@ -990,7 +990,7 @@ msgstr "Самый короткий срок"
 
 #: templates/deposits/catalog.html:42 templates/home.html:525
 msgid "Annual"
-msgstr "годовых"
+msgstr "В год"
 
 #: templates/deposits/catalog.html:45
 msgid "Months"
@@ -1060,7 +1060,7 @@ msgstr "RocketBank — современная финансовая платфо�
 
 #: templates/home.html:25
 msgid "Open Client Dashboard"
-msgstr "Перейти в кабинет"
+msgstr "Открыть кабинет"
 
 #: templates/home.html:30
 msgid "Start for free"
@@ -1068,19 +1068,19 @@ msgstr "Начать бесплатно"
 
 #: templates/home.html:34
 msgid "See it in action"
-msgstr ""
+msgstr "Как это работает"
 
 #: templates/home.html:40
 msgid "businesses and clients trust RocketBank"
-msgstr ""
+msgstr "клиентов и компаний доверяют RocketBank"
 
 #: templates/home.html:51
 msgid "Revenue growth"
-msgstr ""
+msgstr "Рост выручки"
 
 #: templates/home.html:60
 msgid "Settlement time"
-msgstr ""
+msgstr "Время расчетов"
 
 #: templates/home.html:71 templates/includes/navbar.html:10
 msgid "Live"
@@ -1088,63 +1088,63 @@ msgstr "Онлайн"
 
 #: templates/home.html:78
 msgid "today"
-msgstr ""
+msgstr "сегодня"
 
 #: templates/home.html:81
 msgid "Sent"
-msgstr ""
+msgstr "Отправлено"
 
 #: templates/home.html:83
 msgid "This month"
-msgstr ""
+msgstr "В этом месяце"
 
 #: templates/home.html:86
 msgid "Received"
-msgstr ""
+msgstr "Получено"
 
 #: templates/home.html:93
 msgid "Volume — 7 days"
-msgstr ""
+msgstr "Объем — 7 дней"
 
 #: templates/home.html:106 templates/home.html:461
 msgid "Mon"
-msgstr ""
+msgstr "Пн"
 
 #: templates/home.html:107 templates/home.html:462
 msgid "Tue"
-msgstr ""
+msgstr "Вт"
 
 #: templates/home.html:108 templates/home.html:463
 msgid "Wed"
-msgstr ""
+msgstr "Ср"
 
 #: templates/home.html:109 templates/home.html:464
 msgid "Thu"
-msgstr ""
+msgstr "Чт"
 
 #: templates/home.html:110 templates/home.html:465
 msgid "Fri"
-msgstr ""
+msgstr "Пт"
 
 #: templates/home.html:111 templates/home.html:466
 msgid "Sat"
-msgstr ""
+msgstr "Сб"
 
 #: templates/home.html:112 templates/home.html:120 templates/home.html:467
 msgid "Today"
-msgstr ""
+msgstr "Сегодня"
 
 #: templates/home.html:119
 msgid "Global Clearing Payout"
-msgstr ""
+msgstr "Международная выплата клиринга"
 
 #: templates/home.html:127
 msgid "Interbank Multi-Currency Swap"
-msgstr ""
+msgstr "Межбанковский мультивалютный своп"
 
 #: templates/home.html:128
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчера"
 
 #: templates/home.html:140
 msgid "Trusted by modern teams & financial institutions"
@@ -1152,31 +1152,31 @@ msgstr "Нам доверяют технологичные компании и �
 
 #: templates/home.html:153
 msgid "Total volume processed"
-msgstr ""
+msgstr "Общий обработанный объем"
 
 #: templates/home.html:157
 msgid "year over year"
-msgstr ""
+msgstr "по сравнению с прошлым годом"
 
 #: templates/home.html:165
 msgid "Active clients & accounts"
-msgstr ""
+msgstr "Активных клиентов и счетов"
 
 #: templates/home.html:169
 msgid "this month"
-msgstr ""
+msgstr "в этом месяце"
 
 #: templates/home.html:177
 msgid "Uptime guarantee"
-msgstr ""
+msgstr "Гарантия доступности"
 
 #: templates/home.html:181
 msgid "Zero downtime recorded"
-msgstr ""
+msgstr "0 минут сбоев за все время"
 
 #: templates/home.html:189
 msgid "Domestic transfer fees"
-msgstr ""
+msgstr "Комиссия за внутренние переводы"
 
 #: templates/home.html:193
 #, python-format
@@ -1185,218 +1185,216 @@ msgstr ""
 
 #: templates/home.html:201
 msgid "Platform features"
-msgstr ""
+msgstr "Возможности платформы"
 
 #: templates/home.html:202
 msgid "Everything your finances need"
-msgstr ""
+msgstr "Все необходимое для ваших финансов"
 
 #: templates/home.html:203
 msgid ""
 "One platform to send, receive, track, and multiply your capital. No "
 "switching between disjointed tools."
-msgstr ""
-"Единая платформа для отправки, получения, учета и приумножения вашего "
-"капитала. Без необходимости переключаться между сервисами."
+msgstr "Единая платформа для переводов, аналитики и приумножения капитала без переключения между разрозненными сервисами."
 
 #: templates/home.html:211
 msgid "Instant transfers"
-msgstr ""
+msgstr "Мгновенные переводы"
 
 #: templates/home.html:212
 msgid ""
 "Move money in real-time across domestic and international banking rails with "
 "sub-second atomic settlement and zero hidden commissions."
-msgstr "Переводите средства в реальном времени по внутренним и международным банковским каналам с атомарным расчетом быстрее секунды и без скрытых комиссий."
+msgstr "Переводите средства в реальном времени по внутренним и мировым банковским каналам с мгновенным исполнением и без скрытых комиссий."
 
 #: templates/home.html:214
 msgid "Sub-second"
-msgstr ""
+msgstr "Доли секунды"
 
 #: templates/home.html:215
 msgid "countries"
-msgstr ""
+msgstr "стран"
 
 #: templates/home.html:216
 msgid "Zero fees"
-msgstr ""
+msgstr "0% комиссий"
 
 #: templates/home.html:224
 msgid "Smart analytics"
-msgstr ""
+msgstr "Умная аналитика"
 
 #: templates/home.html:225
 msgid ""
 "AI-powered dashboards that surface what matters. Cashflow forecasting, "
 "automated anomaly detection, and real-time expense classification."
-msgstr "Интеллектуальные панели управления: прогнозирование денежных потоков, автоматическое выявление аномалий и классификация расходов в реальном времени."
+msgstr "Дашборды с искусственным интеллектом: прогнозирование денежных потоков, автоматическое обнаружение аномалий и классификация расходов."
 
 #: templates/home.html:227
 msgid "AI forecasting"
-msgstr ""
+msgstr "Прогнозы ИИ"
 
 #: templates/home.html:228
 msgid "Anomaly alerts"
-msgstr ""
+msgstr "Оповещения об аномалиях"
 
 #: templates/home.html:229
 msgid "Custom reports"
-msgstr ""
+msgstr "Пользовательские отчеты"
 
 #: templates/home.html:237
 msgid "Multi-currency accounts"
-msgstr ""
+msgstr "Мультивалютные счета"
 
 #: templates/home.html:238
 msgid ""
 "Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at "
 "interbank rates. Lock live rates and eliminate foreign exchange loss."
-msgstr "Храните, конвертируйте и оплачивайте в KZT, USD, EUR, GBP и еще более 30 валютах по межбанковскому курсу. Фиксируйте курсы без потерь на конвертации."
+msgstr "Храните, обменивайте и оплачивайте в KZT, USD, EUR, GBP и еще 30+ валютах по межбанковскому курсу без скрытых наценок."
 
 #: templates/home.html:240
 msgid "currencies"
-msgstr ""
+msgstr "валют"
 
 #: templates/home.html:241 templates/home.html:360
 msgid "Interbank rates"
-msgstr ""
+msgstr "Межбанковский курс"
 
 #: templates/home.html:242
 msgid "Live FX swap"
-msgstr ""
+msgstr "Мгновенный FX своп"
 
 #: templates/home.html:250
 msgid "Enterprise security"
-msgstr ""
+msgstr "Корпоративная безопасность"
 
 #: templates/home.html:251
 msgid ""
 "Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to "
 "20,000,000 KZT, and instant 1-click card freeze."
-msgstr "Банковское шифрование, соответствие SOC 2, государственная гарантия КФГД до 20 000 000 тенге и мгновенная заморозка карты в 1 клик."
+msgstr "Банковское шифрование, соответствие стандарту SOC 2, госгарантия КФГД до 20 000 000 ₸ и моментальная заморозка карты в 1 клик."
 
 #: templates/home.html:253
 msgid "KDIF Insured"
-msgstr "Гарантия КФГД"
+msgstr "Застраховано КФГД"
 
 #: templates/home.html:254
 msgid "AI fraud detection"
-msgstr ""
+msgstr "ИИ защита от мошенничества"
 
 #: templates/home.html:275
 msgid "Sent today"
-msgstr ""
+msgstr "Отправлено сегодня"
 
 #: templates/home.html:277
 msgid "transfers"
-msgstr ""
+msgstr "переводов"
 
 #: templates/home.html:280
 msgid "Avg. speed"
-msgstr ""
+msgstr "Средняя скорость"
 
 #: templates/home.html:282
 msgid "Atomic lock"
-msgstr ""
+msgstr "Атомарный лок"
 
 #: templates/home.html:290 templates/home.html:298 templates/home.html:306
 #: templates/transactions/transaction_list.html:34
 msgid "Completed"
-msgstr "Завершенные"
+msgstr "Завершено"
 
 #: templates/home.html:317
 msgid "Forecasted balance"
-msgstr ""
+msgstr "Прогнозный баланс"
 
 #: templates/home.html:319
 msgid "Next 30 days"
-msgstr ""
+msgstr "Следующие 30 дней"
 
 #: templates/home.html:322
 msgid "Anomalies"
-msgstr ""
+msgstr "Аномалии"
 
 #: templates/home.html:324
 msgid "All clean"
-msgstr ""
+msgstr "Все в норме"
 
 #: templates/home.html:328
 msgid "Volume trend — 8 weeks"
-msgstr ""
+msgstr "Тренд объема — 8 недель"
 
 #: templates/home.html:334
 msgid "Operations"
-msgstr ""
+msgstr "Операции"
 
 #: templates/home.html:341
 msgid "Cross-border"
-msgstr ""
+msgstr "Трансграничные"
 
 #: templates/home.html:353
 msgid "Active Currencies"
-msgstr ""
+msgstr "Активные валюты"
 
 #: templates/home.html:355
 msgid "Multi-IBAN active"
-msgstr ""
+msgstr "Мульти-IBAN активен"
 
 #: templates/home.html:358
 msgid "FX Saved"
-msgstr ""
+msgstr "Экономия на FX"
 
 #: templates/home.html:368
 msgid "Primary"
-msgstr ""
+msgstr "Основной"
 
 #: templates/home.html:426
 msgid "Live platform"
-msgstr ""
+msgstr "Интерактивная платформа"
 
 #: templates/home.html:427
 msgid "Your financial command center"
-msgstr ""
+msgstr "Ваш финансовый командный центр"
 
 #: templates/home.html:428
 msgid ""
 "Real-time liquidity, multi-currency balances, and full control over cards "
 "and transfers."
-msgstr "Мгновенная ликвидность, мультивалютные балансы и полный контроль над картами и переводами."
+msgstr "Ликвидность в реальном времени, мультивалютные балансы и полный контроль над картами и переводами."
 
 #: templates/home.html:432
 msgid "Portfolio overview"
-msgstr ""
+msgstr "Обзор портфеля"
 
 #: templates/home.html:434
 msgid "Live data"
-msgstr ""
+msgstr "Данные в реальном времени"
 
 #: templates/home.html:472
 msgid "Cash flow"
-msgstr ""
+msgstr "Денежный поток"
 
 #: templates/home.html:474
 msgid "Net positive this month"
-msgstr ""
+msgstr "Положительный баланс за месяц"
 
 #: templates/home.html:478
 msgid "Inbound"
-msgstr ""
+msgstr "Поступления"
 
 #: templates/home.html:484
 msgid "Outbound"
-msgstr ""
+msgstr "Списания"
 
 #: templates/home.html:491
 msgid "Monthly Transactions"
-msgstr ""
+msgstr "Транзакций за месяц"
 
 #: templates/home.html:493
 msgid "Sub-second execution"
-msgstr ""
+msgstr "Мгновенное исполнение"
 
 #: templates/home.html:497
 msgid "Successful"
-msgstr ""
+msgstr "Успешные"
 
 #: templates/home.html:502 templates/transactions/transaction_list.html:36
 msgid "Failed"
@@ -1404,201 +1402,201 @@ msgstr "Отклоненные"
 
 #: templates/home.html:516
 msgid "Bank Card Tiers"
-msgstr ""
+msgstr "Уровни банковских карт"
 
 #: templates/home.html:517
 msgid "Tailored for every ambition"
-msgstr ""
+msgstr "Создано для любых амбиций"
 
 #: templates/home.html:518
 msgid ""
 "Start with zero maintenance, unlock high-yield privileges and priority "
 "concierge."
-msgstr "Начните с бесплатного обслуживания, открывайте премиальные привилегии и персональный консьерж-сервис."
+msgstr "Начните с бесплатного обслуживания, открывайте привилегии с высоким доходом и консьерж-сервис."
 
 #: templates/home.html:521
 msgid "Monthly"
-msgstr ""
+msgstr "В месяц"
 
 #: templates/home.html:526
 #, python-format
 msgid "Save 35%%"
-msgstr ""
+msgstr "Скидка 35%"
 
 #: templates/home.html:531
 msgid "Gold Card"
-msgstr ""
+msgstr "Карта Gold"
 
 #: templates/home.html:533
 msgid "per month"
-msgstr ""
+msgstr "в месяц"
 
 #: templates/home.html:533
 msgid "free forever"
-msgstr ""
+msgstr "бесплатно навсегда"
 
 #: templates/home.html:535
 msgid "Zero annual maintenance fees"
-msgstr ""
+msgstr "0 ₸ за годовое обслуживание"
 
 #: templates/home.html:539
 msgid "Instant digital & physical issuance"
-msgstr ""
+msgstr "Мгновенный выпуск цифровой и физической карты"
 
 #: templates/home.html:540
 msgid "Zero fee KZT transfers by IBAN"
-msgstr ""
+msgstr "Бесплатные переводы в KZT по IBAN"
 
 #: templates/home.html:541
 msgid "Up to 5 multi-currency accounts"
-msgstr ""
+msgstr "До 5 мультивалютных счетов"
 
 #: templates/home.html:542
 msgid "Standard 24/7 chat support"
-msgstr ""
+msgstr "Стандартная поддержка 24/7 в чате"
 
 #: templates/home.html:545
 msgid "Order Gold Card"
-msgstr ""
+msgstr "Оформить Gold"
 
 #: templates/home.html:551
 msgid "Most popular"
-msgstr ""
+msgstr "Популярный выбор"
 
 #: templates/home.html:552
 msgid "Platinum Card"
-msgstr ""
+msgstr "Карта Platinum"
 
 #: templates/home.html:554
 msgid "per month, billed"
-msgstr ""
+msgstr "в месяц, при оплате"
 
 #: templates/home.html:554
 msgid "monthly"
-msgstr ""
+msgstr "ежемесячно"
 
 #: templates/home.html:556
 msgid "billed annually"
-msgstr ""
+msgstr "при оплате за год"
 
 #: templates/home.html:557
 msgid "billed"
-msgstr ""
+msgstr "списание"
 
 #: templates/home.html:557
 msgid "annually"
-msgstr ""
+msgstr "за год"
 
 #: templates/home.html:560
 msgid "Cashback on dining & travel"
-msgstr ""
+msgstr "Кэшбэк в ресторанах и путешествиях"
 
 #: templates/home.html:561
 msgid "Titanium metallic physical card"
-msgstr ""
+msgstr "Титановая металлическая карта"
 
 #: templates/home.html:562
 msgid "Airport lounge access (LoungeKey)"
-msgstr ""
+msgstr "Доступ в бизнес-залы аэропортов (LoungeKey)"
 
 #: templates/home.html:563
 msgid "Priority 24/7 dedicated banker"
-msgstr ""
+msgstr "Персональный банкир 24/7"
 
 #: templates/home.html:564
 msgid "15 foreign currencies with zero FX fee"
-msgstr ""
+msgstr "15 иностранных валют без комиссий за конвертацию"
 
 #: templates/home.html:565
 msgid "Extended daily withdrawal limits"
-msgstr ""
+msgstr "Повышенные суточные лимиты на снятие наличных"
 
 #: templates/home.html:568
 msgid "Order Platinum Card"
-msgstr ""
+msgstr "Оформить Platinum"
 
 #: templates/home.html:574
 msgid "Black Card"
-msgstr ""
+msgstr "Карта Black"
 
 #: templates/home.html:575
 msgid "Elite"
-msgstr ""
+msgstr "Индивидуально"
 
 #: templates/home.html:576
 msgid "tailored for high net worth"
-msgstr ""
+msgstr "для премиального капитала"
 
 #: templates/home.html:579
 msgid "Unlimited premium cashback"
-msgstr ""
+msgstr "Неограниченный премиальный кэшбэк"
 
 #: templates/home.html:580
 msgid "PVD-coated obsidian steel card"
-msgstr ""
+msgstr "Карта из обсидиановой стали с PVD-покрытием"
 
 #: templates/home.html:581
 msgid "Personal executive wealth manager"
-msgstr ""
+msgstr "Персональный управляющий частным капиталом"
 
 #: templates/home.html:582
 msgid "Unlimited international SWIFT transfers"
-msgstr ""
+msgstr "Безлимитные международные переводы SWIFT"
 
 #: templates/home.html:583
 msgid "All 35+ global currencies included"
-msgstr ""
+msgstr "Все 35+ мировых валют без ограничений"
 
 #: templates/home.html:584
 msgid "Custom credit limits up to ₸50,000,000"
-msgstr ""
+msgstr "Индивидуальный кредитный лимит до ₸50,000,000"
 
 #: templates/home.html:587
 msgid "Request Black Card"
-msgstr ""
+msgstr "Запросить Black"
 
 #: templates/home.html:597
 msgid "Bank-grade protection"
-msgstr ""
+msgstr "Банковский уровень защиты"
 
 #: templates/home.html:598
 msgid "Security is not a feature — it's the foundation"
-msgstr "Безопасность — это не опция, а фундамент"
+msgstr "Безопасность — это не просто функция, это фундамент"
 
 #: templates/home.html:599
 msgid ""
 "Every transaction is shielded by multiple layers of enterprise-grade "
 "cryptographic security. We are audited, regulated, and monitored around the "
 "clock."
-msgstr "Каждая операция защищена многоуровневым криптографическим шифрованием. Система круглосуточно проверяется и контролируется регуляторами."
+msgstr "Каждая транзакция защищена многоуровневым криптографическим шифрованием корпоративного класса. Мы проходим аудит, регулируемся и круглосуточно находимся под защитой."
 
 #: templates/home.html:600
 msgid "Read architecture report"
-msgstr ""
+msgstr "Отчет об архитектуре"
 
 #: templates/home.html:606
 msgid "Insured up to 20,000,000 KZT per depositor"
-msgstr "Страхование до 20 000 000 тенге на вкладчика"
+msgstr "Застраховано до 20 000 000 ₸ на каждого вкладчика"
 
 #: templates/home.html:607
 msgid "Guaranteed"
-msgstr ""
+msgstr "Гарантировано"
 
 #: templates/home.html:612
 msgid "Highest tier of international payment card security"
-msgstr "Высший международный стандарт защиты платежных карт"
+msgstr "Высший международный уровень безопасности банковских карт"
 
 #: templates/home.html:613
 msgid "Compliant"
-msgstr ""
+msgstr "Соответствует"
 
 #: templates/home.html:618
 msgid "Global standard for information security management"
-msgstr "Мировой стандарт управления информационной безопасностью"
+msgstr "Глобальный стандарт управления информационной безопасностью"
 
 #: templates/home.html:619
 msgid "Certified"
-msgstr ""
+msgstr "Сертифицирован"
 
 #: templates/home.html:624
 #, python-format
@@ -1607,49 +1605,49 @@ msgstr ""
 
 #: templates/home.html:625
 msgid "Always on"
-msgstr ""
+msgstr "Всегда активно"
 
 #: templates/home.html:634
 msgid "Client experiences"
-msgstr ""
+msgstr "Отзывы клиентов"
 
 #: templates/home.html:635
 msgid "Trusted by leaders across industries"
-msgstr ""
+msgstr "Нам доверяют лидеры различных отраслей"
 
 #: templates/home.html:641
 msgid "Pause testimonials"
-msgstr ""
+msgstr "Приостановить отзывы"
 
 #: templates/home.html:643
 msgid "Pause"
-msgstr ""
+msgstr "Пауза"
 
 #: templates/home.html:652
 msgid "Mobile app"
-msgstr ""
+msgstr "Мобильное приложение"
 
 #: templates/home.html:653
 msgid "Your bank, in your pocket"
-msgstr ""
+msgstr "Ваш банк всегда под рукой"
 
 #: templates/home.html:654
 msgid ""
 "Full dashboard access, biometric approval for high-value transfers, and "
 "instant transaction push notifications — anywhere in the world."
-msgstr "Полный доступ к счетам, биометрическое подтверждение крупных переводов и мгновенные пуш-уведомления в любой точке мира."
+msgstr "Полный доступ к счетам, биометрическое подтверждение крупных переводов и мгновенные push-уведомления — в любой точке мира."
 
 #: templates/home.html:659
 msgid "Download on the"
-msgstr ""
+msgstr "Загрузите в"
 
 #: templates/home.html:666
 msgid "Get it on"
-msgstr ""
+msgstr "Доступно в"
 
 #: templates/home.html:685
 msgid "Or scan our"
-msgstr ""
+msgstr "Или отсканируйте"
 
 #: templates/home.html:698
 msgid "Available for iOS & Android"
@@ -1657,15 +1655,15 @@ msgstr "Доступно для iOS и Android"
 
 #: templates/home.html:711
 msgid "Got questions?"
-msgstr ""
+msgstr "Есть вопросы?"
 
 #: templates/home.html:712
 msgid "Frequently asked"
-msgstr ""
+msgstr "Часто задаваемые вопросы"
 
 #: templates/home.html:716
 msgid "Expand all"
-msgstr ""
+msgstr "Развернуть все"
 
 #: templates/includes/card_item.html:38
 msgid "CARDHOLDER"
@@ -1681,7 +1679,7 @@ msgstr "Привязанный счет"
 
 #: templates/includes/card_item.html:75
 msgid "Freeze card"
-msgstr ""
+msgstr "Заморозить карту"
 
 #: templates/includes/card_item.html:76
 msgid "Freeze Card"
@@ -1689,7 +1687,7 @@ msgstr "Заморозить карту"
 
 #: templates/includes/card_item.html:79
 msgid "Unfreeze card"
-msgstr ""
+msgstr "Разморозить карту"
 
 #: templates/includes/card_item.html:80
 msgid "Unfreeze Card"
@@ -1754,7 +1752,7 @@ msgstr "Статус работы сервисов"
 
 #: templates/includes/footer.html:52
 msgid "Security & Guarantee"
-msgstr ""
+msgstr "Безопасность и гарантии"
 
 #: templates/includes/footer.html:55
 msgid ""
@@ -1773,19 +1771,19 @@ msgstr ""
 
 #: templates/includes/footer.html:68
 msgid "Adapted from"
-msgstr ""
+msgstr "Адаптировано на основе"
 
 #: templates/includes/footer.html:73
 msgid "Privacy"
-msgstr ""
+msgstr "Конфиденциальность"
 
 #: templates/includes/footer.html:74
 msgid "Terms"
-msgstr ""
+msgstr "Условия"
 
 #: templates/includes/footer.html:75
 msgid "Security"
-msgstr ""
+msgstr "Безопасность"
 
 #: templates/includes/navbar.html:30 templates/includes/navbar.html:105
 msgid "Cards"
@@ -1893,11 +1891,11 @@ msgstr ""
 
 #: templates/includes/sidebar.html:66
 msgid "Support Tickets"
-msgstr ""
+msgstr "Обращения в поддержку"
 
 #: templates/includes/sidebar.html:69
 msgid "Profile & Settings"
-msgstr ""
+msgstr "Профиль и настройки"
 
 #: templates/includes/sidebar.html:84 templates/layouts/dashboard_base.html:66
 #: templates/layouts/dashboard_base.html:67
@@ -2085,13 +2083,13 @@ msgstr "Подтвердить и перевести"
 
 #: templates/users/login.html:4
 msgid "Sign In | RocketBank"
-msgstr ""
+msgstr "Вход | RocketBank"
 
 #: templates/users/login.html:5
 msgid ""
 "Sign in securely to your RocketBank account to manage cards, accounts, and "
 "payments."
-msgstr ""
+msgstr "Безопасный вход в аккаунт RocketBank для управления картами, счетами и платежами."
 
 #: templates/users/login.html:16
 msgid "Sign in to RocketBank"
@@ -2103,15 +2101,15 @@ msgstr "Введите ваши учетные данные для доступ�
 
 #: templates/users/login.html:37
 msgid "Email or Username"
-msgstr ""
+msgstr "Email или имя пользователя"
 
 #: templates/users/login.html:45
 msgid "name@company.com or username"
-msgstr ""
+msgstr "name@company.com или логин"
 
 #: templates/users/login.html:56
 msgid "Security Password"
-msgstr ""
+msgstr "Пароль безопасности"
 
 #: templates/users/login.html:59
 msgid "Forgot password?"
@@ -2123,23 +2121,23 @@ msgstr ""
 
 #: templates/users/login.html:84
 msgid "Sign In to Portal"
-msgstr ""
+msgstr "Вход в личный кабинет"
 
 #: templates/users/login.html:90
 msgid "Don't have a RocketBank account?"
-msgstr ""
+msgstr "Еще нет счета в RocketBank?"
 
 #: templates/users/login.html:92
 msgid "Open account in 3 minutes"
-msgstr ""
+msgstr "Открытие счета за 3 минуты"
 
 #: templates/users/password_reset.html:4
 msgid "Reset Password | RocketBank"
-msgstr ""
+msgstr "Восстановление пароля | RocketBank"
 
 #: templates/users/password_reset.html:14
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Забыли пароль?"
 
 #: templates/users/password_reset.html:17
 msgid ""
@@ -2150,7 +2148,7 @@ msgstr ""
 
 #: templates/users/password_reset.html:42 templates/users/register.html:45
 msgid "name@example.com"
-msgstr ""
+msgstr "name@example.com"
 
 #: templates/users/password_reset.html:50
 msgid "Send Password Reset Link"
@@ -2162,11 +2160,11 @@ msgstr "Вернуться ко входу"
 
 #: templates/users/password_reset_complete.html:4
 msgid "Password Changed | RocketBank"
-msgstr ""
+msgstr "Пароль изменен | RocketBank"
 
 #: templates/users/password_reset_complete.html:11
 msgid "Password Changed Successfully!"
-msgstr ""
+msgstr "Пароль успешно изменен!"
 
 #: templates/users/password_reset_complete.html:14
 msgid ""
@@ -2178,7 +2176,7 @@ msgstr ""
 
 #: templates/users/password_reset_complete.html:17
 msgid "Sign In Now"
-msgstr ""
+msgstr "Войти сейчас"
 
 #: templates/users/password_reset_confirm.html:4
 msgid "Set New Password | RocketBank"
@@ -2194,19 +2192,19 @@ msgstr "Пожалуйста, введите ваш новый пароль ни
 
 #: templates/users/password_reset_confirm.html:23
 msgid "New Password"
-msgstr ""
+msgstr "Новый пароль"
 
 #: templates/users/password_reset_confirm.html:33
 msgid "Confirm New Password"
-msgstr ""
+msgstr "Подтвердите новый пароль"
 
 #: templates/users/password_reset_confirm.html:42
 msgid "Change Password"
-msgstr ""
+msgstr "Изменить пароль"
 
 #: templates/users/password_reset_confirm.html:49
 msgid "Password Reset Link Expired"
-msgstr ""
+msgstr "Срок действия ссылки истек"
 
 #: templates/users/password_reset_confirm.html:52
 msgid "The password reset link was either invalid or has expired."
@@ -2214,11 +2212,11 @@ msgstr "Ссылка для сброса пароля недействитель
 
 #: templates/users/password_reset_confirm.html:55
 msgid "Request a New Link"
-msgstr ""
+msgstr "Запросить новую ссылку"
 
 #: templates/users/password_reset_done.html:4
 msgid "Reset Link Sent | RocketBank"
-msgstr ""
+msgstr "Ссылка для сброса отправлена | RocketBank"
 
 #: templates/users/password_reset_done.html:11
 msgid "Password Reset Email Sent"
@@ -2234,7 +2232,7 @@ msgstr ""
 
 #: templates/users/password_reset_done.html:17
 msgid "Return to Sign In"
-msgstr ""
+msgstr "Вернуться ко входу"
 
 #: templates/users/profile.html:4
 msgid "User Profile"
@@ -2285,17 +2283,17 @@ msgstr "Загрузить документы"
 
 #: templates/users/register.html:4
 msgid "Open an Account | RocketBank"
-msgstr ""
+msgstr "Открыть счет | RocketBank"
 
 #: templates/users/register.html:5
 msgid ""
 "Register for RocketBank and gain access to multi-currency IBAN accounts, "
 "cashback debit cards, and instant transfers."
-msgstr ""
+msgstr "Зарегистрируйтесь в RocketBank и получите доступ к мультивалютным счетам IBAN, дебетовым картам с кэшбэком и мгновенным переводам."
 
 #: templates/users/register.html:16
 msgid "Open RocketBank Account"
-msgstr ""
+msgstr "Открыть счет в RocketBank"
 
 #: templates/users/register.html:19
 msgid "Join next-generation banking with zero monthly maintenance fee"
@@ -2303,15 +2301,15 @@ msgstr "Откройте счет в банке нового поколения 
 
 #: templates/users/register.html:55
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: templates/users/register.html:63
 msgid "username"
-msgstr ""
+msgstr "логин"
 
 #: templates/users/register.html:73
 msgid "Phone Number"
-msgstr ""
+msgstr "Номер телефона"
 
 #: templates/users/register.html:92
 msgid "Password"
@@ -2335,7 +2333,7 @@ msgstr "и подтверждаю, что мне исполнилось 18 ле�
 
 #: templates/users/register.html:138
 msgid "Create My Account"
-msgstr ""
+msgstr "Создать аккаунт"
 
 #: templates/users/register.html:144
 msgid "Already registered?"
@@ -2343,4 +2341,361 @@ msgstr ""
 
 #: templates/users/register.html:146
 msgid "Sign in here"
-msgstr ""
+msgstr "Войдите здесь"
+
+msgid "Close menu"
+msgstr "Закрыть меню"
+
+msgid "Term Deposits"
+msgstr "Срочные депозиты"
+
+msgid "Support & Tickets"
+msgstr "Поддержка и тикеты"
+
+msgid "Security Settings"
+msgstr "Настройки безопасности"
+
+msgid "Current Session"
+msgstr "Текущая сессия"
+
+msgid "User profile avatar"
+msgstr "Аватар профиля"
+
+msgid "Legal & Security"
+msgstr "Безопасность и право"
+
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+msgid "Security Standards"
+msgstr "Стандарты безопасности"
+
+msgid "Regulatory Disclosures"
+msgstr "Раскрытие информации"
+
+msgid "Explore Products"
+msgstr "Посмотреть продукты"
+
+msgid "Daily Transaction Volume"
+msgstr "Дневной объем транзакций"
+
+msgid "Financial License Protection"
+msgstr "Защита государственной лицензией"
+
+msgid "Real-Time Ledger Latency"
+msgstr "Задержка финансового реестра"
+
+msgid "Continuous System Uptime"
+msgstr "Бесперебойная доступность"
+
+msgid "Everything You Need"
+msgstr "Всё необходимое для финансов"
+
+msgid "A Complete Suite for Personal & Business Capital"
+msgstr "Полный набор решений для частного и корпоративного капитала"
+
+msgid "Instant Settlement Rails"
+msgstr "Мгновенные финансовые рельсы"
+
+msgid "Predictive Intelligence"
+msgstr "Предиктивная аналитика"
+
+msgid "Multi-Currency Treasury"
+msgstr "Мультивалютное казначейство"
+
+msgid "Zero-Trust Architecture"
+msgstr "Архитектура Zero-Trust"
+
+msgid "Real-Time Overview"
+msgstr "Обзор в реальном времени"
+
+msgid "Built for Speed, Control & Clarity"
+msgstr "Создано для скорости, контроля и прозрачности"
+
+msgid "Open Free Account"
+msgstr "Открыть бесплатный счет"
+
+msgid "View Analytics"
+msgstr "Перейти к аналитике"
+
+msgid "Transparent Pricing"
+msgstr "Прозрачные тарифы"
+
+msgid "Card Tiers Engineered for You"
+msgstr "Уровни карт, созданные под ваши задачи"
+
+msgid "Monthly billing"
+msgstr "Ежемесячно"
+
+msgid "Annual billing"
+msgstr "Ежегодно"
+
+msgid "Save 20%"
+msgstr "Скидка 20%"
+
+msgid "Institutional Security"
+msgstr "Институциональная безопасность"
+
+msgid "PCI DSS Level 1"
+msgstr "PCI DSS Уровень 1"
+
+msgid "ISO 27001"
+msgstr "ISO 27001"
+
+msgid "AI Fraud Shield"
+msgstr "ИИ защита от мошенничества"
+
+msgid "Blocks 99.98% of fraudulent attempts in sub-seconds"
+msgstr "Блокирует 99.98% попыток мошенничества за доли секунды"
+
+msgid "RocketBank Mobile Experience"
+msgstr "Мобильное приложение RocketBank"
+
+msgid "Common Questions"
+msgstr "Частые вопросы"
+
+msgid "Everything You Need to Know"
+msgstr "Все, что вам нужно знать о банке"
+
+msgid "Financial Portfolio"
+msgstr "Финансовый портфель"
+
+msgid "Total Net Liquidity"
+msgstr "Общая чистая ликвидность"
+
+msgid "Estimated across all accounts"
+msgstr "Оценка по всем вашим счетам"
+
+msgid "Active Accounts Total"
+msgstr "Всего активных счетов"
+
+msgid "Checking & Savings"
+msgstr "Текущие и сберегательные"
+
+msgid "Active Plastic & Virtual"
+msgstr "Активные пластиковые и виртуальные"
+
+msgid "Active Loans Balance"
+msgstr "Остаток по кредитам"
+
+msgid "Pending repayment"
+msgstr "К погашению"
+
+msgid "Quick Banking Services"
+msgstr "Быстрые банковские операции"
+
+msgid "Instant IBAN & P2P"
+msgstr "Мгновенно по IBAN и P2P"
+
+msgid "Order Card"
+msgstr "Заказать карту"
+
+msgid "Take a Loan"
+msgstr "Оформить кредит"
+
+msgid "Recent Transactions"
+msgstr "Последние транзакции"
+
+msgid "View Full History"
+msgstr "Вся история"
+
+msgid "My Bank Accounts"
+msgstr "Мои банковские счета"
+
+msgid "Sign In to RocketBank"
+msgstr "Вход в RocketBank"
+
+msgid "Remember this device for 30 days"
+msgstr "Запомнить это устройство на 30 дней"
+
+msgid "Don't have an account?"
+msgstr "Еще нет аккаунта?"
+
+msgid "Create Free Account"
+msgstr "Зарегистрироваться бесплатно"
+
+msgid "Create Your RocketBank Account"
+msgstr "Регистрация в RocketBank"
+
+msgid "Already have an account?"
+msgstr "Уже зарегистрированы?"
+
+msgid "Reset Your Password"
+msgstr "Восстановление пароля"
+
+msgid "12,000+ businesses and clients trust RocketBank"
+msgstr "12 000+ клиентов и компаний доверяют RocketBank"
+
+msgid "12,000+ clients trust RocketBank"
+msgstr "12 000+ клиентов доверяют RocketBank"
+
+msgid "ROCKETBANK COMMAND CENTER"
+msgstr "КОМАНДНЫЙ ЦЕНТР ROCKETBANK"
+
+msgid "Kaspi / Stripe Payout"
+msgstr "Выплата Kaspi / Stripe"
+
+msgid "Subscription renewal"
+msgstr "Продление подписки"
+
+msgid "100% free peer-to-peer"
+msgstr "100% бесплатно между клиентами"
+
+msgid "190+ countries"
+msgstr "190+ стран"
+
+msgid "35+ currencies"
+msgstr "35+ валют"
+
+msgid "256-bit AES"
+msgstr "256-битное AES"
+
+msgid "Transfers"
+msgstr "Переводы"
+
+msgid "Analytics"
+msgstr "Аналитика"
+
+msgid "Multi-currency"
+msgstr "Мультивалюта"
+
+msgid "KDIF Deposit Guarantee"
+msgstr "Гарантия депозитов КФГД"
+
+msgid "24/7 SOC"
+msgstr "Круглосуточный SOC"
+
+msgid "AI Anomaly Guard"
+msgstr "ИИ защита от аномалий"
+
+msgid "Protecting"
+msgstr "Защита активна"
+
+msgid "Online"
+msgstr "В сети"
+
+msgid "Active"
+msgstr "Активно"
+
+msgid "Save 35%"
+msgstr "Скидка 35%"
+
+msgid "RocketBank Gold"
+msgstr "RocketBank Gold"
+
+msgid "RocketBank Platinum"
+msgstr "RocketBank Platinum"
+
+msgid "RocketBank Black"
+msgstr "RocketBank Black"
+
+msgid "Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing."
+msgstr "Премиальные дебетовые и кредитные карты RocketBank с кэшбэком до 10%, бесплатным обслуживанием и мгновенным цифровым выпуском."
+
+msgid "Play"
+msgstr "Воспроизвести"
+
+msgid "CFO at Hive Commerce"
+msgstr "CFO в Hive Commerce"
+
+msgid "RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed."
+msgstr "RocketBank сократил время наших международных расчетов с 3 дней до 2 секунд. Это полностью изменило скорость управления нашим капиталом."
+
+msgid "Finance Director, Nomad Labs"
+msgstr "Финансовый директор, Nomad Labs"
+
+msgid "The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled."
+msgstr "Мультивалютные счета IBAN сэкономили нам более ₸18 млн на конвертациях в этом году. Прозрачность обменного курса безупречна."
+
+msgid "Head of Ops, Stackflow"
+msgstr "Операционный директор, Stackflow"
+
+msgid "Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses."
+msgstr "Наконец-то появился современный цифровой банк, работающий молниеносно и созданный специально для IT-компаний и технологичного бизнеса."
+
+msgid "CTO at Vaulted"
+msgstr "Технический директор Vaulted"
+
+msgid "Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional."
+msgstr "Перевели наши бизнес-счета за один день. Документация REST API и мгновенные вебхуки работают безупречно."
+
+msgid "Founder, CloudMint"
+msgstr "Основатель CloudMint"
+
+msgid "The automated fraud detection and instant card freeze give our executive team complete peace of mind."
+msgstr "Автоматическая система предотвращения мошенничества и мгновенная блокировка карт дают полное спокойствие нашему руководству."
+
+msgid "Controller, Drift Studio"
+msgstr "Финансовый контролер, Drift Studio"
+
+msgid "Automated payroll and batch payments save our accounting team over 25 hours every month."
+msgstr "Автоматическая зарплатная ведомость и реестровые платежи экономят нашей бухгалтерии более 25 часов каждый месяц."
+
+msgid "Collapse all"
+msgstr "Свернуть все"
+
+msgid "How quickly can I open an account and start sending payments?"
+msgstr "Как быстро я могу открыть счет и начать переводить деньги?"
+
+msgid "You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork."
+msgstr "Вы можете начать работу менее чем за 3 минуты. Зарегистрируйтесь онлайн, пройдите быструю биометрическую проверку и совершайте платежи без бумажной волокиты."
+
+msgid "What are the transaction fees for domestic and global transfers?"
+msgstr "Каковы комиссии за внутренние и международные переводы?"
+
+msgid "All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups."
+msgstr "Все стандартные внутренние переводы и переводы между клиентами RocketBank бесплатны с комиссией 0,00 ₸. Международные переводы производятся по межбанковским курсам без скрытых наценок."
+
+msgid "Are deposits insured by the Kazakhstan Deposit Insurance Fund?"
+msgstr "Застрахованы ли депозиты Казахстанским фондом гарантирования депозитов?"
+
+msgid "Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan."
+msgstr "Да. Все сберегательные депозиты в RocketBank застрахованы на сумму до 20 000 000 ₸ на каждого вкладчика КФГД в соответствии с законодательством Республики Казахстан."
+
+msgid "How does RocketBank protect client funds and cards from fraud?"
+msgstr "Как RocketBank защищает средства клиентов и карты от мошенничества?"
+
+msgid "We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly."
+msgstr "Мы используем 256-битное шифрование AES банковского уровня, блокировки транзакций ACID на уровне строк, соответствие стандарту SOC 2 и ИИ-анализ аномалий в реальном времени."
+
+msgid "Can I integrate RocketBank with accounting tools and REST APIs?"
+msgstr "Могу ли я интегрировать RocketBank с бухгалтерскими системами и REST API?"
+
+msgid "Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms."
+msgstr "Да! RocketBank предоставляет полный REST API (OpenAPI 3.0 / Swagger) с JWT-аутентификацией, вебхуками и автоматическим экспортом в учетные и ERP-системы."
+
+msgid "How can I freeze my bank card if it is lost or compromised?"
+msgstr "Как заблокировать карту при утере или компрометации?"
+
+msgid "You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately."
+msgstr "Вы можете мгновенно заморозить или разморозить любую карту в личном кабинете или мобильном приложении одним нажатием, мгновенно заблокировав все операции."
+
+msgid "Critical (>85%)"
+msgstr "Критический (>85%)"
+
+msgid "Optimal (<60%)"
+msgstr "Оптимальный (<60%)"
+
+msgid "High-yield savings and term deposits with up to 18% annual return, daily capitalization, and state insurance protection up to 20M KZT."
+msgstr "Высокодоходные сберегательные и срочные депозиты со ставкой до 18% годовых, ежедневной капитализацией и госгарантией КФГД до 20 млн тенге."
+
+msgid "Maximize your savings with compound daily interest, flexible top-up options, and 100% state deposit guarantee by KDIF."
+msgstr "Умножайте сбережения с ежедневным сложным процентом, гибким пополнением и 100% государственной гарантией КФГД."
+
+msgid "Sarah Kim"
+msgstr "Сара Ким"
+
+msgid "James Adler"
+msgstr "Джеймс Адлер"
+
+msgid "Priya Mehta"
+msgstr "Прия Мехта"
+
+msgid "Tom Brennan"
+msgstr "Том Бреннан"
+
+msgid "Liu Wei"
+msgstr "Лю Вэй"
+
+msgid "Amara Osei"
+msgstr "Амара Осей"

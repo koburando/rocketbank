@@ -2307,3 +2307,360 @@ msgstr "Already registered?"
 #: templates/users/register.html:146
 msgid "Sign in here"
 msgstr "Sign in here"
+
+msgid "Close menu"
+msgstr "Close menu"
+
+msgid "Term Deposits"
+msgstr "Term Deposits"
+
+msgid "Support & Tickets"
+msgstr "Support & Tickets"
+
+msgid "Security Settings"
+msgstr "Security Settings"
+
+msgid "Current Session"
+msgstr "Current Session"
+
+msgid "User profile avatar"
+msgstr "User profile avatar"
+
+msgid "Legal & Security"
+msgstr "Legal & Security"
+
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+msgid "Security Standards"
+msgstr "Security Standards"
+
+msgid "Regulatory Disclosures"
+msgstr "Regulatory Disclosures"
+
+msgid "Explore Products"
+msgstr "Explore Products"
+
+msgid "Daily Transaction Volume"
+msgstr "Daily Transaction Volume"
+
+msgid "Financial License Protection"
+msgstr "Financial License Protection"
+
+msgid "Real-Time Ledger Latency"
+msgstr "Real-Time Ledger Latency"
+
+msgid "Continuous System Uptime"
+msgstr "Continuous System Uptime"
+
+msgid "Everything You Need"
+msgstr "Everything You Need"
+
+msgid "A Complete Suite for Personal & Business Capital"
+msgstr "A Complete Suite for Personal & Business Capital"
+
+msgid "Instant Settlement Rails"
+msgstr "Instant Settlement Rails"
+
+msgid "Predictive Intelligence"
+msgstr "Predictive Intelligence"
+
+msgid "Multi-Currency Treasury"
+msgstr "Multi-Currency Treasury"
+
+msgid "Zero-Trust Architecture"
+msgstr "Zero-Trust Architecture"
+
+msgid "Real-Time Overview"
+msgstr "Real-Time Overview"
+
+msgid "Built for Speed, Control & Clarity"
+msgstr "Built for Speed, Control & Clarity"
+
+msgid "Open Free Account"
+msgstr "Open Free Account"
+
+msgid "View Analytics"
+msgstr "View Analytics"
+
+msgid "Transparent Pricing"
+msgstr "Transparent Pricing"
+
+msgid "Card Tiers Engineered for You"
+msgstr "Card Tiers Engineered for You"
+
+msgid "Monthly billing"
+msgstr "Monthly billing"
+
+msgid "Annual billing"
+msgstr "Annual billing"
+
+msgid "Save 20%"
+msgstr "Save 20%"
+
+msgid "Institutional Security"
+msgstr "Institutional Security"
+
+msgid "PCI DSS Level 1"
+msgstr "PCI DSS Level 1"
+
+msgid "ISO 27001"
+msgstr "ISO 27001"
+
+msgid "AI Fraud Shield"
+msgstr "AI Fraud Shield"
+
+msgid "Blocks 99.98% of fraudulent attempts in sub-seconds"
+msgstr "Blocks 99.98% of fraudulent attempts in sub-seconds"
+
+msgid "RocketBank Mobile Experience"
+msgstr "RocketBank Mobile Experience"
+
+msgid "Common Questions"
+msgstr "Common Questions"
+
+msgid "Everything You Need to Know"
+msgstr "Everything You Need to Know"
+
+msgid "Financial Portfolio"
+msgstr "Financial Portfolio"
+
+msgid "Total Net Liquidity"
+msgstr "Total Net Liquidity"
+
+msgid "Estimated across all accounts"
+msgstr "Estimated across all accounts"
+
+msgid "Active Accounts Total"
+msgstr "Active Accounts Total"
+
+msgid "Checking & Savings"
+msgstr "Checking & Savings"
+
+msgid "Active Plastic & Virtual"
+msgstr "Active Plastic & Virtual"
+
+msgid "Active Loans Balance"
+msgstr "Active Loans Balance"
+
+msgid "Pending repayment"
+msgstr "Pending repayment"
+
+msgid "Quick Banking Services"
+msgstr "Quick Banking Services"
+
+msgid "Instant IBAN & P2P"
+msgstr "Instant IBAN & P2P"
+
+msgid "Order Card"
+msgstr "Order Card"
+
+msgid "Take a Loan"
+msgstr "Take a Loan"
+
+msgid "Recent Transactions"
+msgstr "Recent Transactions"
+
+msgid "View Full History"
+msgstr "View Full History"
+
+msgid "My Bank Accounts"
+msgstr "My Bank Accounts"
+
+msgid "Sign In to RocketBank"
+msgstr "Sign In to RocketBank"
+
+msgid "Remember this device for 30 days"
+msgstr "Remember this device for 30 days"
+
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+msgid "Create Free Account"
+msgstr "Create Free Account"
+
+msgid "Create Your RocketBank Account"
+msgstr "Create Your RocketBank Account"
+
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+msgid "Reset Your Password"
+msgstr "Reset Your Password"
+
+msgid "12,000+ businesses and clients trust RocketBank"
+msgstr "12,000+ businesses and clients trust RocketBank"
+
+msgid "12,000+ clients trust RocketBank"
+msgstr "12,000+ clients trust RocketBank"
+
+msgid "ROCKETBANK COMMAND CENTER"
+msgstr "ROCKETBANK COMMAND CENTER"
+
+msgid "Kaspi / Stripe Payout"
+msgstr "Kaspi / Stripe Payout"
+
+msgid "Subscription renewal"
+msgstr "Subscription renewal"
+
+msgid "100% free peer-to-peer"
+msgstr "100% free peer-to-peer"
+
+msgid "190+ countries"
+msgstr "190+ countries"
+
+msgid "35+ currencies"
+msgstr "35+ currencies"
+
+msgid "256-bit AES"
+msgstr "256-bit AES"
+
+msgid "Transfers"
+msgstr "Transfers"
+
+msgid "Analytics"
+msgstr "Analytics"
+
+msgid "Multi-currency"
+msgstr "Multi-currency"
+
+msgid "KDIF Deposit Guarantee"
+msgstr "KDIF Deposit Guarantee"
+
+msgid "24/7 SOC"
+msgstr "24/7 SOC"
+
+msgid "AI Anomaly Guard"
+msgstr "AI Anomaly Guard"
+
+msgid "Protecting"
+msgstr "Protecting"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Active"
+msgstr "Active"
+
+msgid "Save 35%"
+msgstr "Save 35%"
+
+msgid "RocketBank Gold"
+msgstr "RocketBank Gold"
+
+msgid "RocketBank Platinum"
+msgstr "RocketBank Platinum"
+
+msgid "RocketBank Black"
+msgstr "RocketBank Black"
+
+msgid "Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing."
+msgstr "Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing."
+
+msgid "Play"
+msgstr "Play"
+
+msgid "CFO at Hive Commerce"
+msgstr "CFO at Hive Commerce"
+
+msgid "RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed."
+msgstr "RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed."
+
+msgid "Finance Director, Nomad Labs"
+msgstr "Finance Director, Nomad Labs"
+
+msgid "The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled."
+msgstr "The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled."
+
+msgid "Head of Ops, Stackflow"
+msgstr "Head of Ops, Stackflow"
+
+msgid "Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses."
+msgstr "Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses."
+
+msgid "CTO at Vaulted"
+msgstr "CTO at Vaulted"
+
+msgid "Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional."
+msgstr "Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional."
+
+msgid "Founder, CloudMint"
+msgstr "Founder, CloudMint"
+
+msgid "The automated fraud detection and instant card freeze give our executive team complete peace of mind."
+msgstr "The automated fraud detection and instant card freeze give our executive team complete peace of mind."
+
+msgid "Controller, Drift Studio"
+msgstr "Controller, Drift Studio"
+
+msgid "Automated payroll and batch payments save our accounting team over 25 hours every month."
+msgstr "Automated payroll and batch payments save our accounting team over 25 hours every month."
+
+msgid "Collapse all"
+msgstr "Collapse all"
+
+msgid "How quickly can I open an account and start sending payments?"
+msgstr "How quickly can I open an account and start sending payments?"
+
+msgid "You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork."
+msgstr "You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork."
+
+msgid "What are the transaction fees for domestic and global transfers?"
+msgstr "What are the transaction fees for domestic and global transfers?"
+
+msgid "All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups."
+msgstr "All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups."
+
+msgid "Are deposits insured by the Kazakhstan Deposit Insurance Fund?"
+msgstr "Are deposits insured by the Kazakhstan Deposit Insurance Fund?"
+
+msgid "Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan."
+msgstr "Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan."
+
+msgid "How does RocketBank protect client funds and cards from fraud?"
+msgstr "How does RocketBank protect client funds and cards from fraud?"
+
+msgid "We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly."
+msgstr "We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly."
+
+msgid "Can I integrate RocketBank with accounting tools and REST APIs?"
+msgstr "Can I integrate RocketBank with accounting tools and REST APIs?"
+
+msgid "Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms."
+msgstr "Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms."
+
+msgid "How can I freeze my bank card if it is lost or compromised?"
+msgstr "How can I freeze my bank card if it is lost or compromised?"
+
+msgid "You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately."
+msgstr "You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately."
+
+msgid "Critical (>85%)"
+msgstr "Critical (>85%)"
+
+msgid "Optimal (<60%)"
+msgstr "Optimal (<60%)"
+
+msgid "High-yield savings and term deposits with up to 18% annual return, daily capitalization, and state insurance protection up to 20M KZT."
+msgstr "High-yield savings and term deposits with up to 18% annual return, daily capitalization, and state insurance protection up to 20M KZT."
+
+msgid "Maximize your savings with compound daily interest, flexible top-up options, and 100% state deposit guarantee by KDIF."
+msgstr "Maximize your savings with compound daily interest, flexible top-up options, and 100% state deposit guarantee by KDIF."
+
+msgid "Sarah Kim"
+msgstr "Sarah Kim"
+
+msgid "James Adler"
+msgstr "James Adler"
+
+msgid "Priya Mehta"
+msgstr "Priya Mehta"
+
+msgid "Tom Brennan"
+msgstr "Tom Brennan"
+
+msgid "Liu Wei"
+msgstr "Liu Wei"
+
+msgid "Amara Osei"
+msgstr "Amara Osei"

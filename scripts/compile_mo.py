@@ -25,7 +25,8 @@ def parse_po_file(filepath):
         line = line.strip()
         if not line or line.startswith("#"):
             if current_msgid is not None and current_msgstr is not None:
-                entries.append((current_msgid, current_msgstr))
+                if current_msgid == "" or current_msgstr.strip() != "":
+                    entries.append((current_msgid, current_msgstr))
                 current_msgid = None
                 current_msgstr = None
                 state = None
@@ -33,7 +34,8 @@ def parse_po_file(filepath):
 
         if line.startswith("msgid "):
             if current_msgid is not None and current_msgstr is not None:
-                entries.append((current_msgid, current_msgstr))
+                if current_msgid == "" or current_msgstr.strip() != "":
+                    entries.append((current_msgid, current_msgstr))
                 current_msgid = None
                 current_msgstr = None
             state = "msgid"
@@ -47,7 +49,8 @@ def parse_po_file(filepath):
             current_msgstr += eval(line)
 
     if current_msgid is not None and current_msgstr is not None:
-        entries.append((current_msgid, current_msgstr))
+        if current_msgid == "" or current_msgstr.strip() != "":
+            entries.append((current_msgid, current_msgstr))
 
     return entries
 

@@ -117,7 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const stickyCards = document.querySelectorAll('.sticky-card');
   const panelViews = document.querySelectorAll('.panel-view');
   const panelLabel = document.getElementById('panelLabel');
-  const panelLabels = ['Transfers', 'Analytics', 'Multi-currency', 'Security'];
+  const panelLabels = [
+    panelLabel ? (panelLabel.dataset.label0 || 'Transfers') : 'Transfers',
+    panelLabel ? (panelLabel.dataset.label1 || 'Analytics') : 'Analytics',
+    panelLabel ? (panelLabel.dataset.label2 || 'Multi-currency') : 'Multi-currency',
+    panelLabel ? (panelLabel.dataset.label3 || 'Security') : 'Security',
+  ];
 
   if (stickyCards.length > 0 && panelViews.length > 0) {
     stickyCards.forEach((card, i) => {
@@ -189,44 +194,60 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. FAQ Accordion
   const faqList = document.getElementById('faqList');
   if (faqList) {
-    const faqs = [
-      { q: 'How quickly can I open an account and start sending payments?', a: 'You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork.' },
-      { q: 'What are the transaction fees for domestic and global transfers?', a: 'All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups.' },
-      { q: 'Are deposits insured by the Kazakhstan Deposit Insurance Fund?', a: 'Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan.' },
-      { q: 'How does RocketBank protect client funds and cards from fraud?', a: 'We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly.' },
-      { q: 'Can I integrate RocketBank with accounting tools and REST APIs?', a: 'Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms.' },
-      { q: 'How can I freeze my bank card if it is lost or compromised?', a: 'You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately.' },
-    ];
-    faqList.innerHTML = '';
-    faqs.forEach(f => {
-      const item = document.createElement('div');
-      item.className = 'faq-item';
-      item.innerHTML = `<div class="faq-q"><span class="faq-q-text">${f.q}</span><svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div><div class="faq-a">${f.a}</div>`;
-      item.querySelector('.faq-q').addEventListener('click', () => {
-        item.classList.toggle('open');
+    const existingItems = faqList.querySelectorAll('.faq-item');
+    if (existingItems.length > 0) {
+      existingItems.forEach(item => {
+        const q = item.querySelector('.faq-q');
+        if (q) {
+          q.addEventListener('click', () => {
+            item.classList.toggle('open');
+          });
+        }
       });
-      faqList.appendChild(item);
-    });
+    } else {
+      const faqs = [
+        { q: 'How quickly can I open an account and start sending payments?', a: 'You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork.' },
+        { q: 'What are the transaction fees for domestic and global transfers?', a: 'All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups.' },
+        { q: 'Are deposits insured by the Kazakhstan Deposit Insurance Fund?', a: 'Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan.' },
+        { q: 'How does RocketBank protect client funds and cards from fraud?', a: 'We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly.' },
+        { q: 'Can I integrate RocketBank with accounting tools and REST APIs?', a: 'Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms.' },
+        { q: 'How can I freeze my bank card if it is lost or compromised?', a: 'You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately.' },
+      ];
+      faqs.forEach(f => {
+        const item = document.createElement('div');
+        item.className = 'faq-item';
+        item.innerHTML = `<div class="faq-q"><span class="faq-q-text">${f.q}</span><svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div><div class="faq-a">${f.a}</div>`;
+        item.querySelector('.faq-q').addEventListener('click', () => {
+          item.classList.toggle('open');
+        });
+        faqList.appendChild(item);
+      });
+    }
   }
 
   // 9. Testimonials Carousel
   const tt = document.getElementById('testiTrack');
   if (tt) {
-    const testimonials = [
-      { q: 'RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed.', name: 'Sarah Kim', role: 'CFO at Hive Commerce', init: 'SK' },
-      { q: 'The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled.', name: 'James Adler', role: 'Finance Director, Nomad Labs', init: 'JA' },
-      { q: 'Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses.', name: 'Priya Mehta', role: 'Head of Ops, Stackflow', init: 'PM' },
-      { q: 'Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional.', name: 'Tom Brennan', role: 'CTO at Vaulted', init: 'TB' },
-      { q: 'The automated fraud detection and instant card freeze give our executive team complete peace of mind.', name: 'Liu Wei', role: 'Founder, CloudMint', init: 'LW' },
-      { q: 'Automated payroll and batch payments save our accounting team over 25 hours every month.', name: 'Amara Osei', role: 'Controller, Drift Studio', init: 'AO' },
-    ];
-    tt.innerHTML = '';
-    [...testimonials, ...testimonials].forEach(t => {
-      const el = document.createElement('div');
-      el.className = 'testi-card';
-      el.innerHTML = `<div class="testi-stars">${[...Array(5)].map(() => '<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>').join('')}</div><p class="testi-quote">"${t.q}"</p><div class="testi-author"><div class="testi-avatar">${t.init}</div><div><div class="testi-name">${t.name}</div><div class="testi-role">${t.role}</div></div></div>`;
-      tt.appendChild(el);
-    });
+    if (tt.children.length > 0) {
+      // Elements are server-rendered and localized. Clone once for marquee loop
+      const cards = Array.from(tt.children);
+      cards.forEach(card => tt.appendChild(card.cloneNode(true)));
+    } else {
+      const testimonials = [
+        { q: 'RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed.', name: 'Sarah Kim', role: 'CFO at Hive Commerce', init: 'SK' },
+        { q: 'The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled.', name: 'James Adler', role: 'Finance Director, Nomad Labs', init: 'JA' },
+        { q: 'Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses.', name: 'Priya Mehta', role: 'Head of Ops, Stackflow', init: 'PM' },
+        { q: 'Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional.', name: 'Tom Brennan', role: 'CTO at Vaulted', init: 'TB' },
+        { q: 'The automated fraud detection and instant card freeze give our executive team complete peace of mind.', name: 'Liu Wei', role: 'Founder, CloudMint', init: 'LW' },
+        { q: 'Automated payroll and batch payments save our accounting team over 25 hours every month.', name: 'Amara Osei', role: 'Controller, Drift Studio', init: 'AO' },
+      ];
+      [...testimonials, ...testimonials].forEach(t => {
+        const el = document.createElement('div');
+        el.className = 'testi-card';
+        el.innerHTML = `<div class="testi-stars">${[...Array(5)].map(() => '<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>').join('')}</div><p class="testi-quote">"${t.q}"</p><div class="testi-author"><div class="testi-avatar">${t.init}</div><div><div class="testi-name">${t.name}</div><div class="testi-role">${t.role}</div></div></div>`;
+        tt.appendChild(el);
+      });
+    }
   }
 
   const testiToggle = document.getElementById('testiToggle');
@@ -237,14 +258,16 @@ document.addEventListener('DOMContentLoaded', () => {
       tt.style.animationPlayState = testiPaused ? 'paused' : 'running';
       const icon = document.getElementById('testiIcon');
       const label = document.getElementById('testiLabel');
+      const playTxt = label ? (label.dataset.playText || 'Play') : 'Play';
+      const pauseTxt = label ? (label.dataset.pauseText || 'Pause') : 'Pause';
       if (testiPaused) {
         if (icon) icon.innerHTML = '<polygon points="6,4 20,12 6,20"/>';
-        if (label) label.textContent = 'Play';
-        testiToggle.setAttribute('aria-label', 'Play testimonials');
+        if (label) label.textContent = playTxt;
+        testiToggle.setAttribute('aria-label', playTxt);
       } else {
         if (icon) icon.innerHTML = '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
-        if (label) label.textContent = 'Pause';
-        testiToggle.setAttribute('aria-label', 'Pause testimonials');
+        if (label) label.textContent = pauseTxt;
+        testiToggle.setAttribute('aria-label', pauseTxt);
       }
     });
   }
@@ -312,11 +335,16 @@ document.addEventListener('DOMContentLoaded', () => {
 window.switchPeriod = function(btn, period) {
   document.querySelectorAll('.dp-period-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  const lang = (document.documentElement.lang || 'en').toLowerCase();
+  const todayLabel = lang === 'ru' ? 'сегодня' : (lang === 'kk' ? 'бүгін' : 'today');
+  const monthLabel = lang === 'ru' ? 'за месяц' : (lang === 'kk' ? 'айда' : 'month');
+  const quarterLabel = lang === 'ru' ? 'за квартал' : (lang === 'kk' ? 'тоқсанда' : 'quarter');
+  const yearLabel = lang === 'ru' ? 'за год' : (lang === 'kk' ? 'жылына' : 'year');
   const configs = {
-    '7d': { val: '₸142,460,000', change: '▲ +₸6,420,000 (4.72%) today' },
-    '1m': { val: '₸184,920,000', change: '▲ +₸37,460,000 (25.4%) month' },
-    '3m': { val: '₸228,500,000', change: '▲ +₸52,400,000 (29.7%) quarter' },
-    '1y': { val: '₸450,000,000', change: '▲ +₸164,000,000 (57.3%) year' },
+    '7d': { val: '₸142,460,000', change: `▲ +₸6,420,000 (4.72%) ${todayLabel}` },
+    '1m': { val: '₸184,920,000', change: `▲ +₸37,460,000 (25.4%) ${monthLabel}` },
+    '3m': { val: '₸228,500,000', change: `▲ +₸52,400,000 (29.7%) ${quarterLabel}` },
+    '1y': { val: '₸450,000,000', change: `▲ +₸164,000,000 (57.3%) ${yearLabel}` },
   };
   const c = configs[period] || configs['7d'];
   const vEl = document.getElementById('dpChartVal');
@@ -335,7 +363,9 @@ window.togglePricing = function() {
     el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
   });
   document.querySelectorAll('.period-label').forEach(el => {
-    el.textContent = isAnnual ? 'annually' : 'monthly';
+    const annualTxt = el.dataset.annual || 'annually';
+    const monthlyTxt = el.dataset.monthly || 'monthly';
+    el.textContent = isAnnual ? annualTxt : monthlyTxt;
   });
   document.querySelectorAll('.price-alt-monthly').forEach(el => {
     el.style.display = isAnnual ? 'none' : 'inline';
@@ -353,7 +383,11 @@ window.toggleAllFaq = function() {
     allExpanded ? el.classList.add('open') : el.classList.remove('open');
   });
   const lbl = document.getElementById('faqToggleLabel');
-  if (lbl) lbl.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+  if (lbl) {
+    const expandTxt = lbl.dataset.expandText || 'Expand all';
+    const collapseTxt = lbl.dataset.collapseText || 'Collapse all';
+    lbl.textContent = allExpanded ? collapseTxt : expandTxt;
+  }
   const icon = document.getElementById('faqToggleIcon');
   if (icon) {
     icon.innerHTML = allExpanded

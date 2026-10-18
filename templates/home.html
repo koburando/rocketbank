@@ -14,7 +14,13 @@
       {% trans "Now with AI-powered financial insights" %}
     </div>
     <h1>
-      {% trans "Finance that" %}<br>{% trans "moves at" %}<br><span>{% trans "your speed" %}</span>
+      {% if LANGUAGE_CODE == 'ru' %}
+        Финансы в ритме<br><span>вашего бизнеса</span>
+      {% elif LANGUAGE_CODE == 'kk' %}
+        Сіздің қарқыныңызбен<br><span>жұмыс істейтін қаржы</span>
+      {% else %}
+        Finance that moves at<br><span>your speed</span>
+      {% endif %}
     </h1>
     <p class="hero-sub">
       {% trans "RocketBank is the modern financial platform built for businesses and individuals who refuse to wait. Real-time payments, intelligent analytics, and enterprise-grade security — all in one dashboard." %}
@@ -37,7 +43,15 @@
       <div class="hero-avatars">
         <span>KZ</span><span>US</span><span>EU</span><span>+</span>
       </div>
-      <p class="hero-trust-text"><strong>12,000+</strong> {% trans "businesses and clients trust RocketBank" %}</p>
+      <p class="hero-trust-text">
+        {% if LANGUAGE_CODE == 'ru' %}
+          <strong>12 000+</strong> клиентов доверяют RocketBank
+        {% elif LANGUAGE_CODE == 'kk' %}
+          <strong>12 000+</strong> клиент RocketBank-ке сенеді
+        {% else %}
+          <strong>12,000+</strong> clients trust RocketBank
+        {% endif %}
+      </p>
     </div>
   </div>
 
@@ -265,7 +279,11 @@
             <span style="background:#F0A030"></span>
             <span style="background:#3DCC8E"></span>
           </div>
-          <span style="font-size:11px;color:var(--text3);margin-left:8px" id="panelLabel">Transfers</span>
+          <span style="font-size:11px;color:var(--text3);margin-left:8px" id="panelLabel"
+                data-label-0="{% trans 'Transfers' %}"
+                data-label-1="{% trans 'Analytics' %}"
+                data-label-2="{% trans 'Multi-currency' %}"
+                data-label-3="{% trans 'Security' %}">{% trans "Transfers" %}</span>
         </div>
         <div class="panel-content">
           <!-- Panel 0: Transfers -->
@@ -551,7 +569,7 @@
       <div class="featured-badge">{% trans "Most popular" %}</div>
       <div class="price-plan">{% trans "Platinum Card" %}</div>
       <div class="price-amount"><sup>₸</sup><span class="price-num" data-monthly="5,000" data-annual="3,250">5,000</span></div>
-      <div class="price-period">{% trans "per month, billed" %} <span class="period-label">{% trans "monthly" %}</span></div>
+      <div class="price-period">{% trans "per month, billed" %} <span class="period-label" data-annual="{% trans 'annually' %}" data-monthly="{% trans 'monthly' %}">{% trans "monthly" %}</span></div>
       <div class="price-alt" style="font-size:12px;color:var(--text3);margin-bottom:16px;min-height:18px">
         <span class="price-alt-monthly" style="display:none">or <strong style="color:var(--green)">₸3,250/mo</strong> — {% trans "billed annually" %}</span>
         <span class="price-alt-annual">{% trans "billed" %} <strong style="color:var(--sky)">₸39,000/yr</strong> {% trans "annually" %}</span>
@@ -635,12 +653,115 @@
     <h2 class="section-title">{% trans "Trusted by leaders across industries" %}</h2>
   </div>
   <div class="testi-track-wrap">
-    <div class="testi-track" id="testiTrack"></div>
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "RocketBank cut our corporate international settlement time from 3 days to under 2 seconds. It completely redefined our treasury speed." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SK</div>
+          <div>
+            <div class="testi-name">Sarah Kim</div>
+            <div class="testi-role">{% trans "CFO at Hive Commerce" %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "The multi-currency IBAN accounts saved us over ₸18M in FX conversions this year. The exchange rate transparency is unparalleled." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JA</div>
+          <div>
+            <div class="testi-name">James Adler</div>
+            <div class="testi-role">{% trans "Finance Director, Nomad Labs" %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "Finally a modern digital banking platform that feels ultra-fast and engineered for modern engineers and tech businesses." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PM</div>
+          <div>
+            <div class="testi-name">Priya Mehta</div>
+            <div class="testi-role">{% trans "Head of Ops, Stackflow" %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "Migrated our business accounts in one afternoon. The REST API documentation and instant webhooks are exceptional." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TB</div>
+          <div>
+            <div class="testi-name">Tom Brennan</div>
+            <div class="testi-role">{% trans "CTO at Vaulted" %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "The automated fraud detection and instant card freeze give our executive team complete peace of mind." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">LW</div>
+          <div>
+            <div class="testi-name">Liu Wei</div>
+            <div class="testi-role">{% trans "Founder, CloudMint" %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <p class="testi-quote">"{% trans "Automated payroll and batch payments save our accounting team over 25 hours every month." %}"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AO</div>
+          <div>
+            <div class="testi-name">Amara Osei</div>
+            <div class="testi-role">{% trans "Controller, Drift Studio" %}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div style="display:flex;justify-content:center;margin-top:32px">
-    <button id="testiToggle" aria-label="{% trans 'Pause testimonials' %}" style="background:var(--bg2);border:1px solid var(--border2);color:var(--text2);padding:10px 18px;border-radius:24px;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;">
+    <button id="testiToggle" aria-label="{% trans 'Pause' %}" style="background:var(--bg2);border:1px solid var(--border2);color:var(--text2);padding:10px 18px;border-radius:24px;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;">
       <svg id="testiIcon" width="14" height="14" fill="currentColor" stroke="none" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-      <span id="testiLabel">{% trans "Pause" %}</span>
+      <span id="testiLabel" data-play-text="{% trans 'Play' %}" data-pause-text="{% trans 'Pause' %}">{% trans "Pause" %}</span>
     </button>
   </div>
 </section>
@@ -713,10 +834,53 @@
       </div>
       <button id="faqToggleAll" onclick="toggleAllFaq()" style="background:transparent;border:1px solid var(--border2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 16px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;white-space:nowrap;margin-bottom:6px">
         <svg id="faqToggleIcon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        <span id="faqToggleLabel">{% trans "Expand all" %}</span>
+        <span id="faqToggleLabel" data-expand-text="{% trans 'Expand all' %}" data-collapse-text="{% trans 'Collapse all' %}">{% trans "Expand all" %}</span>
       </button>
     </div>
-    <div class="faq-list" id="faqList"></div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "How quickly can I open an account and start sending payments?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "You can be up and running in under 3 minutes. Register your account online, verify with instant biometric/document check, and start transacting with zero paperwork." %}</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "What are the transaction fees for domestic and global transfers?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "All standard domestic transfers and peer-to-peer RocketBank transfers are 100% free with 0.00 KZT commission. Multi-currency international rails start at interbank live FX rates with zero hidden markups." %}</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "Are deposits insured by the Kazakhstan Deposit Insurance Fund?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "Yes. All deposits held in RocketBank are fully guaranteed up to 20,000,000 KZT per depositor in savings deposits by the KDIF under the laws of the Republic of Kazakhstan." %}</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "How does RocketBank protect client funds and cards from fraud?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "We employ bank-grade 256-bit AES encryption, row-level ACID transactional concurrency locks, SOC 2 compliance, and AI-powered real-time anomaly detection to block fraud instantly." %}</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "Can I integrate RocketBank with accounting tools and REST APIs?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "Yes! RocketBank provides a full OpenAPI 3.0 / Swagger REST API with JWT authentication, webhook notifications, and automated export tools for finance and ERP platforms." %}</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">{% trans "How can I freeze my bank card if it is lost or compromised?" %}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="faq-a">{% trans "You can freeze or unfreeze any debit or credit card instantly from your Client Dashboard or mobile interface with a single tap, blocking all physical and online transactions immediately." %}</div>
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %}
