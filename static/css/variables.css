@@ -145,27 +145,27 @@
    Light Theme Override (Clean NovaPay Contrast)
    ────────────────────────────────────────────── */
 [data-theme="light"] {
-  --bg: #F4F7FB;
+  --bg: #F8FAFC;
   --bg2: #FFFFFF;
-  --bg3: #E9F0F8;
-  --bg4: #DCE7F3;
-  --sky: #1D75C9;
-  --sky2: #3E94E4;
-  --sky3: #145899;
-  --sky4: #D8E7F8;
-  --text: #0E1726;
-  --text2: #476282;
-  --text3: #7A92A8;
-  --border: #CBD9E8;
-  --border2: #B3C8DF;
-  --green: #1F9D68;
-  --red: #D94343;
+  --bg3: #EDF2F7;
+  --bg4: #E2E8F0;
+  --sky: #0284C7;
+  --sky2: #0369A1;
+  --sky3: #075985;
+  --sky4: #E0F2FE;
+  --text: #0F172A;
+  --text2: #334155;
+  --text3: #64748B;
+  --border: #E2E8F0;
+  --border2: #CBD5E1;
+  --green: #10B981;
+  --red: #EF4444;
 
   --color-primary: var(--sky);
   --color-primary-hover: var(--sky2);
   --color-primary-active: var(--sky3);
-  --color-primary-light: #E1EFFF;
-  --color-primary-dark: #145899;
+  --color-primary-light: var(--sky4);
+  --color-primary-dark: #075985;
 
   --bg-body: var(--bg);
   --bg-surface: var(--bg2);
@@ -175,7 +175,7 @@
   --bg-input: #FFFFFF;
   --border-color: var(--border);
   --border-color-focus: var(--sky);
-  --border-color-subtle: #E2EAF4;
+  --border-color-subtle: var(--border);
 
   --text-primary: var(--text);
   --text-secondary: var(--text2);
@@ -183,26 +183,26 @@
   --text-inverse: #FFFFFF;
   --text-link: var(--sky);
 
-  --color-success-bg: rgba(31, 157, 104, 0.1);
-  --color-success-border: rgba(31, 157, 104, 0.25);
-  --color-success-text: #177C52;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-success-border: rgba(16, 185, 129, 0.25);
+  --color-success-text: #059669;
 
-  --color-warning-bg: rgba(240, 160, 48, 0.1);
-  --color-warning-border: rgba(240, 160, 48, 0.25);
-  --color-warning-text: #B87114;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-warning-border: rgba(245, 158, 11, 0.25);
+  --color-warning-text: #D97706;
 
-  --color-danger-bg: rgba(217, 67, 67, 0.1);
-  --color-danger-border: rgba(217, 67, 67, 0.25);
-  --color-danger-text: #B02A2A;
+  --color-danger-bg: rgba(239, 68, 68, 0.1);
+  --color-danger-border: rgba(239, 68, 68, 0.25);
+  --color-danger-text: #DC2626;
 
-  --color-info-bg: rgba(29, 117, 201, 0.1);
-  --color-info-border: rgba(29, 117, 201, 0.25);
-  --color-info-text: #145899;
+  --color-info-bg: rgba(2, 132, 199, 0.1);
+  --color-info-border: rgba(2, 132, 199, 0.25);
+  --color-info-text: #0284C7;
 
-  --shadow-xs: 0 1px 2px 0 rgba(14, 23, 38, 0.05);
-  --shadow-sm: 0 2px 4px 0 rgba(14, 23, 38, 0.08);
-  --shadow-md: 0 4px 12px 0 rgba(14, 23, 38, 0.1);
-  --shadow-lg: 0 12px 24px 0 rgba(14, 23, 38, 0.12);
-  --shadow-xl: 0 20px 36px 0 rgba(14, 23, 38, 0.15);
-  --shadow-glow: 0 0 20px rgba(29, 117, 201, 0.2);
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 16px 0 rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 12px 24px 0 rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 20px 36px 0 rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.2);
 }

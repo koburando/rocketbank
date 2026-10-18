@@ -32,7 +32,7 @@ def global_context(request):
             theme_preference = profile.preferred_theme
 
     if theme_preference == "SYSTEM":
-        theme_preference = request.COOKIES.get("theme", "SYSTEM")
+        theme_preference = request.COOKIES.get("django_theme") or request.COOKIES.get("theme", "SYSTEM")
 
     try:
         from apps.accounts.models import Currency

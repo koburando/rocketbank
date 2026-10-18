@@ -711,6 +711,27 @@ class UserProfileViewSet(viewsets.ViewSet):
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
 
+    def partial_update(self, request, *args, **kwargs):
+        profile = getattr(request.user, "profile", None)
+        if not profile:
+            from apps.users.models import Profile
+
+            profile = Profile.objects.create(user=request.user)
+
+        theme = (
+            request.data.get("theme_preference")
+            or request.data.get("preferred_theme")
+            or request.data.get("theme")
+        )
+        if theme:
+            theme_val = str(theme).upper()
+            if theme_val in ("LIGHT", "DARK", "SYSTEM"):
+                profile.preferred_theme = theme_val
+                profile.save(update_fields=["preferred_theme", "updated_at"])
+
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
     @action(detail=False, methods=["patch", "post"], url_path="theme")
     def update_theme(self, request):
         theme = request.data.get("theme", "SYSTEM").upper()

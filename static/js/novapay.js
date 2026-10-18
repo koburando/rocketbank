@@ -395,3 +395,102 @@ window.toggleAllFaq = function() {
       : '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>';
   }
 };
+
+// ================================================================================
+// 13. Theme Toggle Controller & Persistence (Swiss FinTech Light/Dark)
+// ================================================================================
+(function initNovapayTheme() {
+  function getCsrfToken() {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    if (meta && meta.content) return meta.content;
+    const parts = (document.cookie || '').split(';');
+    for (let p of parts) {
+      p = p.trim();
+      if (p.startsWith('csrftoken=')) return p.substring(10);
+    }
+    return '';
+  }
+
+  function updateIcons(theme) {
+    if (window.updateRocketThemeIcons) {
+      window.updateRocketThemeIcons(theme);
+      return;
+    }
+    const isDark = (theme || 'dark').toLowerCase() === 'dark';
+    const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    document.querySelectorAll('#theme-toggle-btn, [data-theme-toggle], .theme-toggle-btn').forEach((btn) => {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+      btn.setAttribute('data-theme-state', isDark ? 'dark' : 'light');
+      const sun = btn.querySelector('.theme-icon-sun');
+      const moon = btn.querySelector('.theme-icon-moon');
+      if (sun && moon) {
+        sun.style.display = isDark ? 'inline-flex' : 'none';
+        moon.style.display = isDark ? 'none' : 'inline-flex';
+      }
+    });
+  }
+
+  function applyTheme(theme) {
+    const next = (theme || 'dark').toLowerCase() === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    document.cookie = 'django_theme=' + next + ';path=/;max-age=31536000;SameSite=Lax';
+    document.cookie = 'theme=' + next + ';path=/;max-age=31536000;SameSite=Lax';
+    updateIcons(next);
+    document.dispatchEvent(new CustomEvent('rocketbank:theme-changed', { detail: { theme: next } }));
+    return next;
+  }
+
+  function syncThemeApi(theme) {
+    const isAuth = document.querySelector('meta[name="user-authenticated"]')?.content === 'true'
+      || window.userIsAuthenticated === true;
+    if (!isAuth) return;
+
+    const themeUpper = theme.toUpperCase();
+    const csrf = getCsrfToken();
+    fetch('/api/v1/auth/profile/', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrf,
+      },
+      body: JSON.stringify({
+        theme_preference: themeUpper,
+        preferred_theme: themeUpper,
+      }),
+    }).catch(() => {
+      fetch('/api/v1/profile/theme/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrf,
+        },
+        body: JSON.stringify({ theme: themeUpper }),
+      }).catch(() => {});
+    });
+  }
+
+  window.toggleRocketTheme = function() {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    syncThemeApi(next);
+    return next;
+  };
+  window.applyRocketTheme = applyTheme;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeTheme = localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'dark';
+    updateIcons(activeTheme);
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('#theme-toggle-btn, [data-theme-toggle], .theme-toggle-btn');
+      if (btn) {
+        e.preventDefault();
+        window.toggleRocketTheme();
+      }
+    });
+  });
+})();
+

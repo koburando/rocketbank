@@ -48,6 +48,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     """User profile serializer with nested user and theme preference."""
 
     user = UserSummarySerializer(read_only=True)
+    theme_preference = serializers.CharField(source="preferred_theme", required=False)
 
     class Meta:
         model = Profile
@@ -59,6 +60,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "address",
             "kyc_status",
             "preferred_theme",
+            "theme_preference",
             "preferred_language",
             "created_at",
             "updated_at",
@@ -70,6 +72,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         if value.upper() not in valid_themes:
             raise serializers.ValidationError(f"Invalid theme '{value}'. Choices: {valid_themes}")
         return value.upper()
+
+    def validate_theme_preference(self, value):
+        return self.validate_preferred_theme(value)
 
 
 # ──────────────────────────────────────────────

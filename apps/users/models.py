@@ -102,6 +102,14 @@ class Profile(TimeStampedModel):
         verbose_name_plural = "profiles"
         ordering = ["-created_at"]
 
+    @property
+    def theme_preference(self):
+        return self.preferred_theme
+
+    @theme_preference.setter
+    def theme_preference(self, value):
+        self.preferred_theme = value
+
     def __str__(self):
         return f"Profile of {self.user.email}"
 

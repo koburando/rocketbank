@@ -7,6 +7,14 @@
 <html lang="{{ LANGUAGE_CODE|default:'ru' }}" data-theme="{{ user_theme_preference|default:'dark'|lower }}">
 <head>
   <meta charset="utf-8">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="user-authenticated" content="{% if request.user.is_authenticated %}true{% else %}false{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -82,14 +90,10 @@
   <!-- Accessible Modal Container Template -->
   {% block modal_container %}{% endblock %}
 
-  <!-- Core Accessibility and Theme Switcher Script -->
+  <!-- Core Modal Helpers -->
   <script>
     (function() {
-      // Synchronize theme with local preference if present
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      // Dialog modal helpers
 
       // Dialog modal helpers
       window.openDialog = function(id) {
