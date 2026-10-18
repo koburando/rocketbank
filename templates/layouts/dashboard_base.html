@@ -1,24 +1,42 @@
 {% extends "base.html" %}
+{% load static i18n %}
 
 {% block layout %}
 <div class="dashboard-layout">
   <!-- Sidebar Navigation -->
-  <aside class="dashboard-sidebar" role="navigation" aria-label="Dashboard navigation">
+  <aside class="dashboard-sidebar" role="navigation" aria-label="{% trans 'Dashboard navigation' %}">
     {% include "includes/sidebar.html" with user=request.user unread_notifications_count=unread_notifications_count current_path=request.path only %}
   </aside>
 
   <!-- Topbar Header -->
-  <header class="dashboard-topbar" role="banner">
+  <header class="dashboard-topbar" role="banner" style="background:var(--bg2); border-bottom:1px solid var(--border); padding: 0 var(--space-xl); height:var(--header-height); display:flex; align-items:center; justify-content:space-between;">
     <div class="d-flex items-center gap-md">
-      <a href="{% url 'home' %}" class="navbar-brand d-lg-none" aria-label="RocketBank Home">
-        <span aria-hidden="true">🚀</span> RocketBank
+      <a href="{% url 'home' %}" class="nav-logo d-lg-none" aria-label="RocketBank Home">
+        <img src="{% static 'images/logo.png' %}" alt="RocketBank" style="max-height: 28px; width: auto; object-fit: contain; display: block;" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+        <span class="nav-logo-fallback" style="display: none; align-items: center; gap: 6px; font-family:'Outfit',sans-serif; font-weight:800; color:var(--text);">
+          <div class="nav-logo-mark" style="width:24px; height:24px; background:var(--sky); border-radius:6px; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 16 16" style="width:12px; height:12px; fill:none; stroke:#fff; stroke-width:2.5; stroke-linecap:round;"><polyline points="2,12 6,7 10,9 14,4"/><circle cx="14" cy="4" r="1.5" fill="white" stroke="none"/></svg>
+          </div>
+          RocketBank
+        </span>
       </a>
-      <span class="text-muted d-none d-lg-block font-semibold">Client Portal</span>
+      <span class="text-muted d-none d-lg-block font-semibold" style="letter-spacing: 0.05em; font-size:13px; text-transform:uppercase; color:var(--text2);">
+        {% trans "Client Portal" %}
+      </span>
     </div>
 
-    <div class="d-flex items-center gap-md">
+    <div class="d-flex items-center gap-sm">
+      <!-- Language Switcher -->
+      <form action="{% url 'set_language' %}" method="post" class="lang-switcher-form" style="display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:2px;">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.get_full_path }}">
+        <button type="submit" name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" title="Русский">RU</button>
+        <button type="submit" name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}" title="Қазақша">KK</button>
+        <button type="submit" name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}" title="English">EN</button>
+      </form>
+
       <!-- Quick Theme Switcher -->
-      <button type="button" class="btn btn--secondary btn--sm" id="theme-toggle-btn" aria-label="Toggle dark/light theme" onclick="(function(){
+      <button type="button" class="btn-ghost" id="theme-toggle-btn" aria-label="{% trans 'Toggle dark/light theme' %}" style="padding:6px 10px; font-size:13px;" onclick="(function(){
         const cur = document.documentElement.getAttribute('data-theme');
         const next = cur === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
@@ -29,24 +47,26 @@
       </button>
 
       <!-- Notifications Bell -->
-      <a href="{% url 'notifications:list' %}" class="btn btn--secondary btn--sm d-flex items-center gap-xs" aria-label="View notifications">
+      <a href="{% url 'notifications:list' %}" class="btn-ghost d-flex items-center gap-xs" style="padding:6px 10px; position:relative;" aria-label="{% trans 'View notifications' %}">
         <span aria-hidden="true">🔔</span>
         {% if unread_notifications_count > 0 %}
-          <span class="badge badge--danger" aria-label="{{ unread_notifications_count }} unread notifications">{{ unread_notifications_count }}</span>
+          <span style="position:absolute; top:-4px; right:-4px; background:var(--red); color:#fff; font-size:10px; font-weight:700; border-radius:10px; padding:1px 5px; line-height:1;" aria-label="{{ unread_notifications_count }} {% trans 'unread notifications' %}">
+            {{ unread_notifications_count }}
+          </span>
         {% endif %}
       </a>
 
       <!-- User Dropdown Profile Link -->
-      <a href="{% url 'users:profile' %}" class="btn btn--secondary btn--sm d-flex items-center gap-xs">
+      <a href="{% url 'users:profile' %}" class="btn-ghost d-flex items-center gap-xs" style="padding:6px 12px;">
         <span aria-hidden="true">👤</span>
-        <span class="d-none d-md-inline">{{ request.user.email|truncatechars:18 }}</span>
+        <span class="d-none d-md-inline">{{ request.user.first_name|default:request.user.username|truncatechars:15 }}</span>
       </a>
 
       <!-- Logout Form (Strict POST compliance) -->
       <form method="post" action="{% url 'users:logout' %}" style="margin: 0; display: inline;">
         {% csrf_token %}
-        <button type="submit" class="btn btn--outline btn--sm" aria-label="Sign out">
-          Sign out
+        <button type="submit" class="btn-ghost" aria-label="{% trans 'Sign out' %}" style="cursor: pointer; padding:6px 12px;">
+          {% trans "Sign out" %}
         </button>
       </form>
     </div>
@@ -62,9 +82,9 @@
   </main>
 
   <!-- Dashboard Footer -->
-  <footer class="dashboard-footer" role="contentinfo">
-    <p class="m-0 text-muted">
-      &copy; {{ current_year }} RocketBank JSC. Licensed by the Agency for Regulation and Development of the Financial Market. All rights reserved.
+  <footer class="dashboard-footer" role="contentinfo" style="border-top:1px solid var(--border); padding:var(--space-md) var(--space-xl); background:var(--bg2);">
+    <p class="m-0 text-muted" style="font-size:12px;">
+      &copy; {{ current_year }} RocketBank. {% trans "Licensed by the Agency for Regulation and Development of the Financial Market. All rights reserved." %}
     </p>
   </footer>
 </div>

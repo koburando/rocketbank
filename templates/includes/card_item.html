@@ -1,67 +1,91 @@
-{% load bank_tags %}
-<article class="card card--interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+{% load bank_tags i18n %}
+<article class="card card--interactive dash-card" style="display:flex; flex-direction:column; justify-content:space-between; padding:var(--space-md); border:1px solid var(--border); border-radius:16px; background:var(--bg2);">
   <div>
-    <!-- Card Visual Layout with Aspect Ratio -->
-    <div class="card-bank-visual {% if card.product.tier == 'GOLD' %}card-bank-visual--gold{% elif card.product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif card.product.tier == 'BLACK' %}card-bank-visual--black{% endif %} mb-md">
-      <div class="d-flex justify-between items-center">
-        <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-xs);">
-          RocketBank
-        </span>
-        <span class="badge {{ card.status|status_badge_class }}">
-          {{ card.get_status_display }}
+    <!-- Realistic 16:10 Aspect Ratio Bank Card -->
+    <div class="card-bank-visual {% if card.product.tier == 'GOLD' %}card-bank-visual--gold{% elif card.product.tier == 'PLATINUM' %}card-bank-visual--platinum{% else %}card-bank-visual--black{% endif %} mb-md" style="aspect-ratio:16/10; border-radius:16px; position:relative; overflow:hidden;">
+      <!-- Card Top: Brand + NFC + Tier Badge -->
+      <div class="d-flex justify-between items-center" style="position:relative; z-index:2;">
+        <div class="d-flex items-center gap-xs">
+          <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">
+            RocketBank
+          </span>
+          <svg class="card-nfc-wave" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M8.5 16.5a5 5 0 0 1 0-9"/>
+            <path d="M12 19a8.5 8.5 0 0 1 0-14"/>
+            <path d="M15.5 21.5a12 12 0 0 1 0-19"/>
+          </svg>
+        </div>
+        <span class="badge" style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:3px 8px; border-radius:6px;">
+          {{ card.product.get_tier_display }}
         </span>
       </div>
 
-      <div class="my-md">
-        <div style="font-size: 1.4rem; letter-spacing: 0.15em; font-family: var(--font-family-mono);">
+      <!-- Card Middle: Realistic EMV Smart Chip -->
+      <div style="position:relative; z-index:2; margin: 4px 0;">
+        <div class="card-emv-chip" aria-hidden="true"></div>
+      </div>
+
+      <!-- Card Middle-Bottom: Monospace Masked Card Number -->
+      <div style="position:relative; z-index:2;">
+        <div style="font-size:1.25rem; font-family:var(--font-family-mono); letter-spacing:0.18em; font-weight:600; text-shadow:0 1px 3px rgba(0,0,0,0.5);">
           {{ card.card_number_masked }}
         </div>
       </div>
 
-      <div class="d-flex justify-between items-end" style="font-size: var(--font-size-xs);">
-        <div>
-          <span style="opacity: 0.7; display: block; font-size: 0.65rem;">EXPIRES</span>
-          <span class="font-mono">{{ card.expiry_date|date:"m/y" }}</span>
+      <!-- Card Bottom: Cardholder Name + Expiry Date -->
+      <div class="d-flex justify-between items-end" style="position:relative; z-index:2; font-size:11px;">
+        <div style="max-width:65%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+          <span style="opacity:0.7; display:block; font-size:9px; letter-spacing:0.08em; text-transform:uppercase;">{% trans "CARDHOLDER" %}</span>
+          <span style="font-weight:600; letter-spacing:0.05em; text-transform:uppercase;">
+            {{ card.account.owner.get_full_name|default:card.account.owner.username|upper }}
+          </span>
         </div>
-        <div>
-          <span class="font-bold text-uppercase">{{ card.product.title }}</span>
+        <div class="text-right">
+          <span style="opacity:0.7; display:block; font-size:9px; letter-spacing:0.08em; text-transform:uppercase;">{% trans "EXPIRES" %}</span>
+          <span class="font-mono" style="font-weight:600;">{{ card.expiry_date|date:"m/y" }}</span>
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-between items-center mb-sm">
-      <h3 class="card__title" style="font-size: var(--font-size-base);">
-        {{ card.product.title }} ({{ card.get_status_display }})
+    <!-- Product Title & Limits -->
+    <div class="d-flex justify-between items-center mb-xs">
+      <h3 class="card__title" style="font-size:15px; font-weight:600; margin:0; color:var(--text);">
+        {{ card.product.title }}
       </h3>
-      <span class="text-muted font-mono" style="font-size: var(--font-size-xs);">
-        Daily Limit: {{ card.daily_limit|currency_format:card.account.currency.code }}
+      <span class="badge {{ card.status|status_badge_class }}" style="font-size:11px;">
+        {{ card.get_status_display }}
       </span>
     </div>
 
-    <p class="text-muted" style="font-size: var(--font-size-xs); margin-bottom: var(--space-md);">
-      Linked Account: <strong class="font-mono">{{ card.account.iban|mask_iban }}</strong>
+    <div class="d-flex justify-between items-center mb-sm" style="font-size:12px; color:var(--text2);">
+      <span>{% trans "Daily limit" %}:</span>
+      <strong class="font-mono">{{ card.daily_limit|currency_format:card.account.currency.code }}</strong>
+    </div>
+
+    <p class="text-muted" style="font-size:12px; margin-bottom:var(--space-md); color:var(--text3);">
+      {% trans "Linked Account" %}: <strong class="font-mono" style="color:var(--text2);">{{ card.account.iban|mask_iban }}</strong>
     </p>
   </div>
 
-  <div class="d-flex items-center justify-between pt-sm" style="border-top: 1px solid var(--border-color-subtle);">
-    <!-- Quick Card Freeze Toggle (FBV with @require_POST and @login_required) -->
-    <form method="post" action="{% url 'cards:toggle-freeze' card.id %}" style="margin: 0;">
+  <div class="d-flex items-center justify-between pt-sm" style="border-top:1px solid var(--border);">
+    <!-- Quick Freeze/Unfreeze Action -->
+    <form method="post" action="{% url 'cards:toggle-freeze' card.id %}" style="margin:0;">
       {% csrf_token %}
       {% if card.status == 'ACTIVE' %}
-        <button type="submit" class="btn btn--outline btn--sm" aria-label="Freeze card {{ card.card_number_masked }}">
-          ❄️ Freeze Card
+        <button type="submit" class="btn-ghost" style="padding:6px 12px; font-size:12px;" aria-label="{% trans 'Freeze card' %} {{ card.card_number_masked }}">
+          ❄️ {% trans "Freeze Card" %}
         </button>
       {% elif card.status == 'BLOCKED' %}
-        <button type="submit" class="btn btn--primary btn--sm" aria-label="Unfreeze card {{ card.card_number_masked }}">
-          ⚡ Unfreeze Card
+        <button type="submit" class="btn-primary" style="padding:6px 12px; font-size:12px;" aria-label="{% trans 'Unfreeze card' %} {{ card.card_number_masked }}">
+          ⚡ {% trans "Unfreeze Card" %}
         </button>
       {% else %}
-        <span class="text-muted" style="font-size: var(--font-size-xs);">Inactive</span>
+        <span class="text-muted" style="font-size:12px;">{% trans "Inactive" %}</span>
       {% endif %}
     </form>
 
-    <a href="{% url 'accounts:detail' card.account.id %}" class="btn btn--secondary btn--sm">
-      View Account &rarr;
+    <a href="{% url 'accounts:detail' card.account.id %}" class="btn-ghost" style="padding:6px 12px; font-size:12px;">
+      {% trans "Account" %} &rarr;
     </a>
   </div>
 </article>

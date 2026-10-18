@@ -1,54 +1,150 @@
 {% extends "layouts/public_base.html" %}
+{% load i18n static %}
 
-{% block title %}Open an Account | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Register for RocketBank and gain access to multi-currency IBAN accounts, cashback debit cards, and instant transfers.">{% endblock %}
+{% block title %}{% trans "Open an Account | RocketBank" %}{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Register for RocketBank and gain access to multi-currency IBAN accounts, cashback debit cards, and instant transfers." %}">{% endblock %}
 
 {% block content %}
-<div class="container container--narrow">
-  <div class="card card--elevated" style="margin: var(--space-xl) auto; padding: var(--space-2xl);">
-    <div class="text-center mb-xl">
-      <div style="font-size: 2.5rem; margin-bottom: var(--space-xs);" aria-hidden="true">💳</div>
-      <h1 style="font-size: var(--font-size-2xl);">Open Your RocketBank Account</h1>
-      <p class="text-secondary">Join next-generation banking with zero monthly maintenance fee</p>
+<div class="container container--narrow" style="padding-top: calc(36px + var(--nav-h) + 40px); padding-bottom: 80px;">
+  <div class="dash-card" style="max-width: 520px; margin: 0 auto; padding: 40px 36px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg2);">
+    <!-- Header -->
+    <div class="text-center mb-xl" style="text-align: center; margin-bottom: 32px;">
+      <div class="nav-logo-mark" style="width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 12px; background: var(--sky); display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 16 16" style="width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round;"><polyline points="2,12 6,7 10,9 14,4"/><circle cx="14" cy="4" r="1.5" fill="white" stroke="none"/></svg>
+      </div>
+      <h1 style="font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 8px;">
+        {% trans "Open RocketBank Account" %}
+      </h1>
+      <p style="font-size: 14px; color: var(--text2); margin: 0;">
+        {% trans "Join next-generation banking with zero monthly maintenance fee" %}
+      </p>
     </div>
 
     <form method="post" action="{% url 'users:register' %}" novalidate>
       {% csrf_token %}
 
       {% if form.non_field_errors %}
-        <div class="alert alert--danger" role="alert">
+        <div style="background: rgba(232,90,90,0.12); border: 1px solid rgba(232,90,90,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; color: var(--red); font-size: 13px;" role="alert">
           {% for error in form.non_field_errors %}
-            <span>{{ error }}</span>
+            <div>{{ error }}</div>
           {% endfor %}
         </div>
       {% endif %}
 
-      {% include "includes/form_field.html" with field=form.email %}
-      {% include "includes/form_field.html" with field=form.username %}
-      {% include "includes/form_field.html" with field=form.phone_number %}
-      {% include "includes/form_field.html" with field=form.password %}
-      {% include "includes/form_field.html" with field=form.password_confirm %}
-
-      <div class="mb-lg">
-        <label class="form-check" style="font-size: var(--font-size-xs); align-items: flex-start;">
-          {{ form.accept_terms }}
-          <span>
-            I agree to the <a href="{% url 'about' %}" target="_blank">Terms of Service</a> and confirm that I am at least 18 years of age.
-          </span>
+      <!-- Email -->
+      <div style="margin-bottom: 16px;">
+        <label for="{{ form.email.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px;">
+          {% trans "Email Address" %} <span style="color:var(--red);">*</span>
         </label>
-        {% if form.accept_terms.errors %}
-          <small class="form-error">{{ form.accept_terms.errors.0 }}</small>
+        <input type="email"
+               name="{{ form.email.name }}"
+               id="{{ form.email.id_for_label }}"
+               value="{{ form.email.value|default:'' }}"
+               class="footer-input"
+               style="width: 100%; padding: 12px 14px; font-size: 14px;"
+               placeholder="{% trans 'name@example.com' %}"
+               required>
+        {% if form.email.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.email.errors.0 }}</div>
         {% endif %}
       </div>
 
-      <button type="submit" class="btn btn--primary w-100 btn--lg">
-        Create My Account
+      <!-- Username -->
+      <div style="margin-bottom: 16px;">
+        <label for="{{ form.username.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px;">
+          {% trans "Username" %} <span style="color:var(--red);">*</span>
+        </label>
+        <input type="text"
+               name="{{ form.username.name }}"
+               id="{{ form.username.id_for_label }}"
+               value="{{ form.username.value|default:'' }}"
+               class="footer-input"
+               style="width: 100%; padding: 12px 14px; font-size: 14px;"
+               placeholder="{% trans 'username' %}"
+               required>
+        {% if form.username.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.username.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Phone Number -->
+      <div style="margin-bottom: 16px;">
+        <label for="{{ form.phone_number.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px;">
+          {% trans "Phone Number" %} <span style="color:var(--red);">*</span>
+        </label>
+        <input type="tel"
+               name="{{ form.phone_number.name }}"
+               id="{{ form.phone_number.id_for_label }}"
+               value="{{ form.phone_number.value|default:'' }}"
+               class="footer-input"
+               style="width: 100%; padding: 12px 14px; font-size: 14px;"
+               placeholder="+7 (701) 000-00-00"
+               required>
+        {% if form.phone_number.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.phone_number.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+        <div>
+          <label for="{{ form.password.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px;">
+            {% trans "Password" %} <span style="color:var(--red);">*</span>
+          </label>
+          <input type="password"
+                 name="{{ form.password.name }}"
+                 id="{{ form.password.id_for_label }}"
+                 class="footer-input"
+                 style="width: 100%; padding: 12px 14px; font-size: 14px;"
+                 placeholder="••••••••••••"
+                 required>
+          {% if form.password.errors %}
+            <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.password.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        <div>
+          <label for="{{ form.password_confirm.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px;">
+            {% trans "Confirm Password" %} <span style="color:var(--red);">*</span>
+          </label>
+          <input type="password"
+                 name="{{ form.password_confirm.name }}"
+                 id="{{ form.password_confirm.id_for_label }}"
+                 class="footer-input"
+                 style="width: 100%; padding: 12px 14px; font-size: 14px;"
+                 placeholder="••••••••••••"
+                 required>
+          {% if form.password_confirm.errors %}
+            <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.password_confirm.errors.0 }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Accept Terms -->
+      <div style="margin-bottom: 24px;">
+        <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--text2); cursor: pointer;">
+          <input type="checkbox" name="{{ form.accept_terms.name }}" id="{{ form.accept_terms.id_for_label }}" {% if form.accept_terms.value %}checked{% endif %} style="accent-color: var(--sky); width: 16px; height: 16px; margin-top: 2px;">
+          <span>
+            {% trans "I agree to the" %} <a href="{% url 'about' %}" target="_blank" style="color: var(--sky); text-decoration: none;">{% trans "Terms of Service" %}</a> {% trans "and confirm that I am at least 18 years of age." %}
+          </span>
+        </label>
+        {% if form.accept_terms.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 4px;">{{ form.accept_terms.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-hero" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px;">
+        {% trans "Create My Account" %}
+        <svg viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
       </button>
     </form>
 
-    <div class="text-center mt-xl pt-md" style="border-top: 1px solid var(--border-color); font-size: var(--font-size-sm);">
-      <span class="text-muted">Already registered?</span>
-      <a href="{% url 'users:login' %}" class="font-semibold" style="margin-left: var(--space-xs);">Sign in here</a>
+    <div style="text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text2);">
+      <span>{% trans "Already registered?" %}</span>
+      <a href="{% url 'users:login' %}" style="color: var(--sky); font-weight: 600; text-decoration: none; margin-left: 6px;">
+        {% trans "Sign in here" %} &rarr;
+      </a>
     </div>
   </div>
 </div>

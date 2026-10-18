@@ -1,7 +1,7 @@
 {% extends "layouts/dashboard_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}Transaction History | RocketBank{% endblock %}
+{% block title %}{% trans "Transaction History" %} | RocketBank{% endblock %}
 
 {% block breadcrumbs %}
   {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
@@ -11,33 +11,33 @@
 <div class="container container--fluid">
   <div class="d-flex flex-wrap justify-between items-center mb-xl">
     <div>
-      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Transaction History</h1>
-      <p class="text-secondary m-0">Detailed statement and audit trail across all your accounts</p>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">{% trans "Transaction History" %}</h1>
+      <p class="text-secondary m-0">{% trans "Detailed statement and audit trail across all your accounts" %}</p>
     </div>
-    <a href="{% url 'transactions:transfer' %}" class="btn btn--primary">
-      💸 New Transfer
+    <a href="{% url 'transactions:transfer' %}" class="btn btn-primary">
+      💸 {% trans "New Transfer" %}
     </a>
   </div>
 
   <!-- Filter Toolbar -->
-  <div class="catalog-toolbar">
-    <form method="get" class="catalog-search-form" role="search">
-      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search reference, IBAN, note..." class="form-input" style="flex: 1;" aria-label="Search transactions">
-      <select name="category" class="form-select" style="width: auto;" aria-label="Filter by category">
-        <option value="">All Categories</option>
+  <div class="catalog-toolbar dash-card mb-lg p-md">
+    <form method="get" class="catalog-search-form" role="search" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="{% trans "Search reference, IBAN, note..." %}" class="form-input footer-input" style="flex: 1; min-width:200px;" aria-label="{% trans "Search transactions" %}">
+      <select name="category" class="form-select footer-input" style="width: auto;" aria-label="{% trans "Filter by category" %}">
+        <option value="">{% trans "All Categories" %}</option>
         {% for cat in categories %}
           <option value="{{ cat.slug }}" {% if request.GET.category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
         {% endfor %}
       </select>
-      <select name="status" class="form-select" style="width: auto;" aria-label="Filter by status">
-        <option value="">All Statuses</option>
-        <option value="COMPLETED" {% if request.GET.status == 'COMPLETED' %}selected{% endif %}>Completed</option>
-        <option value="PENDING" {% if request.GET.status == 'PENDING' %}selected{% endif %}>Pending</option>
-        <option value="FAILED" {% if request.GET.status == 'FAILED' %}selected{% endif %}>Failed</option>
+      <select name="status" class="form-select footer-input" style="width: auto;" aria-label="{% trans "Filter by status" %}">
+        <option value="">{% trans "All Statuses" %}</option>
+        <option value="COMPLETED" {% if request.GET.status == 'COMPLETED' %}selected{% endif %}>{% trans "Completed" %}</option>
+        <option value="PENDING" {% if request.GET.status == 'PENDING' %}selected{% endif %}>{% trans "Pending" %}</option>
+        <option value="FAILED" {% if request.GET.status == 'FAILED' %}selected{% endif %}>{% trans "Failed" %}</option>
       </select>
-      <button type="submit" class="btn btn--secondary btn--sm">Apply Filters</button>
+      <button type="submit" class="btn btn-primary" style="padding:6px 14px; font-size:13px;">{% trans "Apply Filters" %}</button>
       {% if request.GET.q or request.GET.category or request.GET.status %}
-        <a href="{% url 'transactions:list' %}" class="btn btn--outline btn--sm">Reset</a>
+        <a href="{% url 'transactions:list' %}" class="btn btn-ghost" style="padding:6px 14px; font-size:13px;">{% trans "Reset" %}</a>
       {% endif %}
     </form>
   </div>
@@ -46,13 +46,13 @@
   {% regroup transactions by created_at.date as transactions_by_date %}
 
   {% for group in transactions_by_date %}
-    <div class="mb-lg">
+    <div class="mb-lg dash-card p-md">
       <div class="d-flex items-center gap-sm mb-xs">
         <span class="badge badge--info font-mono" style="font-size: var(--font-size-xs);">
           📅 {{ group.grouper|date:"F d, Y" }}
         </span>
         <span class="text-muted" style="font-size: var(--font-size-xs);">
-          ({{ group.list|length }} transactions)
+          ({{ group.list|length }} {% trans "transactions" %})
         </span>
       </div>
 
@@ -61,14 +61,14 @@
           <caption class="sr-only">Transactions for {{ group.grouper|date:"F d, Y" }}</caption>
           <thead>
             <tr>
-              <th scope="col">Time</th>
-              <th scope="col">Reference</th>
-              <th scope="col">Description</th>
-              <th scope="col">Sender Account</th>
-              <th scope="col">Recipient Account</th>
-              <th scope="col">Status</th>
-              <th scope="col" class="text-right">Amount</th>
-              <th scope="col" class="text-right">Receipt</th>
+              <th scope="col">{% trans "Time" %}</th>
+              <th scope="col">{% trans "Reference" %}</th>
+              <th scope="col">{% trans "Description" %}</th>
+              <th scope="col">{% trans "Sender Account" %}</th>
+              <th scope="col">{% trans "Recipient Account" %}</th>
+              <th scope="col">{% trans "Status" %}</th>
+              <th scope="col" class="text-right">{% trans "Amount" %}</th>
+              <th scope="col" class="text-right">{% trans "Receipt" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -77,16 +77,16 @@
                 <td>{{ txn.created_at|date:"H:i" }}</td>
                 <td class="font-mono text-muted" style="font-size: var(--font-size-xs);">{{ txn.reference_number }}</td>
                 <td>
-                  <strong>{{ txn.description|default:"Transfer" }}</strong>
+                  <strong>{{ txn.description|default:_("Transfer") }}</strong>
                   {% if txn.category %}
                     <br><small class="text-muted">{{ txn.category.name }}</small>
                   {% endif %}
                 </td>
                 <td class="font-mono" style="font-size: var(--font-size-xs);">
-                  {{ txn.sender_account.iban|mask_iban|default:"External / Top-up" }}
+                  {{ txn.sender_account.iban|mask_iban|default:_("External / Top-up") }}
                 </td>
                 <td class="font-mono" style="font-size: var(--font-size-xs);">
-                  {{ txn.receiver_account.iban|mask_iban|default:"External / Merchant" }}
+                  {{ txn.receiver_account.iban|mask_iban|default:_("External / Merchant") }}
                 </td>
                 <td>
                   <span class="badge {{ txn.status|status_badge_class }}">{{ txn.get_status_display }}</span>
@@ -99,8 +99,8 @@
                   {% endif %}
                 </td>
                 <td class="text-right">
-                  <a href="{% url 'transactions:receipt' txn.reference_number %}" class="btn btn--outline btn--sm" aria-label="View receipt for {{ txn.reference_number }}">
-                    Receipt
+                  <a href="{% url 'transactions:receipt' txn.reference_number %}" class="btn btn-ghost" style="padding:4px 10px; font-size:12px;" aria-label="{% trans "View receipt for" %} {{ txn.reference_number }}">
+                    {% trans "Receipt" %}
                   </a>
                 </td>
               </tr>
@@ -110,7 +110,7 @@
       </div>
     </div>
   {% empty %}
-    {% include "includes/empty_state.html" with icon="📜" title="No transactions found" message="No transactions matched your search or date filter." action_url="/transactions/transfer/" action_label="Make a Transfer" only %}
+    {% include "includes/empty_state.html" with icon="📜" title=_("No transactions found") message=_("No transactions matched your search or date filter.") action_url="/transactions/transfer/" action_label=_("Make a Transfer") only %}
   {% endfor %}
 
   <!-- Pagination -->

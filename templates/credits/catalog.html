@@ -1,33 +1,33 @@
 {% extends "layouts/public_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}Loan Marketplace — Personal & Auto Credits | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Discover low-interest consumer loans, mortgage refinancing, and instant cash credit from RocketBank with terms up to 7 years.">{% endblock %}
+{% block title %}{% trans "Loan Marketplace — Personal & Auto Credits" %} | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Discover low-interest consumer loans, mortgage refinancing, and instant cash credit from RocketBank with terms up to 7 years." %}">{% endblock %}
 
 {% block content %}
 <div class="container">
   <section class="text-center mb-2xl">
-    <span class="badge badge--success mb-sm">Credit Solutions</span>
+    <span class="badge badge--success mb-sm">{% trans "Credit Solutions" %}</span>
     <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
-      RocketBank Consumer & Business Loans
+      {% trans "RocketBank Consumer & Business Loans" %}
     </h1>
     <p class="text-secondary" style="max-width: 650px; margin: 0 auto;">
-      Transparent interest rates, zero collateral requirements, and 2-minute automated approval directly into your account.
+      {% trans "Transparent interest rates, zero collateral requirements, and 2-minute automated approval directly into your account." %}
     </p>
   </section>
 
   <!-- Filter Toolbar -->
-  <div class="catalog-toolbar">
-    <form method="get" class="catalog-search-form" role="search">
-      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search loan programs..." class="form-input" style="flex: 1;" aria-label="Search loans">
-      <select name="sort" class="form-select" style="width: auto;" aria-label="Sort loans">
-        <option value="">Default Order</option>
-        <option value="rate" {% if request.GET.sort == 'rate' %}selected{% endif %}>Lowest Interest Rate</option>
-        <option value="amount" {% if request.GET.sort == 'amount' %}selected{% endif %}>Highest Maximum Amount</option>
+  <div class="catalog-toolbar dash-card mb-lg p-md">
+    <form method="get" class="catalog-search-form" role="search" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="{% trans "Search loan programs..." %}" class="form-input footer-input" style="flex: 1; min-width:200px;" aria-label="{% trans "Search loans" %}">
+      <select name="sort" class="form-select footer-input" style="width: auto;" aria-label="{% trans "Sort loans" %}">
+        <option value="">{% trans "Default Order" %}</option>
+        <option value="rate" {% if request.GET.sort == 'rate' %}selected{% endif %}>{% trans "Lowest Interest Rate" %}</option>
+        <option value="amount" {% if request.GET.sort == 'amount' %}selected{% endif %}>{% trans "Highest Maximum Amount" %}</option>
       </select>
-      <button type="submit" class="btn btn--secondary btn--sm">Filter</button>
+      <button type="submit" class="btn btn-primary" style="padding:6px 14px; font-size:13px;">{% trans "Filter" %}</button>
       {% if request.GET.q or request.GET.sort %}
-        <a href="{% url 'credits:catalog' %}" class="btn btn--outline btn--sm">Reset</a>
+        <a href="{% url 'credits:catalog' %}" class="btn btn-ghost" style="padding:6px 14px; font-size:13px;">{% trans "Reset" %}</a>
       {% endif %}
     </form>
   </div>
@@ -35,14 +35,14 @@
   <!-- Loan Grid -->
   <div class="product-grid mb-2xl">
     {% for product in products %}
-      <article class="card card--interactive d-flex flex-col justify-between">
+      <article class="dash-card card card--interactive d-flex flex-col justify-between">
         <div>
           <div class="d-flex justify-between items-start mb-sm">
             <span class="badge badge--success" style="font-size: var(--font-size-sm); padding: 0.35rem 0.75rem;">
-              from {{ product.interest_rate }}% APR
+              {% trans "from" %} {{ product.interest_rate }}% APR
             </span>
             <span class="text-muted" style="font-size: var(--font-size-xs);">
-              {{ product.min_term_months }}–{{ product.max_term_months }} mo
+              {{ product.min_term_months }}–{{ product.max_term_months }} {% trans "mo" %}
             </span>
           </div>
 
@@ -55,28 +55,28 @@
 
           <div class="p-sm mb-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
             <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
-              <span class="text-muted">Credit Limit:</span>
+              <span class="text-muted">{% trans "Credit Limit" %}:</span>
               <strong class="font-mono">{{ product.min_amount|currency_format:"KZT" }} – {{ product.max_amount|currency_format:"KZT" }}</strong>
             </div>
             <div class="d-flex justify-between items-center" style="font-size: var(--font-size-xs);">
-              <span class="text-muted">Early Repayment:</span>
-              <strong class="text-success">Allowed (0% penalty)</strong>
+              <span class="text-muted">{% trans "Early Repayment" %}:</span>
+              <strong class="text-success">{% trans "Allowed (0% penalty)" %}</strong>
             </div>
           </div>
         </div>
 
         <div class="d-flex gap-sm pt-md" style="border-top: 1px solid var(--border-color-subtle);">
-          <a href="{% url 'credits:calculator' %}?product={{ product.slug }}" class="btn btn--outline flex-1">
-            Calculate
+          <a href="{% url 'credits:calculator' %}?product={{ product.slug }}" class="btn btn-ghost flex-1 text-center">
+            {% trans "Calculate" %}
           </a>
-          <a href="{% url 'credits:apply' %}?product={{ product.slug }}" class="btn btn--primary flex-1">
-            Apply Now
+          <a href="{% url 'credits:apply' %}?product={{ product.slug }}" class="btn btn-primary flex-1 text-center">
+            {% trans "Apply Now" %}
           </a>
         </div>
       </article>
     {% empty %}
       <div style="grid-column: 1 / -1;">
-        {% include "includes/empty_state.html" with icon="📑" title="No loan products available" message="No credit programs matched your query." action_url="/credits/catalog/" action_label="View All Programs" only %}
+        {% include "includes/empty_state.html" with icon="📑" title=_("No loan products available") message=_("No credit programs matched your query.") action_url="/credits/catalog/" action_label=_("View All Programs") only %}
       </div>
     {% endfor %}
   </div>

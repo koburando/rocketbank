@@ -1,7 +1,7 @@
 {% extends "layouts/dashboard_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}Financial Analytics & Saving Goals | RocketBank{% endblock %}
+{% block title %}{% trans "Financial Analytics & Saving Goals" %} | RocketBank{% endblock %}
 
 {% block breadcrumbs %}
   {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
@@ -11,51 +11,51 @@
 <div class="container container--fluid">
   <div class="d-flex flex-wrap justify-between items-center mb-xl">
     <div>
-      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Financial Analytics & Goals</h1>
-      <p class="text-secondary m-0">Track your savings targets, spending distribution, and budget health meters</p>
+      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">{% trans "Financial Analytics & Goals" %}</h1>
+      <p class="text-secondary m-0">{% trans "Track your savings targets, spending distribution, and budget health meters" %}</p>
     </div>
   </div>
 
   <!-- Overall Financial Health & Budget Meters -->
-  <section class="card card--elevated mb-xl" aria-labelledby="budget_health_heading">
+  <section class="dash-card card card--elevated mb-xl" aria-labelledby="budget_health_heading">
     <div class="card__header">
       <h2 id="budget_health_heading" class="card__title" style="font-size: var(--font-size-lg);">
-        Monthly Spending & Budget Health Meter
+        {% trans "Monthly Spending & Budget Health Meter" %}
       </h2>
-      <span class="badge badge--success">Automated Analysis</span>
+      <span class="badge badge--success">{% trans "Automated Analysis" %}</span>
     </div>
 
     <div class="grid-2 items-center">
       <div>
         <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
-          Our AI budget engine calculates your current spending ratio against your estimated monthly income. Keep the meter in the optimal green zone for maximum savings.
+          {% trans "Our AI budget engine calculates your current spending ratio against your estimated monthly income. Keep the meter in the optimal green zone for maximum savings." %}
         </p>
         <div class="mb-sm">
           <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
-            <span>Monthly Outflow: <strong>{{ budget_spent|currency_format:"KZT" }}</strong></span>
-            <span>Target Ceiling: <strong>{{ budget_limit|currency_format:"KZT" }}</strong></span>
+            <span>{% trans "Monthly Outflow" %}: <strong>{{ budget_spent|currency_format:"KZT" }}</strong></span>
+            <span>{% trans "Target Ceiling" %}: <strong>{{ budget_limit|currency_format:"KZT" }}</strong></span>
           </div>
           <!-- Native HTML5 <meter> element -->
-          <meter value="{{ budget_ratio }}" min="0" max="1" low="0.6" high="0.85" optimum="0.3" aria-label="Monthly budget expenditure meter">
+          <meter value="{{ budget_ratio }}" min="0" max="1" low="0.6" high="0.85" optimum="0.3" aria-label="{% trans "Monthly budget expenditure meter" %}">
             {{ budget_ratio }}
           </meter>
         </div>
         <div class="d-flex justify-between" style="font-size: 0.7rem; color: var(--text-muted);">
-          <span>Optimal (&lt;60%)</span>
-          <span>Caution (60%–85%)</span>
-          <span>Critical (&gt;85%)</span>
+          <span>{% trans "Optimal (<60%)" %}</span>
+          <span>{% trans "Caution (60%–85%)" %}</span>
+          <span>{% trans "Critical (>85%)" %}</span>
         </div>
       </div>
 
       <div class="grid-2">
-        <div class="stat-card">
-          <span class="text-muted" style="font-size: var(--font-size-xs);">Total Goals Target</span>
+        <div class="stat-block dash-card p-md">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">{% trans "Total Goals Target" %}</span>
           <div class="stat-card__number font-mono text-brand" style="font-size: var(--font-size-2xl);">
             {{ total_target|currency_format:"KZT" }}
           </div>
         </div>
-        <div class="stat-card">
-          <span class="text-muted" style="font-size: var(--font-size-xs);">Total Funds Accumulated</span>
+        <div class="stat-block dash-card p-md">
+          <span class="text-muted" style="font-size: var(--font-size-xs);">{% trans "Total Funds Accumulated" %}</span>
           <div class="stat-card__number font-mono text-success" style="font-size: var(--font-size-2xl);">
             {{ total_saved|currency_format:"KZT" }}
           </div>
@@ -67,16 +67,16 @@
   <!-- Saving Goals Grid & Create Form -->
   <div class="grid-2 mb-2xl">
     <!-- Active Saving Goals List with Native HTML5 <progress> -->
-    <section class="card" aria-labelledby="saving_goals_heading">
+    <section class="dash-card card" aria-labelledby="saving_goals_heading">
       <div class="card__header">
         <h2 id="saving_goals_heading" class="card__title" style="font-size: var(--font-size-lg);">
-          Active Saving Goals ({{ goals.count }})
+          {% trans "Active Saving Goals" %} ({{ goals.count }})
         </h2>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
         {% for goal in goals %}
-          <div class="goal-card">
+          <div class="goal-card dash-card p-sm">
             <div class="d-flex justify-between items-start">
               <div>
                 <strong style="font-size: var(--font-size-base); color: var(--text-primary);">{{ goal.title }}</strong>
@@ -84,7 +84,7 @@
                   <span class="badge badge--info" style="margin-left: var(--space-xs);">{{ goal.category }}</span>
                 {% endif %}
                 <span class="text-muted d-block" style="font-size: var(--font-size-xs); margin-top: var(--space-2xs);">
-                  Target: {{ goal.target_amount|currency_format:"KZT" }} &bull; Saved: {{ goal.current_amount|currency_format:"KZT" }}
+                  {% trans "Target" %}: {{ goal.target_amount|currency_format:"KZT" }} &bull; {% trans "Saved" %}: {{ goal.current_amount|currency_format:"KZT" }}
                 </span>
               </div>
               <div class="d-flex items-center gap-xs">
@@ -93,7 +93,7 @@
                 </span>
                 <form method="post" action="{% url 'analytics:goal-delete' goal.id %}" style="margin: 0; display: inline;">
                   {% csrf_token %}
-                  <button type="submit" class="btn btn--outline btn--sm text-danger btn--icon" title="Delete goal" onclick="return confirm('Delete this saving goal?')" aria-label="Delete goal {{ goal.title }}">
+                  <button type="submit" class="btn btn-ghost btn--sm text-danger btn--icon" title="{% trans "Delete goal" %}" onclick="return confirm('{% trans "Delete this saving goal?" %}')" aria-label="{% trans "Delete goal" %} {{ goal.title }}">
                     ✕
                   </button>
                 </form>
@@ -107,21 +107,21 @@
 
             {% if goal.deadline %}
               <div class="text-right" style="font-size: var(--font-size-xs); color: var(--text-muted);">
-                Target Deadline: {{ goal.deadline|date:"F d, Y" }}
+                {% trans "Target Deadline" %}: {{ goal.deadline|date:"F d, Y" }}
               </div>
             {% endif %}
           </div>
         {% empty %}
-          {% include "includes/empty_state.html" with icon="🎯" title="No saving goals set" message="Create your first financial target using the form on the right." only %}
+          {% include "includes/empty_state.html" with icon="🎯" title=_("No saving goals set") message=_("Create your first financial target using the form on the right.") only %}
         {% endfor %}
       </div>
     </section>
 
     <!-- Create New Saving Goal Form -->
-    <section class="card card--elevated" aria-labelledby="create_goal_heading">
+    <section class="dash-card card card--elevated" aria-labelledby="create_goal_heading">
       <div class="card__header">
         <h2 id="create_goal_heading" class="card__title" style="font-size: var(--font-size-lg);">
-          Set a New Saving Goal
+          {% trans "Set a New Saving Goal" %}
         </h2>
       </div>
 
@@ -149,8 +149,8 @@
         </div>
 
         <div class="mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
-          <button type="submit" class="btn btn--primary btn--lg w-100">
-            Create Saving Goal
+          <button type="submit" class="btn btn-primary w-100">
+            {% trans "Create Saving Goal" %}
           </button>
         </div>
       </form>
@@ -159,10 +159,10 @@
 
   <!-- Spending by Category Breakdown Table -->
   {% if category_spending %}
-  <section class="card mb-2xl" aria-labelledby="cat_spending_heading">
+  <section class="dash-card card mb-2xl" aria-labelledby="cat_spending_heading">
     <div class="card__header">
       <h2 id="cat_spending_heading" class="card__title" style="font-size: var(--font-size-lg);">
-        Spending by Category Breakdown
+        {% trans "Spending by Category Breakdown" %}
       </h2>
     </div>
 
@@ -171,9 +171,9 @@
         <caption class="sr-only">Expenses organized by merchant category</caption>
         <thead>
           <tr>
-            <th scope="col">Category</th>
-            <th scope="col" class="text-right">Transaction Count</th>
-            <th scope="col" class="text-right">Total Outflow</th>
+            <th scope="col">{% trans "Category" %}</th>
+            <th scope="col" class="text-right">{% trans "Transaction Count" %}</th>
+            <th scope="col" class="text-right">{% trans "Total Outflow" %}</th>
           </tr>
         </thead>
         <tbody>

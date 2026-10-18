@@ -1,97 +1,98 @@
 {% extends "layouts/public_base.html" %}
+{% load i18n %}
 
-{% block title %}Contact Us & Branch Network | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Get in touch with RocketBank client support, corporate headquarters, or visit our branches in Almaty and Astana.">{% endblock %}
+{% block title %}{% trans "Contact Us & Branch Network" %} | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Get in touch with RocketBank client support, corporate headquarters, or visit our branches in Almaty and Astana." %}">{% endblock %}
 
 {% block content %}
 <div class="container">
   <section class="text-center mb-2xl">
-    <span class="badge badge--info mb-sm">24/7 Client Relations</span>
+    <span class="badge badge--info mb-sm">{% trans "24/7 Client Relations" %}</span>
     <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
-      We're Here to Help You
+      {% trans "We're Here to Help You" %}
     </h1>
     <p class="text-secondary" style="max-width: 600px; margin: 0 auto; font-size: var(--font-size-lg);">
-      Reach out via telephone, email, or visit one of our flagship digital branches in Kazakhstan.
+      {% trans "Reach out via telephone, email, or visit one of our flagship digital branches in Kazakhstan." %}
     </p>
   </section>
 
   <div class="grid-2 mb-3xl">
     <!-- Contact Info Cards -->
     <div style="display: flex; flex-direction: column; gap: var(--space-md);">
-      <article class="card p-lg">
+      <article class="dash-card card p-lg">
         <div class="d-flex items-start gap-md">
           <div style="font-size: 2rem;" aria-hidden="true">📞</div>
           <div>
-            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">Direct Phone Support</h2>
+            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">{% trans "Direct Phone Support" %}</h2>
             <p class="text-muted" style="font-size: var(--font-size-xs); margin-bottom: var(--space-xs);">
-              Free for domestic calls from mobile and landlines:
+              {% trans "Free for domestic calls from mobile and landlines:" %}
             </p>
             <p class="font-mono font-bold" style="font-size: var(--font-size-xl); margin: 0; color: var(--color-primary);">
               +7 (727) 244-0000
             </p>
-            <span class="text-success" style="font-size: var(--font-size-xs); font-weight: 600;">24/7 Priority Emergency Line</span>
+            <span class="text-success" style="font-size: var(--font-size-xs); font-weight: 600;">{% trans "24/7 Priority Emergency Line" %}</span>
           </div>
         </div>
       </article>
 
-      <article class="card p-lg">
+      <article class="dash-card card p-lg">
         <div class="d-flex items-start gap-md">
           <div style="font-size: 2rem;" aria-hidden="true">✉️</div>
           <div>
-            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">Email Departments</h2>
+            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">{% trans "Email Departments" %}</h2>
             <div style="font-size: var(--font-size-sm); display: flex; flex-direction: column; gap: var(--space-xs);">
-              <div>General Support: <a href="mailto:support@rocketbank.company" class="font-bold">support@rocketbank.company</a></div>
-              <div>Compliance & AML: <a href="mailto:compliance@rocketbank.company" class="font-bold">compliance@rocketbank.company</a></div>
-              <div>Press & Media: <a href="mailto:press@rocketbank.company" class="font-bold">press@rocketbank.company</a></div>
+              <div>{% trans "General Support" %}: <a href="mailto:support@rocketbank.company" class="font-bold">support@rocketbank.company</a></div>
+              <div>{% trans "Compliance & AML" %}: <a href="mailto:compliance@rocketbank.company" class="font-bold">compliance@rocketbank.company</a></div>
+              <div>{% trans "Press & Media" %}: <a href="mailto:press@rocketbank.company" class="font-bold">press@rocketbank.company</a></div>
             </div>
           </div>
         </div>
       </article>
 
-      <article class="card p-lg">
+      <article class="dash-card card p-lg">
         <div class="d-flex items-start gap-md">
           <div style="font-size: 2rem;" aria-hidden="true">🏛️</div>
           <div>
-            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">Headquarters & Flagship Branch</h2>
+            <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2xs);">{% trans "Headquarters & Flagship Branch" %}</h2>
             <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-xs);">
-              Esentai Park Tower, Floor 14<br>
-              Al-Farabi Avenue 77/7, Bostandyk District<br>
-              Almaty 050040, Republic of Kazakhstan
+              {% trans "Esentai Park Tower, Floor 14" %}<br>
+              {% trans "Al-Farabi Avenue 77/7, Bostandyk District" %}<br>
+              {% trans "Almaty 050040, Republic of Kazakhstan" %}
             </p>
-            <span class="text-muted" style="font-size: var(--font-size-xs);">Operating Hours: Monday – Friday 09:00 – 18:00 (UTC+5)</span>
+            <span class="text-muted" style="font-size: var(--font-size-xs);">{% trans "Operating Hours: Monday – Friday 09:00 – 18:00 (UTC+5)" %}</span>
           </div>
         </div>
       </article>
     </div>
 
     <!-- Quick Message Form -->
-    <section class="card card--elevated p-xl" aria-labelledby="inquiry_heading">
+    <section class="dash-card card card--elevated p-xl" aria-labelledby="inquiry_heading">
       <h2 id="inquiry_heading" style="font-size: var(--font-size-xl); margin-bottom: var(--space-sm);">
-        Send an Instant Inquiry
+        {% trans "Send an Instant Inquiry" %}
       </h2>
       <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-lg);">
-        Have a general question about accounts, business partnerships, or tariffs? Drop us a note below.
+        {% trans "Have a general question about accounts, business partnerships, or tariffs? Drop us a note below." %}
       </p>
 
       <form method="post" action="{% url 'support:faq' %}" novalidate>
         {% csrf_token %}
         <div class="form-group">
-          <label for="contact_name" class="form-label">Full Name <span class="text-danger">*</span></label>
-          <input type="text" id="contact_name" name="name" class="form-input" placeholder="Your name" required autocomplete="name">
+          <label for="contact_name" class="form-label">{% trans "Full Name" %} <span class="text-danger">*</span></label>
+          <input type="text" id="contact_name" name="name" class="form-input footer-input" placeholder="{% trans "Your name" %}" required autocomplete="name">
         </div>
 
         <div class="form-group">
-          <label for="contact_email" class="form-label">Email Address <span class="text-danger">*</span></label>
-          <input type="email" id="contact_email" name="email" class="form-input" placeholder="name@example.com" required autocomplete="email">
+          <label for="contact_email" class="form-label">{% trans "Email Address" %} <span class="text-danger">*</span></label>
+          <input type="email" id="contact_email" name="email" class="form-input footer-input" placeholder="name@example.com" required autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label for="contact_message" class="form-label">Message Details <span class="text-danger">*</span></label>
-          <textarea id="contact_message" name="message" class="form-textarea" rows="4" placeholder="How can our financial consultants assist you?" required></textarea>
+          <label for="contact_message" class="form-label">{% trans "Message Details" %} <span class="text-danger">*</span></label>
+          <textarea id="contact_message" name="message" class="form-textarea footer-input" rows="4" placeholder="{% trans "How can our financial consultants assist you?" %}" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--lg w-100">
-          Send Message
+        <button type="submit" class="btn btn-hero w-100">
+          {% trans "Send Message" %}
         </button>
       </form>
     </section>

@@ -1,7 +1,7 @@
 {% extends "layouts/dashboard_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}Transfer Money | RocketBank{% endblock %}
+{% block title %}{% trans "Transfer Money" %} | RocketBank{% endblock %}
 
 {% block breadcrumbs %}
   {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
@@ -10,11 +10,11 @@
 {% block content %}
 <div class="container container--narrow">
   <div class="mb-lg">
-    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">Transfer Money</h1>
-    <p class="text-secondary m-0">Send instant, zero-commission payments to any RocketBank account</p>
+    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">{% trans "Transfer Money" %}</h1>
+    <p class="text-secondary m-0">{% trans "Send instant, zero-commission payments to any RocketBank account" %}</p>
   </div>
 
-  <div class="card card--elevated">
+  <div class="dash-card card card--elevated">
     <form method="post" novalidate id="money_transfer_form">
       {% csrf_token %}
 
@@ -59,19 +59,19 @@
       <!-- Transfer Summary Note -->
       <div class="p-md my-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md); font-size: var(--font-size-xs);">
         <div class="d-flex justify-between items-center mb-xs">
-          <span class="text-muted">Transaction Commission:</span>
-          <strong class="text-success">0.00 KZT (Free)</strong>
+          <span class="text-muted">{% trans "Transaction Commission" %}:</span>
+          <strong class="text-success">0.00 KZT ({% trans "Free" %})</strong>
         </div>
         <div class="d-flex justify-between items-center">
-          <span class="text-muted">Processing Time:</span>
-          <strong>Instant (Atomic execution)</strong>
+          <span class="text-muted">{% trans "Processing Time" %}:</span>
+          <strong>{% trans "Instant (Atomic execution)" %}</strong>
         </div>
       </div>
 
       <div class="d-flex justify-between items-center mt-xl pt-md" style="border-top: 1px solid var(--border-color);">
-        <a href="{% url 'accounts:dashboard' %}" class="btn btn--secondary">Cancel</a>
-        <button type="submit" class="btn btn--primary btn--lg">
-          Confirm & Send Transfer &rarr;
+        <a href="{% url 'accounts:dashboard' %}" class="btn btn--secondary btn-ghost">{% trans "Cancel" %}</a>
+        <button type="submit" class="btn btn--primary btn-hero">
+          {% trans "Confirm & Send Transfer" %} &rarr;
         </button>
       </div>
     </form>

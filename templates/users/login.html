@@ -1,47 +1,96 @@
 {% extends "layouts/public_base.html" %}
+{% load i18n static %}
 
-{% block title %}Sign In | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Sign in securely to your RocketBank account to manage cards, accounts, and payments.">{% endblock %}
+{% block title %}{% trans "Sign In | RocketBank" %}{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Sign in securely to your RocketBank account to manage cards, accounts, and payments." %}">{% endblock %}
 
 {% block content %}
-<div class="container container--narrow">
-  <div class="card card--elevated" style="margin: var(--space-xl) auto; padding: var(--space-2xl);">
-    <div class="text-center mb-xl">
-      <div style="font-size: 2.5rem; margin-bottom: var(--space-xs);" aria-hidden="true">🚀</div>
-      <h1 style="font-size: var(--font-size-2xl);">Sign in to RocketBank</h1>
-      <p class="text-secondary">Enter your email or username and security password</p>
+<div class="container container--narrow" style="padding-top: calc(36px + var(--nav-h) + 40px); padding-bottom: 80px;">
+  <div class="dash-card" style="max-width: 480px; margin: 0 auto; padding: 40px 36px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg2);">
+    <!-- Header -->
+    <div class="text-center mb-xl" style="text-align: center; margin-bottom: 32px;">
+      <div class="nav-logo-mark" style="width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 12px; background: var(--sky); display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 16 16" style="width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round;"><polyline points="2,12 6,7 10,9 14,4"/><circle cx="14" cy="4" r="1.5" fill="white" stroke="none"/></svg>
+      </div>
+      <h1 style="font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 8px;">
+        {% trans "Sign in to RocketBank" %}
+      </h1>
+      <p style="font-size: 14px; color: var(--text2); margin: 0;">
+        {% trans "Enter your credentials to access your digital command center" %}
+      </p>
     </div>
 
     <form method="post" action="{% url 'users:login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" novalidate>
       {% csrf_token %}
 
       {% if form.non_field_errors %}
-        <div class="alert alert--danger" role="alert">
+        <div style="background: rgba(232,90,90,0.12); border: 1px solid rgba(232,90,90,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; color: var(--red); font-size: 13px;" role="alert">
           {% for error in form.non_field_errors %}
-            <span>{{ error }}</span>
+            <div>{{ error }}</div>
           {% endfor %}
         </div>
       {% endif %}
 
-      {% include "includes/form_field.html" with field=form.username_or_email %}
-      {% include "includes/form_field.html" with field=form.password %}
-
-      <div class="d-flex items-center justify-between mb-lg" style="font-size: var(--font-size-xs);">
-        <label class="form-check">
-          {{ form.remember_me }}
-          <span>Remember this device</span>
+      <!-- Email / Username -->
+      <div style="margin-bottom: 20px;">
+        <label for="{{ form.username_or_email.id_for_label }}" style="display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 8px;">
+          {% trans "Email or Username" %}
         </label>
-        <a href="{% url 'users:password-reset' %}">Forgot password?</a>
+        <input type="text"
+               name="{{ form.username_or_email.name }}"
+               id="{{ form.username_or_email.id_for_label }}"
+               value="{{ form.username_or_email.value|default:'' }}"
+               class="footer-input"
+               style="width: 100%; padding: 12px 14px; font-size: 14px;"
+               placeholder="{% trans 'name@company.com or username' %}"
+               required>
+        {% if form.username_or_email.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 6px;">{{ form.username_or_email.errors.0 }}</div>
+        {% endif %}
       </div>
 
-      <button type="submit" class="btn btn--primary w-100 btn--lg">
-        Sign In to Portal
+      <!-- Password -->
+      <div style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <label for="{{ form.password.id_for_label }}" style="font-size: 13px; font-weight: 500; color: var(--text); margin: 0;">
+            {% trans "Security Password" %}
+          </label>
+          <a href="{% url 'users:password-reset' %}" style="font-size: 12px; color: var(--sky); text-decoration: none;">
+            {% trans "Forgot password?" %}
+          </a>
+        </div>
+        <input type="password"
+               name="{{ form.password.name }}"
+               id="{{ form.password.id_for_label }}"
+               class="footer-input"
+               style="width: 100%; padding: 12px 14px; font-size: 14px;"
+               placeholder="••••••••••••"
+               required>
+        {% if form.password.errors %}
+          <div style="color: var(--red); font-size: 12px; margin-top: 6px;">{{ form.password.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Remember Me -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); cursor: pointer;">
+          <input type="checkbox" name="{{ form.remember_me.name }}" id="{{ form.remember_me.id_for_label }}" {% if form.remember_me.value %}checked{% endif %} style="accent-color: var(--sky); width: 16px; height: 16px;">
+          {% trans "Remember this device" %}
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-hero" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px;">
+        {% trans "Sign In to Portal" %}
+        <svg viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
       </button>
     </form>
 
-    <div class="text-center mt-xl pt-md" style="border-top: 1px solid var(--border-color); font-size: var(--font-size-sm);">
-      <span class="text-muted">Don't have a RocketBank account?</span>
-      <a href="{% url 'users:register' %}" class="font-semibold" style="margin-left: var(--space-xs);">Open an account in 3 minutes</a>
+    <div style="text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text2);">
+      <span>{% trans "Don't have a RocketBank account?" %}</span>
+      <a href="{% url 'users:register' %}" style="color: var(--sky); font-weight: 600; text-decoration: none; margin-left: 6px;">
+        {% trans "Open account in 3 minutes" %} &rarr;
+      </a>
     </div>
   </div>
 </div>

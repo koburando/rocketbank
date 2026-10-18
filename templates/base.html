@@ -1,17 +1,17 @@
-{% load static %}<!DOCTYPE html>
+{% load static i18n %}<!DOCTYPE html>
 <!--
   RocketBank Server-Side Frontend Architecture
-  Adapted from a clean open-source FinTech HTML5 template architecture.
-  Strict HTML5 semantics, WCAG AA Accessibility, and Modern CSS Design System.
+  Adapted from TemplateMo 623 NovaPay (https://templatemo.com)
+  Strict HTML5 semantics, WCAG 2.1 AA Accessibility, and Modern NovaPay Design System.
 -->
-<html lang="en" data-theme="{{ user_theme_preference|default:'SYSTEM'|lower }}">
+<html lang="{{ LANGUAGE_CODE|default:'ru' }}" data-theme="{{ user_theme_preference|default:'dark'|lower }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   {% block meta_description %}
-  <meta name="description" content="RocketBank is a cutting-edge next-generation digital financial platform providing instant transfers, premium cards, and smart credit solutions.">
+  <meta name="description" content="{% trans 'RocketBank is a cutting-edge next-generation digital financial platform providing instant transfers, premium cards, and smart credit solutions.' %}">
   {% endblock %}
 
   <!-- Canonical link -->
@@ -20,14 +20,19 @@
   <!-- Open Graph Protocol -->
   <meta property="og:site_name" content="RocketBank">
   <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-  <meta property="og:title" content="{% block og_title %}{% block title %}RocketBank — Modern Digital Banking{% endblock %}{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}Experience effortless banking with high-yield deposits, zero-fee multi-currency transfers, and modern security.{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% block title %}RocketBank — {% trans 'Modern Digital Banking' %}{% endblock %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{% trans 'Experience effortless banking with high-yield deposits, zero-fee multi-currency transfers, and modern security.' %}{% endblock %}">
   <meta property="og:url" content="{{ request.build_absolute_uri }}">
   <meta property="og:image" content="{% block og_image %}{% static 'images/og-rocketbank.png' %}{% endblock %}">
 
   <!-- Favicon & PWA Manifest -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
   <link rel="manifest" href="{% static 'site.webmanifest' %}">
+
+  <!-- Google Fonts: Outfit (Display) & DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
   <!-- Modular Design System Stylesheets -->
   <link rel="stylesheet" href="{% static 'css/variables.css' %}">
@@ -36,6 +41,7 @@
   <link rel="stylesheet" href="{% static 'css/components.css' %}">
   <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
   <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+  <link rel="stylesheet" href="{% static 'css/novapay.css' %}">
   <link rel="stylesheet" href="{% static 'css/print.css' %}">
 
   {% block extra_css %}{% endblock %}
@@ -65,7 +71,7 @@
 </head>
 <body>
   <!-- Accessible Skip-Link (WCAG 2.4.1 Bypass Blocks) -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">{% trans "Skip to main content" %}</a>
 
   <!-- Global Alert / Toast Notifications -->
   {% include "includes/alert_toast.html" %}
@@ -85,7 +91,7 @@
         document.documentElement.setAttribute('data-theme', savedTheme);
       }
 
-      // Close modal helpers
+      // Dialog modal helpers
       window.openDialog = function(id) {
         const dialog = document.getElementById(id);
         if (dialog && typeof dialog.showModal === 'function') {
@@ -100,6 +106,7 @@
       };
     })();
   </script>
+  <script src="{% static 'js/novapay.js' %}"></script>
   <script type="module" src="{% static 'js/main.js' %}"></script>
   {% block extra_js %}{% endblock %}
 </body>

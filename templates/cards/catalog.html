@@ -1,81 +1,93 @@
 {% extends "layouts/public_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}Cards Marketplace — Debit & Credit Cards | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing.">{% endblock %}
+{% block title %}{% trans "Cards Marketplace — Debit & Credit Cards | RocketBank" %}{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Explore RocketBank's premium debit and credit cards with up to 10% cashback, zero maintenance fee, and instant digital issuing." %}">{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="padding-top: calc(36px + var(--nav-h) + 30px); padding-bottom: 60px;">
   <!-- Marketplace Hero Section -->
   <section class="text-center mb-2xl">
-    <span class="badge badge--info mb-sm">Payment Products</span>
-    <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
-      RocketBank Payment Cards Catalog
+    <div class="section-tag" style="margin: 0 auto 12px;">{% trans "Payment Products" %}</div>
+    <h1 class="section-title" style="margin-bottom: var(--space-xs);">
+      {% trans "RocketBank Payment Cards" %}
     </h1>
-    <p class="text-secondary" style="max-width: 650px; margin: 0 auto;">
-      Choose the perfect card for everyday spending, luxury travel, or maximum cashback rewards. Issued instantly in your digital wallet.
+    <p class="section-sub" style="max-width: 650px; margin: 0 auto;">
+      {% trans "Choose the perfect card for everyday spending, luxury travel, or maximum cashback rewards. Issued instantly in your digital wallet." %}
     </p>
   </section>
 
   <!-- Filter & Sort Toolbar -->
-  <div class="catalog-toolbar">
-    <form method="get" class="catalog-search-form" role="search">
-      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search cards by name..." class="form-input" style="flex: 1;" aria-label="Search cards">
-      <select name="tier" class="form-select" style="width: auto;" aria-label="Filter by tier">
-        <option value="">All Tiers</option>
+  <div class="catalog-toolbar" style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:12px 16px; margin-bottom:32px;">
+    <form method="get" class="catalog-search-form" role="search" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+      <input type="search" name="q" value="{{ request.GET.q }}" placeholder="{% trans 'Search cards by name...' %}" class="footer-input" style="flex: 1; min-width:200px;" aria-label="{% trans 'Search cards' %}">
+      <select name="tier" class="footer-input" style="width: auto; cursor:pointer;" aria-label="{% trans 'Filter by tier' %}">
+        <option value="">{% trans "All Tiers" %}</option>
         {% for code, label in tiers %}
           <option value="{{ code }}" {% if request.GET.tier == code %}selected{% endif %}>{{ label }}</option>
         {% endfor %}
       </select>
-      <select name="sort" class="form-select" style="width: auto;" aria-label="Sort cards">
-        <option value="">Default Order</option>
-        <option value="cashback" {% if request.GET.sort == 'cashback' %}selected{% endif %}>Highest Cashback</option>
-        <option value="fee" {% if request.GET.sort == 'fee' %}selected{% endif %}>Lowest Annual Fee</option>
+      <select name="sort" class="footer-input" style="width: auto; cursor:pointer;" aria-label="{% trans 'Sort cards' %}">
+        <option value="">{% trans "Default Order" %}</option>
+        <option value="cashback" {% if request.GET.sort == 'cashback' %}selected{% endif %}>{% trans "Highest Cashback" %}</option>
+        <option value="fee" {% if request.GET.sort == 'fee' %}selected{% endif %}>{% trans "Lowest Annual Fee" %}</option>
       </select>
-      <button type="submit" class="btn btn--secondary btn--sm">Search</button>
+      <button type="submit" class="btn-primary" style="padding:10px 18px;">{% trans "Search" %}</button>
       {% if request.GET.q or request.GET.tier or request.GET.sort %}
-        <a href="{% url 'cards:catalog' %}" class="btn btn--outline btn--sm">Reset</a>
+        <a href="{% url 'cards:catalog' %}" class="btn-ghost" style="padding:10px 18px;">{% trans "Reset" %}</a>
       {% endif %}
     </form>
   </div>
 
   <!-- Cards Marketplace Grid -->
-  <div class="product-grid mb-2xl">
+  <div class="product-grid mb-2xl" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
     {% for product in products %}
-      <article class="card card--interactive d-flex flex-col justify-between">
+      <article class="dash-card d-flex flex-col justify-between" style="padding:20px;">
         <div>
-          <!-- Card visual -->
-          <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif product.tier == 'BLACK' %}card-bank-visual--black{% endif %} mb-md">
-            <div class="d-flex justify-between items-center">
-              <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-xs);">RocketBank</span>
-              <span class="badge badge--muted">{{ product.get_tier_display }}</span>
+          <!-- 16:10 Card visual -->
+          <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% else %}card-bank-visual--black{% endif %} mb-md" style="aspect-ratio:16/10; border-radius:16px;">
+            <div class="d-flex justify-between items-center" style="position:relative; z-index:2;">
+              <div class="d-flex items-center gap-xs">
+                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">RocketBank</span>
+                <svg class="card-nfc-wave" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9"/><path d="M12 19a8.5 8.5 0 0 1 0-14"/><path d="M15.5 21.5a12 12 0 0 1 0-19"/></svg>
+              </div>
+              <span class="badge" style="font-size:10px; font-weight:700; text-transform:uppercase; padding:3px 8px; border-radius:6px;">{{ product.get_tier_display }}</span>
             </div>
-            <div style="font-size: 1.4rem; font-family: var(--font-family-mono); letter-spacing: 0.15em; margin: var(--space-md) 0;">
+
+            <div style="position:relative; z-index:2; margin: 4px 0;">
+              <div class="card-emv-chip" aria-hidden="true"></div>
+            </div>
+
+            <div style="position:relative; z-index:2; font-size:1.2rem; font-family:var(--font-family-mono); letter-spacing:0.18em; font-weight:600;">
               •••• •••• •••• 8888
             </div>
-            <div class="d-flex justify-between items-end" style="font-size: var(--font-size-xs);">
-              <span>EXPIRES 12/28</span>
-              <span class="font-bold text-uppercase">{{ product.title }}</span>
+
+            <div class="d-flex justify-between items-end" style="position:relative; z-index:2; font-size:11px;">
+              <div>
+                <span style="opacity:0.7; display:block; font-size:9px;">{% trans "EXPIRES" %}</span>
+                <span class="font-mono">12/28</span>
+              </div>
+              <span style="font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">{{ product.title }}</span>
             </div>
           </div>
 
-          <h2 class="card__title" style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">
+          <h2 class="card__title" style="font-size:var(--font-size-xl); margin-bottom:var(--space-xs); color:var(--text);">
             {{ product.title }}
           </h2>
-          <p class="text-secondary" style="font-size: var(--font-size-sm); margin-bottom: var(--space-md);">
+          <p class="text-secondary" style="font-size:var(--font-size-sm); margin-bottom:var(--space-md); color:var(--text2);">
             {{ product.description|truncatewords:20 }}
           </p>
 
-          <div class="p-sm mb-md" style="background-color: var(--bg-subtle); border-radius: var(--radius-md);">
-            <div class="d-flex justify-between items-center mb-xs" style="font-size: var(--font-size-xs);">
-              <span class="text-muted">Cashback Bonus:</span>
-              <strong class="text-success" style="font-size: var(--font-size-base);">{{ product.cashback_percent }}%</strong>
+          <div style="background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:16px;">
+            <div class="d-flex justify-between items-center mb-xs" style="font-size:var(--font-size-xs);">
+              <span class="text-muted">{% trans "Cashback Bonus" %}:</span>
+              <strong style="color:var(--green); font-size:var(--font-size-base);">{{ product.cashback_percent }}%</strong>
             </div>
-            <div class="d-flex justify-between items-center" style="font-size: var(--font-size-xs);">
-              <span class="text-muted">Annual Maintenance:</span>
-              <strong class="font-mono">
+            <div class="d-flex justify-between items-center" style="font-size:var(--font-size-xs);">
+              <span class="text-muted">{% trans "Annual Maintenance" %}:</span>
+              <strong class="font-mono" style="color:var(--text);">
                 {% if product.annual_fee == 0 %}
-                  0.00 KZT (Free)
+                  0.00 KZT ({% trans "Free" %})
                 {% else %}
                   {{ product.annual_fee|currency_format:"KZT" }}
                 {% endif %}
@@ -84,12 +96,12 @@
           </div>
         </div>
 
-        <div class="d-flex gap-sm pt-md" style="border-top: 1px solid var(--border-color-subtle);">
-          <a href="{% url 'cards:detail' product.slug %}" class="btn btn--secondary flex-1">
-            Details
+        <div class="d-flex gap-sm pt-md" style="border-top:1px solid var(--border);">
+          <a href="{% url 'cards:detail' product.slug %}" class="btn-ghost flex-1 text-center" style="text-align:center;">
+            {% trans "Details" %}
           </a>
-          <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn btn--primary flex-1">
-            Apply Now
+          <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn-primary flex-1 text-center" style="text-align:center;">
+            {% trans "Apply Now" %}
           </a>
         </div>
       </article>

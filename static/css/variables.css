@@ -1,60 +1,86 @@
 /**
- * RocketBank Design System - Variables & Design Tokens
- * Supports Light & Dark themes with 30+ CSS custom properties
+ * RocketBank Design System - Design Tokens & Variables
+ * Adapted from TemplateMo 623 NovaPay (https://templatemo.com)
+ *
+ * Core Color System: Dark slate base (#0F1319) with Sky-blue accent (#4A9EE8)
+ * Display Typography: Outfit (geometric, financial authority)
+ * Body Typography: DM Sans (clean, legible fintech UI)
+ * Motion: --silk cubic-bezier(0.16, 1, 0.3, 1)
  */
 
 :root {
-  /* Brand Colors */
-  --color-primary: #0062ff;
-  --color-primary-hover: #004ecc;
-  --color-primary-active: #003d99;
-  --color-primary-light: #e8f1ff;
-  --color-primary-dark: #002b66;
-  --color-secondary: #00d2b4;
-  --color-secondary-hover: #00b098;
-  --color-accent: #7c3aed;
-  --color-accent-light: #ede9fe;
+  /* ── TemplateMo 623 NovaPay Base Variables ── */
+  --bg: #0F1319;
+  --bg2: #141920;
+  --bg3: #1A2130;
+  --bg4: #1E2838;
+  --sky: #4A9EE8;
+  --sky2: #7EC8F0;
+  --sky3: #2A6AAA;
+  --sky4: #0D2A44;
+  --text: #E4EEF8;
+  --text2: #8AAEC8;
+  --text3: #506070;
+  --border: #1E3050;
+  --border2: #2A4060;
+  --green: #3DCC8E;
+  --red: #E85A5A;
+  --nav-h: 68px;
+  --silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --silk-fast: cubic-bezier(0.25, 1, 0.4, 1);
+  --max-w: 1280px;
 
-  /* Neutrals & Surfaces (Light Mode) */
-  --bg-body: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-card: #ffffff;
-  --bg-subtle: #f1f5f9;
-  --bg-elevated: #ffffff;
-  --bg-input: #ffffff;
-  --border-color: #e2e8f0;
-  --border-color-focus: #0062ff;
-  --border-color-subtle: #edf2f7;
+  /* ── Application Brand Mapping ── */
+  --color-primary: var(--sky);
+  --color-primary-hover: var(--sky2);
+  --color-primary-active: var(--sky3);
+  --color-primary-light: rgba(74, 158, 232, 0.15);
+  --color-primary-dark: var(--sky4);
+  --color-secondary: var(--green);
+  --color-secondary-hover: #50d69b;
+  --color-accent: #8888F8;
+  --color-accent-light: rgba(136, 136, 248, 0.15);
 
-  /* Typography Colors */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-inverse: #ffffff;
-  --text-link: #0062ff;
+  /* ── Neutrals & Surfaces (Default: Dark Slate NovaPay) ── */
+  --bg-body: var(--bg);
+  --bg-surface: var(--bg2);
+  --bg-card: var(--bg2);
+  --bg-subtle: var(--bg3);
+  --bg-elevated: var(--bg3);
+  --bg-input: var(--bg2);
+  --border-color: var(--border);
+  --border-color-focus: var(--sky);
+  --border-color-subtle: rgba(30, 48, 80, 0.6);
 
-  /* Status Colors */
-  --color-success: #10b981;
-  --color-success-bg: #ecfdf5;
-  --color-success-border: #a7f3d0;
-  --color-success-text: #065f46;
+  /* ── Typography Colors ── */
+  --text-primary: var(--text);
+  --text-secondary: var(--text2);
+  --text-muted: var(--text3);
+  --text-inverse: #0A1A2C;
+  --text-link: var(--sky);
 
-  --color-warning: #f59e0b;
-  --color-warning-bg: #fffbeb;
-  --color-warning-border: #fde68a;
-  --color-warning-text: #92400e;
+  /* ── Status Colors ── */
+  --color-success: var(--green);
+  --color-success-bg: rgba(61, 204, 142, 0.12);
+  --color-success-border: rgba(61, 204, 142, 0.25);
+  --color-success-text: var(--green);
 
-  --color-danger: #ef4444;
-  --color-danger-bg: #fef2f2;
-  --color-danger-border: #fecaca;
-  --color-danger-text: #991b1b;
+  --color-warning: #F0A030;
+  --color-warning-bg: rgba(240, 160, 48, 0.12);
+  --color-warning-border: rgba(240, 160, 48, 0.25);
+  --color-warning-text: #F0A030;
 
-  --color-info: #0284c7;
-  --color-info-bg: #f0f9ff;
-  --color-info-border: #bae6fd;
-  --color-info-text: #075985;
+  --color-danger: var(--red);
+  --color-danger-bg: rgba(232, 90, 90, 0.12);
+  --color-danger-border: rgba(232, 90, 90, 0.25);
+  --color-danger-text: var(--red);
 
-  /* Spacing Scale */
+  --color-info: var(--sky);
+  --color-info-bg: rgba(74, 158, 232, 0.12);
+  --color-info-border: rgba(74, 158, 232, 0.25);
+  --color-info-text: var(--sky);
+
+  /* ── Spacing Scale ── */
   --space-2xs: 0.125rem;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -64,7 +90,7 @@
   --space-2xl: 3rem;
   --space-3xl: 4.5rem;
 
-  /* Border Radii */
+  /* ── Border Radii ── */
   --radius-xs: 0.25rem;
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
@@ -73,17 +99,19 @@
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
 
-  /* Elevation & Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 20px rgba(0, 98, 255, 0.3);
+  /* ── Elevation & Shadows ── */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px 0 rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 48px 0 rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 24px rgba(74, 158, 232, 0.25);
 
-  /* Typography */
-  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* ── Typography Families & Scales ── */
+  --font-family-base: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-display: 'Outfit', sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
   --font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
   --font-size-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.9375rem);
   --font-size-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
@@ -93,18 +121,18 @@
   --font-size-3xl: clamp(1.875rem, 1.65rem + 1vw, 2.25rem);
   --font-size-4xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);
 
-  /* Layout Dimensions */
+  /* ── Layout Dimensions ── */
   --header-height: 4.25rem;
   --sidebar-width: 17.5rem;
   --sidebar-collapsed-width: 5rem;
   --container-max-width: 1280px;
 
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* ── Transitions ── */
+  --transition-fast: 200ms var(--silk);
+  --transition-base: 400ms var(--silk);
+  --transition-slow: 700ms var(--silk);
 
-  /* Z-Index Hierarchy */
+  /* ── Z-Index Hierarchy ── */
   --z-dropdown: 100;
   --z-sticky: 200;
   --z-fixed: 500;
@@ -113,91 +141,68 @@
   --z-toast: 1100;
 }
 
-/* Dark Theme Tokens */
-[data-theme="dark"] {
-  --bg-body: #090d16;
-  --bg-surface: #111827;
-  --bg-card: #141d2e;
-  --bg-subtle: #1e293b;
-  --bg-elevated: #1a2333;
-  --bg-input: #101726;
-  --border-color: #243048;
-  --border-color-focus: #3b82f6;
-  --border-color-subtle: #1b2436;
+/* ──────────────────────────────────────────────
+   Light Theme Override (Clean NovaPay Contrast)
+   ────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #F4F7FB;
+  --bg2: #FFFFFF;
+  --bg3: #E9F0F8;
+  --bg4: #DCE7F3;
+  --sky: #1D75C9;
+  --sky2: #3E94E4;
+  --sky3: #145899;
+  --sky4: #D8E7F8;
+  --text: #0E1726;
+  --text2: #476282;
+  --text3: #7A92A8;
+  --border: #CBD9E8;
+  --border2: #B3C8DF;
+  --green: #1F9D68;
+  --red: #D94343;
 
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-inverse: #0f172a;
-  --text-link: #60a5fa;
+  --color-primary: var(--sky);
+  --color-primary-hover: var(--sky2);
+  --color-primary-active: var(--sky3);
+  --color-primary-light: #E1EFFF;
+  --color-primary-dark: #145899;
 
-  --color-primary-light: rgba(0, 98, 255, 0.15);
+  --bg-body: var(--bg);
+  --bg-surface: var(--bg2);
+  --bg-card: var(--bg2);
+  --bg-subtle: var(--bg3);
+  --bg-elevated: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --border-color: var(--border);
+  --border-color-focus: var(--sky);
+  --border-color-subtle: #E2EAF4;
 
-  --color-success-bg: rgba(16, 185, 129, 0.15);
-  --color-success-border: rgba(16, 185, 129, 0.3);
-  --color-success-text: #34d399;
+  --text-primary: var(--text);
+  --text-secondary: var(--text2);
+  --text-muted: var(--text3);
+  --text-inverse: #FFFFFF;
+  --text-link: var(--sky);
 
-  --color-warning-bg: rgba(245, 158, 11, 0.15);
-  --color-warning-border: rgba(245, 158, 11, 0.3);
-  --color-warning-text: #fbbf24;
+  --color-success-bg: rgba(31, 157, 104, 0.1);
+  --color-success-border: rgba(31, 157, 104, 0.25);
+  --color-success-text: #177C52;
 
-  --color-danger-bg: rgba(239, 68, 68, 0.15);
-  --color-danger-border: rgba(239, 68, 68, 0.3);
-  --color-danger-text: #f87171;
+  --color-warning-bg: rgba(240, 160, 48, 0.1);
+  --color-warning-border: rgba(240, 160, 48, 0.25);
+  --color-warning-text: #B87114;
 
-  --color-info-bg: rgba(2, 132, 199, 0.15);
-  --color-info-border: rgba(2, 132, 199, 0.3);
-  --color-info-text: #38bdf8;
+  --color-danger-bg: rgba(217, 67, 67, 0.1);
+  --color-danger-border: rgba(217, 67, 67, 0.25);
+  --color-danger-text: #B02A2A;
 
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.4);
-}
+  --color-info-bg: rgba(29, 117, 201, 0.1);
+  --color-info-border: rgba(29, 117, 201, 0.25);
+  --color-info-text: #145899;
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-body: #090d16;
-    --bg-surface: #111827;
-    --bg-card: #141d2e;
-    --bg-subtle: #1e293b;
-    --bg-elevated: #1a2333;
-    --bg-input: #101726;
-    --border-color: #243048;
-    --border-color-focus: #3b82f6;
-    --border-color-subtle: #1b2436;
-
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --text-inverse: #0f172a;
-    --text-link: #60a5fa;
-
-    --color-primary-light: rgba(0, 98, 255, 0.15);
-
-    --color-success-bg: rgba(16, 185, 129, 0.15);
-    --color-success-border: rgba(16, 185, 129, 0.3);
-    --color-success-text: #34d399;
-
-    --color-warning-bg: rgba(245, 158, 11, 0.15);
-    --color-warning-border: rgba(245, 158, 11, 0.3);
-    --color-warning-text: #fbbf24;
-
-    --color-danger-bg: rgba(239, 68, 68, 0.15);
-    --color-danger-border: rgba(239, 68, 68, 0.3);
-    --color-danger-text: #f87171;
-
-    --color-info-bg: rgba(2, 132, 199, 0.15);
-    --color-info-border: rgba(2, 132, 199, 0.3);
-    --color-info-text: #38bdf8;
-
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
-    --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.4);
-  }
+  --shadow-xs: 0 1px 2px 0 rgba(14, 23, 38, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(14, 23, 38, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(14, 23, 38, 0.1);
+  --shadow-lg: 0 12px 24px 0 rgba(14, 23, 38, 0.12);
+  --shadow-xl: 0 20px 36px 0 rgba(14, 23, 38, 0.15);
+  --shadow-glow: 0 0 20px rgba(29, 117, 201, 0.2);
 }

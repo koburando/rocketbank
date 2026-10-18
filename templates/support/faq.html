@@ -1,24 +1,25 @@
 {% extends "layouts/public_base.html" %}
+{% load i18n %}
 
-{% block title %}Help Center & FAQ | RocketBank{% endblock %}
-{% block meta_description %}<meta name="description" content="Find answers to frequently asked questions about RocketBank accounts, cards, limits, security, and loans.">{% endblock %}
+{% block title %}{% trans "Help Center & FAQ" %} | RocketBank{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Find answers to frequently asked questions about RocketBank accounts, cards, limits, security, and loans." %}">{% endblock %}
 
 {% block content %}
 <div class="container container--narrow">
   <section class="text-center mb-2xl">
-    <span class="badge badge--info mb-sm">Knowledge Base</span>
+    <span class="badge badge--info mb-sm">{% trans "Knowledge Base" %}</span>
     <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
-      Frequently Asked Questions
+      {% trans "Frequently Asked Questions" %}
     </h1>
     <p class="text-secondary" style="max-width: 600px; margin: 0 auto;">
-      Instant answers to common inquiries regarding accounts, cards, transfers, and security policies.
+      {% trans "Instant answers to common inquiries regarding accounts, cards, transfers, and security policies." %}
     </p>
 
     <!-- Search Form -->
     <div class="mt-lg" style="max-width: 500px; margin-left: auto; margin-right: auto;">
       <form method="get" class="d-flex gap-xs" role="search">
-        <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Search questions or keywords..." class="form-input" aria-label="Search questions">
-        <button type="submit" class="btn btn--primary">Search</button>
+        <input type="search" name="q" value="{{ request.GET.q }}" placeholder="{% trans "Search questions or keywords..." %}" class="form-input footer-input" aria-label="{% trans "Search questions" %}">
+        <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
       </form>
     </div>
   </section>
@@ -51,14 +52,14 @@
   </div>
 
   <!-- Still need help card -->
-  <aside class="card text-center p-xl" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-subtle) 100%);">
-    <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">Still Need Assistance?</h2>
-    <p class="text-secondary mb-lg">Our certified banking support team is available 24/7 to resolve complex cases.</p>
+  <aside class="dash-card card text-center p-xl">
+    <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">{% trans "Still Need Assistance?" %}</h2>
+    <p class="text-secondary mb-lg">{% trans "Our certified banking support team is available 24/7 to resolve complex cases." %}</p>
     <div class="d-flex justify-center gap-md">
       {% if user.is_authenticated %}
-        <a href="{% url 'support:create' %}" class="btn btn--primary">Submit Support Ticket</a>
+        <a href="{% url 'support:create' %}" class="btn btn-primary">{% trans "Submit Support Ticket" %}</a>
       {% else %}
-        <a href="{% url 'contacts' %}" class="btn btn--primary">Contact Support</a>
+        <a href="{% url 'contacts' %}" class="btn btn-primary">{% trans "Contact Support" %}</a>
       {% endif %}
     </div>
   </aside>

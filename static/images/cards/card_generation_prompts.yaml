@@ -1,0 +1,38 @@
+# RocketBank Cards - Text-to-Image Generation Specification
+# Technical Prompts for AI Image Generation (Midjourney / Stable Diffusion / DALL-E)
+
+version: "1.0"
+brand: "RocketBank"
+default_aspect_ratio: "16:10"
+render_quality: "8k photorealistic render, cinematic studio lighting, highly detailed surface texture"
+
+cards:
+  gold:
+    name: "RocketBank Gold Card"
+    tier: "GOLD"
+    target_file: "static/images/cards/card-gold.png"
+    aspect_ratio: "16:10"
+    resolution: "1920x1200"
+    prompt: >-
+      Flat lay top-down view of a blank luxury metal bank card, brushed warm champagne gold anodized aluminum texture, subtle geometric micro-engraved laser lines, realistic metallic EMV smart chip on the middle-left, minimalist NFC wave icon, rounded corners, 8k photorealistic render, no text, no numbers.
+    negative_prompt: "text, letters, numbers, digits, watermark, brand name, embossed name, expired date, cvv, signature, blurry, low resolution, warped, plastic border, scratches"
+
+  platinum:
+    name: "RocketBank Platinum Card"
+    tier: "PLATINUM"
+    target_file: "static/images/cards/card-platinum.png"
+    aspect_ratio: "16:10"
+    resolution: "1920x1200"
+    prompt: >-
+      Flat lay top-down view of a blank ultra-modern titanium bank card, sleek brushed silver-slate metallic finish with subtle anodized sky-blue (#4A9EE8) iridescent edge reflection, precision CNC milled surface texture, silver EMV chip on the middle-left, 8k photorealistic render, no text, no numbers.
+    negative_prompt: "text, letters, numbers, digits, watermark, brand name, embossed name, expired date, cvv, signature, blurry, low resolution, warped, plastic border, scratches"
+
+  black:
+    name: "RocketBank Black Card"
+    tier: "BLACK"
+    target_file: "static/images/cards/card-black.png"
+    aspect_ratio: "16:10"
+    resolution: "1920x1200"
+    prompt: >-
+      Flat lay top-down view of a blank elite black metal credit card, matte obsidian stealth black PVD-coated steel combined with subtle dark forged carbon fiber weave pattern, dark gunmetal EMV microchip on the middle-left, faint cyan-blue ambient rim light, 8k photorealistic render, no text, no numbers.
+    negative_prompt: "text, letters, numbers, digits, watermark, brand name, embossed name, expired date, cvv, signature, blurry, low resolution, warped, plastic border, scratches"

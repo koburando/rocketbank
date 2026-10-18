@@ -1,0 +1,2305 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 16:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/core/validators.py:24
+#, python-format
+msgid "%(value)s is not a valid IBAN format."
+msgstr "%(value)s is not a valid IBAN format."
+
+#: apps/core/validators.py:34
+#, python-format
+msgid "Rating must be between 1 and 5. Got %(value)s."
+msgstr "Rating must be between 1 and 5. Got %(value)s."
+
+#: apps/core/validators.py:49
+#, python-format
+msgid "%(value)s is not a valid phone number."
+msgstr "%(value)s is not a valid phone number."
+
+#: apps/core/validators.py:72
+#, python-format
+msgid "Image file size cannot exceed %(max)s MB. Got %(actual).1f MB."
+msgstr "Image file size cannot exceed %(max)s MB. Got %(actual).1f MB."
+
+#: apps/core/validators.py:81
+msgid ", "
+msgstr ", "
+
+#: templates/about.html:4
+msgid "About RocketBank — Architecture & Leadership"
+msgstr "About RocketBank — Architecture & Leadership"
+
+#: templates/about.html:5
+msgid ""
+"Learn about RocketBank's real-time financial architecture, executive "
+"leadership, regulatory compliance, and Almaty headquarters."
+msgstr "Learn about RocketBank's real-time financial architecture, executive leadership, regulatory compliance, and Almaty headquarters."
+
+#: templates/about.html:11
+msgid "Corporate Overview"
+msgstr "Corporate Overview"
+
+#: templates/about.html:13 templates/includes/footer.html:42
+msgid "About RocketBank"
+msgstr "About RocketBank"
+
+#: templates/about.html:16
+msgid ""
+"Engineered to redefine digital finance through real-time distributed "
+"architecture, strict ACID atomicity, and uncompromising human-centric design."
+msgstr "Engineered to redefine digital finance through real-time distributed architecture, strict ACID atomicity, and uncompromising human-centric design."
+
+#: templates/about.html:24
+msgid "Engineering Architecture"
+msgstr "Engineering Architecture"
+
+#: templates/about.html:26
+msgid "High-Concurrency Real-Time Infrastructure"
+msgstr "High-Concurrency Real-Time Infrastructure"
+
+#: templates/about.html:29
+msgid ""
+"RocketBank is architected on a high-availability Django core coupled with "
+"PostgreSQL transactional persistence, Celery asynchronous pipelines, and "
+"Redis low-latency caching."
+msgstr "RocketBank is architected on a high-availability Django core coupled with PostgreSQL transactional persistence, Celery asynchronous pipelines, and Redis low-latency caching."
+
+#: templates/about.html:32
+msgid ""
+"Our financial ledger guarantees full ACID atomicity with row-level locks "
+"(select_for_update) to prevent race conditions during peak transaction "
+"spikes, processing sub-second multi-currency transfers across domestic and "
+"international banking rails."
+msgstr "Our financial ledger guarantees full ACID atomicity with row-level locks (select_for_update) to prevent race conditions during peak transaction spikes, processing sub-second multi-currency transfers across domestic and international banking rails."
+
+#: templates/about.html:38
+msgid "Ledger Latency"
+msgstr "Ledger Latency"
+
+#: templates/about.html:42
+msgid "Platform Uptime"
+msgstr "Platform Uptime"
+
+#: templates/about.html:56
+msgid "Operational"
+msgstr "Operational"
+
+#: templates/about.html:63
+msgid "Regulatory Licensing & Protection"
+msgstr "Regulatory Licensing & Protection"
+
+#: templates/about.html:64
+msgid ""
+"Licensed by the ARDFM of Kazakhstan. Deposits insured up to 20,000,000 KZT "
+"by the KDIF."
+msgstr "Licensed by the ARDFM of Kazakhstan. Deposits insured up to 20,000,000 KZT by the KDIF."
+
+#: templates/about.html:70
+msgid "Sub-second Atomic Payments"
+msgstr "Sub-second Atomic Payments"
+
+#: templates/about.html:71
+msgid ""
+"Indexed IBAN routing and precomputed aggregation algorithms enable instant "
+"domestic and international clearance."
+msgstr "Indexed IBAN routing and precomputed aggregation algorithms enable instant domestic and international clearance."
+
+#: templates/about.html:77
+msgid "Zero-Trust Security Perimeter"
+msgstr "Zero-Trust Security Perimeter"
+
+#: templates/about.html:78
+msgid ""
+"256-bit AES encryption at rest and in transit, PBKDF2 credential hashing, "
+"and AI-driven fraud anomaly detection."
+msgstr "256-bit AES encryption at rest and in transit, PBKDF2 credential hashing, and AI-driven fraud anomaly detection."
+
+#: templates/about.html:89
+msgid "Governance"
+msgstr "Governance"
+
+#: templates/about.html:90
+msgid "Leadership & Architecture"
+msgstr "Leadership & Architecture"
+
+#: templates/about.html:101
+msgid "Founder & CEO • Chief System Architect"
+msgstr "Founder & CEO • Chief System Architect"
+
+#: templates/about.html:106
+msgid "Executive Direction"
+msgstr "Executive Direction"
+
+#: templates/about.html:111
+msgid ""
+"We architected RocketBank from the ground up on modern, open principles: "
+"elimination of opaque banking bureaucracy, execution speed measured in "
+"milliseconds, and rock-solid cryptographic security. Every component is "
+"designed to give individuals and businesses complete, effortless command "
+"over their financial destiny."
+msgstr "We architected RocketBank from the ground up on modern, open principles: elimination of opaque banking bureaucracy, execution speed measured in milliseconds, and rock-solid cryptographic security. Every component is designed to give individuals and businesses complete, effortless command over their financial destiny."
+
+#: templates/about.html:120
+msgid "Global Presence"
+msgstr "Global Presence"
+
+#: templates/about.html:121
+msgid "Headquarters & Operations"
+msgstr "Headquarters & Operations"
+
+#: templates/about.html:123
+msgid ""
+"Located in the heart of Almaty's premier financial and technology corridor."
+msgstr "Located in the heart of Almaty's premier financial and technology corridor."
+
+#: templates/about.html:131
+msgid "RocketBank Headquarters"
+msgstr "RocketBank Headquarters"
+
+#: templates/about.html:155
+msgid ""
+"Esentai Tower, Al-Farabi Avenue 77/7, Almaty Financial District, Republic of "
+"Kazakhstan, 050040."
+msgstr "Esentai Tower, Al-Farabi Avenue 77/7, Almaty Financial District, Republic of Kazakhstan, 050040."
+
+#: templates/about.html:162
+msgid "Interactive Location Map"
+msgstr "Interactive Location Map"
+
+#: templates/about.html:172
+msgid ""
+"Central operations, engineering labs, and client relations center. Open Mon–"
+"Fri, 09:00–18:00 (UTC+5)."
+msgstr "Central operations, engineering labs, and client relations center. Open Mon–Fri, 09:00–18:00 (UTC+5)."
+
+#: templates/accounts/account_list.html:4
+msgid "My Bank Accounts | RocketBank"
+msgstr "My Bank Accounts | RocketBank"
+
+#: templates/accounts/account_list.html:15
+msgid "Bank Accounts"
+msgstr "Bank Accounts"
+
+#: templates/accounts/account_list.html:18
+msgid "Manage all your checking, savings, business, and deposit IBAN accounts"
+msgstr "Manage all your checking, savings, business, and deposit IBAN accounts"
+
+#: templates/accounts/account_list.html:22
+msgid "Open New Account"
+msgstr "Open New Account"
+
+#: templates/accounts/account_list.html:29
+msgid "Search by IBAN..."
+msgstr "Search by IBAN..."
+
+#: templates/accounts/account_list.html:29
+msgid "Search accounts by IBAN"
+msgstr "Search accounts by IBAN"
+
+#: templates/accounts/account_list.html:30
+msgid "Filter by account type"
+msgstr "Filter by account type"
+
+#: templates/accounts/account_list.html:31
+msgid "All Account Types"
+msgstr "All Account Types"
+
+#: templates/accounts/account_list.html:32
+msgid "Checking"
+msgstr "Checking"
+
+#: templates/accounts/account_list.html:33
+msgid "Savings"
+msgstr "Savings"
+
+#: templates/accounts/account_list.html:34
+msgid "Business"
+msgstr "Business"
+
+#: templates/accounts/account_list.html:35
+msgid "Deposit"
+msgstr "Deposit"
+
+#: templates/accounts/account_list.html:37 templates/credits/catalog.html:28
+msgid "Filter"
+msgstr "Filter"
+
+#: templates/accounts/account_list.html:39 templates/cards/catalog.html:37
+#: templates/credits/catalog.html:30 templates/deposits/catalog.html:30
+#: templates/transactions/transaction_list.html:40
+msgid "Reset"
+msgstr "Reset"
+
+#: templates/accounts/account_list.html:48
+msgid "List of client accounts registered under your name in RocketBank"
+msgstr "List of client accounts registered under your name in RocketBank"
+
+#: templates/accounts/account_list.html:52
+msgid "IBAN"
+msgstr "IBAN"
+
+#: templates/accounts/account_list.html:53
+#: templates/accounts/dashboard.html:164
+msgid "Type"
+msgstr "Type"
+
+#: templates/accounts/account_list.html:54
+msgid "Currency"
+msgstr "Currency"
+
+#: templates/accounts/account_list.html:55
+#: templates/accounts/dashboard.html:165
+#: templates/transactions/transaction_list.html:69
+msgid "Status"
+msgstr "Status"
+
+#: templates/accounts/account_list.html:56 templates/home.html:75
+msgid "Balance"
+msgstr "Balance"
+
+#: templates/accounts/account_list.html:57
+msgid "Opened Date"
+msgstr "Opened Date"
+
+#: templates/accounts/account_list.html:58
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/accounts/account_list.html:90 templates/cards/detail.html:124
+msgid "View"
+msgstr "View"
+
+#: templates/accounts/account_list.html:93
+#: templates/transactions/transaction_list.html:80
+msgid "Transfer"
+msgstr "Transfer"
+
+#: templates/accounts/dashboard.html:4
+msgid "Dashboard | RocketBank"
+msgstr "Dashboard | RocketBank"
+
+#: templates/accounts/dashboard.html:5
+msgid ""
+"RocketBank client dashboard. View financial balances, multi-currency "
+"accounts, and recent transactions."
+msgstr "RocketBank client dashboard. View financial balances, multi-currency accounts, and recent transactions."
+
+#: templates/accounts/dashboard.html:13
+msgid "Welcome"
+msgstr "Welcome"
+
+#: templates/accounts/dashboard.html:16
+msgid "Here is your real-time financial portfolio overview for today"
+msgstr "Here is your real-time financial portfolio overview for today"
+
+#: templates/accounts/dashboard.html:21
+msgid "Send Money"
+msgstr "Send Money"
+
+#: templates/accounts/dashboard.html:24
+msgid "Open Account"
+msgstr "Open Account"
+
+#: templates/accounts/dashboard.html:40
+msgid "Active Accounts"
+msgstr "Active Accounts"
+
+#: templates/accounts/dashboard.html:44
+msgid "Multi-currency enabled"
+msgstr "Multi-currency enabled"
+
+#: templates/accounts/dashboard.html:48
+msgid "Checking Balance"
+msgstr "Checking Balance"
+
+#: templates/accounts/dashboard.html:51
+msgid "Available for instant payments"
+msgstr "Available for instant payments"
+
+#: templates/accounts/dashboard.html:55
+msgid "Savings Balance"
+msgstr "Savings Balance"
+
+#: templates/accounts/dashboard.html:59
+msgid "Daily capitalization active"
+msgstr "Daily capitalization active"
+
+#: templates/accounts/dashboard.html:74
+msgid "BANK ACCOUNTS"
+msgstr "BANK ACCOUNTS"
+
+#: templates/accounts/dashboard.html:76
+msgid "View All"
+msgstr "View All"
+
+#: templates/accounts/dashboard.html:93
+msgid "QUICK SERVICES"
+msgstr "QUICK SERVICES"
+
+#: templates/accounts/dashboard.html:97
+msgid "Instant Money Transfer"
+msgstr "Instant Money Transfer"
+
+#: templates/accounts/dashboard.html:100 templates/includes/sidebar.html:37
+msgid "Order Card (Wizard)"
+msgstr "Order Card (Wizard)"
+
+#: templates/accounts/dashboard.html:103
+msgid "Calculate Loan Rate"
+msgstr "Calculate Loan Rate"
+
+#: templates/accounts/dashboard.html:106
+msgid "Open Term Deposit"
+msgstr "Open Term Deposit"
+
+#: templates/accounts/dashboard.html:109
+msgid "Saved Beneficiaries"
+msgstr "Saved Beneficiaries"
+
+#: templates/accounts/dashboard.html:112
+msgid "Saving Goals Tracker"
+msgstr "Saving Goals Tracker"
+
+#: templates/accounts/dashboard.html:121
+msgid "SAVING GOALS"
+msgstr "SAVING GOALS"
+
+#: templates/accounts/dashboard.html:122 templates/cards/catalog.html:101
+msgid "Details"
+msgstr "Details"
+
+#: templates/accounts/dashboard.html:150
+msgid "RECENT TRANSACTIONS"
+msgstr "RECENT TRANSACTIONS"
+
+#: templates/accounts/dashboard.html:152
+msgid "Full History"
+msgstr "Full History"
+
+#: templates/accounts/dashboard.html:158
+msgid "Recent financial transactions across your accounts"
+msgstr "Recent financial transactions across your accounts"
+
+#: templates/accounts/dashboard.html:161
+msgid "Date"
+msgstr "Date"
+
+#: templates/accounts/dashboard.html:162
+#: templates/transactions/transaction_list.html:65
+msgid "Reference"
+msgstr "Reference"
+
+#: templates/accounts/dashboard.html:163
+#: templates/transactions/transaction_list.html:66
+msgid "Description"
+msgstr "Description"
+
+#: templates/accounts/dashboard.html:166
+#: templates/transactions/transaction_list.html:70
+msgid "Amount"
+msgstr "Amount"
+
+#: templates/accounts/dashboard.html:167 templates/accounts/dashboard.html:196
+#: templates/transactions/transaction_list.html:71
+#: templates/transactions/transaction_list.html:103
+msgid "Receipt"
+msgstr "Receipt"
+
+#: templates/accounts/dashboard.html:195
+#: templates/transactions/transaction_list.html:102
+msgid "View receipt for"
+msgstr "View receipt for"
+
+#: templates/analytics/dashboard.html:4
+msgid "Financial Analytics & Saving Goals"
+msgstr "Financial Analytics & Saving Goals"
+
+#: templates/analytics/dashboard.html:14
+msgid "Financial Analytics & Goals"
+msgstr "Financial Analytics & Goals"
+
+#: templates/analytics/dashboard.html:15
+msgid ""
+"Track your savings targets, spending distribution, and budget health meters"
+msgstr "Track your savings targets, spending distribution, and budget health meters"
+
+#: templates/analytics/dashboard.html:23
+msgid "Monthly Spending & Budget Health Meter"
+msgstr "Monthly Spending & Budget Health Meter"
+
+#: templates/analytics/dashboard.html:25
+msgid "Automated Analysis"
+msgstr "Automated Analysis"
+
+#: templates/analytics/dashboard.html:31
+msgid ""
+"Our AI budget engine calculates your current spending ratio against your "
+"estimated monthly income. Keep the meter in the optimal green zone for "
+"maximum savings."
+msgstr "Our AI budget engine calculates your current spending ratio against your estimated monthly income. Keep the meter in the optimal green zone for maximum savings."
+
+#: templates/analytics/dashboard.html:35
+msgid "Monthly Outflow"
+msgstr "Monthly Outflow"
+
+#: templates/analytics/dashboard.html:36
+msgid "Target Ceiling"
+msgstr "Target Ceiling"
+
+#: templates/analytics/dashboard.html:39
+msgid "Monthly budget expenditure meter"
+msgstr "Monthly budget expenditure meter"
+
+#: templates/analytics/dashboard.html:44
+#, python-format
+msgid "Optimal (<60%%)"
+msgstr "Optimal (<60%%)"
+
+#: templates/analytics/dashboard.html:45
+#, python-format
+msgid "Caution (60%%–85%%)"
+msgstr "Caution (60%%–85%%)"
+
+#: templates/analytics/dashboard.html:46
+#, python-format
+msgid "Critical (>85%%)"
+msgstr "Critical (>85%%)"
+
+#: templates/analytics/dashboard.html:52
+msgid "Total Goals Target"
+msgstr "Total Goals Target"
+
+#: templates/analytics/dashboard.html:58
+msgid "Total Funds Accumulated"
+msgstr "Total Funds Accumulated"
+
+#: templates/analytics/dashboard.html:73
+msgid "Active Saving Goals"
+msgstr "Active Saving Goals"
+
+#: templates/analytics/dashboard.html:87
+msgid "Target"
+msgstr "Target"
+
+#: templates/analytics/dashboard.html:87
+msgid "Saved"
+msgstr "Saved"
+
+#: templates/analytics/dashboard.html:96
+msgid "Delete goal"
+msgstr "Delete goal"
+
+#: templates/analytics/dashboard.html:96
+msgid "Delete this saving goal?"
+msgstr "Delete this saving goal?"
+
+#: templates/analytics/dashboard.html:110
+msgid "Target Deadline"
+msgstr "Target Deadline"
+
+#: templates/analytics/dashboard.html:115
+msgid "No saving goals set"
+msgstr "No saving goals set"
+
+#: templates/analytics/dashboard.html:115
+msgid "Create your first financial target using the form on the right."
+msgstr "Create your first financial target using the form on the right."
+
+#: templates/analytics/dashboard.html:124
+msgid "Set a New Saving Goal"
+msgstr "Set a New Saving Goal"
+
+#: templates/analytics/dashboard.html:153
+msgid "Create Saving Goal"
+msgstr "Create Saving Goal"
+
+#: templates/analytics/dashboard.html:165
+msgid "Spending by Category Breakdown"
+msgstr "Spending by Category Breakdown"
+
+#: templates/analytics/dashboard.html:174
+msgid "Category"
+msgstr "Category"
+
+#: templates/analytics/dashboard.html:175
+msgid "Transaction Count"
+msgstr "Transaction Count"
+
+#: templates/analytics/dashboard.html:176
+msgid "Total Outflow"
+msgstr "Total Outflow"
+
+#: templates/base.html:14
+msgid ""
+"RocketBank is a cutting-edge next-generation digital financial platform "
+"providing instant transfers, premium cards, and smart credit solutions."
+msgstr "RocketBank is a cutting-edge next-generation digital financial platform providing instant transfers, premium cards, and smart credit solutions."
+
+#: templates/base.html:23
+msgid "Modern Digital Banking"
+msgstr "Modern Digital Banking"
+
+#: templates/base.html:24
+msgid ""
+"Experience effortless banking with high-yield deposits, zero-fee multi-"
+"currency transfers, and modern security."
+msgstr "Experience effortless banking with high-yield deposits, zero-fee multi-currency transfers, and modern security."
+
+#: templates/base.html:74
+msgid "Skip to main content"
+msgstr "Skip to main content"
+
+#: templates/cards/card_list.html:4
+msgid "My Payment Cards | RocketBank"
+msgstr "My Payment Cards | RocketBank"
+
+#: templates/cards/card_list.html:15
+msgid "My Payment Cards"
+msgstr "My Payment Cards"
+
+#: templates/cards/card_list.html:18
+msgid "Manage card limits, freeze status, and link cards to bank accounts"
+msgstr "Manage card limits, freeze status, and link cards to bank accounts"
+
+#: templates/cards/card_list.html:22
+msgid "Order New Card (Wizard)"
+msgstr "Order New Card (Wizard)"
+
+#: templates/cards/card_list.html:42
+msgid "Card Security & Instant Fraud Protection"
+msgstr "Card Security & Instant Fraud Protection"
+
+#: templates/cards/card_list.html:45
+msgid ""
+"If you notice unauthorized transactions or misplace your card, you can "
+"instantly freeze it above with 1 click. For emergency 24/7 hotline support, "
+"call"
+msgstr "If you notice unauthorized transactions or misplace your card, you can instantly freeze it above with 1 click. For emergency 24/7 hotline support, call"
+
+#: templates/cards/catalog.html:4
+msgid "Cards Marketplace — Debit & Credit Cards | RocketBank"
+msgstr "Cards Marketplace — Debit & Credit Cards | RocketBank"
+
+#: templates/cards/catalog.html:5
+#, python-format
+msgid ""
+"Explore RocketBank's premium debit and credit cards with up to 10%% "
+"cashback, zero maintenance fee, and instant digital issuing."
+msgstr "Explore RocketBank's premium debit and credit cards with up to 10%% cashback, zero maintenance fee, and instant digital issuing."
+
+#: templates/cards/catalog.html:11
+msgid "Payment Products"
+msgstr "Payment Products"
+
+#: templates/cards/catalog.html:13
+msgid "RocketBank Payment Cards"
+msgstr "RocketBank Payment Cards"
+
+#: templates/cards/catalog.html:16
+msgid ""
+"Choose the perfect card for everyday spending, luxury travel, or maximum "
+"cashback rewards. Issued instantly in your digital wallet."
+msgstr "Choose the perfect card for everyday spending, luxury travel, or maximum cashback rewards. Issued instantly in your digital wallet."
+
+#: templates/cards/catalog.html:23
+msgid "Search cards by name..."
+msgstr "Search cards by name..."
+
+#: templates/cards/catalog.html:23
+msgid "Search cards"
+msgstr "Search cards"
+
+#: templates/cards/catalog.html:24
+msgid "Filter by tier"
+msgstr "Filter by tier"
+
+#: templates/cards/catalog.html:25
+msgid "All Tiers"
+msgstr "All Tiers"
+
+#: templates/cards/catalog.html:30
+msgid "Sort cards"
+msgstr "Sort cards"
+
+#: templates/cards/catalog.html:31 templates/credits/catalog.html:24
+#: templates/deposits/catalog.html:24
+msgid "Default Order"
+msgstr "Default Order"
+
+#: templates/cards/catalog.html:32
+msgid "Highest Cashback"
+msgstr "Highest Cashback"
+
+#: templates/cards/catalog.html:33
+msgid "Lowest Annual Fee"
+msgstr "Lowest Annual Fee"
+
+#: templates/cards/catalog.html:35 templates/deposits/catalog.html:28
+#: templates/support/faq.html:22
+msgid "Search"
+msgstr "Search"
+
+#: templates/cards/catalog.html:67 templates/cards/detail.html:62
+#: templates/includes/card_item.html:44
+msgid "EXPIRES"
+msgstr "EXPIRES"
+
+#: templates/cards/catalog.html:83
+msgid "Cashback Bonus"
+msgstr "Cashback Bonus"
+
+#: templates/cards/catalog.html:87
+msgid "Annual Maintenance"
+msgstr "Annual Maintenance"
+
+#: templates/cards/catalog.html:90 templates/cards/detail.html:86
+#: templates/transactions/transfer.html:63
+msgid "Free"
+msgstr "Free"
+
+#: templates/cards/catalog.html:104 templates/credits/catalog.html:73
+msgid "Apply Now"
+msgstr "Apply Now"
+
+#: templates/cards/detail.html:4
+msgid "Card Details | RocketBank"
+msgstr "Card Details | RocketBank"
+
+#: templates/cards/detail.html:29
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: templates/cards/detail.html:31
+msgid "Home"
+msgstr "Home"
+
+#: templates/cards/detail.html:33
+msgid "Cards Catalog"
+msgstr "Cards Catalog"
+
+#: templates/cards/detail.html:79 templates/home.html:537
+msgid "Cashback on all purchases"
+msgstr "Cashback on all purchases"
+
+#: templates/cards/detail.html:81
+msgid "Paid automatically on the 1st"
+msgstr "Paid automatically on the 1st"
+
+#: templates/cards/detail.html:84
+msgid "Annual Service Fee"
+msgstr "Annual Service Fee"
+
+#: templates/cards/detail.html:88
+msgid "No hidden maintenance costs"
+msgstr "No hidden maintenance costs"
+
+#: templates/cards/detail.html:94
+msgid "Apply for this Card Now"
+msgstr "Apply for this Card Now"
+
+#: templates/cards/detail.html:98
+msgid "Compare Other Tiers"
+msgstr "Compare Other Tiers"
+
+#: templates/cards/detail.html:108
+msgid "Other Available Card Tiers"
+msgstr "Other Available Card Tiers"
+
+#: templates/cards/detail.html:117
+msgid "Cashback"
+msgstr "Cashback"
+
+#: templates/cards/detail.html:136 templates/support/faq.html:12
+msgid "Frequently Asked Questions"
+msgstr "Frequently Asked Questions"
+
+#: templates/contacts.html:4
+msgid "Contact Us & Branch Network"
+msgstr "Contact Us & Branch Network"
+
+#: templates/contacts.html:5
+msgid ""
+"Get in touch with RocketBank client support, corporate headquarters, or "
+"visit our branches in Almaty and Astana."
+msgstr "Get in touch with RocketBank client support, corporate headquarters, or visit our branches in Almaty and Astana."
+
+#: templates/contacts.html:10
+msgid "24/7 Client Relations"
+msgstr "24/7 Client Relations"
+
+#: templates/contacts.html:12
+msgid "We're Here to Help You"
+msgstr "We're Here to Help You"
+
+#: templates/contacts.html:15
+msgid ""
+"Reach out via telephone, email, or visit one of our flagship digital "
+"branches in Kazakhstan."
+msgstr "Reach out via telephone, email, or visit one of our flagship digital branches in Kazakhstan."
+
+#: templates/contacts.html:26
+msgid "Direct Phone Support"
+msgstr "Direct Phone Support"
+
+#: templates/contacts.html:28
+msgid "Free for domestic calls from mobile and landlines:"
+msgstr "Free for domestic calls from mobile and landlines:"
+
+#: templates/contacts.html:33
+msgid "24/7 Priority Emergency Line"
+msgstr "24/7 Priority Emergency Line"
+
+#: templates/contacts.html:42
+msgid "Email Departments"
+msgstr "Email Departments"
+
+#: templates/contacts.html:44
+msgid "General Support"
+msgstr "General Support"
+
+#: templates/contacts.html:45
+msgid "Compliance & AML"
+msgstr "Compliance & AML"
+
+#: templates/contacts.html:46
+msgid "Press & Media"
+msgstr "Press & Media"
+
+#: templates/contacts.html:56
+msgid "Headquarters & Flagship Branch"
+msgstr "Headquarters & Flagship Branch"
+
+#: templates/contacts.html:58
+msgid "Esentai Park Tower, Floor 14"
+msgstr "Esentai Park Tower, Floor 14"
+
+#: templates/contacts.html:59
+msgid "Al-Farabi Avenue 77/7, Bostandyk District"
+msgstr "Al-Farabi Avenue 77/7, Bostandyk District"
+
+#: templates/contacts.html:60
+msgid "Almaty 050040, Republic of Kazakhstan"
+msgstr "Almaty 050040, Republic of Kazakhstan"
+
+#: templates/contacts.html:62
+msgid "Operating Hours: Monday – Friday 09:00 – 18:00 (UTC+5)"
+msgstr "Operating Hours: Monday – Friday 09:00 – 18:00 (UTC+5)"
+
+#: templates/contacts.html:71
+msgid "Send an Instant Inquiry"
+msgstr "Send an Instant Inquiry"
+
+#: templates/contacts.html:74
+msgid ""
+"Have a general question about accounts, business partnerships, or tariffs? "
+"Drop us a note below."
+msgstr "Have a general question about accounts, business partnerships, or tariffs? Drop us a note below."
+
+#: templates/contacts.html:80
+msgid "Full Name"
+msgstr "Full Name"
+
+#: templates/contacts.html:81
+msgid "Your name"
+msgstr "Your name"
+
+#: templates/contacts.html:85 templates/users/password_reset.html:34
+#: templates/users/register.html:37
+msgid "Email Address"
+msgstr "Email Address"
+
+#: templates/contacts.html:90
+msgid "Message Details"
+msgstr "Message Details"
+
+#: templates/contacts.html:91
+msgid "How can our financial consultants assist you?"
+msgstr "How can our financial consultants assist you?"
+
+#: templates/contacts.html:95
+msgid "Send Message"
+msgstr "Send Message"
+
+#: templates/credits/catalog.html:4
+msgid "Loan Marketplace — Personal & Auto Credits"
+msgstr "Loan Marketplace — Personal & Auto Credits"
+
+#: templates/credits/catalog.html:5
+msgid ""
+"Discover low-interest consumer loans, mortgage refinancing, and instant cash "
+"credit from RocketBank with terms up to 7 years."
+msgstr "Discover low-interest consumer loans, mortgage refinancing, and instant cash credit from RocketBank with terms up to 7 years."
+
+#: templates/credits/catalog.html:10
+msgid "Credit Solutions"
+msgstr "Credit Solutions"
+
+#: templates/credits/catalog.html:12
+msgid "RocketBank Consumer & Business Loans"
+msgstr "RocketBank Consumer & Business Loans"
+
+#: templates/credits/catalog.html:15
+msgid ""
+"Transparent interest rates, zero collateral requirements, and 2-minute "
+"automated approval directly into your account."
+msgstr "Transparent interest rates, zero collateral requirements, and 2-minute automated approval directly into your account."
+
+#: templates/credits/catalog.html:22
+msgid "Search loan programs..."
+msgstr "Search loan programs..."
+
+#: templates/credits/catalog.html:22
+msgid "Search loans"
+msgstr "Search loans"
+
+#: templates/credits/catalog.html:23
+msgid "Sort loans"
+msgstr "Sort loans"
+
+#: templates/credits/catalog.html:25
+msgid "Lowest Interest Rate"
+msgstr "Lowest Interest Rate"
+
+#: templates/credits/catalog.html:26
+msgid "Highest Maximum Amount"
+msgstr "Highest Maximum Amount"
+
+#: templates/credits/catalog.html:42
+msgid "from"
+msgstr "from"
+
+#: templates/credits/catalog.html:45
+msgid "mo"
+msgstr "mo"
+
+#: templates/credits/catalog.html:58
+msgid "Credit Limit"
+msgstr "Credit Limit"
+
+#: templates/credits/catalog.html:62
+msgid "Early Repayment"
+msgstr "Early Repayment"
+
+#: templates/credits/catalog.html:63
+#, python-format
+msgid "Allowed (0%% penalty)"
+msgstr "Allowed (0%% penalty)"
+
+#: templates/credits/catalog.html:70
+msgid "Calculate"
+msgstr "Calculate"
+
+#: templates/credits/catalog.html:79
+msgid "No loan products available"
+msgstr "No loan products available"
+
+#: templates/credits/catalog.html:79
+msgid "No credit programs matched your query."
+msgstr "No credit programs matched your query."
+
+#: templates/credits/catalog.html:79 templates/deposits/catalog.html:82
+msgid "View All Programs"
+msgstr "View All Programs"
+
+#: templates/deposits/catalog.html:4
+msgid "Fixed-Term Deposits Marketplace"
+msgstr "Fixed-Term Deposits Marketplace"
+
+#: templates/deposits/catalog.html:5
+#, python-format
+msgid ""
+"High-yield savings and term deposits with up to 18%% annual return, daily "
+"capitalization, and state insurance protection up to 20M KZT."
+msgstr "High-yield savings and term deposits with up to 18%% annual return, daily capitalization, and state insurance protection up to 20M KZT."
+
+#: templates/deposits/catalog.html:10
+msgid "Savings & Investment"
+msgstr "Savings & Investment"
+
+#: templates/deposits/catalog.html:12
+msgid "RocketBank High-Yield Term Deposits"
+msgstr "RocketBank High-Yield Term Deposits"
+
+#: templates/deposits/catalog.html:15
+#, python-format
+msgid ""
+"Maximize your savings with compound daily interest, flexible top-up options, "
+"and 100%% state deposit guarantee by KDIF."
+msgstr "Maximize your savings with compound daily interest, flexible top-up options, and 100%% state deposit guarantee by KDIF."
+
+#: templates/deposits/catalog.html:22
+msgid "Search deposit programs..."
+msgstr "Search deposit programs..."
+
+#: templates/deposits/catalog.html:22
+msgid "Search deposits"
+msgstr "Search deposits"
+
+#: templates/deposits/catalog.html:23
+msgid "Sort deposits"
+msgstr "Sort deposits"
+
+#: templates/deposits/catalog.html:25
+msgid "Highest Interest Rate"
+msgstr "Highest Interest Rate"
+
+#: templates/deposits/catalog.html:26
+msgid "Shortest Term"
+msgstr "Shortest Term"
+
+#: templates/deposits/catalog.html:42 templates/home.html:524
+msgid "Annual"
+msgstr "Annual"
+
+#: templates/deposits/catalog.html:45
+msgid "Months"
+msgstr "Months"
+
+#: templates/deposits/catalog.html:58
+msgid "Minimum Initial Deposit"
+msgstr "Minimum Initial Deposit"
+
+#: templates/deposits/catalog.html:62
+msgid "Early Partial Withdrawal"
+msgstr "Early Partial Withdrawal"
+
+#: templates/deposits/catalog.html:65
+msgid "Allowed"
+msgstr "Allowed"
+
+#: templates/deposits/catalog.html:67
+msgid "Not permitted"
+msgstr "Not permitted"
+
+#: templates/deposits/catalog.html:76
+msgid "Open This Deposit"
+msgstr "Open This Deposit"
+
+#: templates/deposits/catalog.html:82
+msgid "No deposit programs found"
+msgstr "No deposit programs found"
+
+#: templates/deposits/catalog.html:82
+msgid "No fixed-term deposit products currently match your search criteria."
+msgstr "No fixed-term deposit products currently match your search criteria."
+
+#: templates/home.html:4
+msgid "Modern Digital Financial Platform"
+msgstr "Modern Digital Financial Platform"
+
+#: templates/home.html:5
+msgid ""
+"RocketBank is the modern financial platform engineered for speed. Real-time "
+"payments, intelligent analytics, enterprise-grade security, and zero-"
+"commission multi-currency accounts."
+msgstr "RocketBank is the modern financial platform engineered for speed. Real-time payments, intelligent analytics, enterprise-grade security, and zero-commission multi-currency accounts."
+
+#: templates/home.html:13
+msgid "Now with AI-powered financial insights"
+msgstr "Now with AI-powered financial insights"
+
+#: templates/home.html:16
+msgid "Finance that"
+msgstr "Finance that"
+
+#: templates/home.html:16
+msgid "moves at"
+msgstr "moves at"
+
+#: templates/home.html:16
+msgid "your speed"
+msgstr "your speed"
+
+#: templates/home.html:19
+msgid ""
+"RocketBank is the modern financial platform built for businesses and "
+"individuals who refuse to wait. Real-time payments, intelligent analytics, "
+"and enterprise-grade security — all in one dashboard."
+msgstr "RocketBank is the modern financial platform built for businesses and individuals who refuse to wait. Real-time payments, intelligent analytics, and enterprise-grade security — all in one dashboard."
+
+#: templates/home.html:24
+msgid "Open Client Dashboard"
+msgstr "Open Client Dashboard"
+
+#: templates/home.html:29
+msgid "Start for free"
+msgstr "Start for free"
+
+#: templates/home.html:33
+msgid "See it in action"
+msgstr "See it in action"
+
+#: templates/home.html:39
+msgid "businesses and clients trust RocketBank"
+msgstr "businesses and clients trust RocketBank"
+
+#: templates/home.html:50
+msgid "Revenue growth"
+msgstr "Revenue growth"
+
+#: templates/home.html:59
+msgid "Settlement time"
+msgstr "Settlement time"
+
+#: templates/home.html:70 templates/includes/navbar.html:10
+msgid "Live"
+msgstr "Live"
+
+#: templates/home.html:77
+msgid "today"
+msgstr "today"
+
+#: templates/home.html:80
+msgid "Sent"
+msgstr "Sent"
+
+#: templates/home.html:82
+msgid "This month"
+msgstr "This month"
+
+#: templates/home.html:85
+msgid "Received"
+msgstr "Received"
+
+#: templates/home.html:92
+msgid "Volume — 7 days"
+msgstr "Volume — 7 days"
+
+#: templates/home.html:105 templates/home.html:460
+msgid "Mon"
+msgstr "Mon"
+
+#: templates/home.html:106 templates/home.html:461
+msgid "Tue"
+msgstr "Tue"
+
+#: templates/home.html:107 templates/home.html:462
+msgid "Wed"
+msgstr "Wed"
+
+#: templates/home.html:108 templates/home.html:463
+msgid "Thu"
+msgstr "Thu"
+
+#: templates/home.html:109 templates/home.html:464
+msgid "Fri"
+msgstr "Fri"
+
+#: templates/home.html:110 templates/home.html:465
+msgid "Sat"
+msgstr "Sat"
+
+#: templates/home.html:111 templates/home.html:119 templates/home.html:466
+msgid "Today"
+msgstr "Today"
+
+#: templates/home.html:118
+msgid "Global Clearing Payout"
+msgstr "Global Clearing Payout"
+
+#: templates/home.html:126
+msgid "Interbank Multi-Currency Swap"
+msgstr "Interbank Multi-Currency Swap"
+
+#: templates/home.html:127
+msgid "Yesterday"
+msgstr "Yesterday"
+
+#: templates/home.html:139
+msgid "Trusted by modern teams & financial institutions"
+msgstr "Trusted by modern teams & financial institutions"
+
+#: templates/home.html:152
+msgid "Total volume processed"
+msgstr "Total volume processed"
+
+#: templates/home.html:156
+msgid "year over year"
+msgstr "year over year"
+
+#: templates/home.html:164
+msgid "Active clients & accounts"
+msgstr "Active clients & accounts"
+
+#: templates/home.html:168
+msgid "this month"
+msgstr "this month"
+
+#: templates/home.html:176
+msgid "Uptime guarantee"
+msgstr "Uptime guarantee"
+
+#: templates/home.html:180
+msgid "Zero downtime recorded"
+msgstr "Zero downtime recorded"
+
+#: templates/home.html:188
+msgid "Domestic transfer fees"
+msgstr "Domestic transfer fees"
+
+#: templates/home.html:192
+#, python-format
+msgid "100%% free peer-to-peer"
+msgstr "100%% free peer-to-peer"
+
+#: templates/home.html:200
+msgid "Platform features"
+msgstr "Platform features"
+
+#: templates/home.html:201
+msgid "Everything your finances need"
+msgstr "Everything your finances need"
+
+#: templates/home.html:202
+msgid ""
+"One platform to send, receive, track, and multiply your capital. No "
+"switching between disjointed tools."
+msgstr "One platform to send, receive, track, and multiply your capital. No switching between disjointed tools."
+
+#: templates/home.html:210
+msgid "Instant transfers"
+msgstr "Instant transfers"
+
+#: templates/home.html:211
+msgid ""
+"Move money in real-time across domestic and international banking rails with "
+"sub-second atomic settlement and zero hidden commissions."
+msgstr "Move money in real-time across domestic and international banking rails with sub-second atomic settlement and zero hidden commissions."
+
+#: templates/home.html:213
+msgid "Sub-second"
+msgstr "Sub-second"
+
+#: templates/home.html:214
+msgid "countries"
+msgstr "countries"
+
+#: templates/home.html:215
+msgid "Zero fees"
+msgstr "Zero fees"
+
+#: templates/home.html:223
+msgid "Smart analytics"
+msgstr "Smart analytics"
+
+#: templates/home.html:224
+msgid ""
+"AI-powered dashboards that surface what matters. Cashflow forecasting, "
+"automated anomaly detection, and real-time expense classification."
+msgstr "AI-powered dashboards that surface what matters. Cashflow forecasting, automated anomaly detection, and real-time expense classification."
+
+#: templates/home.html:226
+msgid "AI forecasting"
+msgstr "AI forecasting"
+
+#: templates/home.html:227
+msgid "Anomaly alerts"
+msgstr "Anomaly alerts"
+
+#: templates/home.html:228
+msgid "Custom reports"
+msgstr "Custom reports"
+
+#: templates/home.html:236
+msgid "Multi-currency accounts"
+msgstr "Multi-currency accounts"
+
+#: templates/home.html:237
+msgid ""
+"Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at "
+"interbank rates. Lock live rates and eliminate foreign exchange loss."
+msgstr "Hold, convert, and pay in KZT, USD, EUR, GBP, and 30+ currencies at interbank rates. Lock live rates and eliminate foreign exchange loss."
+
+#: templates/home.html:239
+msgid "currencies"
+msgstr "currencies"
+
+#: templates/home.html:240 templates/home.html:359
+msgid "Interbank rates"
+msgstr "Interbank rates"
+
+#: templates/home.html:241
+msgid "Live FX swap"
+msgstr "Live FX swap"
+
+#: templates/home.html:249
+msgid "Enterprise security"
+msgstr "Enterprise security"
+
+#: templates/home.html:250
+msgid ""
+"Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to "
+"20,000,000 KZT, and instant 1-click card freeze."
+msgstr "Bank-grade encryption, SOC 2 compliance, KDIF state deposit guarantee up to 20,000,000 KZT, and instant 1-click card freeze."
+
+#: templates/home.html:252
+msgid "KDIF Insured"
+msgstr "KDIF Insured"
+
+#: templates/home.html:253
+msgid "AI fraud detection"
+msgstr "AI fraud detection"
+
+#: templates/home.html:274
+msgid "Sent today"
+msgstr "Sent today"
+
+#: templates/home.html:276
+msgid "transfers"
+msgstr "transfers"
+
+#: templates/home.html:279
+msgid "Avg. speed"
+msgstr "Avg. speed"
+
+#: templates/home.html:281
+msgid "Atomic lock"
+msgstr "Atomic lock"
+
+#: templates/home.html:289 templates/home.html:297 templates/home.html:305
+#: templates/transactions/transaction_list.html:34
+msgid "Completed"
+msgstr "Completed"
+
+#: templates/home.html:316
+msgid "Forecasted balance"
+msgstr "Forecasted balance"
+
+#: templates/home.html:318
+msgid "Next 30 days"
+msgstr "Next 30 days"
+
+#: templates/home.html:321
+msgid "Anomalies"
+msgstr "Anomalies"
+
+#: templates/home.html:323
+msgid "All clean"
+msgstr "All clean"
+
+#: templates/home.html:327
+msgid "Volume trend — 8 weeks"
+msgstr "Volume trend — 8 weeks"
+
+#: templates/home.html:333
+msgid "Operations"
+msgstr "Operations"
+
+#: templates/home.html:340
+msgid "Cross-border"
+msgstr "Cross-border"
+
+#: templates/home.html:352
+msgid "Active Currencies"
+msgstr "Active Currencies"
+
+#: templates/home.html:354
+msgid "Multi-IBAN active"
+msgstr "Multi-IBAN active"
+
+#: templates/home.html:357
+msgid "FX Saved"
+msgstr "FX Saved"
+
+#: templates/home.html:367
+msgid "Primary"
+msgstr "Primary"
+
+#: templates/home.html:425
+msgid "Live platform"
+msgstr "Live platform"
+
+#: templates/home.html:426
+msgid "Your financial command center"
+msgstr "Your financial command center"
+
+#: templates/home.html:427
+msgid ""
+"Real-time liquidity, multi-currency balances, and full control over cards "
+"and transfers."
+msgstr "Real-time liquidity, multi-currency balances, and full control over cards and transfers."
+
+#: templates/home.html:431
+msgid "Portfolio overview"
+msgstr "Portfolio overview"
+
+#: templates/home.html:433
+msgid "Live data"
+msgstr "Live data"
+
+#: templates/home.html:471
+msgid "Cash flow"
+msgstr "Cash flow"
+
+#: templates/home.html:473
+msgid "Net positive this month"
+msgstr "Net positive this month"
+
+#: templates/home.html:477
+msgid "Inbound"
+msgstr "Inbound"
+
+#: templates/home.html:483
+msgid "Outbound"
+msgstr "Outbound"
+
+#: templates/home.html:490
+msgid "Monthly Transactions"
+msgstr "Monthly Transactions"
+
+#: templates/home.html:492
+msgid "Sub-second execution"
+msgstr "Sub-second execution"
+
+#: templates/home.html:496
+msgid "Successful"
+msgstr "Successful"
+
+#: templates/home.html:501 templates/transactions/transaction_list.html:36
+msgid "Failed"
+msgstr "Failed"
+
+#: templates/home.html:515
+msgid "Bank Card Tiers"
+msgstr "Bank Card Tiers"
+
+#: templates/home.html:516
+msgid "Tailored for every ambition"
+msgstr "Tailored for every ambition"
+
+#: templates/home.html:517
+msgid ""
+"Start with zero maintenance, unlock high-yield privileges and priority "
+"concierge."
+msgstr "Start with zero maintenance, unlock high-yield privileges and priority concierge."
+
+#: templates/home.html:520
+msgid "Monthly"
+msgstr "Monthly"
+
+#: templates/home.html:525
+#, python-format
+msgid "Save 35%%"
+msgstr "Save 35%%"
+
+#: templates/home.html:530
+msgid "Gold Card"
+msgstr "Gold Card"
+
+#: templates/home.html:532
+msgid "per month"
+msgstr "per month"
+
+#: templates/home.html:532
+msgid "free forever"
+msgstr "free forever"
+
+#: templates/home.html:534
+msgid "Zero annual maintenance fees"
+msgstr "Zero annual maintenance fees"
+
+#: templates/home.html:538
+msgid "Instant digital & physical issuance"
+msgstr "Instant digital & physical issuance"
+
+#: templates/home.html:539
+msgid "Zero fee KZT transfers by IBAN"
+msgstr "Zero fee KZT transfers by IBAN"
+
+#: templates/home.html:540
+msgid "Up to 5 multi-currency accounts"
+msgstr "Up to 5 multi-currency accounts"
+
+#: templates/home.html:541
+msgid "Standard 24/7 chat support"
+msgstr "Standard 24/7 chat support"
+
+#: templates/home.html:544
+msgid "Order Gold Card"
+msgstr "Order Gold Card"
+
+#: templates/home.html:550
+msgid "Most popular"
+msgstr "Most popular"
+
+#: templates/home.html:551
+msgid "Platinum Card"
+msgstr "Platinum Card"
+
+#: templates/home.html:553
+msgid "per month, billed"
+msgstr "per month, billed"
+
+#: templates/home.html:553
+msgid "monthly"
+msgstr "monthly"
+
+#: templates/home.html:555
+msgid "billed annually"
+msgstr "billed annually"
+
+#: templates/home.html:556
+msgid "billed"
+msgstr "billed"
+
+#: templates/home.html:556
+msgid "annually"
+msgstr "annually"
+
+#: templates/home.html:559
+msgid "Cashback on dining & travel"
+msgstr "Cashback on dining & travel"
+
+#: templates/home.html:560
+msgid "Titanium metallic physical card"
+msgstr "Titanium metallic physical card"
+
+#: templates/home.html:561
+msgid "Airport lounge access (LoungeKey)"
+msgstr "Airport lounge access (LoungeKey)"
+
+#: templates/home.html:562
+msgid "Priority 24/7 dedicated banker"
+msgstr "Priority 24/7 dedicated banker"
+
+#: templates/home.html:563
+msgid "15 foreign currencies with zero FX fee"
+msgstr "15 foreign currencies with zero FX fee"
+
+#: templates/home.html:564
+msgid "Extended daily withdrawal limits"
+msgstr "Extended daily withdrawal limits"
+
+#: templates/home.html:567
+msgid "Order Platinum Card"
+msgstr "Order Platinum Card"
+
+#: templates/home.html:573
+msgid "Black Card"
+msgstr "Black Card"
+
+#: templates/home.html:574
+msgid "Elite"
+msgstr "Elite"
+
+#: templates/home.html:575
+msgid "tailored for high net worth"
+msgstr "tailored for high net worth"
+
+#: templates/home.html:578
+msgid "Unlimited premium cashback"
+msgstr "Unlimited premium cashback"
+
+#: templates/home.html:579
+msgid "PVD-coated obsidian steel card"
+msgstr "PVD-coated obsidian steel card"
+
+#: templates/home.html:580
+msgid "Personal executive wealth manager"
+msgstr "Personal executive wealth manager"
+
+#: templates/home.html:581
+msgid "Unlimited international SWIFT transfers"
+msgstr "Unlimited international SWIFT transfers"
+
+#: templates/home.html:582
+msgid "All 35+ global currencies included"
+msgstr "All 35+ global currencies included"
+
+#: templates/home.html:583
+msgid "Custom credit limits up to ₸50,000,000"
+msgstr "Custom credit limits up to ₸50,000,000"
+
+#: templates/home.html:586
+msgid "Request Black Card"
+msgstr "Request Black Card"
+
+#: templates/home.html:596
+msgid "Bank-grade protection"
+msgstr "Bank-grade protection"
+
+#: templates/home.html:597
+msgid "Security is not a feature — it's the foundation"
+msgstr "Security is not a feature — it's the foundation"
+
+#: templates/home.html:598
+msgid ""
+"Every transaction is shielded by multiple layers of enterprise-grade "
+"cryptographic security. We are audited, regulated, and monitored around the "
+"clock."
+msgstr "Every transaction is shielded by multiple layers of enterprise-grade cryptographic security. We are audited, regulated, and monitored around the clock."
+
+#: templates/home.html:599
+msgid "Read architecture report"
+msgstr "Read architecture report"
+
+#: templates/home.html:605
+msgid "Insured up to 20,000,000 KZT per depositor"
+msgstr "Insured up to 20,000,000 KZT per depositor"
+
+#: templates/home.html:606
+msgid "Guaranteed"
+msgstr "Guaranteed"
+
+#: templates/home.html:611
+msgid "Highest tier of international payment card security"
+msgstr "Highest tier of international payment card security"
+
+#: templates/home.html:612
+msgid "Compliant"
+msgstr "Compliant"
+
+#: templates/home.html:617
+msgid "Global standard for information security management"
+msgstr "Global standard for information security management"
+
+#: templates/home.html:618
+msgid "Certified"
+msgstr "Certified"
+
+#: templates/home.html:623
+#, python-format
+msgid "Blocks 99.98%% of fraudulent attempts in sub-seconds"
+msgstr "Blocks 99.98%% of fraudulent attempts in sub-seconds"
+
+#: templates/home.html:624
+msgid "Always on"
+msgstr "Always on"
+
+#: templates/home.html:633
+msgid "Client experiences"
+msgstr "Client experiences"
+
+#: templates/home.html:634
+msgid "Trusted by leaders across industries"
+msgstr "Trusted by leaders across industries"
+
+#: templates/home.html:640
+msgid "Pause testimonials"
+msgstr "Pause testimonials"
+
+#: templates/home.html:642
+msgid "Pause"
+msgstr "Pause"
+
+#: templates/home.html:651
+msgid "Mobile app"
+msgstr "Mobile app"
+
+#: templates/home.html:652
+msgid "Your bank, in your pocket"
+msgstr "Your bank, in your pocket"
+
+#: templates/home.html:653
+msgid ""
+"Full dashboard access, biometric approval for high-value transfers, and "
+"instant transaction push notifications — anywhere in the world."
+msgstr "Full dashboard access, biometric approval for high-value transfers, and instant transaction push notifications — anywhere in the world."
+
+#: templates/home.html:658
+msgid "Download on the"
+msgstr "Download on the"
+
+#: templates/home.html:665
+msgid "Get it on"
+msgstr "Get it on"
+
+#: templates/home.html:684
+msgid "Or scan our"
+msgstr "Or scan our"
+
+#: templates/home.html:697
+msgid "Available for iOS & Android"
+msgstr "Available for iOS & Android"
+
+#: templates/home.html:710
+msgid "Got questions?"
+msgstr "Got questions?"
+
+#: templates/home.html:711
+msgid "Frequently asked"
+msgstr "Frequently asked"
+
+#: templates/home.html:715
+msgid "Expand all"
+msgstr "Expand all"
+
+#: templates/includes/card_item.html:38
+msgid "CARDHOLDER"
+msgstr "CARDHOLDER"
+
+#: templates/includes/card_item.html:61
+msgid "Daily limit"
+msgstr "Daily limit"
+
+#: templates/includes/card_item.html:66
+msgid "Linked Account"
+msgstr "Linked Account"
+
+#: templates/includes/card_item.html:75
+msgid "Freeze card"
+msgstr "Freeze card"
+
+#: templates/includes/card_item.html:76
+msgid "Freeze Card"
+msgstr "Freeze Card"
+
+#: templates/includes/card_item.html:79
+msgid "Unfreeze card"
+msgstr "Unfreeze card"
+
+#: templates/includes/card_item.html:80
+msgid "Unfreeze Card"
+msgstr "Unfreeze Card"
+
+#: templates/includes/card_item.html:83
+msgid "Inactive"
+msgstr "Inactive"
+
+#: templates/includes/card_item.html:88
+msgid "Account"
+msgstr "Account"
+
+#: templates/includes/footer.html:16
+msgid ""
+"Next-generation digital banking platform empowering clients worldwide with "
+"real-time payments, smart cards, high-yield deposits, and enterprise "
+"security."
+msgstr "Next-generation digital banking platform empowering clients worldwide with real-time payments, smart cards, high-yield deposits, and enterprise security."
+
+#: templates/includes/footer.html:19
+msgid ""
+"Regulated by the Agency for Regulation and Development of the Financial "
+"Market."
+msgstr "Regulated by the Agency for Regulation and Development of the Financial Market."
+
+#: templates/includes/footer.html:26
+msgid "Products"
+msgstr "Products"
+
+#: templates/includes/footer.html:29
+msgid "Debit & Credit Cards"
+msgstr "Debit & Credit Cards"
+
+#: templates/includes/footer.html:30
+msgid "Consumer & Auto Loans"
+msgstr "Consumer & Auto Loans"
+
+#: templates/includes/footer.html:31
+msgid "Fixed-Term Deposits"
+msgstr "Fixed-Term Deposits"
+
+#: templates/includes/footer.html:32 templates/includes/sidebar.html:43
+msgid "Loan Calculator"
+msgstr "Loan Calculator"
+
+#: templates/includes/footer.html:39
+msgid "Company"
+msgstr "Company"
+
+#: templates/includes/footer.html:43 templates/support/faq.html:4
+msgid "Help Center & FAQ"
+msgstr "Help Center & FAQ"
+
+#: templates/includes/footer.html:44
+msgid "Contacts & Headquarters"
+msgstr "Contacts & Headquarters"
+
+#: templates/includes/footer.html:45
+msgid "System Health Status"
+msgstr "System Health Status"
+
+#: templates/includes/footer.html:52
+msgid "Security & Guarantee"
+msgstr "Security & Guarantee"
+
+#: templates/includes/footer.html:55
+msgid ""
+"Deposits insured up to 20,000,000 KZT by the Kazakhstan Deposit Insurance "
+"Fund (KDIF)."
+msgstr "Deposits insured up to 20,000,000 KZT by the Kazakhstan Deposit Insurance Fund (KDIF)."
+
+#: templates/includes/footer.html:58
+msgid ""
+"256-bit AES banking encryption & SOC 2 Type II certified infrastructure."
+msgstr "256-bit AES banking encryption & SOC 2 Type II certified infrastructure."
+
+#: templates/includes/footer.html:66
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+#: templates/includes/footer.html:68
+msgid "Adapted from"
+msgstr "Adapted from"
+
+#: templates/includes/footer.html:73
+msgid "Privacy"
+msgstr "Privacy"
+
+#: templates/includes/footer.html:74
+msgid "Terms"
+msgstr "Terms"
+
+#: templates/includes/footer.html:75
+msgid "Security"
+msgstr "Security"
+
+#: templates/includes/navbar.html:30 templates/includes/navbar.html:109
+msgid "Cards"
+msgstr "Cards"
+
+#: templates/includes/navbar.html:31 templates/includes/navbar.html:110
+msgid "Loans"
+msgstr "Loans"
+
+#: templates/includes/navbar.html:32 templates/includes/navbar.html:111
+#: templates/includes/sidebar.html:46
+msgid "Deposits"
+msgstr "Deposits"
+
+#: templates/includes/navbar.html:33 templates/includes/navbar.html:112
+msgid "About"
+msgstr "About"
+
+#: templates/includes/navbar.html:34 templates/includes/navbar.html:113
+msgid "FAQ"
+msgstr "FAQ"
+
+#: templates/includes/navbar.html:35 templates/includes/navbar.html:114
+msgid "Contacts"
+msgstr "Contacts"
+
+#: templates/includes/navbar.html:49 templates/includes/navbar.html:98
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+#: templates/includes/navbar.html:61 templates/includes/navbar.html:121
+#: templates/includes/sidebar.html:59
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/includes/navbar.html:67 templates/includes/navbar.html:119
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/includes/navbar.html:71 templates/includes/navbar.html:118
+#: templates/includes/sidebar.html:22
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/includes/navbar.html:74 templates/includes/navbar.html:125
+msgid "Log out"
+msgstr "Log out"
+
+#: templates/includes/navbar.html:78 templates/includes/navbar.html:128
+msgid "Sign in"
+msgstr "Sign in"
+
+#: templates/includes/navbar.html:79
+msgid "Get started"
+msgstr "Get started"
+
+#: templates/includes/navbar.html:83
+msgid "Open menu"
+msgstr "Open menu"
+
+#: templates/includes/navbar.html:129
+msgid "Get started free"
+msgstr "Get started free"
+
+#: templates/includes/sidebar.html:15
+msgid "Enterprise Digital Banking"
+msgstr "Enterprise Digital Banking"
+
+#: templates/includes/sidebar.html:20
+msgid "Dashboard sections"
+msgstr "Dashboard sections"
+
+#: templates/includes/sidebar.html:25
+msgid "Accounts"
+msgstr "Accounts"
+
+#: templates/includes/sidebar.html:28 templates/transactions/transfer.html:4
+#: templates/transactions/transfer.html:13
+msgid "Transfer Money"
+msgstr "Transfer Money"
+
+#: templates/includes/sidebar.html:31
+msgid "Transactions"
+msgstr "Transactions"
+
+#: templates/includes/sidebar.html:34
+msgid "My Cards"
+msgstr "My Cards"
+
+#: templates/includes/sidebar.html:40
+msgid "Loans & Credit"
+msgstr "Loans & Credit"
+
+#: templates/includes/sidebar.html:49
+msgid "Open Deposit"
+msgstr "Open Deposit"
+
+#: templates/includes/sidebar.html:52
+msgid "Analytics & Goals"
+msgstr "Analytics & Goals"
+
+#: templates/includes/sidebar.html:55
+msgid "Beneficiaries"
+msgstr "Beneficiaries"
+
+#: templates/includes/sidebar.html:66
+msgid "Support Tickets"
+msgstr "Support Tickets"
+
+#: templates/includes/sidebar.html:69
+msgid "Profile & Settings"
+msgstr "Profile & Settings"
+
+#: templates/includes/sidebar.html:84 templates/layouts/dashboard_base.html:68
+#: templates/layouts/dashboard_base.html:69
+msgid "Sign out"
+msgstr "Sign out"
+
+#: templates/layouts/dashboard_base.html:7
+msgid "Dashboard navigation"
+msgstr "Dashboard navigation"
+
+#: templates/layouts/dashboard_base.html:24
+msgid "Client Portal"
+msgstr "Client Portal"
+
+#: templates/layouts/dashboard_base.html:39
+msgid "Toggle dark/light theme"
+msgstr "Toggle dark/light theme"
+
+#: templates/layouts/dashboard_base.html:50
+msgid "View notifications"
+msgstr "View notifications"
+
+#: templates/layouts/dashboard_base.html:53
+msgid "unread notifications"
+msgstr "unread notifications"
+
+#: templates/layouts/dashboard_base.html:87
+msgid ""
+"Licensed by the Agency for Regulation and Development of the Financial "
+"Market. All rights reserved."
+msgstr "Licensed by the Agency for Regulation and Development of the Financial Market. All rights reserved."
+
+#: templates/support/faq.html:5
+msgid ""
+"Find answers to frequently asked questions about RocketBank accounts, cards, "
+"limits, security, and loans."
+msgstr "Find answers to frequently asked questions about RocketBank accounts, cards, limits, security, and loans."
+
+#: templates/support/faq.html:10
+msgid "Knowledge Base"
+msgstr "Knowledge Base"
+
+#: templates/support/faq.html:15
+msgid ""
+"Instant answers to common inquiries regarding accounts, cards, transfers, "
+"and security policies."
+msgstr "Instant answers to common inquiries regarding accounts, cards, transfers, and security policies."
+
+#: templates/support/faq.html:21
+msgid "Search questions or keywords..."
+msgstr "Search questions or keywords..."
+
+#: templates/support/faq.html:21
+msgid "Search questions"
+msgstr "Search questions"
+
+#: templates/support/faq.html:56
+msgid "Still Need Assistance?"
+msgstr "Still Need Assistance?"
+
+#: templates/support/faq.html:57
+msgid ""
+"Our certified banking support team is available 24/7 to resolve complex "
+"cases."
+msgstr "Our certified banking support team is available 24/7 to resolve complex cases."
+
+#: templates/support/faq.html:60
+msgid "Submit Support Ticket"
+msgstr "Submit Support Ticket"
+
+#: templates/support/faq.html:62
+msgid "Contact Support"
+msgstr "Contact Support"
+
+#: templates/transactions/transaction_list.html:4
+#: templates/transactions/transaction_list.html:14
+msgid "Transaction History"
+msgstr "Transaction History"
+
+#: templates/transactions/transaction_list.html:15
+msgid "Detailed statement and audit trail across all your accounts"
+msgstr "Detailed statement and audit trail across all your accounts"
+
+#: templates/transactions/transaction_list.html:18
+msgid "New Transfer"
+msgstr "New Transfer"
+
+#: templates/transactions/transaction_list.html:25
+msgid "Search reference, IBAN, note..."
+msgstr "Search reference, IBAN, note..."
+
+#: templates/transactions/transaction_list.html:25
+msgid "Search transactions"
+msgstr "Search transactions"
+
+#: templates/transactions/transaction_list.html:26
+msgid "Filter by category"
+msgstr "Filter by category"
+
+#: templates/transactions/transaction_list.html:27
+msgid "All Categories"
+msgstr "All Categories"
+
+#: templates/transactions/transaction_list.html:32
+msgid "Filter by status"
+msgstr "Filter by status"
+
+#: templates/transactions/transaction_list.html:33
+msgid "All Statuses"
+msgstr "All Statuses"
+
+#: templates/transactions/transaction_list.html:35
+msgid "Pending"
+msgstr "Pending"
+
+#: templates/transactions/transaction_list.html:38
+msgid "Apply Filters"
+msgstr "Apply Filters"
+
+#: templates/transactions/transaction_list.html:55
+msgid "transactions"
+msgstr "transactions"
+
+#: templates/transactions/transaction_list.html:64
+msgid "Time"
+msgstr "Time"
+
+#: templates/transactions/transaction_list.html:67
+msgid "Sender Account"
+msgstr "Sender Account"
+
+#: templates/transactions/transaction_list.html:68
+msgid "Recipient Account"
+msgstr "Recipient Account"
+
+#: templates/transactions/transaction_list.html:86
+msgid "External / Top-up"
+msgstr "External / Top-up"
+
+#: templates/transactions/transaction_list.html:89
+msgid "External / Merchant"
+msgstr "External / Merchant"
+
+#: templates/transactions/transaction_list.html:113
+msgid "No transactions found"
+msgstr "No transactions found"
+
+#: templates/transactions/transaction_list.html:113
+msgid "No transactions matched your search or date filter."
+msgstr "No transactions matched your search or date filter."
+
+#: templates/transactions/transaction_list.html:113
+msgid "Make a Transfer"
+msgstr "Make a Transfer"
+
+#: templates/transactions/transfer.html:14
+msgid "Send instant, zero-commission payments to any RocketBank account"
+msgstr "Send instant, zero-commission payments to any RocketBank account"
+
+#: templates/transactions/transfer.html:62
+msgid "Transaction Commission"
+msgstr "Transaction Commission"
+
+#: templates/transactions/transfer.html:66
+msgid "Processing Time"
+msgstr "Processing Time"
+
+#: templates/transactions/transfer.html:67
+msgid "Instant (Atomic execution)"
+msgstr "Instant (Atomic execution)"
+
+#: templates/transactions/transfer.html:72
+msgid "Cancel"
+msgstr "Cancel"
+
+#: templates/transactions/transfer.html:74
+msgid "Confirm & Send Transfer"
+msgstr "Confirm & Send Transfer"
+
+#: templates/users/login.html:4
+msgid "Sign In | RocketBank"
+msgstr "Sign In | RocketBank"
+
+#: templates/users/login.html:5
+msgid ""
+"Sign in securely to your RocketBank account to manage cards, accounts, and "
+"payments."
+msgstr "Sign in securely to your RocketBank account to manage cards, accounts, and payments."
+
+#: templates/users/login.html:16
+msgid "Sign in to RocketBank"
+msgstr "Sign in to RocketBank"
+
+#: templates/users/login.html:19
+msgid "Enter your credentials to access your digital command center"
+msgstr "Enter your credentials to access your digital command center"
+
+#: templates/users/login.html:37
+msgid "Email or Username"
+msgstr "Email or Username"
+
+#: templates/users/login.html:45
+msgid "name@company.com or username"
+msgstr "name@company.com or username"
+
+#: templates/users/login.html:56
+msgid "Security Password"
+msgstr "Security Password"
+
+#: templates/users/login.html:59
+msgid "Forgot password?"
+msgstr "Forgot password?"
+
+#: templates/users/login.html:78
+msgid "Remember this device"
+msgstr "Remember this device"
+
+#: templates/users/login.html:84
+msgid "Sign In to Portal"
+msgstr "Sign In to Portal"
+
+#: templates/users/login.html:90
+msgid "Don't have a RocketBank account?"
+msgstr "Don't have a RocketBank account?"
+
+#: templates/users/login.html:92
+msgid "Open account in 3 minutes"
+msgstr "Open account in 3 minutes"
+
+#: templates/users/password_reset.html:4
+msgid "Reset Password | RocketBank"
+msgstr "Reset Password | RocketBank"
+
+#: templates/users/password_reset.html:14
+msgid "Forgot Your Password?"
+msgstr "Forgot Your Password?"
+
+#: templates/users/password_reset.html:17
+msgid ""
+"Enter your registered email address to receive password reset instructions"
+msgstr "Enter your registered email address to receive password reset instructions"
+
+#: templates/users/password_reset.html:42 templates/users/register.html:45
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: templates/users/password_reset.html:50
+msgid "Send Password Reset Link"
+msgstr "Send Password Reset Link"
+
+#: templates/users/password_reset.html:57
+msgid "Back to Sign In"
+msgstr "Back to Sign In"
+
+#: templates/users/password_reset_complete.html:4
+msgid "Password Changed | RocketBank"
+msgstr "Password Changed | RocketBank"
+
+#: templates/users/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Password Changed Successfully!"
+
+#: templates/users/password_reset_complete.html:14
+msgid ""
+"Your account password has been updated. You can now use your new password to "
+"sign in."
+msgstr "Your account password has been updated. You can now use your new password to sign in."
+
+#: templates/users/password_reset_complete.html:17
+msgid "Sign In Now"
+msgstr "Sign In Now"
+
+#: templates/users/password_reset_confirm.html:4
+msgid "Set New Password | RocketBank"
+msgstr "Set New Password | RocketBank"
+
+#: templates/users/password_reset_confirm.html:12
+msgid "Set New Password"
+msgstr "Set New Password"
+
+#: templates/users/password_reset_confirm.html:15
+msgid "Please enter your new security password below"
+msgstr "Please enter your new security password below"
+
+#: templates/users/password_reset_confirm.html:23
+msgid "New Password"
+msgstr "New Password"
+
+#: templates/users/password_reset_confirm.html:33
+msgid "Confirm New Password"
+msgstr "Confirm New Password"
+
+#: templates/users/password_reset_confirm.html:42
+msgid "Change Password"
+msgstr "Change Password"
+
+#: templates/users/password_reset_confirm.html:49
+msgid "Password Reset Link Expired"
+msgstr "Password Reset Link Expired"
+
+#: templates/users/password_reset_confirm.html:52
+msgid "The password reset link was either invalid or has expired."
+msgstr "The password reset link was either invalid or has expired."
+
+#: templates/users/password_reset_confirm.html:55
+msgid "Request a New Link"
+msgstr "Request a New Link"
+
+#: templates/users/password_reset_done.html:4
+msgid "Reset Link Sent | RocketBank"
+msgstr "Reset Link Sent | RocketBank"
+
+#: templates/users/password_reset_done.html:11
+msgid "Password Reset Email Sent"
+msgstr "Password Reset Email Sent"
+
+#: templates/users/password_reset_done.html:14
+msgid ""
+"If an account exists with the provided email address, you will receive an "
+"email shortly with instructions to reset your password."
+msgstr "If an account exists with the provided email address, you will receive an email shortly with instructions to reset your password."
+
+#: templates/users/password_reset_done.html:17
+msgid "Return to Sign In"
+msgstr "Return to Sign In"
+
+#: templates/users/profile.html:4
+msgid "User Profile"
+msgstr "User Profile"
+
+#: templates/users/profile.html:14
+msgid "Personal Profile"
+msgstr "Personal Profile"
+
+#: templates/users/profile.html:15
+msgid "Manage your identity details, avatar, and regional preferences"
+msgstr "Manage your identity details, avatar, and regional preferences"
+
+#: templates/users/profile.html:48
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+#: templates/users/profile.html:50
+msgid "PNG, JPG, or WebP. Automatically resized to 400x400 px. Max size 5MB."
+msgstr "PNG, JPG, or WebP. Automatically resized to 400x400 px. Max size 5MB."
+
+#: templates/users/profile.html:78
+msgid "Security & Password"
+msgstr "Security & Password"
+
+#: templates/users/profile.html:81
+msgid "Save Profile Changes"
+msgstr "Save Profile Changes"
+
+#: templates/users/profile.html:92
+msgid "Identity Verification (KYC)"
+msgstr "Identity Verification (KYC)"
+
+#: templates/users/profile.html:95
+msgid "Current status"
+msgstr "Current status"
+
+#: templates/users/profile.html:95
+msgid "Complete verification to increase transfer limits."
+msgstr "Complete verification to increase transfer limits."
+
+#: templates/users/profile.html:99
+msgid "Upload Identification Documents"
+msgstr "Upload Identification Documents"
+
+#: templates/users/register.html:4
+msgid "Open an Account | RocketBank"
+msgstr "Open an Account | RocketBank"
+
+#: templates/users/register.html:5
+msgid ""
+"Register for RocketBank and gain access to multi-currency IBAN accounts, "
+"cashback debit cards, and instant transfers."
+msgstr "Register for RocketBank and gain access to multi-currency IBAN accounts, cashback debit cards, and instant transfers."
+
+#: templates/users/register.html:16
+msgid "Open RocketBank Account"
+msgstr "Open RocketBank Account"
+
+#: templates/users/register.html:19
+msgid "Join next-generation banking with zero monthly maintenance fee"
+msgstr "Join next-generation banking with zero monthly maintenance fee"
+
+#: templates/users/register.html:55
+msgid "Username"
+msgstr "Username"
+
+#: templates/users/register.html:63
+msgid "username"
+msgstr "username"
+
+#: templates/users/register.html:73
+msgid "Phone Number"
+msgstr "Phone Number"
+
+#: templates/users/register.html:92
+msgid "Password"
+msgstr "Password"
+
+#: templates/users/register.html:108
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: templates/users/register.html:128
+msgid "I agree to the"
+msgstr "I agree to the"
+
+#: templates/users/register.html:128
+msgid "Terms of Service"
+msgstr "Terms of Service"
+
+#: templates/users/register.html:128
+msgid "and confirm that I am at least 18 years of age."
+msgstr "and confirm that I am at least 18 years of age."
+
+#: templates/users/register.html:138
+msgid "Create My Account"
+msgstr "Create My Account"
+
+#: templates/users/register.html:144
+msgid "Already registered?"
+msgstr "Already registered?"
+
+#: templates/users/register.html:146
+msgid "Sign in here"
+msgstr "Sign in here"

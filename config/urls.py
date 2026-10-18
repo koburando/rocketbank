@@ -45,6 +45,8 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    # ── Internationalization ────────────────────────
+    path("i18n/", include("django.conf.urls.i18n")),
     # ── Public Pages ────────────────────────────────
     path("", LandingHomeView.as_view(), name="home"),
     path("about/", AboutView.as_view(), name="about"),

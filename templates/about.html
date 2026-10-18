@@ -1,147 +1,178 @@
 {% extends "layouts/public_base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}About RocketBank — Architecture, Team & Mission{% endblock %}
-{% block meta_description %}<meta name="description" content="Learn about RocketBank's cloud-native financial architecture, executive leadership team, regulatory licensing, and corporate headquarters.">{% endblock %}
+{% block title %}{% trans "About RocketBank — Architecture & Leadership" %}{% endblock %}
+{% block meta_description %}<meta name="description" content="{% trans "Learn about RocketBank's real-time financial architecture, executive leadership, regulatory compliance, and Almaty headquarters." %}">{% endblock %}
 
 {% block content %}
-<div class="container">
-  <!-- Hero Section -->
-  <section class="text-center mb-2xl">
-    <span class="badge badge--info mb-sm">Corporate Information</span>
-    <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">
-      About RocketBank JSC
+<div class="container" style="padding-top: calc(36px + var(--nav-h) + 40px); padding-bottom: 80px;">
+  <!-- 1. Hero Section -->
+  <section class="text-center mb-2xl silk-reveal">
+    <div class="section-tag" style="margin: 0 auto 12px;">{% trans "Corporate Overview" %}</div>
+    <h1 class="section-title" style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px;">
+      {% trans "About RocketBank" %}
     </h1>
-    <p class="text-secondary" style="max-width: 650px; margin: 0 auto; font-size: var(--font-size-lg);">
-      Founded with a vision to redefine digital banking through high-concurrency architecture, complete transparency, and human-centric engineering.
+    <p class="section-sub" style="max-width: 720px; margin: 0 auto 32px; font-size: 18px; color: var(--text2);">
+      {% trans "Engineered to redefine digital finance through real-time distributed architecture, strict ACID atomicity, and uncompromising human-centric design." %}
     </p>
   </section>
 
-  <!-- Mission & Architecture Section -->
-  <section class="grid-2 mb-3xl items-center" aria-labelledby="arch_heading">
-    <div>
-      <span class="badge badge--success mb-xs">Engineering Excellence</span>
-      <h2 id="arch_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-sm);">
-        Enterprise Core Banking Architecture
-      </h2>
-      <p class="text-secondary" style="line-height: 1.6;">
-        RocketBank is built on a resilient, microservice-ready Django core integrated with PostgreSQL transactional persistence, Celery distributed tasks, and Redis low-latency caching.
-      </p>
-      <p class="text-secondary" style="line-height: 1.6;">
-        Our transaction processor guarantees full ACID atomicity with row-level locks (<code class="font-mono">select_for_update</code>) to prevent race conditions during high-volume peak financial operations.
-      </p>
+  <!-- 2. Mission & Core Architecture Section -->
+  <section class="mb-3xl" style="margin-bottom: 80px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
+      <div>
+        <div class="section-tag" style="margin-bottom: 12px;">{% trans "Engineering Architecture" %}</div>
+        <h2 class="section-title" style="font-size: 32px; margin-bottom: 16px;">
+          {% trans "High-Concurrency Real-Time Infrastructure" %}
+        </h2>
+        <p style="color: var(--text2); line-height: 1.7; margin-bottom: 16px; font-weight: 300;">
+          {% trans "RocketBank is architected on a high-availability Django core coupled with PostgreSQL transactional persistence, Celery asynchronous pipelines, and Redis low-latency caching." %}
+        </p>
+        <p style="color: var(--text2); line-height: 1.7; margin-bottom: 24px; font-weight: 300;">
+          {% trans "Our financial ledger guarantees full ACID atomicity with row-level locks (select_for_update) to prevent race conditions during peak transaction spikes, processing sub-second multi-currency transfers across domestic and international banking rails." %}
+        </p>
 
-      <ul style="display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--font-size-sm); margin-top: var(--space-md);">
-        <li>🛡️ <strong>Regulatory Compliance:</strong> Licensed by the Agency for Regulation and Development of the Financial Market (ARDFM).</li>
-        <li>⚡ <strong>Performance:</strong> Sub-50ms query response times via indexed IBAN lookups and precomputed aggregated selectors.</li>
-        <li>🔐 <strong>Security:</strong> Granular role-based access control, PBKDF2 credential hashing, and automated login audit trails.</li>
-      </ul>
-    </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="stat-block" style="padding: 16px;">
+            <div class="stat-num" style="font-size: 24px; color: var(--green);">&lt; 50ms</div>
+            <div class="stat-label" style="font-size: 11px;">{% trans "Ledger Latency" %}</div>
+          </div>
+          <div class="stat-block" style="padding: 16px;">
+            <div class="stat-num" style="font-size: 24px; color: var(--sky);">99.99%</div>
+            <div class="stat-label" style="font-size: 11px;">{% trans "Platform Uptime" %}</div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Responsive Picture Element with <picture>, <source srcset>, loading="lazy", <figure>, and <figcaption> -->
-    <div>
-      <figure class="card p-md text-center m-0" style="background-color: var(--bg-surface);">
-        <picture>
-          <source srcset="{% static 'images/architecture-diagram-wide.svg' %} 1024w, {% static 'images/architecture-diagram.svg' %} 640w" media="(min-width: 768px)">
-          <img src="{% static 'images/architecture-diagram.svg' %}" alt="RocketBank High Availability Core Architecture" width="560" height="340" loading="lazy" style="border-radius: var(--radius-md); width: 100%; height: auto; background-color: var(--bg-subtle);" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22560%22 height=%22340%22 viewBox=%220 0 560 340%22><rect width=%22560%22 height=%22340%22 fill=%22%230062ff%22 rx=%2212%22/><text x=%22280%22 y=%22170%22 fill=%22white%22 font-family=%22sans-serif%22 font-size=%2220%22 text-anchor=%22middle%22 font-weight=%22bold%22>RocketBank High-Availability Core</text></svg>'">
-        </picture>
-        <figcaption style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--space-sm);">
-          Figure 1.1: Distributed ACID-Compliant Transaction & Amortization Processing Pipeline.
-        </figcaption>
-      </figure>
+      <!-- Architectural Highlights Card -->
+      <div class="dash-card" style="padding: 28px;">
+        <div class="dash-topbar" style="margin: -28px -28px 24px -28px; padding: 14px 20px;">
+          <div class="dash-dots">
+            <span style="background:#E85A5A"></span>
+            <span style="background:#F0A030"></span>
+            <span style="background:#3DCC8E"></span>
+          </div>
+          <span class="dash-title-bar">ROCKETBANK CORE SYSTEM</span>
+          <span style="font-size:10px; color:var(--green); font-weight:500;">● {% trans "Operational" %}</span>
+        </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+          <li style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; border-radius: 6px; background: rgba(74,158,232,.12); color: var(--sky); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🛡️</div>
+            <div>
+              <strong style="color: var(--text); font-size: 14px; display: block;">{% trans "Regulatory Licensing & Protection" %}</strong>
+              <span style="color: var(--text2); font-size: 13px;">{% trans "Licensed by the ARDFM of Kazakhstan. Deposits insured up to 20,000,000 KZT by the KDIF." %}</span>
+            </div>
+          </li>
+          <li style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; border-radius: 6px; background: rgba(61,204,142,.12); color: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">⚡</div>
+            <div>
+              <strong style="color: var(--text); font-size: 14px; display: block;">{% trans "Sub-second Atomic Payments" %}</strong>
+              <span style="color: var(--text2); font-size: 13px;">{% trans "Indexed IBAN routing and precomputed aggregation algorithms enable instant domestic and international clearance." %}</span>
+            </div>
+          </li>
+          <li style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; border-radius: 6px; background: rgba(136,136,248,.12); color: #8888F8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🔒</div>
+            <div>
+              <strong style="color: var(--text); font-size: 14px; display: block;">{% trans "Zero-Trust Security Perimeter" %}</strong>
+              <span style="color: var(--text2); font-size: 13px;">{% trans "256-bit AES encryption at rest and in transit, PBKDF2 credential hashing, and AI-driven fraud anomaly detection." %}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Executive Leadership Team Grid with <figure> and <figcaption> -->
-  <section class="mb-3xl" aria-labelledby="team_heading">
+  <!-- 3. Leadership & Architecture Section (Executive-Grade Minimal Card) -->
+  <section class="mb-3xl" style="margin-bottom: 80px;">
     <div class="text-center mb-xl">
-      <span class="badge badge--info mb-xs">Leadership</span>
-      <h2 id="team_heading" style="font-size: var(--font-size-2xl);">Executive Management Team</h2>
-      <p class="text-secondary" style="max-width: 500px; margin: 0 auto;">Pioneering engineers and bankers driving the future of FinTech</p>
+      <div class="section-tag" style="margin: 0 auto 12px;">{% trans "Governance" %}</div>
+      <h2 class="section-title" style="font-size: 32px;">{% trans "Leadership & Architecture" %}</h2>
     </div>
 
-    <div class="team-grid">
-      <!-- Member 1 -->
-      <article class="card text-center p-md">
-        <figure class="m-0">
-          <picture>
-            <source srcset="{% static 'images/team-ceo-2x.jpg' %} 2x" media="(min-width: 480px)">
-            <img src="{% static 'images/team-ceo.jpg' %}" alt="Alikhan Nurpeisov - Chief Executive Officer" width="200" height="200" loading="lazy" style="border-radius: var(--radius-full); width: 120px; height: 120px; object-fit: cover; margin: 0 auto var(--space-sm);" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23e2e8f0%22/><text x=%2260%22 y=%2268%22 font-size=%2232%22 text-anchor=%22middle%22>👨‍💼</text></svg>'">
-          </picture>
-          <figcaption>
-            <strong style="font-size: var(--font-size-base); display: block; color: var(--text-primary);">Alikhan Nurpeisov</strong>
-            <span class="text-muted" style="font-size: var(--font-size-xs);">Chief Executive Officer</span>
-          </figcaption>
-        </figure>
-      </article>
+    <div style="max-width: 820px; margin: 0 auto;">
+      <article class="dash-card" style="padding: 40px; border: 1px solid var(--border2); background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); margin: 0 0 6px 0;">
+              Ayan
+            </h3>
+            <div style="color: var(--sky); font-size: 15px; font-weight: 600; letter-spacing: 0.04em;">
+              {% trans "Founder & CEO • Chief System Architect" %}
+            </div>
+          </div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(74,158,232,.1); border: 1px solid rgba(74,158,232,.25); padding: 6px 14px; border-radius: 20px; color: var(--sky); font-size: 12px; font-weight: 600;">
+            <span class="badge-dot"></span>
+            {% trans "Executive Direction" %}
+          </div>
+        </div>
 
-      <!-- Member 2 -->
-      <article class="card text-center p-md">
-        <figure class="m-0">
-          <picture>
-            <source srcset="{% static 'images/team-cto-2x.jpg' %} 2x" media="(min-width: 480px)">
-            <img src="{% static 'images/team-cto.jpg' %}" alt="Elena Kim - Chief Technology Officer" width="200" height="200" loading="lazy" style="border-radius: var(--radius-full); width: 120px; height: 120px; object-fit: cover; margin: 0 auto var(--space-sm);" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23e2e8f0%22/><text x=%2260%22 y=%2268%22 font-size=%2232%22 text-anchor=%22middle%22>👩‍💻</text></svg>'">
-          </picture>
-          <figcaption>
-            <strong style="font-size: var(--font-size-base); display: block; color: var(--text-primary);">Elena Kim</strong>
-            <span class="text-muted" style="font-size: var(--font-size-xs);">Chief Technology Officer</span>
-          </figcaption>
-        </figure>
-      </article>
-
-      <!-- Member 3 -->
-      <article class="card text-center p-md">
-        <figure class="m-0">
-          <picture>
-            <source srcset="{% static 'images/team-cfo-2x.jpg' %} 2x" media="(min-width: 480px)">
-            <img src="{% static 'images/team-cfo.jpg' %}" alt="Timur Saparov - Head of Risk & Compliance" width="200" height="200" loading="lazy" style="border-radius: var(--radius-full); width: 120px; height: 120px; object-fit: cover; margin: 0 auto var(--space-sm);" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23e2e8f0%22/><text x=%2260%22 y=%2268%22 font-size=%2232%22 text-anchor=%22middle%22>⚖️</text></svg>'">
-          </picture>
-          <figcaption>
-            <strong style="font-size: var(--font-size-base); display: block; color: var(--text-primary);">Timur Saparov</strong>
-            <span class="text-muted" style="font-size: var(--font-size-xs);">Head of Risk & Compliance</span>
-          </figcaption>
-        </figure>
-      </article>
-
-      <!-- Member 4 -->
-      <article class="card text-center p-md">
-        <figure class="m-0">
-          <picture>
-            <source srcset="{% static 'images/team-cpo-2x.jpg' %} 2x" media="(min-width: 480px)">
-            <img src="{% static 'images/team-cpo.jpg' %}" alt="Amina Bekova - Head of Digital Products" width="200" height="200" loading="lazy" style="border-radius: var(--radius-full); width: 120px; height: 120px; object-fit: cover; margin: 0 auto var(--space-sm);" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23e2e8f0%22/><text x=%2260%22 y=%2268%22 font-size=%2232%22 text-anchor=%22middle%22>🎯</text></svg>'">
-          </picture>
-          <figcaption>
-            <strong style="font-size: var(--font-size-base); display: block; color: var(--text-primary);">Amina Bekova</strong>
-            <span class="text-muted" style="font-size: var(--font-size-xs);">Head of Digital Products</span>
-          </figcaption>
-        </figure>
+        <blockquote style="margin: 0; font-size: 16px; color: var(--text2); line-height: 1.8; font-style: italic; font-weight: 300;">
+          "{% trans "We architected RocketBank from the ground up on modern, open principles: elimination of opaque banking bureaucracy, execution speed measured in milliseconds, and rock-solid cryptographic security. Every component is designed to give individuals and businesses complete, effortless command over their financial destiny." %}"
+        </blockquote>
       </article>
     </div>
   </section>
 
-  <!-- Embedded Video & Map Section (Section 2 & 8 Requirement) -->
-  <section class="grid-2 mb-3xl" aria-labelledby="location_heading">
-    <!-- Embedded Video -->
-    <article class="card p-md">
-      <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-sm);">RocketBank Vision & Technology</h3>
-      <div style="aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden; background-color: #000000;">
-        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=1" title="RocketBank Corporate Video" loading="lazy" style="border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <p class="text-muted" style="font-size: var(--font-size-xs); margin-top: var(--space-xs);">
-        A closer look into our 24/7 security operations center and automated credit scoring pipeline.
+  <!-- 4. Corporate Headquarters & Location Map -->
+  <section class="mb-2xl">
+    <div class="text-center mb-xl">
+      <div class="section-tag" style="margin: 0 auto 12px;">{% trans "Global Presence" %}</div>
+      <h2 class="section-title" style="font-size: 32px;">{% trans "Headquarters & Operations" %}</h2>
+      <p class="section-sub" style="max-width: 500px; margin: 0 auto;">
+        {% trans "Located in the heart of Almaty's premier financial and technology corridor." %}
       </p>
-    </article>
+    </div>
 
-    <!-- Embedded Map -->
-    <article class="card p-md">
-      <h3 id="location_heading" style="font-size: var(--font-size-lg); margin-bottom: var(--space-sm);">Headquarters Location</h3>
-      <div style="aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color);">
-        <iframe width="100%" height="100%" src="https://maps.google.com/maps?q=Al-Farabi+Avenue+77/7,+Almaty,+Kazakhstan&t=&z=15&ie=UTF8&iwloc=&output=embed" title="RocketBank Almaty Headquarters Map" loading="lazy" style="border: 0;"></iframe>
-      </div>
-      <p class="text-muted" style="font-size: var(--font-size-xs); margin-top: var(--space-xs);">
-        Esentai Park Tower, Al-Farabi Avenue 77/7, Almaty, Kazakhstan, 050040.
-      </p>
-    </article>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+      <!-- Headquarters Building Photo with Graceful SVG Fallback -->
+      <article class="dash-card" style="padding: 24px;">
+        <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--text); font-weight: 600;">
+          {% trans "RocketBank Headquarters" %}
+        </h3>
+        <figure style="margin: 0; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--bg3); position: relative;">
+          <img src="{% static 'images/about/headquarters.jpg' %}"
+               alt="RocketBank Headquarters Building, Esentai Tower"
+               style="width: 100%; height: 100%; object-fit: cover; display: block;"
+               onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+
+          <!-- Architectural SVG Illustration Card Fallback -->
+          <div style="display: none; position: absolute; inset: 0; background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%); flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+            <svg width="48" height="48" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="margin-bottom: 12px;">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <path d="M9 22v-4h6v4"/>
+              <path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/>
+            </svg>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;">
+              Esentai Tower &bull; RocketBank HQ
+            </div>
+            <div style="font-size: 12px; color: var(--text3);">
+              Al-Farabi Avenue 77/7, Almaty Financial District
+            </div>
+          </div>
+        </figure>
+        <p style="font-size: 13px; color: var(--text3); margin-top: 14px; margin-bottom: 0;">
+          {% trans "Esentai Tower, Al-Farabi Avenue 77/7, Almaty Financial District, Republic of Kazakhstan, 050040." %}
+        </p>
+      </article>
+
+      <!-- Clean Map Embed -->
+      <article class="dash-card" style="padding: 24px;">
+        <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--text); font-weight: 600;">
+          {% trans "Interactive Location Map" %}
+        </h3>
+        <div style="aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+          <iframe width="100%" height="100%"
+                  src="https://maps.google.com/maps?q=Al-Farabi+Avenue+77/7,+Esentai+Tower,+Almaty,+Kazakhstan&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  title="RocketBank Almaty Headquarters Map"
+                  loading="lazy"
+                  style="border: 0; filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"></iframe>
+        </div>
+        <p style="font-size: 13px; color: var(--text3); margin-top: 14px; margin-bottom: 0;">
+          {% trans "Central operations, engineering labs, and client relations center. Open Mon–Fri, 09:00–18:00 (UTC+5)." %}
+        </p>
+      </article>
+    </div>
   </section>
 </div>
 {% endblock %}

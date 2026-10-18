@@ -1,25 +1,29 @@
 {% extends "layouts/dashboard_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}My Payment Cards | RocketBank{% endblock %}
+{% block title %}{% trans "My Payment Cards | RocketBank" %}{% endblock %}
 
 {% block breadcrumbs %}
   {% include "includes/breadcrumbs.html" with items=breadcrumbs %}
 {% endblock %}
 
 {% block content %}
-<div class="container container--fluid">
+<div class="container container--fluid" style="padding-top: var(--space-lg); padding-bottom: var(--space-2xl);">
   <div class="d-flex flex-wrap justify-between items-center mb-xl">
     <div>
-      <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2xs);">My Payment Cards</h1>
-      <p class="text-secondary m-0">Manage card limits, freeze status, and link cards to bank accounts</p>
+      <h1 style="font-family:'Outfit',sans-serif; font-size: var(--font-size-2xl); font-weight:800; color:var(--text); margin-bottom: var(--space-2xs);">
+        {% trans "My Payment Cards" %}
+      </h1>
+      <p class="text-secondary m-0" style="color:var(--text2); font-size:14px;">
+        {% trans "Manage card limits, freeze status, and link cards to bank accounts" %}
+      </p>
     </div>
-    <a href="{% url 'cards:apply' %}" class="btn btn--primary">
-      ✨ Order New Card (Wizard)
+    <a href="{% url 'cards:apply' %}" class="btn-primary" style="padding:10px 18px;">
+      ✨ {% trans "Order New Card (Wizard)" %}
     </a>
   </div>
 
-  <div class="grid-3 mb-2xl">
+  <div class="grid-3 mb-2xl" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap:24px; margin-bottom:40px;">
     {% for card in cards %}
       {% include "includes/card_item.html" with card=card only %}
     {% empty %}
@@ -29,16 +33,16 @@
     {% endfor %}
   </div>
 
-  <!-- Security Information Box -->
-  <aside class="card" style="background-color: var(--bg-subtle);" aria-labelledby="card_sec_heading">
+  <!-- Security Information Box (NovaPay Dash-Card) -->
+  <aside class="dash-card" style="padding: 24px; border: 1px solid var(--border);" aria-labelledby="card_sec_heading">
     <div class="d-flex items-center gap-md">
-      <span style="font-size: 2.5rem;" aria-hidden="true">🛡️</span>
+      <span style="font-size: 2.2rem;" aria-hidden="true">🛡️</span>
       <div>
-        <h2 id="card_sec_heading" style="font-size: var(--font-size-base); margin-bottom: var(--space-2xs);">
-          Card Security & Fraud Protection
+        <h2 id="card_sec_heading" style="font-family:'Outfit',sans-serif; font-size: 16px; font-weight:700; color:var(--text); margin-bottom: 4px;">
+          {% trans "Card Security & Instant Fraud Protection" %}
         </h2>
-        <p class="text-muted m-0" style="font-size: var(--font-size-xs);">
-          If you notice unauthorized transactions or misplace your physical card, you can instantly freeze it above using the one-click toggle. For emergency 24/7 hotline support, call <strong>+7 (727) 244-0000</strong>.
+        <p class="text-muted m-0" style="font-size: 13px; color:var(--text2); line-height:1.6;">
+          {% trans "If you notice unauthorized transactions or misplace your card, you can instantly freeze it above with 1 click. For emergency 24/7 hotline support, call" %} <strong style="color:var(--sky);">+7 (727) 244-0000</strong>.
         </p>
       </div>
     </div>

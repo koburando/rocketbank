@@ -1,80 +1,87 @@
-<div class="d-flex flex-col h-100">
+{% load static i18n %}
+<div class="d-flex flex-col h-100" style="padding: var(--space-md) var(--space-sm);">
   <!-- Brand Header -->
-  <div class="mb-xl">
-    <a href="{% url 'accounts:dashboard' %}" class="navbar-brand" aria-label="RocketBank Dashboard">
-      <span aria-hidden="true">🚀</span> RocketBank
+  <div class="mb-lg" style="padding: 0 var(--space-xs);">
+    <a href="{% url 'accounts:dashboard' %}" class="nav-logo" aria-label="RocketBank Dashboard" style="font-family:'Outfit',sans-serif; font-size:20px; font-weight:800; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:8px;">
+      <img src="{% static 'images/logo.png' %}" alt="RocketBank" style="max-height: 30px; width: auto; object-fit: contain; display: block;" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+      <span class="nav-logo-fallback" style="display: none; align-items: center; gap: 8px;">
+        <div class="nav-logo-mark" style="width:28px; height:28px; background:var(--sky); border-radius:7px; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 16 16" style="width:14px; height:14px; fill:none; stroke:#fff; stroke-width:2.5; stroke-linecap:round;"><polyline points="2,12 6,7 10,9 14,4"/><circle cx="14" cy="4" r="1.5" fill="white" stroke="none"/></svg>
+        </div>
+        RocketBank
+      </span>
     </a>
-    <span class="text-muted" style="font-size: var(--font-size-xs); display: block; margin-top: var(--space-2xs);">
-      Enterprise Digital Banking
+    <span class="text-muted" style="font-size: 11px; display: block; margin-top: 4px; letter-spacing: 0.04em; color:var(--text3);">
+      {% trans "Enterprise Digital Banking" %}
     </span>
   </div>
 
   <!-- Main Navigation Links -->
-  <nav class="sidebar-nav" aria-label="Dashboard sections">
+  <nav class="sidebar-nav" aria-label="{% trans 'Dashboard sections' %}">
     <a href="{% url 'accounts:dashboard' %}" class="sidebar-link {% if current_path == '/accounts/dashboard/' %}is-active{% endif %}">
-      <span aria-hidden="true">📊</span> Dashboard
+      <span aria-hidden="true">📊</span> {% trans "Dashboard" %}
     </a>
     <a href="{% url 'accounts:list' %}" class="sidebar-link {% if current_path == '/accounts/' %}is-active{% endif %}">
-      <span aria-hidden="true">🏦</span> Accounts
+      <span aria-hidden="true">🏦</span> {% trans "Accounts" %}
     </a>
     <a href="{% url 'transactions:transfer' %}" class="sidebar-link {% if '/transactions/transfer/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">💸</span> Transfer Money
+      <span aria-hidden="true">💸</span> {% trans "Transfer Money" %}
     </a>
     <a href="{% url 'transactions:list' %}" class="sidebar-link {% if current_path == '/transactions/' %}is-active{% endif %}">
-      <span aria-hidden="true">📜</span> Transactions
+      <span aria-hidden="true">📜</span> {% trans "Transactions" %}
     </a>
     <a href="{% url 'cards:list' %}" class="sidebar-link {% if current_path == '/cards/' %}is-active{% endif %}">
-      <span aria-hidden="true">💳</span> My Cards
+      <span aria-hidden="true">💳</span> {% trans "My Cards" %}
     </a>
     <a href="{% url 'cards:apply' %}" class="sidebar-link {% if '/cards/apply/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">✨</span> Order Card (Wizard)
+      <span aria-hidden="true">✨</span> {% trans "Order Card (Wizard)" %}
     </a>
     <a href="{% url 'credits:list' %}" class="sidebar-link {% if current_path == '/credits/' %}is-active{% endif %}">
-      <span aria-hidden="true">📑</span> Loans & Credit
+      <span aria-hidden="true">📑</span> {% trans "Loans & Credit" %}
     </a>
     <a href="{% url 'credits:calculator' %}" class="sidebar-link {% if '/credits/calculator/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">🧮</span> Loan Calculator
+      <span aria-hidden="true">🧮</span> {% trans "Loan Calculator" %}
     </a>
     <a href="{% url 'deposits:list' %}" class="sidebar-link {% if current_path == '/deposits/' %}is-active{% endif %}">
-      <span aria-hidden="true">💰</span> Deposits
+      <span aria-hidden="true">💰</span> {% trans "Deposits" %}
     </a>
     <a href="{% url 'deposits:open' %}" class="sidebar-link {% if '/deposits/open/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">📥</span> Open Deposit
+      <span aria-hidden="true">📥</span> {% trans "Open Deposit" %}
     </a>
     <a href="{% url 'analytics:dashboard' %}" class="sidebar-link {% if '/analytics/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">📈</span> Analytics & Goals
+      <span aria-hidden="true">📈</span> {% trans "Analytics & Goals" %}
     </a>
     <a href="{% url 'accounts:beneficiaries' %}" class="sidebar-link {% if '/accounts/beneficiaries/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">👥</span> Beneficiaries (Formset)
+      <span aria-hidden="true">👥</span> {% trans "Beneficiaries" %}
     </a>
     <a href="{% url 'notifications:list' %}" class="sidebar-link d-flex items-center justify-between {% if '/notifications/' in current_path %}is-active{% endif %}">
       <span class="d-flex items-center gap-sm">
-        <span aria-hidden="true">🔔</span> Notifications
+        <span aria-hidden="true">🔔</span> {% trans "Notifications" %}
       </span>
       {% if unread_notifications_count > 0 %}
-        <span class="badge badge--danger">{{ unread_notifications_count }}</span>
+        <span class="badge" style="background:var(--red); color:#fff; border-radius:10px; font-size:10px; padding:2px 6px;">{{ unread_notifications_count }}</span>
       {% endif %}
     </a>
     <a href="{% url 'support:list' %}" class="sidebar-link {% if '/support/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">🎧</span> Support Tickets
+      <span aria-hidden="true">🎧</span> {% trans "Support Tickets" %}
     </a>
     <a href="{% url 'users:profile' %}" class="sidebar-link {% if '/users/profile/' in current_path %}is-active{% endif %}">
-      <span aria-hidden="true">👤</span> Profile & Settings
+      <span aria-hidden="true">👤</span> {% trans "Profile & Settings" %}
     </a>
   </nav>
 
   <!-- User Profile Widget at Bottom -->
-  <div style="border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: auto;">
+  <div style="border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: auto;">
     <div class="d-flex items-center justify-between">
-      <div style="overflow: hidden;">
-        <p class="m-0 font-semibold" style="font-size: var(--font-size-xs); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+      <div style="overflow: hidden; max-width: 180px;">
+        <p class="m-0 font-semibold" style="font-size: var(--font-size-xs); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; color:var(--text);">
           {{ user.get_full_name|default:user.username }}
         </p>
-        <span class="text-muted" style="font-size: 0.7rem;">{{ user.email }}</span>
+        <span class="text-muted" style="font-size: 0.7rem; color:var(--text3);">{{ user.email }}</span>
       </div>
       <form method="post" action="{% url 'users:logout' %}" style="margin: 0;">
         {% csrf_token %}
-        <button type="submit" class="btn btn--secondary btn--sm btn--icon" title="Sign out" aria-label="Sign out">
+        <button type="submit" class="btn-ghost" title="{% trans 'Sign out' %}" aria-label="{% trans 'Sign out' %}" style="padding: 6px 8px; border-radius: 6px; cursor: pointer;">
           🚪
         </button>
       </form>

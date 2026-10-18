@@ -1,24 +1,52 @@
-<div class="container d-flex items-center justify-between h-100">
-  <div class="d-flex items-center gap-xl">
-    <a href="{% url 'home' %}" class="navbar-brand" aria-label="RocketBank Homepage">
-      <span aria-hidden="true">🚀</span> RocketBank
-    </a>
+{% load static i18n %}
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    {% if active_currencies %}
+      {% for curr in active_currencies %}
+        <div class="ticker-item">
+          <span class="ticker-sym">{{ curr.code }}/KZT</span>
+          <span class="ticker-price">₸{{ curr.exchange_rate_to_kzt|floatformat:2 }}</span>
+          <span class="ticker-up">● {% trans "Live" %}</span>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
 
-    <nav class="d-none d-lg-flex" aria-label="Main navigation">
-      <ul class="navbar-nav">
-        <li><a href="{% url 'cards:catalog' %}" class="nav-link">Cards</a></li>
-        <li><a href="{% url 'credits:catalog' %}" class="nav-link">Loans</a></li>
-        <li><a href="{% url 'deposits:catalog' %}" class="nav-link">Deposits</a></li>
-        <li><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
-        <li><a href="{% url 'support:faq' %}" class="nav-link">FAQ</a></li>
-        <li><a href="{% url 'contacts' %}" class="nav-link">Contacts</a></li>
-      </ul>
-    </nav>
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="{% url 'home' %}" class="nav-logo" aria-label="RocketBank">
+    <img src="{% static 'images/logo.png' %}" alt="RocketBank" style="max-height: 34px; width: auto; object-fit: contain; display: block;" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';">
+    <span class="nav-logo-fallback" style="display: none; align-items: center; gap: 8px;">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 16 16"><polyline points="2,12 6,7 10,9 14,4"/><circle cx="14" cy="4" r="1.5" fill="white" stroke="none"/></svg>
+      </div>
+      RocketBank
+    </span>
+  </a>
+
+  <div class="nav-links">
+    <a href="{% url 'cards:catalog' %}">{% trans "Cards" %}</a>
+    <a href="{% url 'credits:catalog' %}">{% trans "Loans" %}</a>
+    <a href="{% url 'deposits:catalog' %}">{% trans "Deposits" %}</a>
+    <a href="{% url 'about' %}">{% trans "About" %}</a>
+    <a href="{% url 'support:faq' %}">{% trans "FAQ" %}</a>
+    <a href="{% url 'contacts' %}">{% trans "Contacts" %}</a>
   </div>
 
-  <div class="d-flex items-center gap-sm">
-    <!-- Quick Theme Switcher -->
-    <button type="button" class="btn btn--secondary btn--sm" aria-label="Toggle dark/light theme" onclick="(function(){
+  <div class="nav-cta">
+    <!-- Compact Language Switcher (RU | KK | EN) -->
+    <form action="{% url 'set_language' %}" method="post" class="lang-switcher-form" style="display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:2px; margin:0 4px;">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.get_full_path }}">
+      <button type="submit" name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}" title="Русский">RU</button>
+      <button type="submit" name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}" title="Қазақша">KK</button>
+      <button type="submit" name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}" title="English">EN</button>
+    </form>
+
+    <!-- Theme Switcher -->
+    <button type="button" class="btn-ghost" aria-label="{% trans 'Toggle theme' %}" style="padding: 7px 11px; font-size: 13px;" onclick="(function(){
       const cur = document.documentElement.getAttribute('data-theme');
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
@@ -29,16 +57,76 @@
     </button>
 
     {% if request.user.is_authenticated %}
-      <a href="{% url 'accounts:dashboard' %}" class="btn btn--primary btn--sm">
-        Dashboard
+      <!-- Authenticated User Controls -->
+      <a href="{% url 'notifications:list' %}" class="btn-ghost" style="padding: 7px 11px; position: relative;" title="{% trans 'Notifications' %}" aria-label="{% trans 'Notifications' %}">
+        <span aria-hidden="true">🔔</span>
+        {% if unread_notifications_count > 0 %}
+          <span style="position: absolute; top: -4px; right: -4px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; padding: 1px 5px; line-height: 1;">{{ unread_notifications_count }}</span>
+        {% endif %}
       </a>
+      <a href="{% url 'users:profile' %}" class="btn-ghost" title="{% trans 'Profile' %}">
+        <span aria-hidden="true">👤</span>
+        <span class="d-none d-md-inline" style="margin-left: 4px;">{{ request.user.first_name|default:request.user.username|truncatechars:12 }}</span>
+      </a>
+      <a href="{% url 'accounts:dashboard' %}" class="btn-primary">{% trans "Dashboard" %}</a>
       <form method="post" action="{% url 'users:logout' %}" style="display:inline; margin:0;">
         {% csrf_token %}
-        <button type="submit" class="btn btn--outline btn--sm">Log Out</button>
+        <button type="submit" class="btn-ghost" style="cursor: pointer;">{% trans "Log out" %}</button>
       </form>
     {% else %}
-      <a href="{% url 'users:login' %}" class="btn btn--outline btn--sm">Log In</a>
-      <a href="{% url 'users:register' %}" class="btn btn--primary btn--sm">Open Account</a>
+      <!-- Guest Controls -->
+      <a href="{% url 'users:login' %}" class="btn-ghost">{% trans "Sign in" %}</a>
+      <a href="{% url 'users:register' %}" class="btn-primary">{% trans "Get started" %}</a>
+    {% endif %}
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="{% trans 'Open menu' %}" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center;">
+    <form action="{% url 'set_language' %}" method="post" class="lang-switcher-form" style="display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:2px;">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.get_full_path }}">
+      <button type="submit" name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</button>
+      <button type="submit" name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}">KK</button>
+      <button type="submit" name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+    </form>
+    <button type="button" class="btn-ghost" aria-label="{% trans 'Toggle theme' %}" style="padding: 6px 12px; font-size: 13px;" onclick="(function(){
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.cookie = 'theme=' + next + ';path=/;max-age=31536000';
+    })()">
+      <span>🌓</span>
+    </button>
+  </div>
+
+  <a href="{% url 'cards:catalog' %}">{% trans "Cards" %}</a>
+  <a href="{% url 'credits:catalog' %}">{% trans "Loans" %}</a>
+  <a href="{% url 'deposits:catalog' %}">{% trans "Deposits" %}</a>
+  <a href="{% url 'about' %}">{% trans "About" %}</a>
+  <a href="{% url 'support:faq' %}">{% trans "FAQ" %}</a>
+  <a href="{% url 'contacts' %}">{% trans "Contacts" %}</a>
+
+  <div class="m-btns">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'accounts:dashboard' %}" class="btn-primary">{% trans "Dashboard" %}</a>
+      <a href="{% url 'users:profile' %}" class="btn-ghost">{% trans "Profile" %}</a>
+      <a href="{% url 'notifications:list' %}" class="btn-ghost">
+        {% trans "Notifications" %} {% if unread_notifications_count > 0 %}({{ unread_notifications_count }}){% endif %}
+      </a>
+      <form method="post" action="{% url 'users:logout' %}" style="display:block; width:100%; margin:0;">
+        {% csrf_token %}
+        <button type="submit" class="btn-ghost" style="width: 100%; cursor: pointer;">{% trans "Log out" %}</button>
+      </form>
+    {% else %}
+      <a href="{% url 'users:login' %}" class="btn-ghost">{% trans "Sign in" %}</a>
+      <a href="{% url 'users:register' %}" class="btn-primary">{% trans "Get started free" %}</a>
     {% endif %}
   </div>
 </div>

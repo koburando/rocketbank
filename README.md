@@ -2,8 +2,8 @@
 
 RocketBank is a high-performance digital banking system engineered with Django 5.x, PostgreSQL, Redis, Celery, and a server-side HTML5/CSS design system.
 
-> **Frontend Architecture Note**:
-> The server-side presentation layout and design system are adapted from a clean open-source FinTech HTML5 template architecture, implementing strict HTML5 semantics, WCAG 2.1 AA accessibility standards, fluid responsive layout, and dark/light mode customization.
+> **Frontend Architecture & Template Credit**:
+> RocketBank's UI/UX design system and presentation architecture are adapted from **TemplateMo 623 NovaPay** ([https://templatemo.com](https://templatemo.com)), implementing a dark-slate aesthetic (`#0F1319`), sky-blue accent (`#4A9EE8`), fluid responsive layouts, interactive tickers, 3D tilt effects, WCAG 2.1 AA accessibility, and seamless light/dark theme switcher.
 
 ---
 

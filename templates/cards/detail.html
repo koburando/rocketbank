@@ -1,7 +1,7 @@
 {% extends "layouts/public_base.html" %}
-{% load bank_tags %}
+{% load bank_tags i18n %}
 
-{% block title %}{{ product.title }} — Card Details | RocketBank{% endblock %}
+{% block title %}{{ product.title }} — {% trans "Card Details | RocketBank" %}{% endblock %}
 {% block meta_description %}<meta name="description" content="{{ product.description|truncatewords:25 }}">{% endblock %}
 
 {% block schema_json_ld %}
@@ -24,66 +24,78 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="padding-top: calc(36px + var(--nav-h) + 30px); padding-bottom: 60px;">
   <!-- Breadcrumbs -->
-  <nav aria-label="Breadcrumbs" class="mb-md">
-    <ol class="breadcrumbs">
-      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'cards:catalog' %}">Cards Catalog</a></li>
-      <li class="breadcrumb-item is-active" aria-current="page">{{ product.title }}</li>
+  <nav aria-label="{% trans 'Breadcrumbs' %}" class="mb-md">
+    <ol class="breadcrumbs" style="display:flex; gap:8px; list-style:none; padding:0; font-size:13px; color:var(--text3);">
+      <li><a href="{% url 'home' %}" style="color:var(--text2); text-decoration:none;">{% trans "Home" %}</a></li>
+      <li>/</li>
+      <li><a href="{% url 'cards:catalog' %}" style="color:var(--text2); text-decoration:none;">{% trans "Cards Catalog" %}</a></li>
+      <li>/</li>
+      <li style="color:var(--sky); font-weight:600;">{{ product.title }}</li>
     </ol>
   </nav>
 
   <!-- Product Hero Grid -->
-  <div class="grid-2 mb-2xl items-center">
+  <div class="grid-2 mb-2xl items-center" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:48px; margin-bottom:60px;">
     <div>
-      <!-- Card Visual with 3D effect -->
-      <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% elif product.tier == 'BLACK' %}card-bank-visual--black{% endif %}" style="max-width: 440px; margin: 0 auto; box-shadow: var(--shadow-xl);">
-        <div class="d-flex justify-between items-center">
-          <span class="font-bold text-uppercase" style="letter-spacing: 0.1em; font-size: var(--font-size-sm);">RocketBank</span>
-          <span class="badge badge--muted">{{ product.get_tier_display }}</span>
+      <!-- Card Visual with 16:10 ratio & 3D effect -->
+      <div class="card-bank-visual {% if product.tier == 'GOLD' %}card-bank-visual--gold{% elif product.tier == 'PLATINUM' %}card-bank-visual--platinum{% else %}card-bank-visual--black{% endif %}" style="max-width: 480px; margin: 0 auto; aspect-ratio: 16 / 10; border-radius: 18px; box-shadow: var(--shadow-xl);">
+        <div class="d-flex justify-between items-center" style="position:relative; z-index:2;">
+          <div class="d-flex items-center gap-xs">
+            <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:14px; letter-spacing:0.08em; text-transform:uppercase;">RocketBank</span>
+            <svg class="card-nfc-wave" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9"/><path d="M12 19a8.5 8.5 0 0 1 0-14"/><path d="M15.5 21.5a12 12 0 0 1 0-19"/></svg>
+          </div>
+          <span class="badge" style="font-size:11px; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:6px;">{{ product.get_tier_display }}</span>
         </div>
-        <div style="font-size: 1.7rem; font-family: var(--font-family-mono); letter-spacing: 0.15em; margin: var(--space-xl) 0;">
+
+        <div style="position:relative; z-index:2; margin: 8px 0;">
+          <div class="card-emv-chip" aria-hidden="true" style="width:44px; height:32px;"></div>
+        </div>
+
+        <div style="position:relative; z-index:2; font-size:1.5rem; font-family:var(--font-family-mono); letter-spacing:0.18em; font-weight:600; text-shadow:0 1px 3px rgba(0,0,0,0.5);">
           •••• •••• •••• 8888
         </div>
-        <div class="d-flex justify-between items-end" style="font-size: var(--font-size-sm);">
+
+        <div class="d-flex justify-between items-end" style="position:relative; z-index:2; font-size:12px;">
           <div>
-            <span style="opacity: 0.7; display: block; font-size: 0.65rem;">EXPIRES</span>
-            <span class="font-mono">12/28</span>
+            <span style="opacity:0.7; display:block; font-size:9px; letter-spacing:0.08em; text-transform:uppercase;">{% trans "EXPIRES" %}</span>
+            <span class="font-mono" style="font-weight:600;">12/28</span>
           </div>
-          <span class="font-bold text-uppercase">{{ product.title }}</span>
+          <span style="font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">{{ product.title }}</span>
         </div>
       </div>
     </div>
 
     <div>
-      <span class="badge badge--info mb-xs">{{ product.get_tier_display }} Tier</span>
-      <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--space-xs);">{{ product.title }}</h1>
-      <p class="text-secondary" style="font-size: var(--font-size-lg); margin-bottom: var(--space-lg);">
+      <div class="section-tag" style="margin-bottom:12px;">{{ product.get_tier_display }} Tier</div>
+      <h1 class="section-title" style="margin-bottom:var(--space-xs); font-size:clamp(32px, 4vw, 48px);">{{ product.title }}</h1>
+      <p class="section-sub" style="font-size:16px; margin-bottom:var(--space-lg); color:var(--text2);">
         {{ product.description }}
       </p>
 
-      <div class="grid-2 mb-xl">
-        <div class="stat-card">
-          <span class="text-muted" style="font-size: var(--font-size-xs);">Cashback on all purchases</span>
-          <div class="stat-card__number text-success">{{ product.cashback_percent }}%</div>
-          <span class="text-muted" style="font-size: var(--font-size-xs);">Paid automatically on the 1st</span>
+      <div class="grid-2 mb-xl" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+        <div class="stat-block" style="padding:16px;">
+          <span class="stat-label" style="font-size:11px;">{% trans "Cashback on all purchases" %}</span>
+          <div class="stat-num" style="color:var(--green); font-size:28px;">{{ product.cashback_percent }}%</div>
+          <span class="stat-trend" style="color:var(--text3); font-size:11px;">{% trans "Paid automatically on the 1st" %}</span>
         </div>
-        <div class="stat-card">
-          <span class="text-muted" style="font-size: var(--font-size-xs);">Annual Service Fee</span>
-          <div class="stat-card__number font-mono" style="font-size: var(--font-size-2xl);">
-            {% if product.annual_fee == 0 %}Free{% else %}{{ product.annual_fee|currency_format:"KZT" }}{% endif %}
+        <div class="stat-block" style="padding:16px;">
+          <span class="stat-label" style="font-size:11px;">{% trans "Annual Service Fee" %}</span>
+          <div class="stat-num font-mono" style="font-size:24px; color:var(--text);">
+            {% if product.annual_fee == 0 %}{% trans "Free" %}{% else %}{{ product.annual_fee|currency_format:"KZT" }}{% endif %}
           </div>
-          <span class="text-muted" style="font-size: var(--font-size-xs);">No hidden maintenance costs</span>
+          <span class="stat-trend" style="color:var(--text3); font-size:11px;">{% trans "No hidden maintenance costs" %}</span>
         </div>
       </div>
 
-      <div class="d-flex gap-md">
-        <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn btn--primary btn--lg">
-          Apply for this Card Now &rarr;
+      <div class="d-flex gap-md" style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="{% url 'cards:apply' %}?product={{ product.slug }}" class="btn-hero" style="padding:14px 28px;">
+          {% trans "Apply for this Card Now" %}
+          <svg viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
         </a>
-        <a href="{% url 'cards:catalog' %}" class="btn btn--secondary btn--lg">
-          Compare Other Tiers
+        <a href="{% url 'cards:catalog' %}" class="btn-outline" style="padding:14px 24px;">
+          {% trans "Compare Other Tiers" %}
         </a>
       </div>
     </div>
@@ -91,25 +103,25 @@
 
   <!-- Related Products Section -->
   {% if related_products %}
-  <section class="mb-2xl" aria-labelledby="related_cards_heading">
-    <h2 id="related_cards_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-lg);">
-      Other Available Card Tiers
+  <section class="mb-2xl" aria-labelledby="related_cards_heading" style="margin-bottom:60px;">
+    <h2 id="related_cards_heading" class="section-title" style="font-size:24px; margin-bottom:24px;">
+      {% trans "Other Available Card Tiers" %}
     </h2>
-    <div class="product-grid">
+    <div class="product-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:20px;">
       {% for rel in related_products %}
-        <article class="card card--interactive d-flex flex-col justify-between">
+        <article class="dash-card d-flex flex-col justify-between" style="padding:20px;">
           <div>
-            <h3 class="card__title">{{ rel.title }}</h3>
-            <p class="text-muted" style="font-size: var(--font-size-xs);">{{ rel.description|truncatewords:15 }}</p>
-            <div class="d-flex justify-between items-center my-sm">
-              <span class="badge badge--success">{{ rel.cashback_percent }}% Cashback</span>
-              <span class="font-mono font-bold" style="font-size: var(--font-size-xs);">
+            <h3 class="card__title" style="font-size:18px; margin-bottom:8px; color:var(--text);">{{ rel.title }}</h3>
+            <p class="text-muted" style="font-size:13px; color:var(--text2); margin-bottom:16px;">{{ rel.description|truncatewords:15 }}</p>
+            <div class="d-flex justify-between items-center my-sm" style="background:var(--bg3); padding:8px 12px; border-radius:8px;">
+              <span style="color:var(--green); font-weight:600; font-size:13px;">{{ rel.cashback_percent }}% {% trans "Cashback" %}</span>
+              <span class="font-mono font-bold" style="font-size:13px; color:var(--text);">
                 {% if rel.annual_fee == 0 %}0 KZT{% else %}{{ rel.annual_fee|currency_format:"KZT" }}{% endif %}
               </span>
             </div>
           </div>
-          <a href="{% url 'cards:detail' rel.slug %}" class="btn btn--secondary btn--sm w-100 mt-sm">
-            View {{ rel.title }} &rarr;
+          <a href="{% url 'cards:detail' rel.slug %}" class="btn-ghost w-100 mt-sm" style="text-align:center; display:block; margin-top:16px;">
+            {% trans "View" %} {{ rel.title }} &rarr;
           </a>
         </article>
       {% endfor %}
@@ -117,17 +129,17 @@
   </section>
   {% endif %}
 
-  <!-- FAQs with Native HTML5 <details> and <summary> -->
+  <!-- FAQs with Native HTML5 details and summary -->
   {% if faqs %}
   <section class="mb-2xl" aria-labelledby="faq_heading">
-    <h2 id="faq_heading" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-lg);">
-      Frequently Asked Questions
+    <h2 id="faq_heading" class="section-title" style="font-size:24px; margin-bottom:24px;">
+      {% trans "Frequently Asked Questions" %}
     </h2>
-    <div>
+    <div class="faq-list" style="display:flex; flex-direction:column; gap:8px;">
       {% for faq in faqs %}
-        <details class="accordion-item">
-          <summary class="accordion-trigger">{{ faq.question }}</summary>
-          <div class="accordion-content">
+        <details class="faq-item" style="padding:16px 20px;">
+          <summary class="faq-q-text" style="cursor:pointer; font-weight:600; color:var(--text);">{{ faq.question }}</summary>
+          <div style="margin-top:12px; color:var(--text2); font-size:14px; line-height:1.6;">
             <p class="m-0">{{ faq.answer }}</p>
           </div>
         </details>

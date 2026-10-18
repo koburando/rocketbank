@@ -38,7 +38,7 @@ class RegisterView(FormView):
 
     template_name = "users/register.html"
     form_class = UserRegistrationForm
-    success_url = reverse_lazy("users:login")
+    success_url = reverse_lazy("accounts:dashboard")
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -47,17 +47,13 @@ class RegisterView(FormView):
 
     def form_valid(self, form):
         user = form.save()
-        # Generate email verification token
-        signer = TimestampSigner()
-        token = signer.sign(str(user.id))
-
+        # Log in newly registered user directly
+        login(self.request, user)
         messages.success(
             self.request,
-            f"Registration successful for {user.email}! "
-            f"A verification token has been generated: {token[:16]}... "
-            "Please check your inbox or verify your account to unlock all banking features.",
+            f"Registration successful! Welcome to RocketBank, {user.first_name or user.username}!",
         )
-        return super().form_valid(form)
+        return redirect("accounts:dashboard")
 
 
 class VerifyEmailView(View):
