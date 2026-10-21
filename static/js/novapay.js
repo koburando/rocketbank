@@ -399,98 +399,38 @@ window.toggleAllFaq = function() {
 // ================================================================================
 // 13. Theme Toggle Controller & Persistence (Swiss FinTech Light/Dark)
 // ================================================================================
-(function initNovapayTheme() {
-  function getCsrfToken() {
-    const meta = document.querySelector('meta[name="csrf-token"]');
-    if (meta && meta.content) return meta.content;
-    const parts = (document.cookie || '').split(';');
-    for (let p of parts) {
-      p = p.trim();
-      if (p.startsWith('csrftoken=')) return p.substring(10);
-    }
-    return '';
-  }
-
-  function updateIcons(theme) {
-    if (window.updateRocketThemeIcons) {
-      window.updateRocketThemeIcons(theme);
-      return;
-    }
-    const isDark = (theme || 'dark').toLowerCase() === 'dark';
-    const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-    document.querySelectorAll('#theme-toggle-btn, [data-theme-toggle], .theme-toggle-btn').forEach((btn) => {
-      btn.setAttribute('aria-label', label);
-      btn.setAttribute('title', label);
-      btn.setAttribute('data-theme-state', isDark ? 'dark' : 'light');
-      const sun = btn.querySelector('.theme-icon-sun');
-      const moon = btn.querySelector('.theme-icon-moon');
-      if (sun && moon) {
-        sun.style.display = isDark ? 'inline-flex' : 'none';
-        moon.style.display = isDark ? 'none' : 'inline-flex';
-      }
-    });
-  }
-
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  
   function applyTheme(theme) {
-    const next = (theme || 'dark').toLowerCase() === 'light' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    document.cookie = 'django_theme=' + next + ';path=/;max-age=31536000;SameSite=Lax';
-    document.cookie = 'theme=' + next + ';path=/;max-age=31536000;SameSite=Lax';
-    updateIcons(next);
-    document.dispatchEvent(new CustomEvent('rocketbank:theme-changed', { detail: { theme: next } }));
-    return next;
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('rocket_theme', theme);
+    const icon = document.getElementById('themeToggleIcon');
+    if (icon) icon.textContent = theme === 'light' ? '🌙' : '☀️';
+    const mobileIcon = document.getElementById('themeToggleIconMobile');
+    if (mobileIcon) mobileIcon.textContent = theme === 'light' ? '🌙' : '☀️';
   }
 
-  function syncThemeApi(theme) {
-    const isAuth = document.querySelector('meta[name="user-authenticated"]')?.content === 'true'
-      || window.userIsAuthenticated === true;
-    if (!isAuth) return;
+  const currentTheme = localStorage.getItem('rocket_theme') || 'dark';
+  applyTheme(currentTheme);
 
-    const themeUpper = theme.toUpperCase();
-    const csrf = getCsrfToken();
-    fetch('/api/v1/auth/profile/', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrf,
-      },
-      body: JSON.stringify({
-        theme_preference: themeUpper,
-        preferred_theme: themeUpper,
-      }),
-    }).catch(() => {
-      fetch('/api/v1/profile/theme/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrf,
-        },
-        body: JSON.stringify({ theme: themeUpper }),
-      }).catch(() => {});
-    });
-  }
-
-  window.toggleRocketTheme = function() {
-    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    const next = cur === 'dark' ? 'light' : 'dark';
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const active = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = active === 'light' ? 'dark' : 'light';
     applyTheme(next);
-    syncThemeApi(next);
-    return next;
-  };
-  window.applyRocketTheme = applyTheme;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const activeTheme = localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'dark';
-    updateIcons(activeTheme);
-
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('#theme-toggle-btn, [data-theme-toggle], .theme-toggle-btn');
-      if (btn) {
-        e.preventDefault();
-        window.toggleRocketTheme();
-      }
-    });
   });
-})();
+
+  const mobileBtn = document.getElementById('themeToggleBtnMobile');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const active = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = active === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+    });
+  }
+});
 

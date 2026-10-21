@@ -23,6 +23,12 @@ export function updateToggleIcons(theme) {
     btn.setAttribute('title', label);
     btn.setAttribute('data-theme-state', isDark ? 'dark' : 'light');
 
+    const iconSpan = btn.querySelector('#themeToggleIcon, #themeToggleIconMobile');
+    if (iconSpan) {
+      iconSpan.textContent = isDark ? '☀️' : '🌙';
+      return;
+    }
+
     const sunEl = btn.querySelector('.theme-icon-sun');
     const moonEl = btn.querySelector('.theme-icon-moon');
     if (sunEl && moonEl) {
@@ -37,7 +43,11 @@ export function updateToggleIcons(theme) {
 export function applyTheme(theme) {
   const normalized = (theme || 'dark').toLowerCase() === 'light' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', normalized);
+  if (document.body) {
+    document.body.setAttribute('data-theme', normalized);
+  }
   localStorage.setItem('theme', normalized);
+  localStorage.setItem('rocket_theme', normalized);
   document.cookie = `django_theme=${normalized};path=/;max-age=31536000;SameSite=Lax`;
   document.cookie = `theme=${normalized};path=/;max-age=31536000;SameSite=Lax`;
 
@@ -91,15 +101,16 @@ if (typeof window !== 'undefined') {
 }
 
 export function initThemeSwitcher() {
-  const saved = localStorage.getItem('theme')
+  const saved = localStorage.getItem('rocket_theme')
+    || localStorage.getItem('theme')
     || document.documentElement.getAttribute('data-theme')
     || 'dark';
   applyTheme(saved);
 
   // Event delegation on theme toggle buttons
   document.addEventListener('click', (e) => {
-    const toggleBtn = e.target.closest('#theme-toggle-btn, [data-theme-toggle], .theme-toggle-btn');
-    if (!toggleBtn) {
+    const toggleBtn = e.target.closest('#theme-toggle-btn, [data-theme-toggle]');
+    if (!toggleBtn || toggleBtn.id === 'themeToggleBtn' || toggleBtn.id === 'themeToggleBtnMobile') {
       return;
     }
 

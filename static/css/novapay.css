@@ -39,22 +39,77 @@
 /* ================================================================================
    NOVA PAY LIGHT THEME (SWISS FINTECH SYSTEM)
 ================================================================================ */
-[data-theme="light"] {
-  --bg: #F8FAFC;
-  --bg2: #FFFFFF;
-  --bg3: #EDF2F7;
-  --bg4: #E2E8F0;
-  --text: #0F172A;
-  --text2: #334155;
-  --text3: #64748B;
-  --border: #E2E8F0;
-  --border2: #CBD5E1;
-  --sky: #0284C7;
-  --sky2: #0369A1;
-  --sky3: #075985;
-  --sky4: #E0F2FE;
-  --green: #10B981;
-  --red: #EF4444;
+html[data-theme="light"],
+body[data-theme="light"] {
+  --bg: #F8FAFC !important;
+  --bg2: #FFFFFF !important;
+  --bg3: #F1F5F9 !important;
+  --bg4: #E2E8F0 !important;
+  --border: #E2E8F0 !important;
+  --border2: #CBD5E1 !important;
+  --text: #0F172A !important;
+  --text2: #334155 !important;
+  --text3: #64748B !important;
+  --sky: #0284C7 !important;
+  --sky2: #0369A1 !important;
+  --sky3: #075985 !important;
+  --sky4: #E0F2FE !important;
+  --green: #10B981 !important;
+  --red: #EF4444 !important;
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  --bg: #0F1319 !important;
+  --bg2: #141920 !important;
+  --bg3: #1A2130 !important;
+  --bg4: #1E2838 !important;
+  --border: #1E3050 !important;
+  --border2: #2A4060 !important;
+  --text: #E4EEF8 !important;
+  --text2: #8AAEC8 !important;
+  --text3: #506070 !important;
+  --sky: #4A9EE8 !important;
+  --sky2: #7EC8F0 !important;
+  --sky3: #2A6AAA !important;
+  --sky4: #0D2A44 !important;
+  --green: #3DCC8E !important;
+  --red: #E85A5A !important;
+}
+
+html[data-theme="light"] nav#mainNav {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+html[data-theme="light"] .dash-card,
+html[data-theme="light"] .stat-block,
+html[data-theme="light"] .price-card,
+html[data-theme="light"] .sticky-card {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text);
+  padding: 7px 11px;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1;
+  user-select: none;
+  transition: border-color .3s var(--silk), background-color .3s var(--silk);
+}
+.theme-toggle-btn:hover {
+  border-color: var(--sky);
 }
 
 /* Theme Toggle Button Visibility */
@@ -319,12 +374,13 @@ pre code {
 
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
-  color:var(--text);
+  background: var(--bg) !important;
+  color: var(--text) !important;
   font-family:'DM Sans',sans-serif;
   font-size:16px;
   line-height:1.6;
   overflow-x:hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* TICKER */

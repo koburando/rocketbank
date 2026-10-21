@@ -9,8 +9,11 @@
   <meta charset="utf-8">
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
+      const savedTheme = localStorage.getItem('rocket_theme') || localStorage.getItem('theme') || 'dark';
       document.documentElement.setAttribute('data-theme', savedTheme);
+      if (document.body) {
+        document.body.setAttribute('data-theme', savedTheme);
+      }
     })();
   </script>
   <meta name="csrf-token" content="{{ csrf_token }}">
@@ -112,6 +115,46 @@
   </script>
   <script src="{% static 'js/novapay.js' %}"></script>
   <script type="module" src="{% static 'js/main.js' %}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('themeToggleBtn');
+      if (!btn) return;
+      
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('rocket_theme', theme);
+        const icon = document.getElementById('themeToggleIcon');
+        if (icon) icon.textContent = theme === 'light' ? '🌙' : '☀️';
+        const mobileIcon = document.getElementById('themeToggleIconMobile');
+        if (mobileIcon) mobileIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+      }
+
+      const currentTheme = localStorage.getItem('rocket_theme') || 'dark';
+      applyTheme(currentTheme);
+
+      if (!btn.dataset.themeBound) {
+        btn.dataset.themeBound = 'true';
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const active = document.documentElement.getAttribute('data-theme') || 'dark';
+          const next = active === 'light' ? 'dark' : 'light';
+          applyTheme(next);
+        });
+      }
+
+      const mobileBtn = document.getElementById('themeToggleBtnMobile');
+      if (mobileBtn && !mobileBtn.dataset.themeBound) {
+        mobileBtn.dataset.themeBound = 'true';
+        mobileBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const active = document.documentElement.getAttribute('data-theme') || 'dark';
+          const next = active === 'light' ? 'dark' : 'light';
+          applyTheme(next);
+        });
+      }
+    });
+  </script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>
